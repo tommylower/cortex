@@ -5,7 +5,7 @@ instruction files for AI coding tools — design systems, workflow patterns, and
 ## structure
 
 - `core/` — defaults: design system, motion, workflow rules
-- `integrations/` — patterns for pencil, obsidian, framer
+- `integrations/` — patterns for pencil, obsidian, framer, and more
 - `collected/` — skills from others
 
 ## usage
