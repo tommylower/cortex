@@ -1,6 +1,8 @@
 # skills
 
-Markdown files that AI agents (Claude Code, Cursor, etc.) load as context. Design patterns, accessibility standards, animation references, agent workflows. I use these across all my projects.
+Markdown files that AI agents load as context. Design patterns, accessibility standards, animation references, agent workflows. I use these across all my projects.
+
+These are plain markdown — they work with any AI coding tool (Claude Code, Cursor, Windsurf, GitHub Copilot, Codex, or anything else that reads project files).
 
 Some I wrote, some I collected. Credits noted where applicable. Updated regularly.
 
@@ -43,17 +45,11 @@ Worth pulling in if you're building anything with a marketing site, landing page
 
 You don't need all of these. Pick what's relevant to your stack and workflow.
 
-Reference in your project config:
+Point your AI tool's config at the skills directory. The file varies by tool, but the instruction is the same:
 
 ```md
-# .claude/CLAUDE.md or .cursor/rules
+# in AGENTS.md, .claude/CLAUDE.md, .cursor/rules, .windsurfrules, etc.
 Reference ~/Desktop/code/skills/ for shared knowledge.
-```
-
-Or symlink individual skills into `~/.claude/skills/` for global access:
-
-```bash
-ln -s ~/Desktop/code/skills/design/rams ~/.claude/skills/rams
 ```
 
 Or use [wip-create-designbase](https://github.com/tommylower/foundations) to scaffold a project pre-wired with these.
