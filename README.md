@@ -49,7 +49,7 @@ Point your AI tool's config at the skills directory. The file varies by tool, bu
 
 ```md
 # in AGENTS.md, .claude/CLAUDE.md, .cursor/rules, .windsurfrules, etc.
-Reference ~/Desktop/code/skills/ for shared knowledge.
+Reference ~/Desktop/code/tools/skills/ for shared knowledge.
 ```
 
 Or use [wip-create-designbase](https://github.com/tommylower/foundations) to scaffold a project pre-wired with these.
