@@ -68,3 +68,17 @@ Line height: 1.1-1.2 for headlines, 1.5-1.6 for body text.
 - Sections with no breathing room between them
 - Text over images without sufficient contrast/overlay
 - Centering everything — left-align body text
+
+## AI Slop Detection
+
+Generated UI has recognizable tells. If you spot these patterns, you're probably producing generic output instead of intentional design. Fix or remove them:
+
+- **Gratuitous gradients** — purple-to-blue or teal-to-cyan backgrounds with no design rationale
+- **Glassmorphism everywhere** — frosted glass cards with backdrop-blur used as a default style, not a deliberate choice
+- **Generic hero layout** — centered text over a stock gradient with a "Get Started" button and no real content hierarchy
+- **Decoration over function** — floating blobs, animated mesh backgrounds, glow effects that don't support the content
+- **Same component repeated 3x** — three feature cards, three pricing tiers, three testimonials, all identical structure with placeholder-quality copy
+- **Over-rounded everything** — `rounded-2xl` or `rounded-3xl` on every surface with no variation
+- **Default shadow stack** — `shadow-lg` on cards, `shadow-xl` on modals, no thought about elevation system
+
+The fix is always the same: ask what the design is trying to communicate, then choose the simplest visual treatment that achieves it.
