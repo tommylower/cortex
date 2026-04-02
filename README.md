@@ -26,6 +26,7 @@ skills/
 | **dialkit** | Dev-time tool for tuning animation values with sliders, toggles, and spring curve editors. Remove before shipping. | Saves the edit-save-reload loop when dialing in motion. Optional — only relevant during polish phases. |
 | **wiretext** | ASCII wireframing via MCP server. Prototypes page structure and content hierarchy. | Quick way to align on layout before writing any code. Useful for early-stage planning, not needed for every project. |
 | **figma-mcp** | Figma → Claude Code bridge. Reads frame layouts, extracts design tokens, maps Figma components to code. | If you design in Figma, this closes the gap between design files and implementation. Skip if you don't use Figma. |
+| **gradients** | CSS gradient patterns — color spaces (oklab/oklch), layering, blend modes, animation, common recipes. | Stops agents from defaulting to sRGB muddy blends. Covers the techniques that make gradients look intentional. |
 | **reference-patterns** | Design patterns from production sites (Linear, Vercel, Lovable). Layouts, dark theme techniques, micro-interactions. | Good reference when building marketing pages or product UIs. Gives agents real-world examples instead of generic patterns. |
 
 ## agents/
