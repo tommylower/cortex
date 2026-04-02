@@ -63,9 +63,9 @@ Point your AI tool's config at the skills directory. The file varies by tool, bu
 Reference ~/Desktop/code/tools/skills/ for shared knowledge.
 ```
 
-Or use [wip-scaffold](https://github.com/tommylower/foundations) to scaffold a project pre-wired with these.
+Or use [wip-scaffold](https://github.com/tommylower/wip-scaffold) to scaffold a project pre-wired with these.
 
 ## related
 
-- [foundations](https://github.com/tommylower/foundations) — project scaffold + `wip-scaffold` CLI
+- [wip-scaffold](https://github.com/tommylower/wip-scaffold) — scaffold + docs
 - [marketingskills](https://github.com/coreyhaines31/marketingskills) — marketing skills (submodule)
