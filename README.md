@@ -10,9 +10,10 @@ Some I wrote, some I collected. Credits noted where applicable. Updated regularl
 
 ```
 skills/
-  design/       # UI, motion, accessibility, design tooling
-  agents/       # agent setup patterns, autonomous workflows
-  marketing/    # submodule → coreyhaines31/marketingskills
+  design/          # UI, motion, accessibility, design tooling (auto-linked by scaffold)
+  design-systems/  # reference design systems — not auto-loaded, use when explicitly asked
+  agents/          # agent setup patterns, autonomous workflows
+  marketing/       # submodule → coreyhaines31/marketingskills
 ```
 
 ## design/
@@ -36,6 +37,14 @@ skills/
 |-------|-----------|-------------|
 | **agentation** | Setup and config for the Agentation annotation toolbar in Next.js. MCP server integration for agent-driven design feedback. | Lets agents leave design annotations directly on your running app. Requires the Agentation package. |
 | **agentation-self-driving** | Autonomous design critique mode. Agent opens a browser, scans pages, and creates annotations. Includes a two-session workflow where one agent critiques while another fixes in parallel. | Experimental. Useful for automated design QA across full pages, but it's a more involved setup. |
+
+## design-systems/
+
+Reference design systems for exploration and inspiration. These are **not auto-loaded** — agents only use them when you explicitly ask (e.g. "use Nothing style"). They live outside `design/` so the scaffold symlink doesn't pull them in automatically.
+
+| System | What it is | Credit |
+|--------|-----------|--------|
+| **nothing-design** | Nothing-inspired monochrome UI — Swiss typography, OLED blacks, Space Grotesk/Mono, industrial widgets, three-layer hierarchy. Includes full token system, component specs, and platform mappings (CSS, React/Tailwind, SwiftUI). | [dominikmartn](https://github.com/dominikmartn/nothing-design-skill) |
 
 ## marketing/
 
