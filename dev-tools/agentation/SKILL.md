@@ -1,6 +1,7 @@
 ---
 name: agentation
 description: Add Agentation visual feedback toolbar to a Next.js project
+author: Dennis Jin & Benji Taylor (https://www.npmjs.com/package/agentation)
 ---
 
 # Agentation Setup

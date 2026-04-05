@@ -1,3 +1,9 @@
+---
+name: dialkit
+description: Add DialKit floating control panel for tuning animations and visual properties
+author: Josh Puckett (https://github.com/joshpuckett/dialkit)
+---
+
 # DialKit
 
 A floating control panel for React: sliders, toggles, color pickers, spring editors wired directly to UI values. Dev-only tool for tuning animations, spacing, and visual properties in real time.
