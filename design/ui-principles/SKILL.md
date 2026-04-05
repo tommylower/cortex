@@ -82,3 +82,78 @@ Generated UI has recognizable tells. If you spot these patterns, you're probably
 - **Default shadow stack** — `shadow-lg` on cards, `shadow-xl` on modals, no thought about elevation system
 
 The fix is always the same: ask what the design is trying to communicate, then choose the simplest visual treatment that achieves it.
+
+## Fluid Scale (Tailwind Config)
+
+Map fluid `clamp()` values into Tailwind so you use utilities, not raw CSS:
+
+```js
+// tailwind.config.ts
+export default {
+  theme: {
+    extend: {
+      fontSize: {
+        'fluid-sm':  'clamp(0.875rem, 0.5vw + 0.75rem, 1rem)',
+        'fluid-base': 'clamp(1rem, 1vw + 0.75rem, 1.25rem)',
+        'fluid-lg':  'clamp(1.25rem, 2vw + 0.75rem, 2rem)',
+        'fluid-xl':  'clamp(1.5rem, 3vw + 0.75rem, 3rem)',
+        'fluid-2xl': 'clamp(2rem, 5vw + 1rem, 4rem)',
+        'fluid-hero': 'clamp(2.5rem, 6vw + 1rem, 5rem)',
+      },
+      spacing: {
+        'fluid-xs': 'clamp(0.25rem, 0.5vw, 0.5rem)',
+        'fluid-s':  'clamp(0.5rem, 1vw, 0.75rem)',
+        'fluid-m':  'clamp(1rem, 2vw + 0.5rem, 2rem)',
+        'fluid-l':  'clamp(1.5rem, 4vw + 0.5rem, 4rem)',
+        'fluid-xl': 'clamp(2rem, 6vw + 1rem, 8rem)',
+        'fluid-2xl': 'clamp(3rem, 10vw + 1rem, 12rem)',
+      },
+    },
+  },
+}
+```
+
+Always combine `rem + vw` in the preferred value. Pure `vw` doesn't scale when users zoom to 200%.
+
+## Viewport Units
+
+| Unit | Browser UI state | Use for |
+|------|------------------|---------|
+| `svh` | Fully expanded (smallest) | Default. hero sections, modals, anything that must fit on load |
+| `lvh` | Fully retracted (largest) | Backgrounds, decorative elements |
+| `dvh` | Dynamic, updates on scroll | Sparingly. chat interfaces, overlays tracking exact visible space |
+
+Always provide a fallback: `height: 100vh; height: 100svh;`. Avoid `dvh` for primary layout.
+
+## Touch, Hover, Motion
+
+Touch targets (in `globals.css` inside `@layer base`):
+```css
+@media (pointer: coarse) {
+  button, a, [role="button"] { min-height: 44px; min-width: 44px; }
+}
+```
+
+Hover gating for transforms:
+```css
+@media (hover: hover) and (pointer: fine) {
+  .hover-lift:hover { transform: translateY(-4px); }
+}
+```
+
+Reduced motion with Tailwind:
+```jsx
+<div className="motion-safe:animate-fade-in motion-reduce:animate-none">
+```
+
+## Pretext (Text Measurement)
+
+Use Pretext (`bun add @chenglou/pretext`) when layout depends on text height: virtualized lists, masonry, shrink-wrapping chat bubbles, text flowing around obstacles.
+
+```js
+import { prepare, layout } from '@chenglou/pretext'
+const prepared = prepare('Your text here', '16px Inter')  // one-time, expensive
+const { height, lineCount } = layout(prepared, width, 24) // cheap, call on every resize
+```
+
+Use a named font, not `system-ui`. The font string must match your CSS exactly.
