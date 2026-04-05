@@ -31,6 +31,7 @@ All top-level directories are auto-linked into projects by [wip-scaffold](https:
 | **figma-mcp** | Figma → Claude Code bridge. Reads frame layouts, extracts design tokens, maps Figma components to code. | If you design in Figma, this closes the gap between design files and implementation. Skip if you don't use Figma. |
 | **gradients** | CSS gradient patterns — color spaces (oklab/oklch), layering, blend modes, animation, common recipes. | Stops agents from defaulting to sRGB muddy blends. Covers the techniques that make gradients look intentional. |
 | **responsive-design** | Responsive layout patterns — fluid type/spacing scales, intrinsic grids, Pretext for text measurement, touch/hover/motion gating. | Prevents the "just add a breakpoint" approach. Fluid scales + recomposition over shrinking. |
+| **responsive-craft** | Responsive implementation skill — mobile-first layouts, sticky coordination, scroll regions, dashboards, multi-viewport preview. | Surfaces design forks where there's no single right answer. Includes preview scripts for side-by-side viewport testing. By [Kyle Zantos](https://github.com/kylezantos/responsive-craft). |
 | **reference-patterns** | Design patterns from production sites (Linear, Vercel, Lovable). Layouts, dark theme techniques, micro-interactions. | Good reference when building marketing pages or product UIs. Gives agents real-world examples instead of generic patterns. |
 
 ## dev-tools/
