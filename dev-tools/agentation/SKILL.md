@@ -60,3 +60,4 @@ Set up the Agentation annotation toolbar in this project.
 - The MCP server runs on port 4747 by default for the HTTP server
 - MCP server exposes tools like `agentation_get_all_pending`, `agentation_resolve`, and `agentation_watch_annotations`
 - Run `agentation-mcp doctor` to verify setup after installing
+- Works alongside Interface Kit — Agentation handles annotation/feedback, Interface Kit handles visual styling. Both render as siblings in the root layout with no conflicts

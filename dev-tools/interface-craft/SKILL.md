@@ -50,3 +50,4 @@ Set up Interface Kit — a visual design tool for styling React apps directly in
 - The `NODE_ENV` check ensures Interface Kit only loads in development
 - Interface Kit is a visual styling tool — edit styles directly in the browser and it writes back to code
 - Add as a sibling to children, never wrap children with it
+- Works alongside Agentation — Interface Kit handles visual styling, Agentation handles annotation/feedback. Both render as siblings in the root layout with no conflicts
