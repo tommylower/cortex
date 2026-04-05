@@ -31,6 +31,7 @@ description: Claude Code working patterns — plan mode, subagents, verification
 - Diff behavior between main and your changes when relevant
 - Ask yourself: "Would a staff engineer approve this?"
 - Run tests, check logs, demonstrate correctness
+- For high-risk changes (auth, data, infra): run `/codex:adversarial-review` for cross-model review before shipping (see `codex-review` skill)
 
 ### 5. Demand Elegance (Balanced)
 - For non-trivial changes: pause and ask "is there a more elegant way?"

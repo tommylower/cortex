@@ -40,7 +40,20 @@ Use this for complex projects requiring multiple parallel workstreams and rigoro
 
 For any significant design or implementation work, use an iterative review loop with an external model. The loop continues until you get consecutive approvals — not just one pass.
 
-### Process
+### Quick Path: Codex Plugin
+
+If the Codex plugin is installed (see `codex-review` skill), use it instead of manual piping:
+
+```bash
+/codex:adversarial-review challenge the auth design and look for race conditions
+/codex:adversarial-review --background look for data loss scenarios in the migration
+```
+
+Run adversarial review after each wave. Append focus text to steer the review toward the risk area that matters most for that wave. This replaces the manual repomix + llm flow below.
+
+### Manual Process (Universal Fallback)
+
+Use this if you don't have a ChatGPT subscription or need models the Codex plugin doesn't support.
 
 1. **Design/Implement** — create initial design or code
 2. **Submit for review** — flatten with repomix, pipe to external LLM with high reasoning
@@ -92,6 +105,16 @@ Wave 1: Build auth module (3 agents in parallel)
 ## Adversarial Dual-Review (Santa Method)
 
 For code that ships without human review, use two independent reviewers — ideally different models — that must both approve before merging.
+
+### Quick Path: Codex Plugin + Claude
+
+With the Codex plugin installed, the dual-review is built in — Claude writes, Codex reviews. Enable the review gate for automatic cross-model checking:
+
+```bash
+/codex:setup --enable-review-gate
+```
+
+For manual dual-review or when you need more control:
 
 ### Process
 

@@ -51,7 +51,8 @@ Agent orchestration patterns and working strategies.
 | Skill | What it is | Why I use it |
 |-------|-----------|-------------|
 | **claude-workflow** | Claude Code working patterns — plan mode, subagent strategy, verification loops, context management, hook patterns (config protection, batch formatting). | Structured approach to working with Claude Code. Covers when to compact, how to manage context budget, and self-improvement loops. |
-| **agent-swarm** | Multi-agent parallel workflow — wave execution (2-4 agents), review loops with rotating critique lenses, adversarial dual-review (Santa Method). | For complex builds requiring parallel workstreams. Includes repomix + external LLM review commands. |
+| **agent-swarm** | Multi-agent parallel workflow — wave execution (2-4 agents), review loops with rotating critique lenses, adversarial dual-review (Santa Method). | For complex builds requiring parallel workstreams. Integrates with Codex plugin or manual repomix + LLM review. |
+| **codex-review** | Codex plugin for Claude Code — cross-model code review, adversarial design challenges, and task delegation without leaving your session. | Cross-model review before shipping. Adversarial review for auth, infra, data-loss risk. Rescue for when Claude gets stuck. |
 
 ## design-systems/
 
