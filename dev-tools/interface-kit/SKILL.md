@@ -1,10 +1,10 @@
 ---
-name: interface-craft
+name: interface-kit
 description: Add Interface Kit visual design overlay to a Next.js project
 author: Josh Puckett (https://github.com/joshpuckett/interfacekit)
 ---
 
-# Interface Craft
+# Interface Kit
 
 Set up Interface Kit — a visual design tool for styling React apps directly in the browser.
 
