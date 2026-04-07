@@ -126,21 +126,40 @@ Examples:
 }
 
 if (isUrl(target)) {
-  // Dev server already running — serve preview.html from a temp directory
-  const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'responsive-preview-'));
-  console.log(`Launching responsive preview for ${target}...\n`);
+  // If cwd has a `public/` dir (Next.js, Vite, etc.), drop preview.html there
+  // and serve it from the target's own origin. This avoids X-Frame-Options /
+  // frame-ancestors blocking when the preview server is on a different port.
+  const publicDir = path.join(process.cwd(), 'public');
+  if (fs.existsSync(publicDir) && fs.statSync(publicDir).isDirectory()) {
+    const previewDest = path.join(publicDir, '_responsive-preview.html');
+    fs.copyFileSync(PREVIEW_HTML, previewDest);
 
-  // Clean up temp dir on exit
-  const origCleanup = process.listeners('SIGINT');
-  process.on('exit', () => {
-    try { fs.rmSync(tmpDir, { recursive: true }); } catch {}
-  });
+    const targetOrigin = new URL(target).origin;
+    const params = new URLSearchParams();
+    params.set('url', target);
+    if (breakpoints) params.set('breakpoints', breakpoints);
+    const previewUrl = `${targetOrigin}/_responsive-preview.html?${params.toString()}`;
 
-  startServer(tmpDir, (port) => {
-    const previewUrl = buildPreviewUrl(port, target, breakpoints);
-    console.log(`\nPreview: ${previewUrl}\n`);
+    console.log(`Launching responsive preview for ${target}...`);
+    console.log(`Using same-origin preview at ${publicDir}\n`);
+    console.log(`Preview: ${previewUrl}\n`);
     openInBrowser(previewUrl);
-  });
+  } else {
+    // Fallback: serve preview.html from a temp directory on its own port.
+    // Note: this will be blocked by X-Frame-Options on cross-origin targets.
+    const tmpDir = fs.mkdtempSync(path.join(os.tmpdir(), 'responsive-preview-'));
+    console.log(`Launching responsive preview for ${target}...\n`);
+
+    process.on('exit', () => {
+      try { fs.rmSync(tmpDir, { recursive: true }); } catch {}
+    });
+
+    startServer(tmpDir, (port) => {
+      const previewUrl = buildPreviewUrl(port, target, breakpoints);
+      console.log(`\nPreview: ${previewUrl}\n`);
+      openInBrowser(previewUrl);
+    });
+  }
 } else {
   // Static file — serve the target directory with preview.html alongside it
   const resolvedPath = path.resolve(target);

@@ -78,7 +78,8 @@ function serve(port) {
       return;
     }
 
-    let filePath = path.resolve(rootDir, decodeURIComponent(req.url).replace(/^\/+/, ''));
+    const pathname = new URL(req.url, `http://localhost`).pathname;
+    let filePath = path.resolve(rootDir, decodeURIComponent(pathname).replace(/^\/+/, ''));
 
     // Default to index.html for directory requests
     if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
