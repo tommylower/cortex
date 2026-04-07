@@ -1,3 +1,8 @@
+---
+name: wiretext
+description: "ASCII wireframe tool with an MCP server for Claude Code. Generate and edit wireframes from the terminal using primitives (box, text, line, arrow) and components (button, input, select, table, modal, navbar, tabs, card, etc.), then fine-tune in the browser via an editable URL. Use when the user wants to wireframe a page or section before building, sketch out layout structure, plan content hierarchy, or rapidly iterate on a layout without committing to code or Figma. Triggers: wireframe, wiretext, sketch layout, ascii wireframe, plan a page, mock up, low fidelity, layout sketch."
+---
+
 # Wiretext
 
 ASCII wireframe tool with MCP server integration for Claude Code. Generate and edit wireframes directly from the terminal, then fine-tune in the browser.

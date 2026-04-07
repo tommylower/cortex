@@ -1,3 +1,8 @@
+---
+name: reference-patterns
+description: "Curated design patterns from high-quality reference sites (Linear, Vercel, Lovable, and others): hero layouts, feature sections, navigation styles, motion timing, card treatments, typography hierarchy, and color usage. Use when the user wants inspiration for a section, asks 'how does Linear/Vercel do X', is building a marketing page and needs proven layouts, or wants to match the visual quality of best-in-class SaaS sites. Triggers: linear style, vercel style, reference site, inspiration, how does X do this, like linear, like vercel, marketing page patterns, hero layout."
+---
+
 # Reference Site Patterns
 
 Design patterns from high-quality reference sites. Use these as guidance for layout, interaction, and visual quality.

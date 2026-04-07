@@ -1,3 +1,8 @@
+---
+name: css-interaction-tips
+description: "Quick-reference recipes for common CSS interaction and animation problems: button press feedback, smooth element entrances, hover flicker fixes, popover transform-origin, sequential tooltip timing, mobile tap targets, hover-on-touch issues, and subtle blur masking. Use when polishing UI interactions, fixing janky animations, making buttons feel responsive, addressing hover bugs on mobile, or any micro-interaction tuning. Triggers: hover, transition, button feel, tap target, tooltip, popover, animation jitter, interaction polish, micro-interaction."
+---
+
 # CSS Interaction Tips
 
 Quick-reference for common CSS interaction and animation scenarios. Use when working on hover effects, transitions, button states, tooltips, popovers, tap targets, or any UI interaction polish.

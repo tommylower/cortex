@@ -1,3 +1,8 @@
+---
+name: rams
+description: "AI design engineer that reviews code for accessibility issues, visual inconsistencies, and UI polish, then offers to fix them. Checks alt text, aria-labels, form labels, keyboard handlers, contrast ratios, touch target sizes, heading hierarchy, spacing consistency, z-index conflicts, font usage, and line height. Outputs a score out of 100 with line numbers, code snippets, fix suggestions, and WCAG references. Use when the user asks for a design review, accessibility audit, UI polish pass, a11y check, or wants Rams to review a component or page. Triggers: rams, design review, a11y, accessibility audit, wcag, ui polish, design critique, review my component."
+---
+
 # Rams
 
 AI design engineer for coding agents. Reviews code for accessibility issues, visual inconsistencies, and UI polish — then offers to fix them.

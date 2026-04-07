@@ -1,3 +1,8 @@
+---
+name: ui-principles
+description: "Core principles for building high-quality UI: spacing scale, typography hierarchy, layout rules, max content widths, grid systems, card consistency, proximity grouping, and section rhythm. Reference these when creating components, laying out pages, choosing font sizes, picking padding values, or setting up a new design from scratch. Triggers: ui principles, spacing scale, typography, type hierarchy, layout rules, design fundamentals, what padding, what font size, design system basics."
+---
+
 # UI Design Principles
 
 Core principles for building high-quality UI. Reference these when creating components, layouts, and pages.

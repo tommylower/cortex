@@ -1,3 +1,8 @@
+---
+name: figma-mcp
+description: "Set up and use the official Figma MCP server in Claude Code to read design tokens, components, frame layouts, and variables directly from Figma files, and to generate code from Figma frames. Use when the user wants to connect Figma to Claude, extract colors/typography/spacing from a design, convert a Figma frame to React/Tailwind, sync design tokens, or do any Figma-to-code workflow. Triggers: figma, design tokens, design system sync, figma to code, figma to react, extract from figma, figma mcp, design variables."
+---
+
 # Figma MCP
 
 Official Figma remote MCP server. Lets Claude Code read design tokens, components, and layout data directly from Figma files.

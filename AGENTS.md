@@ -55,13 +55,57 @@ constraints:
 - short paragraphs, bullet lists, code blocks for templates.
 - no agent-specific syntax in `SKILL.md`. nothing that only one agent can parse.
 
-### legacy skills
-
-some older skills under `agent-workflows/` and `design-skills/` predate the spec and lack frontmatter. they still work. align them to the spec when they get touched.
-
 ### canonical reference
 
 `marketing/CLAUDE.md` contains the full spec, write style, and PR checklist. treat it as the source of truth for skill authoring across cortex.
+
+## how skills reach claude code (and other agents)
+
+cortex is the source of truth. agents see cortex skills via thin adapters that live in `scripts/`. nothing inside a skill folder is allowed to know about a specific agent.
+
+**first-time setup on a new machine:**
+
+1. clone cortex somewhere (e.g. `~/Desktop/code/cortex`).
+2. run the sync script once to populate `~/.claude/skills/`:
+   ```bash
+   ~/Desktop/code/cortex/scripts/sync-claude-skills.sh
+   ```
+3. (optional but recommended) add a `SessionStart` hook to `~/.claude/settings.json` so the sync runs automatically every claude session. merge this into the existing `settings.json` (replace the path if cortex lives elsewhere):
+   ```json
+   "hooks": {
+     "SessionStart": [
+       {
+         "hooks": [
+           {
+             "type": "command",
+             "command": "$HOME/Desktop/code/cortex/scripts/sync-claude-skills.sh >/dev/null 2>&1 || true"
+           }
+         ]
+       }
+     ]
+   }
+   ```
+   without the hook, you'll need to re-run the sync script manually after adding new skills.
+
+**claude code adapter:**
+
+- `scripts/sync-claude-skills.sh` walks every category folder, finds every `<category>/<skill>/SKILL.md`, and creates a symlink `~/.claude/skills/<skill-name>` pointing back at the cortex folder. idempotent. removes stale symlinks. safe to re-run.
+- a `SessionStart` hook in `~/.claude/settings.json` runs the sync script every time a claude session starts, so new skills appear automatically. you should never need to run it manually.
+- `scripts/validate-skills.sh` checks every skill has frontmatter, a `name` matching its directory, a non-empty description, and no duplicate names across cortex. run it before committing skill changes. CI should run it too.
+
+**rules for adding a new skill:**
+
+1. create `<category>/<skill-name>/SKILL.md` with valid frontmatter (`name` must equal the directory name).
+2. run `scripts/validate-skills.sh` and fix anything it complains about.
+3. that's it. the next claude session will pick it up.
+
+**rules for agents (you, reading this):**
+
+- never put agent-specific files inside a skill folder (no `.claude/`, no claude-only commands in `SKILL.md`). skills are agent-agnostic markdown.
+- never bypass the sync script by hand-symlinking individual skills into `~/.claude/skills/`. let the script own that directory.
+- never add a new category folder without updating the `CATEGORIES` list in both scripts.
+- never rename a skill directory without also updating its `name:` frontmatter, or validation will fail.
+- if you need to support a new agent (cursor, codex, etc.), add a new sync script alongside `sync-claude-skills.sh`. do not modify the existing one.
 
 ## adding cortex to a new project
 

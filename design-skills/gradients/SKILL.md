@@ -1,3 +1,8 @@
+---
+name: gradients
+description: "Patterns and principles for building high-quality CSS gradients: choosing the right color space (sRGB vs oklab vs oklch), linear / radial / conic gradient syntax, layering, performance, hue-shift avoidance, and common recipes (mesh-like backgrounds, button glows, text gradients, masked overlays). Use when building hero backgrounds, button styles, glow effects, gradient text, mesh backgrounds, or fixing muddy/banded gradients. Triggers: gradient, background, oklch, oklab, color interpolation, mesh gradient, glow, hero background."
+---
+
 # CSS Gradients
 
 Patterns and principles for building gradients in web design. Covers all gradient types, color space selection, layering, performance, and common recipes.

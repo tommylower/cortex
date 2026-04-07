@@ -1,3 +1,8 @@
+---
+name: framer-motion
+description: "Production-ready Framer Motion patterns for React/Next.js: scroll-triggered fade-ups, staggered children for grids and lists, hover and tap micro-interactions, page transitions, layout animations, and shared element transitions. Use when adding animation to a React component, doing entrance animations on scroll, animating cards or list items, building interactive hover states, or polishing motion in a Next.js app. Triggers: framer motion, animate, motion, transition, fade in, scroll reveal, stagger, whileInView, animation library, react animation."
+---
+
 # Framer Motion Patterns
 
 Animation patterns for React/Next.js using Framer Motion. Use for scroll-triggered reveals, hover states, transitions, and micro-interactions.
