@@ -8,7 +8,7 @@ UI, motion, accessibility, and visual implementation skills. consult before gene
 - **figma-mcp** — official Figma remote MCP server for reading tokens, components, layout
 - **framer-motion** — animation patterns for React/Next.js (reveals, hover, micro-interactions)
 - **gradients** — gradient construction, color spaces, layering, performance, recipes
-- **rams** — AI design engineer that reviews accessibility, visual consistency, UI polish
+- **preflight** — final design audit before shipping. accessibility, visual consistency, AI pattern detection
 - **reference-patterns** — design patterns and quality benchmarks from reference sites (Linear, etc.)
 - **responsive-craft** — responsive layout implementation. audit, build, or live multi-breakpoint preview
 - **ui-principles** — core UI principles. spacing scale, hierarchy, defaults

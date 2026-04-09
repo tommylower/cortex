@@ -45,9 +45,16 @@ Set up Interface Kit — a visual design tool for styling React apps directly in
 5. **Confirm setup**
    - Tell the user Interface Kit is configured and available in dev mode
 
+## Production Rules (strict)
+
+- install as devDependency only: `bun add -d interface-kit`
+- NEVER import outside a `NODE_ENV === "development"` gate
+- NEVER add to layout.tsx directly. mount inside `src/components/DevTools.tsx` using `next/dynamic` with `{ ssr: false }`
+- if build fails on vercel, check interface-kit imports first
+- only install when the user explicitly asks (e.g. "add interface-kit"). never auto-scaffold
+
 ## Notes
 
-- The `NODE_ENV` check ensures Interface Kit only loads in development
-- Interface Kit is a visual styling tool — edit styles directly in the browser and it writes back to code
-- Add as a sibling to children, never wrap children with it
-- Works alongside Agentation — Interface Kit handles visual styling, Agentation handles annotation/feedback. Both render as siblings in the root layout with no conflicts
+- visual styling tool. edit styles directly in the browser and it writes back to code
+- add as a sibling to children, never wrap children with it
+- works alongside Agentation and DialKit as siblings in DevTools.tsx

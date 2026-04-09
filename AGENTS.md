@@ -4,7 +4,7 @@ shared library of skills, workflows, tools, and references for AI-assisted devel
 
 ## how to use this repo
 
-cortex is mounted into projects as a symlink at the project root: `<project>/cortex -> ~/Desktop/code/cortex`. agents working inside a project can read anything in `cortex/` directly. cortex is not a dependency, package, or runtime. it's content.
+cortex is mounted into projects as a symlink at the project root: `<project>/cortex -> ~/Developer/code/cortex`. agents working inside a project can read anything in `cortex/` directly. cortex is not a dependency, package, or runtime. it's content.
 
 if you are an agent and the user asks for design help, marketing help, workflow guidance, or tooling, look here first before generating from scratch.
 
@@ -65,10 +65,10 @@ cortex is the source of truth. agents see cortex skills via thin adapters that l
 
 **first-time setup on a new machine:**
 
-1. clone cortex somewhere (e.g. `~/Desktop/code/cortex`).
+1. clone cortex somewhere (e.g. `~/Developer/code/cortex`).
 2. run the sync script once to populate `~/.claude/skills/`:
    ```bash
-   ~/Desktop/code/cortex/scripts/sync-claude-skills.sh
+   ~/Developer/code/cortex/scripts/sync-claude-skills.sh
    ```
 3. (optional but recommended) add a `SessionStart` hook to `~/.claude/settings.json` so the sync runs automatically every claude session. merge this into the existing `settings.json` (replace the path if cortex lives elsewhere):
    ```json
@@ -110,6 +110,6 @@ cortex is the source of truth. agents see cortex skills via thin adapters that l
 ## adding cortex to a new project
 
 ```bash
-ln -s ~/Desktop/code/cortex <project>/cortex
+ln -s ~/Developer/code/cortex <project>/cortex
 echo cortex >> <project>/.gitignore
 ```

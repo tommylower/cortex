@@ -57,7 +57,16 @@ const params = useDialKit('Card', {
 - `{ type: "action" }` → button trigger
 - `{ nested: ... }` → collapsible folder
 
+## Production Rules (strict)
+
+- install as devDependency only: `bun add -d dialkit motion`
+- NEVER import outside a `NODE_ENV === "development"` gate
+- NEVER add to layout.tsx directly. mount inside `src/components/DevTools.tsx` using `next/dynamic` with `{ ssr: false }`
+- if build fails on vercel, check dialkit/motion imports first
+- only install when the user explicitly asks (e.g. "add dialkit"). never auto-scaffold
+
 ## Notes
-- Dev tool only, never ships to production
-- Wire up during polish/refinement phase for tuning animations, springs, spacing, shadows
-- Remove or env-gate before deploy
+- dev tool only, never ships to production
+- use during polish/refinement phase for tuning animations, springs, spacing, shadows
+- after tuning, hardcode the final values as defaults. the dial config can stay for future passes
+- works alongside Agentation and Interface Kit as siblings in DevTools.tsx

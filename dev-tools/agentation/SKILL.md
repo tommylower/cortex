@@ -53,11 +53,18 @@ Set up the Agentation annotation toolbar in this project.
    - Tell user to restart their coding agent after MCP setup to load the server
    - Explain that once configured, annotations will sync to the agent automatically
 
+## Production Rules (strict)
+
+- install as devDependency only: `bun add -d agentation`
+- NEVER import outside a `NODE_ENV === "development"` gate
+- NEVER add to layout.tsx directly. mount inside `src/components/DevTools.tsx` using `next/dynamic` with `{ ssr: false }`
+- if build fails on vercel, check agentation imports first
+- only install when the user explicitly asks (e.g. "add agentation"). never auto-scaffold
+
 ## Notes
 
-- The `NODE_ENV` check ensures Agentation only loads in development
 - Agentation requires React 18
 - The MCP server runs on port 4747 by default for the HTTP server
 - MCP server exposes tools like `agentation_get_all_pending`, `agentation_resolve`, and `agentation_watch_annotations`
 - Run `agentation-mcp doctor` to verify setup after installing
-- Works alongside Interface Kit — Agentation handles annotation/feedback, Interface Kit handles visual styling. Both render as siblings in the root layout with no conflicts
+- Works alongside Interface Kit and DialKit as siblings in DevTools.tsx
