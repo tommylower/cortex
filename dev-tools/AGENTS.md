@@ -4,6 +4,7 @@ overlays, annotation tools, tuning tools, and local dev helpers that get install
 
 ## index
 
+- **deadcode** — find and remove unused files, exports, dependencies, and types. lists findings with reasoning before deleting
 - **agentation** — install the Agentation visual feedback toolbar in a Next.js project. by Dennis Jin and Benji Taylor
 - **agentation-self-driving** — autonomous design critique mode using the Agentation toolbar. requires agentation + agent-browser
 - **dialkit** — install the DialKit floating control panel for tuning animations and visual properties. by Josh Puckett
