@@ -144,14 +144,16 @@ For the complete list with code examples, see `references/ai-failure-patterns.md
 
 This skill includes two CLI tools in `scripts/` for visual responsive verification.
 
+Run these commands from this skill directory, or replace `scripts/...` with the absolute path to this skill's `scripts/` folder.
+
 ### Live Multi-Viewport Preview
 
 See all breakpoints simultaneously in the browser, with hot reload:
 
 ```bash
-node ${CLAUDE_SKILL_DIR}/scripts/preview.js http://localhost:3000
-node ${CLAUDE_SKILL_DIR}/scripts/preview.js ./index.html
-node ${CLAUDE_SKILL_DIR}/scripts/preview.js http://localhost:3000 --breakpoints 375,768,1024,1440,1920
+node scripts/preview.js http://localhost:3000
+node scripts/preview.js ./index.html
+node scripts/preview.js http://localhost:3000 --breakpoints 375,768,1024,1440,1920
 ```
 
 ### Responsive Snapshots
@@ -160,12 +162,12 @@ Capture screenshots at every breakpoint. Supports before/after comparison:
 
 ```bash
 # Capture current state
-node ${CLAUDE_SKILL_DIR}/scripts/snapshot.js http://localhost:3000
+node scripts/snapshot.js http://localhost:3000
 
 # Capture baseline, make changes, then capture again for comparison
-node ${CLAUDE_SKILL_DIR}/scripts/snapshot.js http://localhost:3000 --before
+node scripts/snapshot.js http://localhost:3000 --before
 # ... make responsive changes ...
-node ${CLAUDE_SKILL_DIR}/scripts/snapshot.js http://localhost:3000
+node scripts/snapshot.js http://localhost:3000
 # → generates comparison.html with before/after at each breakpoint
 ```
 

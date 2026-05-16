@@ -1,8 +1,21 @@
+---
+framework: vanilla
+css: vanilla-css
+fonts: google-link
+dark-mode: prefers-color-scheme
+---
+
 # Nothing Design System — Platform Mapping
 
 ## 1. HTML / CSS / WEB
 
 Load fonts via Google Fonts `<link>` or `@import`. Use CSS custom properties, `rem` for type, `px` for spacing/borders. Dark/light via `prefers-color-scheme` or class toggle.
+
+Runtime targets:
+- Root CSS target: linked global stylesheet (`styles.css`, `src/styles.css`, or equivalent)
+- CSS-system config target: none
+- Font setup target: document `<head>` for Google Fonts links or global CSS for `@import`
+- Dark-mode swap target: linked global stylesheet near `:root`
 
 ```css
 :root {

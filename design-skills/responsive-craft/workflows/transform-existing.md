@@ -24,7 +24,7 @@ If the user asked for a general responsive review ("make this responsive", "audi
 
 Before diving into responsive specifics, understand what you're working with:
 
-| Signal | Implication |
+| Input | Implication |
 |--------|-------------|
 | Single CSS approach (all Tailwind, or all vanilla CSS) | Straightforward — apply patterns directly |
 | Mixed styling (Tailwind + inline styles + CSS modules) | Target the dominant approach; flag conflicts between systems |

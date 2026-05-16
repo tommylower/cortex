@@ -126,3 +126,7 @@ useEffect(() => {
 - Prefer easeOut for entrances, easeIn for exits
 - Keep total animation time under 600ms — anything longer feels sluggish
 - Use DialKit to tune spring values in real time during polish phase
+
+## Native View Transitions
+
+If the task is specifically about route transitions, shared-element morphs, browser-native transitions, or React `<ViewTransition>`, load `view-transitions` instead of solving it with Framer Motion by default. View Transitions are better for continuity between DOM states; Framer Motion remains better for gesture-driven and component-local animation.

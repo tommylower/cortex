@@ -20,6 +20,18 @@ CATEGORIES=(
 
 wanted=""
 
+is_cortex_skill_target() {
+  case "$1" in
+    "$CORTEX_ROOT"/*) return 0 ;;
+    */cortex/agent-workflows/*) return 0 ;;
+    */cortex/design-skills/*) return 0 ;;
+    */cortex/design-systems/*) return 0 ;;
+    */cortex/dev-tools/*) return 0 ;;
+    */cortex/marketing/skills/*) return 0 ;;
+    *) return 1 ;;
+  esac
+}
+
 for category in "${CATEGORIES[@]}"; do
   for skill_dir in "$CORTEX_ROOT/$category"/*/; do
     [ -d "$skill_dir" ] || continue
@@ -42,16 +54,14 @@ $name"
   done
 done
 
-# clean up dead symlinks pointing into cortex but no longer wanted
+# clean up dead or stale symlinks that look like cortex-managed skill links
 for link in "$TARGET_DIR"/*; do
   [ -L "$link" ] || continue
   name="$(basename "$link")"
   target="$(readlink "$link")"
-  case "$target" in
-    "$CORTEX_ROOT"/*)
-      if ! printf '%s\n' "$wanted" | grep -qx "$name" || [ ! -e "$link" ]; then
-        rm "$link"
-      fi
-      ;;
-  esac
+  if is_cortex_skill_target "$target"; then
+    if ! printf '%s\n' "$wanted" | grep -qx "$name" || [ ! -e "$link" ]; then
+      rm "$link"
+    fi
+  fi
 done

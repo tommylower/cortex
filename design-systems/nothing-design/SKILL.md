@@ -12,6 +12,16 @@ A senior product designer's toolkit trained in Swiss typography, industrial desi
 
 ---
 
+## 0. ROLE IN CORTEX
+
+This is an opt-in reference design-system skill. Use it when the user explicitly asks for Nothing style, Nothing-inspired UI, monochrome industrial UI, or this specific design system.
+
+Do not treat this as the default design direction for Cortex projects. Do not auto-apply it to unrelated UI work.
+
+When building a new client or project design-system skill, you may use this folder as an example of the desired agent experience: a short operating brief in `SKILL.md`, deeper references in `references/`, clear implementation rules, and enough specificity for an agent to make opinionated design decisions.
+
+---
+
 ## 1. DESIGN PHILOSOPHY
 
 - **Subtract, don't add.** Every element must earn its pixel. Default to removal.
@@ -92,9 +102,17 @@ Max 4 levels per screen:
 
 ## 4. REFERENCE FILES
 
-- **`references/tokens.md`** — Fonts, type scale, color system (dark + light), spacing, grid, motion, iconography
+- **`references/tokens.md`** — Fonts, type scale, color system, spacing, radius, iconography
+- **`references/animation.md`** — Motion tokens, interaction timing, named animations, no-motion rules
 - **`references/components.md`** — Cards, buttons, inputs, lists, tables, nav, tags, progress bars, charts, widgets, overlays
-- **`references/platform-mapping.md`** — HTML/CSS, SwiftUI, React/Tailwind output conventions
+- **`references/primitives.md`** — Page-level layout recipes and section structures
+- **`references/variants.md`** — Running record of deployed primitive variants
+- **`references/page-moments.md`** — Empty, loading, error, and success states
+- **`references/responsive.md`** — Breakpoints, escalation rules, touch and hover behavior
+- **`references/platform-mapping.md`** — Stack declaration, CSS tokens, font loading, runtime targets
+- **`references/imagery.md`** — Photography, vector overlays, dot-matrix treatments, icon usage
+- **`references/logo.md`** — Wordmark, monogram, lockup, sizing, and misuse rules
+- **`references/voice.md`** — Tone, vocabulary, microcopy, and interface text conventions
 
 ---
 

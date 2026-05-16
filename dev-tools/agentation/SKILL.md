@@ -48,7 +48,7 @@ Set up the Agentation annotation toolbar in this project.
    - Recommend one of the following approaches:
      - **Universal (supports 9+ agents including Claude Code, Cursor, Codex, Windsurf, etc.):**
        See [add-mcp](https://github.com/neondatabase/add-mcp) — run `npx add-mcp` and follow the prompts to add `agentation-mcp` as an MCP server
-     - **Claude Code only (interactive wizard):**
+     - **Package wizard, when available:**
        Run `agentation-mcp init` after installing the package
    - Tell user to restart their coding agent after MCP setup to load the server
    - Explain that once configured, annotations will sync to the agent automatically

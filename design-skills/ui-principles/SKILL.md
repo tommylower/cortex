@@ -50,6 +50,14 @@ Line height: 1.1-1.2 for headlines, 1.5-1.6 for body text.
 - Dark backgrounds for emphasis sections, light for breathing room
 - Icons support text, never replace it (except established patterns like search, close, menu)
 
+## Color Systems
+
+- Prefer OKLCH/OKLab for palette and gradient work when the stack supports it.
+- Build color ramps around real roles: background, surface, border, text, muted text, accent, danger, success.
+- Check contrast on every text/background pair before shipping.
+- Keep accent colors scarce; one strong accent usually beats several competing accents.
+- Use `gradients` for gradient-heavy work and `swiss-design` or another design-system skill when the user requests a specific visual language.
+
 ## Component Patterns
 
 - Buttons: minimum 44px height for touch, 12-24px horizontal padding, never less than 80px wide

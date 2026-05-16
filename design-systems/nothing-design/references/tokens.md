@@ -55,7 +55,7 @@
 
 | Token | Hex | Usage |
 |-------|-----|-------|
-| `--accent` | `#D71921` | Signal light: active states, destructive, urgent. One per screen as UI element. Never decorative. |
+| `--accent` | `#D71921` | Active signal: active states, destructive, urgent. One per screen as UI element. Never decorative. |
 | `--accent-subtle` | `rgba(215,25,33,0.15)` | Accent tint backgrounds |
 | `--success` | `#4A9E5C` | Confirmed, completed, connected |
 | `--warning` | `#D4A843` | Caution, pending, degraded |

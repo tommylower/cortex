@@ -81,7 +81,7 @@ Open with 2 to 4 high-signal questions. Prefer topics like:
 
 Do not start with lightweight style trivia.
 
-### 2. Adapt Based on Signal
+### 2. Adapt Based on Signals
 
 After each user reply:
 

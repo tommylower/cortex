@@ -19,6 +19,8 @@ run `/preflight` on a component or page to get a scored review with line numbers
 - form inputs without labels
 - non-semantic click handlers
 - missing keyboard handlers
+- missing visible focus states or `outline-none` without replacement
+- unlabeled async updates, toasts, validation, or pending regions
 - color-only information
 - touch targets under 44x44px
 - skipped heading levels
@@ -31,6 +33,8 @@ run `/preflight` on a component or page to get a scored review with line numbers
 - mixed font families and weights
 - line height issues
 - missing font fallbacks
+- URL/state mismatch for filters, tabs, pagination, or expanded panels
+- missing safe-area handling for fixed mobile surfaces
 
 ### AI pattern detection
 flags common tells that make interfaces look AI-generated:
@@ -64,6 +68,17 @@ flags common tells that make interfaces look AI-generated:
 - long passages in all caps
 - letter-spacing over 0.05em on body text
 - animating width/height/padding/margin (performance)
+- `transition: all`
+- blocking paste in inputs
+- hardcoded date, number, or currency formatting instead of `Intl`
+- images without explicit dimensions when dimensions are knowable
+
+### forms
+- inputs without `name`, appropriate `type`, or autocomplete intent
+- errors not linked to fields with `aria-describedby`
+- disabled submit buttons that do not explain why
+- submit states that resize the button or lose the accessible label
+- critical errors shown only in toasts
 
 ## output
 

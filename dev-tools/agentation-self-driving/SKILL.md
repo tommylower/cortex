@@ -153,15 +153,16 @@ Aim for 5-8 annotations per page unless told otherwise.
 Bad: "This section needs work"
 Good: "This bullet list reads like docs, not a showcase. Use a 3-column card grid with icons — similar to Stripe's guidelines pattern. Creates visual rhythm and scannability."
 
-## Install
+## Availability
 
-The skill must be symlinked into `~/.claude/skills/` for Claude Code to discover it:
+Cortex exposes this skill through the repository-level adapter scripts. Do not manually symlink this skill into an agent-specific directory.
 
 ```bash
-ln -s "$(pwd)/skills/agentation-self-driving" ~/.claude/skills/agentation-self-driving
+~/Developer/code/cortex/scripts/sync-claude-skills.sh
+~/Developer/code/cortex/scripts/sync-codex-skills.sh
 ```
 
-Restart Claude Code after installing. Verify with `/agentation-self-driving` — if it loads the skill instructions, the symlink is working.
+Agents that read the mounted `cortex/` folder can also load this file directly. Restart the target agent after running a sync script if it caches available skills at session start.
 
 ## Troubleshooting
 

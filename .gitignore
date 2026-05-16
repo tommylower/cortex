@@ -1,0 +1,7 @@
+.agents/
+.claude/
+skills-lock.json
+
+# auto-captured session scratch notes stay local unless promoted manually
+notes/agent-journal/README.md
+notes/agent-journal/sessions/*/*-??????-*.md

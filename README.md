@@ -1,86 +1,127 @@
 # cortex
 
-shared library of skills, workflows, and tools for AI-assisted development. agent-agnostic. works with claude code, cursor, codex, and any agent that reads markdown.
+cortex is a public library of skills, workflows, design systems, and local tools for AI-assisted work.
+
+It is not a framework or a package. It is a markdown workspace agents can read directly. The point is to make useful working habits portable: design freely, keep decisions traceable, turn loose references into reusable structure, and leave behind enough detail for future work, case studies, client handoff, or implementation.
 
 ## structure
 
-```
+```text
 cortex/
-├── design-skills/     UI, motion, accessibility, visual patterns
-├── design-systems/    reference design systems (use when explicitly requested)
-├── dev-tools/         overlays, annotation tools, code quality, local dev helpers
-├── agent-workflows/   workflows, conventions, setup guides
-└── marketing/         marketing skills and tooling
+├── agent-workflows/   workflows, conventions, setup guides for working with AI agents
+├── design-skills/     UI, motion, accessibility, visual implementation patterns
+├── design-systems/    opt-in reference design systems and extracted design packages
+├── dev-tools/         overlays, annotation tools, tuning tools, and local dev helpers
+├── marketing/         marketing skills and tooling
+└── scripts/           validation, sync adapters, and local agent setup scripts
 ```
 
-## skills
+Each top-level folder has an `AGENTS.md` index. Start there when you want to know what is available.
+
+## waveframe
+
+`waveframe` is the workflow layer for turning messy design work into reusable structure.
+
+It supports the whole arc: early references, rough direction, half-built sites, finished code, decks, design-system markdown, and implementation docs. The final output is usually a design-system package that can be read by people and agents:
+
+- `SKILL.md` or `design-system/README.md` as the operating brief
+- reference files for tokens, components, layout, motion, imagery, voice, and platform mapping
+- implementation details such as CSS variables, Tailwind config guidance, runtime dependencies, and handoff notes
+- optional deck or board structures for review, client delivery, or case-study writing
+
+## key skills
 
 ### design-skills
+
 | skill | what it does |
-|---|---|
-| **preflight** | final design audit before shipping. accessibility, visual consistency, AI pattern detection |
-| **ui-principles** | core UI principles. spacing scale, hierarchy, defaults |
-| **framer-motion** | animation patterns for React/Next.js |
-| **responsive-craft** | responsive layout implementation and multi-breakpoint preview |
-| **reference-patterns** | design patterns from reference sites (Linear, Vercel, etc.) |
-| **css-interaction-tips** | hover, transitions, button states, tooltips, tap targets |
-| **gradients** | gradient construction, color spaces, layering, recipes |
-| **figma-mcp** | official Figma MCP server for reading tokens, components, layout |
-| **wiretext** | ASCII wireframe MCP tool for terminal-based wireframing |
+| --- | --- |
+| `design-tools` | inventory of available design tools and when to use each one |
+| `preflight` | final design audit before shipping |
+| `ui-principles` | core UI principles: spacing, hierarchy, defaults |
+| `responsive-craft` | responsive implementation and multi-breakpoint review |
+| `emil-design-eng` | motion and interaction heuristics for polished product UI |
+| `framer-motion` | animation patterns for React and Next.js |
+| `view-transitions` | native shared-element and route transitions |
+| `loading-states` | skeletons, progress states, and crafted loading moments |
+| `interface-sound` | tasteful UI sound feedback |
+| `funky-shadow` | dithered Oklab gradient shadows |
+| `shader-lab` | WebGPU shader compositions |
+| `pretext` | deterministic text measurement guidance lives under dev tools |
+| `figma-mcp` | Figma MCP setup and workflows |
+| `wiretext` | terminal wireframing |
+
+### design-systems
+
+| system | use it for |
+| --- | --- |
+| `nothing-design` | monochrome, industrial, typography-led interfaces |
+| `swiss-design` | grid-first editorial interfaces with restrained color |
+| `report-design` | report marketing pages with framed shell, paper texture, and signal red |
+| `infrastructure-design` | dark institutional technical marketing with hairlines, square geometry, and sparse signal color |
+
+See `design-systems/README.md` for how these relate to waveframe and how to read each package.
 
 ### dev-tools
+
 | skill | what it does |
-|---|---|
-| **deadcode** | find and remove unused files, exports, dependencies, types |
-| **agentation** | visual feedback toolbar (opt-in, dev only) |
-| **interface-kit** | visual design overlay (opt-in, dev only) |
-| **dialkit** | floating control panel for tuning animations (opt-in, dev only) |
+| --- | --- |
+| `deadcode` | find unused files, exports, dependencies, and types |
+| `agentation` | visual annotation toolbar for browser-driven iteration |
+| `agentation-self-driving` | autonomous design critique mode using Agentation |
+| `interface-kit` | visual design overlay |
+| `dialkit` | live tuning controls for animation and design values |
+| `pretext` | deterministic text measurement for layout stability |
 
 ### agent-workflows
+
 | skill | what it does |
-|---|---|
-| **dev-setup** | development setup, deployment flow, env var management |
-| **claude-workflow** | plan mode, subagents, verification, context management |
-| **agent-swarm** | multi-agent parallel workflow with review loops |
-| **agent-interviewer** | interview-driven personalization file generator |
+| --- | --- |
+| `waveframe` | project scaffolds, design-system synthesis, extraction, handoff, and drift audits |
+| `agent-swarm` | multi-agent parallel workflow patterns |
+| `claude-workflow` | Claude Code planning, verification, hooks, and context management |
+| `codex-review` | cross-model review and delegation setup |
+| `agent-interviewer` | interview-driven personalized agent behavior file |
+| `session-journal` | optional local markdown memory for session notes and preferences |
+| `dev-setup` | development setup and environment handling |
+| `vercel-deploy` | Vercel deploy and preview workflow |
 
 ### marketing
-30+ marketing skills covering SEO, content strategy, copywriting, CRO, email, ads, and more. see `marketing/AGENTS.md` for the full index.
 
-## how to use
+The `marketing/` submodule brings in the Marketing Skills library. See `marketing/AGENTS.md` after initializing submodules.
 
-cortex is mounted into projects as a symlink at the project root. agents can read anything in `cortex/` directly.
+## local setup
+
+Mount cortex into a project when you want agents to read it directly:
 
 ```bash
 ln -s ~/Developer/code/cortex <project>/cortex
 echo cortex >> <project>/.gitignore
 ```
 
-### claude code setup
+The local agent tooling in `scripts/` does three things:
 
-sync cortex skills so they're available as slash commands:
+- syncs cortex skills into `~/.claude/skills/` and `~/.codex/skills/`
+- installs Claude slash-command adapters such as `/waveframe`
+- optionally wires session-journal hooks so local session notes stay current
+
+Run the combined setup:
+
+```bash
+~/Developer/code/cortex/scripts/setup-local-agents.sh
+```
+
+Or run adapters directly:
 
 ```bash
 ~/Developer/code/cortex/scripts/sync-claude-skills.sh
-```
-
-add a SessionStart hook to `~/.claude/settings.json` so it syncs automatically:
-
-```json
-"hooks": {
-  "SessionStart": [{
-    "hooks": [{
-      "type": "command",
-      "command": "$HOME/Developer/code/cortex/scripts/sync-claude-skills.sh >/dev/null 2>&1 || true"
-    }]
-  }]
-}
+~/Developer/code/cortex/scripts/sync-claude-commands.sh
+~/Developer/code/cortex/scripts/sync-codex-skills.sh
 ```
 
 ## skill format
 
-follows the [Agent Skills specification](https://agentskills.io/specification.md). every skill lives in its own directory with a `SKILL.md` containing YAML frontmatter (`name`, `description`) and instructions under 500 lines.
+Cortex skills follow the [Agent Skills specification](https://agentskills.io/specification.md). Every skill lives in its own directory with a `SKILL.md` containing YAML frontmatter (`name`, `description`) and direct instructions.
 
 ## credits
 
-updated frequently. local-first. credited where the work is not original.
+Updated frequently. Local-first. Credit is preserved where the work is not original.
