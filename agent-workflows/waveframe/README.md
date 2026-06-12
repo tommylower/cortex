@@ -1,5 +1,7 @@
 # waveframe
 
+design like a human. hand off like an agent.
+
 waveframe is a companion to the design process.
 
 it gives you room to make a mess, follow ideas, collect references, and work through the beginning, middle, and end of a project without pretending the final package is already known.
