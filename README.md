@@ -85,9 +85,11 @@ Recommended: a `SessionStart` hook in `~/.claude/settings.json` that runs the Cl
 
 ## journal
 
-The `journal-sweep` skill (`agent-workflows/journal-sweep/`) reads the day's Claude Code and Codex transcripts every night and writes one narrative entry per substantial session, first person, in your own voice, like a handwritten journal. Each entry records the date, agent, project, a resume command linking back to the chat, and a 1-3 paragraph summary of the work and thinking.
+[nightcap](https://github.com/tommylower/nightcap) (`agent-workflows/nightcap/`) reads the day's Claude Code and Codex transcripts every night and writes one narrative entry per substantial session, first person, in your own voice, like a handwritten journal. Each entry records the date, agent, project, a resume command linking back to the chat, and a 1-3 paragraph summary of the work and thinking.
 
-Personalization (name, voice, journal location) lives in `~/.config/journal-sweep/config.json`. Entries are local-only and never committed. See the skill's `SKILL.md` for setup, scheduling, and on-demand sweeps.
+Personalization (name, voice, journal location) lives in `~/.config/nightcap/config.json`. Entries are local-only and never committed. See the skill's `SKILL.md` for setup, scheduling, and on-demand sweeps.
+
+Standalone tools like nightcap are developed here and mirrored to their own repos with `scripts/publish.sh <folder> <owner/repo>` (git subtree split, force-pushed, exact mirror).
 
 ## skill format
 
