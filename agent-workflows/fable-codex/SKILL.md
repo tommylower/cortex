@@ -34,6 +34,8 @@ If the user passed arguments, treat them as the first task and start Phase 1 imm
 - Hand off via the `codex:codex-rescue` subagent (Agent tool), exactly one task per handoff.
 - The forwarded request must include the flags `--model gpt-5.5 --effort xhigh --write` followed by the full plan: context, conventions, file paths, acceptance criteria, and test commands Codex should run itself.
 - Write the prompt tight and self-contained (see the plugin's `gpt-5-4-prompting` skill) — Codex gets no conversation history, only what's in the prompt.
+- Pre-resolve repo guard scripts. If the repo mandates preflight checks before edits (branch checks, foundation guards), Claude runs them outside the sandbox during Phase 1 and the prompt must state they passed — with an explicit instruction NOT to re-run network- or credential-dependent guards inside the sandbox. They false-fail there, and Codex will stall on the contradiction between "guard failed, stop" and "proceed". (Learned 2026-06-12: a `branch:check` needing credentialed GitHub access froze a run for 14 minutes with zero edits.)
+- Include a sandbox fallback clause: verification failures caused by the sandbox itself (network, registry, credentials, font fetches) are report-and-continue — never grounds to change code or retry endlessly. Claude re-runs all verification outside the sandbox in Phase 3 regardless.
 - Do not implement alongside Codex, monitor progress, or duplicate its work. Wait for the result.
 
 ## Phase 3 — Review (Claude)
@@ -55,3 +57,4 @@ Verdict:
 
 - One pipeline run per task; don't batch unrelated tasks into one Codex handoff.
 - Commits remain Claude-side work, follow the repo's commit conventions and approval gates.
+- Stall watchdog: "wait for the result" is not "wait forever". If a job's log emits no new events for several minutes, read the log tail for a guard contradiction or sandbox block before assuming deep reasoning; cancel and re-dispatch with the contradiction resolved in the prompt rather than waiting it out.
