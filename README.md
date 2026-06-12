@@ -85,9 +85,9 @@ Recommended: a `SessionStart` hook in `~/.claude/settings.json` that runs the Cl
 
 ## journal
 
-A nightly sweep (`scripts/journal-sweep.py`, scheduled via launchd) reads the day's Claude Code and Codex transcripts and writes one narrative entry per substantial session to `notes/journal/YYYY/`. Each entry records the date, the agent, a link back to the chat, and a first-person summary of the work and thinking, like a handwritten journal entry.
+The `journal-sweep` skill (`agent-workflows/journal-sweep/`) reads the day's Claude Code and Codex transcripts every night and writes one narrative entry per substantial session, first person, in your own voice, like a handwritten journal. Each entry records the date, agent, project, a resume command linking back to the chat, and a 1-3 paragraph summary of the work and thinking.
 
-Entries are local-only and ignored by git. Run `scripts/journal-sweep.py` manually to sweep on demand (`--dry-run` to preview, `--days N` to widen the window). The launchd job is `scripts/com.wip.journal-sweep.plist`, installed at `~/Library/LaunchAgents/` and fired nightly at 23:30 (or on next wake).
+Personalization (name, voice, journal location) lives in `~/.config/journal-sweep/config.json`. Entries are local-only and never committed. See the skill's `SKILL.md` for setup, scheduling, and on-demand sweeps.
 
 ## skill format
 

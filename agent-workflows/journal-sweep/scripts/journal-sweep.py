@@ -1,13 +1,20 @@
 #!/usr/bin/env python3
 """Nightly journal sweep.
 
-Reads recent Claude Code and Codex transcripts, skips trivial sessions, and
-writes one narrative journal entry per substantial session to
-notes/journal/YYYY/. Each entry: date, agent, link back to the chat, and a
-first-person summary written in Tommy's voice via `claude -p` (haiku).
+Reads recent Claude Code and Codex transcripts off disk, skips trivial
+sessions, and writes one narrative first-person journal entry per substantial
+session, like a handwritten end-of-day journal. Summaries are generated with
+`claude -p` (haiku by default).
 
-Run manually any time: scripts/journal-sweep.py [--days N] [--limit N] [--dry-run]
-State lives in notes/journal/.state.json so sessions are only journaled once.
+Run manually any time: journal-sweep.py [--days N] [--limit N] [--dry-run]
+
+Personalization (name, voice, journal location, model) lives in a JSON config
+at ~/.config/journal-sweep/config.json (override with --config or the
+JOURNAL_SWEEP_CONFIG env var). Without a config you get a neutral first-person
+voice and entries under ~/notes/agent-journal/.
+
+State lives in <journal_dir>/.state.json so sessions are only journaled once;
+failed summaries stay pending and retry on the next run.
 """
 
 from __future__ import annotations
@@ -16,19 +23,32 @@ import argparse
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-CORTEX_ROOT = Path(__file__).resolve().parents[1]
-JOURNAL_ROOT = CORTEX_ROOT / "notes" / "journal"
-STATE_PATH = JOURNAL_ROOT / ".state.json"
 CLAUDE_PROJECTS = Path.home() / ".claude" / "projects"
 CODEX_SESSIONS = Path.home() / ".codex" / "sessions"
-CLAUDE_BIN = str(Path.home() / ".local" / "bin" / "claude")
-SUMMARY_MODEL = "haiku"
+DEFAULT_CONFIG_PATH = Path.home() / ".config" / "journal-sweep" / "config.json"
 SENTINEL = "JOURNAL-SWEEP-SUMMARIZER"
+
+DEFAULTS = {
+    # where entries land: <journal_dir>/YYYY/YYYY-MM-DD-HHMM-<agent>-<project>.md
+    "journal_dir": str(Path.home() / "notes" / "agent-journal"),
+    # who the journal belongs to; used in the summarizer prompt
+    "name": "the user",
+    # label for the user's lines in the condensed transcript (e.g. your first name)
+    "speaker_label": "USER",
+    # stylistic voice rules appended to the summarizer prompt. structural rules
+    # (first person, past tense, no headers/lists) are fixed; this is tone/style.
+    "voice": "plain, understated prose. write the way someone jots a journal at the end of the day, not the way a report is written.",
+    # model passed to `claude -p --model`
+    "model": "haiku",
+    # path to the claude CLI; empty string means: find it on PATH
+    "claude_bin": "",
+}
 
 # condensation budgets
 USER_TRUNC = 700
@@ -60,6 +80,25 @@ CODEX_NOISE_PREFIXES = (
 )
 
 
+def load_config(path: Path | None) -> dict:
+    config = dict(DEFAULTS)
+    env_path = os.environ.get("JOURNAL_SWEEP_CONFIG", "").strip()
+    candidate = path or (Path(env_path) if env_path else DEFAULT_CONFIG_PATH)
+    candidate = Path(candidate).expanduser()
+    if candidate.is_file():
+        try:
+            loaded = json.loads(candidate.read_text())
+            if isinstance(loaded, dict):
+                config.update({k: v for k, v in loaded.items() if k in DEFAULTS and v})
+        except (OSError, json.JSONDecodeError) as exc:
+            sys.stderr.write(f"warning: could not read config {candidate}: {exc}\n")
+    if not config["claude_bin"]:
+        config["claude_bin"] = (
+            shutil.which("claude") or str(Path.home() / ".local" / "bin" / "claude")
+        )
+    return config
+
+
 def now_local() -> datetime:
     return datetime.now().astimezone()
 
@@ -85,18 +124,18 @@ def truncate(text: str, limit: int) -> str:
     return text[:limit].rstrip() + " […]"
 
 
-def load_state() -> dict:
-    if STATE_PATH.exists():
+def load_state(state_path: Path) -> dict:
+    if state_path.exists():
         try:
-            return json.loads(STATE_PATH.read_text())
+            return json.loads(state_path.read_text())
         except (OSError, json.JSONDecodeError):
             pass
     return {"sessions": {}}
 
 
-def save_state(state: dict) -> None:
-    JOURNAL_ROOT.mkdir(parents=True, exist_ok=True)
-    STATE_PATH.write_text(json.dumps(state, indent=1) + "\n")
+def save_state(state_path: Path, state: dict) -> None:
+    state_path.parent.mkdir(parents=True, exist_ok=True)
+    state_path.write_text(json.dumps(state, indent=1) + "\n")
 
 
 # ---------------------------------------------------------------- transcripts
@@ -254,11 +293,11 @@ def discover(cutoff_ts: float) -> list[Session]:
 # --------------------------------------------------------------- summarizing
 
 
-def condense(session: Session) -> str:
+def condense(session: Session, speaker_label: str) -> str:
     lines: list[str] = []
     for role, text in session.messages:
         if role == "user":
-            lines.append(f"TOMMY: {truncate(text, USER_TRUNC)}")
+            lines.append(f"{speaker_label}: {truncate(text, USER_TRUNC)}")
         else:
             lines.append(f"{session.agent.upper()}: {truncate(text, ASSISTANT_TRUNC)}")
     text = "\n\n".join(lines)
@@ -269,28 +308,31 @@ def condense(session: Session) -> str:
     return text
 
 
-def summarize(session: Session) -> str | None:
+def summarize(session: Session, config: dict) -> str | None:
+    name = config["name"]
     prompt = f"""{SENTINEL}
 
-you are writing a journal entry for Tommy Lower, in his own voice, about one work session he had with {session.agent} in the project "{session.project}".
+you are writing a journal entry for {name}, in their own voice, about one work session they had with {session.agent} in the project "{session.project}".
 
-below is a condensed transcript. write 1 to 3 short paragraphs, first person as Tommy, past tense, narrative storytelling, like he handwrote it at the end of the day. strictly lowercase except proper nouns and project names. the pronoun "i" stays lowercase. never start a sentence with a capital letter unless it begins with a proper noun. never use em dashes, use periods or commas instead. no headers, no lists, no preamble, no sign-off.
+below is a condensed transcript. write 1 to 3 short paragraphs, first person as {name}, past tense, narrative storytelling, like they handwrote it at the end of the day. no headers, no lists, no preamble, no sign-off.
+
+voice: {config["voice"]}
 
 cover, woven together naturally, not as a checklist:
-- his tone and energy in the session
-- the type of thinking he was doing (debugging, designing, planning, exploring, deciding)
-- what he was actually thinking about and trying to get done
-- what kind of work he and {session.agent} did together and how the agent helped, e.g. "{session.agent} helped me think through..."
+- their tone and energy in the session
+- the type of thinking they were doing (debugging, designing, planning, exploring, deciding)
+- what they were actually thinking about and trying to get done
+- what kind of work they and {session.agent} did together and how the agent helped, e.g. "{session.agent} helped me think through..."
 
 extrapolate the arc of the conversation but never invent specifics that are not in the transcript. output only the journal entry text.
 
 --- transcript ---
-{condense(session)}
+{condense(session, config["speaker_label"])}
 --- end transcript ---"""
 
     try:
         completed = subprocess.run(
-            [CLAUDE_BIN, "-p", "--model", SUMMARY_MODEL],
+            [config["claude_bin"], "-p", "--model", config["model"]],
             input=prompt,
             capture_output=True,
             text=True,
@@ -308,11 +350,11 @@ extrapolate the arc of the conversation but never invent specifics that are not 
 # -------------------------------------------------------------------- output
 
 
-def write_entry(session: Session, summary: str) -> Path:
+def write_entry(session: Session, summary: str, journal_root: Path) -> Path:
     started = session.started or now_local()
     ended = session.ended or started
     day = started.strftime("%Y-%m-%d")
-    year_dir = JOURNAL_ROOT / started.strftime("%Y")
+    year_dir = journal_root / started.strftime("%Y")
     year_dir.mkdir(parents=True, exist_ok=True)
 
     agent_slug = "claude" if session.agent == "Claude Code" else "codex"
@@ -349,10 +391,15 @@ def main() -> int:
     parser.add_argument("--days", type=float, default=3.0, help="look back this many days (default 3)")
     parser.add_argument("--limit", type=int, default=0, help="max entries to write this run (0 = no limit)")
     parser.add_argument("--dry-run", action="store_true", help="list what would be journaled, write nothing")
+    parser.add_argument("--config", type=Path, default=None, help=f"config file (default {DEFAULT_CONFIG_PATH})")
     args = parser.parse_args()
 
+    config = load_config(args.config)
+    journal_root = Path(config["journal_dir"]).expanduser()
+    state_path = journal_root / ".state.json"
+
     cutoff_ts = now_local().timestamp() - args.days * 86400
-    state = load_state()
+    state = load_state(state_path)
     seen = state.setdefault("sessions", {})
 
     candidates = [
@@ -372,17 +419,17 @@ def main() -> int:
 
     written = 0
     for s in candidates:
-        summary = summarize(s)
+        summary = summarize(s, config)
         if summary is None:
             continue  # retry on the next sweep
-        entry = write_entry(s, summary)
-        seen[s.session_id] = str(entry.relative_to(JOURNAL_ROOT))
-        save_state(state)
+        entry = write_entry(s, summary, journal_root)
+        seen[s.session_id] = str(entry.relative_to(journal_root))
+        save_state(state_path, state)
         written += 1
         print(entry)
 
     state["last_sweep"] = now_local().isoformat()
-    save_state(state)
+    save_state(state_path, state)
     print(f"journaled {written}/{len(candidates)} session(s)")
     return 0
 

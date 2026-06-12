@@ -12,6 +12,7 @@ workflows, conventions, and setup guides for working with AI coding agents.
 - **dev-setup** — development setup, deployment flow, environment variable management
 - **fable-codex** — opt-in split-stack session mode: fable 5 plans, codex gpt-5.5 xhigh executes (ChatGPT plan, no API), fable 5 reviews. slash-command only, never auto-applied
 - **improve** — audit any codebase as a read-only senior advisor, then write prioritized, self-contained plans for cheaper models/agents to execute. never edits source. by shadcn, MIT
+- **journal-sweep** — nightly agent journal. summarizes the day's Claude Code and Codex transcripts into first-person narrative entries in your own voice
 - **stack** — default technology choices for new projects. Next.js, Tailwind, Supabase, Bun, OKLCH
 - **vercel-deploy** — deploy or manage Vercel projects, preview deployments, project linking, and token-based CLI flow
 - **waveframe** — studio workflow for project scaffolds, design-system synthesis, visual architecture briefs, reusable output templates, and drift audits
