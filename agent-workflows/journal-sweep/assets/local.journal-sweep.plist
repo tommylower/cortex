@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Label</key>
-	<string>com.wip.journal-sweep</string>
+	<string>local.journal-sweep</string>
 	<key>ProgramArguments</key>
 	<array>
 		<string>/usr/bin/python3</string>
-		<string>/Users/thomaslower/Developer/code/cortex/scripts/journal-sweep.py</string>
+		<string>__SCRIPT_PATH__</string>
 	</array>
 	<key>StartCalendarInterval</key>
 	<dict>
@@ -19,11 +19,11 @@
 	<key>EnvironmentVariables</key>
 	<dict>
 		<key>PATH</key>
-		<string>/Users/thomaslower/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
+		<string>__HOME__/.local/bin:/opt/homebrew/bin:/usr/local/bin:/usr/bin:/bin</string>
 	</dict>
 	<key>StandardOutPath</key>
-	<string>/Users/thomaslower/Library/Logs/journal-sweep.log</string>
+	<string>__HOME__/Library/Logs/journal-sweep.log</string>
 	<key>StandardErrorPath</key>
-	<string>/Users/thomaslower/Library/Logs/journal-sweep.log</string>
+	<string>__HOME__/Library/Logs/journal-sweep.log</string>
 </dict>
 </plist>
