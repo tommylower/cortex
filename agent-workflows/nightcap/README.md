@@ -32,7 +32,7 @@ transcripts are write-only memory. you generate dozens a week and never look at 
 - **discovers** recent sessions from `~/.claude/projects/` and `~/.codex/sessions/`
 - **filters** noise (command wrappers, system reminders) and trivial one-shot sessions
 - **condenses** each transcript to ~24k chars
-- **summarizes** with `claude -p` (haiku by default) into 1-3 first-person paragraphs in your configured voice
+- **summarizes** with `claude -p` into 1-3 first-person paragraphs in your configured voice. runs on any Claude model — opus by default for the best writing, haiku if you want cheap and fast
 - **remembers** what it journaled in a state file, so nothing is written twice and failed summaries retry next run
 
 one stdlib-only python script. no dependencies beyond the `claude` CLI.
@@ -44,7 +44,7 @@ one stdlib-only python script. no dependencies beyond the `claude` CLI.
 ./scripts/nightcap.py --limit 1     # write one entry, check the voice
 ```
 
-personalize it (name, voice rules, journal location):
+personalize it (name, voice rules, journal location, model):
 
 ```bash
 mkdir -p ~/.config/nightcap
