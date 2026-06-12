@@ -28,6 +28,7 @@ The economics of this skill: an expensive, high-ceiling model does the part wher
 Map the territory before judging it:
 
 - Read `README`, `CLAUDE.md`/`AGENTS.md`, `CONTRIBUTING`, root config files (`package.json`, `pyproject.toml`, `go.mod`, etc.), CI config, and the directory structure.
+- If the repo keeps a domain glossary or decision records (`CONTEXT.md`, `CONTEXT-MAP.md`, `docs/adr/`), read them. The glossary's canonical terms are the vocabulary your findings and plans must use, and a documented ADR is a decision already made — treat it as a constraint to plan within, not a finding to relitigate (unless the audit surfaces evidence the decision's premises no longer hold, which is itself a finding).
 - Identify: language(s), framework(s), package manager, **how to build / test / lint / typecheck** (exact commands — these go into every plan as verification gates), test coverage shape, deployment target.
 - Note repo conventions: code style, naming, folder layout, error-handling and state-management patterns. Plans must tell the executor to *match* these, with examples.
 - Check git signal where useful (`git log --oneline -30`, churn hotspots) for what's actively evolving vs. frozen.
