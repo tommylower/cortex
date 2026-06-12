@@ -50,7 +50,11 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 
 ### marketing
 
-The `marketing/` submodule brings in the full Marketing Skills library by Corey Haines. See `marketing/AGENTS.md`.
+The `marketing/` submodule brings in the full Marketing Skills library by Corey Haines (MIT). See `marketing/AGENTS.md`.
+
+It's a submodule because upstream updates constantly. The pin moves two ways: a weekly GitHub Action bumps it automatically, or run `scripts/update-marketing.sh` to bump on demand. Clone with `git clone --recurse-submodules` to get it on a fresh machine.
+
+By contrast, `engineering/` is a vendored MIT snapshot of [mattpocock/skills](https://github.com/mattpocock/skills) — it only changes when deliberately re-vendored.
 
 ## mount cortex into a project
 
@@ -116,6 +120,5 @@ If something here is yours and miscredited or unwelcome, open an issue.
 ## where this is going
 
 - keep the library shallow and obvious: new shelves only when a real cluster forms, merge skills that start saying the same thing
-- run `validate-skills.sh` in CI
 - grow the original skill set; vendor less, write more
 - keep everything readable by any agent, with adapters as the only agent-specific layer
