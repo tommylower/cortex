@@ -34,6 +34,23 @@ Every page should have a clear type hierarchy. Never use more than 3-4 font size
 
 Line height: 1.1-1.2 for headlines, 1.5-1.6 for body text.
 
+## Type Rendering (Font Smoothing)
+
+Browsers default to subpixel antialiasing, which renders text heavier and slightly blurrier than design tools show it (Figma uses its own renderer, so what you approved is not what ships). Fix it once, globally:
+
+```css
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+```
+
+- macOS only: Windows ClearType ignores both properties. You're fixing the platform where the Figma-to-browser delta is most visible.
+- No layout impact: glyph widths, line breaks, and spacing stay identical. Purely how edges meet the pixel grid.
+- Most visible on dark backgrounds, where subpixel rendering is at its heaviest.
+- The catch: grayscale rendering removes visual weight from letterforms. Don't go below `font-weight: 400` at small sizes, and bump weight up as size goes down — what reads fine at 400 on 16px needs a bump at 12px to hold the same presence.
+- Font format is irrelevant here: WOFF2/OTF/TTF rasterize identically. Use WOFF2 for file size, not rendering.
+
 ## Layout Rules
 
 - Max content width: 1200-1280px

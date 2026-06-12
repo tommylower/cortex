@@ -33,6 +33,8 @@ run `/preflight` on a component or page to get a scored review with line numbers
 - mixed font families and weights
 - line height issues
 - missing font fallbacks
+- missing global font smoothing (`-webkit-font-smoothing: antialiased` + `-moz-osx-font-smoothing: grayscale`)
+- thin weights (below 400) at 14px or smaller — antialiased rendering leaves them too faint
 - URL/state mismatch for filters, tabs, pagination, or expanded panels
 - missing safe-area handling for fixed mobile surfaces
 
