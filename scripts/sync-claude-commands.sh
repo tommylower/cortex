@@ -228,7 +228,13 @@ Use Cortex waveframe in design-system-update mode.
 
 $COMMON_RULES
 
-Use the waveframe rules to fold stable decisions from recent manual/code work into the selected design system. If a dedicated reference file does not exist yet, use the design-system-synthesis reference and keep the update narrowly scoped."
+Load:
+
+\`\`\`text
+$CORTEX_ROOT/agent-workflows/waveframe/references/design-system-update.md
+\`\`\`
+
+Fold stable decisions from recent manual/code work into the selected design system or project record. Keep the update narrowly scoped."
 
 write_command "design-drift-audit" "---
 description: Audit drift between README, AGENTS, design-system docs, and the actual codebase.

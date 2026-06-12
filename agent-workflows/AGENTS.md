@@ -15,6 +15,6 @@ workflows, conventions, and setup guides for working with AI coding agents.
 - **nightcap** — nightly agent journal. summarizes the day's Claude Code and Codex transcripts into first-person narrative entries in your own voice. mirrored to [tommylower/nightcap](https://github.com/tommylower/nightcap)
 - **stack** — default technology choices for new projects. Next.js, Tailwind, Supabase, Bun, OKLCH
 - **vercel-deploy** — deploy or manage Vercel projects, preview deployments, project linking, and token-based CLI flow
-- **waveframe** — studio workflow for project scaffolds, design-system synthesis, visual architecture briefs, reusable output templates, and drift audits
+- **waveframe** — studio workflow for project scaffolds, design-system synthesis, visual architecture briefs, reusable output templates, and drift audits. mirrored to [tommylower/waveframe](https://github.com/tommylower/waveframe)
 
 see ../AGENTS.md for the cortex layout and skill format.
