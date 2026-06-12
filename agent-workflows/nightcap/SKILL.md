@@ -11,7 +11,7 @@ A stdlib-only Python script that turns raw agent transcripts into a narrative jo
 2. parses each transcript down to user/assistant text, filtering noise (command wrappers, system reminders, environment context). grabs cwd (first-seen wins, since cwd can drift mid-session), timestamps, model, and the session title
 3. applies a substance filter: a session needs ≥2 user messages and ≥200 user chars, or 1 message ≥1500 chars. one-shot trivia never gets journaled
 4. condenses to ~24k chars (user messages truncated at 700, assistant at 400, middle trimmed)
-5. summarizes via `claude -p` (haiku by default) into 1-3 first-person paragraphs in the owner's voice
+5. summarizes via `claude -p` into 1-3 first-person paragraphs in the owner's voice, using whichever model is configured (opus by default)
 6. writes one markdown entry per session and records it in `<journal_dir>/.state.json` so nothing is journaled twice. failed summaries stay pending and retry next run
 
 Filenames are `YYYY/YYYY-MM-DD-HHMM-<agent>-<projectslug>.md`, keyed on session **start** time. Nice side effect: duplicate transcripts from resumed sessions collapse into one entry.
@@ -38,6 +38,15 @@ The `chat:` line is a working resume command (`claude --resume <id>` / `codex re
 
 ## setup
 
+If you are an agent setting nightcap up for someone, ask them two things before scheduling: their **voice** (or derive it from how they write) and their **model**. Nightcap runs on any model the `claude` CLI accepts:
+
+- `opus` — best narrative quality and voice adherence. the default
+- `sonnet` — balanced quality and cost
+- `haiku` — cheapest and fastest, for heavy session volume; expect looser voice adherence
+- or any full model ID
+
+Write the choice into the `model` key of the config.
+
 ```bash
 # 1. try it
 scripts/nightcap.py --dry-run          # list what would be journaled
@@ -46,7 +55,7 @@ scripts/nightcap.py --limit 1          # write one entry to check the voice
 # 2. personalize (optional but recommended)
 mkdir -p ~/.config/nightcap
 cp assets/config.example.json ~/.config/nightcap/config.json
-# then edit: your name, speaker label, voice rules, journal location
+# then edit: your name, speaker label, voice rules, journal location, model
 
 # 3. schedule nightly (macOS launchd, 23:30 or next wake)
 SCRIPT="$(pwd)/scripts/nightcap.py"
@@ -67,7 +76,7 @@ On Linux, schedule the same command with cron or a systemd timer instead.
 | `name` | `the user` | who the journal belongs to; the summarizer writes as this person |
 | `speaker_label` | `USER` | label for your lines in the condensed transcript (use your first name) |
 | `voice` | plain understated prose | stylistic rules for the narrative (casing, punctuation, tone) |
-| `model` | `haiku` | model for `claude -p --model` |
+| `model` | `opus` | model for `claude -p --model`. any model the CLI accepts (opus, sonnet, haiku, or a full model ID) |
 | `claude_bin` | found on PATH | explicit path to the claude CLI if it isn't on launchd's PATH |
 
 Structural rules are fixed regardless of voice: first person, past tense, 1-3 short paragraphs, no headers, no lists, no invented specifics.

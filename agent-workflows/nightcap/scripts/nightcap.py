@@ -4,7 +4,7 @@
 Reads recent Claude Code and Codex transcripts off disk, skips trivial
 sessions, and writes one narrative first-person journal entry per substantial
 session, like a handwritten end-of-day journal. Summaries are generated with
-`claude -p` (haiku by default).
+`claude -p` (opus by default; any model the CLI accepts works).
 
 Run manually any time: nightcap.py [--days N] [--limit N] [--dry-run]
 
@@ -45,8 +45,10 @@ DEFAULTS = {
     # stylistic voice rules appended to the summarizer prompt. structural rules
     # (first person, past tense, no headers/lists) are fixed; this is tone/style.
     "voice": "plain, understated prose. write the way someone jots a journal at the end of the day, not the way a report is written.",
-    # model passed to `claude -p --model`
-    "model": "haiku",
+    # model passed to `claude -p --model` — any model the claude CLI accepts
+    # (opus, sonnet, haiku, or a full model ID). opus writes the best narrative;
+    # haiku is the cheap/fast option for heavy volume.
+    "model": "opus",
     # path to the claude CLI; empty string means: find it on PATH
     "claude_bin": "",
 }
