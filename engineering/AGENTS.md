@@ -2,7 +2,9 @@
 
 process-discipline skills for coding agents. small, composable, agent-agnostic.
 
-most of this category is vendored from [mattpocock/skills](https://github.com/mattpocock/skills) (his engineering + productivity sets, installed 2026-06-11; misc/deprecated/in-progress sets intentionally skipped). each vendored skill carries an `author:` line in its frontmatter.
+most of this category is vendored from [mattpocock/skills](https://github.com/mattpocock/skills) (MIT). his engineering + productivity sets, installed 2026-06-11; misc/deprecated/in-progress sets intentionally skipped. each vendored skill carries an `author:` line in its frontmatter.
+
+this is a snapshot, not a submodule: it only updates when re-vendored by hand. to refresh, diff against upstream, copy over what's wanted, and re-add the `author:` lines.
 
 ## alignment (use before building)
 
