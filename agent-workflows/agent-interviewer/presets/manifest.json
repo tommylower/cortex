@@ -1,0 +1,28 @@
+{
+  "presets": [
+    {
+      "key": "fast",
+      "label": "Fast",
+      "description": "Move immediately. Make reasonable assumptions. Keep explanations minimal.",
+      "file": "fast.md"
+    },
+    {
+      "key": "balanced",
+      "label": "Balanced",
+      "description": "Move quickly, explain tradeoffs, and ask when ambiguity actually matters.",
+      "file": "balanced.md"
+    },
+    {
+      "key": "strict",
+      "label": "Strict",
+      "description": "Prioritize correctness. Clarify first. Push back hard on weak assumptions.",
+      "file": "strict.md"
+    },
+    {
+      "key": "brutal",
+      "label": "Brutal",
+      "description": "Blunt, skeptical, and sharp. Truth over comfort.",
+      "file": "brutal.md"
+    }
+  ]
+}
