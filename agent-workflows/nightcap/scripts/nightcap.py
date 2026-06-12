@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
-"""Nightly journal sweep.
+"""nightcap: a nightly journal of your agent sessions.
 
 Reads recent Claude Code and Codex transcripts off disk, skips trivial
 sessions, and writes one narrative first-person journal entry per substantial
 session, like a handwritten end-of-day journal. Summaries are generated with
 `claude -p` (haiku by default).
 
-Run manually any time: journal-sweep.py [--days N] [--limit N] [--dry-run]
+Run manually any time: nightcap.py [--days N] [--limit N] [--dry-run]
 
 Personalization (name, voice, journal location, model) lives in a JSON config
-at ~/.config/journal-sweep/config.json (override with --config or the
-JOURNAL_SWEEP_CONFIG env var). Without a config you get a neutral first-person
+at ~/.config/nightcap/config.json (override with --config or the
+NIGHTCAP_CONFIG env var). Without a config you get a neutral first-person
 voice and entries under ~/notes/agent-journal/.
 
 State lives in <journal_dir>/.state.json so sessions are only journaled once;
@@ -31,8 +31,9 @@ from pathlib import Path
 
 CLAUDE_PROJECTS = Path.home() / ".claude" / "projects"
 CODEX_SESSIONS = Path.home() / ".codex" / "sessions"
-DEFAULT_CONFIG_PATH = Path.home() / ".config" / "journal-sweep" / "config.json"
-SENTINEL = "JOURNAL-SWEEP-SUMMARIZER"
+DEFAULT_CONFIG_PATH = Path.home() / ".config" / "nightcap" / "config.json"
+SENTINEL = "NIGHTCAP-SUMMARIZER"
+LEGACY_SENTINEL = "JOURNAL-SWEEP-SUMMARIZER"  # pre-rename headless runs, keep filtered
 
 DEFAULTS = {
     # where entries land: <journal_dir>/YYYY/YYYY-MM-DD-HHMM-<agent>-<project>.md
@@ -69,6 +70,7 @@ CLAUDE_NOISE_PREFIXES = (
     "[Request interrupted",
     "<system-reminder>",
     SENTINEL,
+    LEGACY_SENTINEL,
 )
 CODEX_NOISE_PREFIXES = (
     "<user_instructions>",
@@ -77,12 +79,13 @@ CODEX_NOISE_PREFIXES = (
     "<turn_aborted>",
     "<AGENTS.md",
     SENTINEL,
+    LEGACY_SENTINEL,
 )
 
 
 def load_config(path: Path | None) -> dict:
     config = dict(DEFAULTS)
-    env_path = os.environ.get("JOURNAL_SWEEP_CONFIG", "").strip()
+    env_path = os.environ.get("NIGHTCAP_CONFIG", "").strip()
     candidate = path or (Path(env_path) if env_path else DEFAULT_CONFIG_PATH)
     candidate = Path(candidate).expanduser()
     if candidate.is_file():

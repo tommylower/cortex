@@ -1,9 +1,9 @@
 ---
-name: journal-sweep
-description: Nightly agent journal. Reads recent Claude Code and Codex transcripts off disk, skips trivial sessions, and writes one first-person narrative journal entry per real session, like a handwritten end-of-day journal. Use when the user wants an agent session journal, a daily log of AI sessions, transcript summaries, "what did i work on today/this week", to set up or troubleshoot the journal sweep, or to customize its voice. Triggers: journal, journal sweep, session journal, agent journal, daily log, summarize my sessions, what did i do today.
+name: nightcap
+description: Nightcap, a nightly agent journal. Reads recent Claude Code and Codex transcripts off disk, skips trivial sessions, and writes one first-person narrative journal entry per real session, like a handwritten end-of-day journal. Use when the user wants an agent session journal, a daily log of AI sessions, transcript summaries, "what did i work on today/this week", to set up or troubleshoot nightcap, or to customize its voice. Triggers: nightcap, journal, session journal, agent journal, daily log, summarize my sessions, what did i do today.
 ---
 
-# journal-sweep
+# nightcap
 
 A stdlib-only Python script that turns raw agent transcripts into a narrative journal. Every night (or on demand) it:
 
@@ -16,7 +16,7 @@ A stdlib-only Python script that turns raw agent transcripts into a narrative jo
 
 Filenames are `YYYY/YYYY-MM-DD-HHMM-<agent>-<projectslug>.md`, keyed on session **start** time. Nice side effect: duplicate transcripts from resumed sessions collapse into one entry.
 
-A `JOURNAL-SWEEP-SUMMARIZER` sentinel leads the summarizer prompt and is in the noise filters, so the sweep never journals its own headless runs.
+A `NIGHTCAP-SUMMARIZER` sentinel leads the summarizer prompt and is in the noise filters, so nightcap never journals its own headless runs.
 
 ## entry format
 
@@ -40,26 +40,26 @@ The `chat:` line is a working resume command (`claude --resume <id>` / `codex re
 
 ```bash
 # 1. try it
-scripts/journal-sweep.py --dry-run          # list what would be journaled
-scripts/journal-sweep.py --limit 1          # write one entry to check the voice
+scripts/nightcap.py --dry-run          # list what would be journaled
+scripts/nightcap.py --limit 1          # write one entry to check the voice
 
 # 2. personalize (optional but recommended)
-mkdir -p ~/.config/journal-sweep
-cp assets/config.example.json ~/.config/journal-sweep/config.json
+mkdir -p ~/.config/nightcap
+cp assets/config.example.json ~/.config/nightcap/config.json
 # then edit: your name, speaker label, voice rules, journal location
 
 # 3. schedule nightly (macOS launchd, 23:30 or next wake)
-SCRIPT="$(pwd)/scripts/journal-sweep.py"
+SCRIPT="$(pwd)/scripts/nightcap.py"
 sed -e "s|__SCRIPT_PATH__|$SCRIPT|g" -e "s|__HOME__|$HOME|g" \
-  assets/local.journal-sweep.plist > ~/Library/LaunchAgents/local.journal-sweep.plist
-launchctl load ~/Library/LaunchAgents/local.journal-sweep.plist
+  assets/local.nightcap.plist > ~/Library/LaunchAgents/local.nightcap.plist
+launchctl load ~/Library/LaunchAgents/local.nightcap.plist
 ```
 
 On Linux, schedule the same command with cron or a systemd timer instead.
 
 ## configuration
 
-`~/.config/journal-sweep/config.json` (or `--config <path>`, or `JOURNAL_SWEEP_CONFIG` env var). Every key is optional:
+`~/.config/nightcap/config.json` (or `--config <path>`, or `NIGHTCAP_CONFIG` env var). Every key is optional:
 
 | key | default | meaning |
 | --- | --- | --- |
@@ -75,10 +75,10 @@ Structural rules are fixed regardless of voice: first person, past tense, 1-3 sh
 ## usage
 
 ```bash
-scripts/journal-sweep.py                 # sweep now
-scripts/journal-sweep.py --dry-run       # preview pending sessions
-scripts/journal-sweep.py --days 7        # widen the lookback window
-scripts/journal-sweep.py --limit 3       # cap entries written this run
+scripts/nightcap.py                 # sweep now
+scripts/nightcap.py --dry-run       # preview pending sessions
+scripts/nightcap.py --days 7        # widen the lookback window
+scripts/nightcap.py --limit 3       # cap entries written this run
 ```
 
 Journal entries are personal: keep `journal_dir` out of any public repo (gitignore it if it lives inside one).
@@ -86,6 +86,6 @@ Journal entries are personal: keep `journal_dir` out of any public repo (gitigno
 ## troubleshooting
 
 - no entries written: check `--dry-run` output. sessions already in `.state.json` or below the substance thresholds are skipped silently
-- summarizer failures: the run logs to stderr (`~/Library/Logs/journal-sweep.log` under launchd) and retries those sessions next sweep
+- summarizer failures: the run logs to stderr (`~/Library/Logs/nightcap.log` under launchd) and retries those sessions next sweep
 - wrong or missing claude CLI under launchd: set `claude_bin` in the config, launchd's PATH is minimal
 - entries in the wrong voice: edit `voice` in the config; the next sweep uses it (already-written entries are not rewritten)
