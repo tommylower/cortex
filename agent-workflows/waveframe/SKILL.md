@@ -176,4 +176,6 @@ When a tool or package is shipped in code, document it as implementation mapping
 - `references/content-map.md` — use for turning approved sitemaps, docs, or existing wireframes into private content maps, ASCII wireframes, and promotable section briefs.
 - `references/structure.md` — use for applying private reusable output templates to a selected design system and target surface.
 - `references/product-ui-system.md` — use for auditing color exploration and scaffolding software product UI design-system guidance before implementation.
+- `references/design-system-update.md` — use for folding stable decisions from recent code or manual work back into the project record or design system.
+- `references/output-package.md` — use when the work is stable enough to become a reusable markdown design package for handoff, archive, or rebuild.
 - `references/drift-audit.md` — use for checking mismatch between docs, design-system files, code, and actual project structure.
