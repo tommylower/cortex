@@ -69,4 +69,5 @@ Verdict:
 
 - One pipeline run per task; don't batch unrelated tasks into one executor handoff.
 - Commits remain planner-side work, follow the repo's commit conventions and approval gates.
+- Working root: the executor can only write inside the directory it starts in. If the target repo differs from the session cwd, pass `--cwd <repo>` in the forwarded flags or the run completes having changed nothing. Job state is keyed by that root too: `--resume` only finds threads started under the same `--cwd`, and status/result/cancel must run from that directory.
 - Stall watchdog: "wait for the result" is not "wait forever". If a job's log emits no new events for several minutes, read the log tail for a guard contradiction or sandbox block before assuming deep reasoning; cancel and re-dispatch with the contradiction resolved in the prompt rather than waiting it out.
