@@ -1,0 +1,10 @@
+.agents/
+.claude/
+skills-lock.json
+.DS_Store
+
+# nightly narrative journal entries stay local
+notes/journal/
+
+# local-only skills: client work and third-party material not licensed for redistribution
+local/
