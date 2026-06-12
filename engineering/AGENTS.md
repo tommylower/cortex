@@ -6,6 +6,17 @@ most of this category is vendored from [mattpocock/skills](https://github.com/ma
 
 this is a snapshot, not a submodule: it only updates when re-vendored by hand. to refresh, diff against upstream, copy over what's wanted, and re-add the `author:` lines.
 
+## in-session skills, not hand-off skills
+
+everything here runs while you're at the keyboard with the user. grill-me, tdd, diagnose make the live session better. the async counterpart is [agent-workflows/improve](../agent-workflows/improve/), which audits what's already built and writes self-contained plans for cheaper models to execute later.
+
+routing rule:
+
+- building something new? start with **grill-with-docs**.
+- don't know what to work on next? run **improve**.
+
+they stack. grill-with-docs maintains the `CONTEXT.md` glossary and ADRs that improve's recon reads as constraints. improve writes plans that an in-session agent then executes with **tdd** and debugs with **diagnose**.
+
 ## alignment (use before building)
 
 - **grill-me** — relentless interview about a plan until every branch of the decision tree is resolved. non-code friendly.
