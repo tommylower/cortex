@@ -75,6 +75,12 @@ executor's environment. Skip the section otherwise.)
 
 - Skills the executor should invoke if available, and for what:
   "use `vercel-react-best-practices` when writing the memoization in step 3".
+- Default in-session pairing (name these whenever the executor is a coding
+  agent that may have them): drive any step with a "Test plan" through **tdd**
+  (write the failing test first, then make it pass), and when a verification
+  command fails in a way the plan didn't anticipate, switch to **diagnose**
+  instead of improvising a fix. These are the runtime counterpart to this
+  async plan — the plan says *what*, they govern *how*.
 - Reference docs worth reading before starting, by path or URL.
 
 ## Scope
