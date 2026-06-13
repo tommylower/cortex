@@ -27,6 +27,12 @@ The subagent prompt must contain:
 > step. Run every verification command and confirm the expected result before
 > moving on. Touch only the files listed as in scope. If any STOP condition
 > occurs, stop immediately and report. Do not improvise around obstacles.
+> If the **tdd** and **diagnose** skills are available in your environment,
+> use them: drive any step that has a test plan through tdd (failing test
+> first), and when a verification command fails in a way the plan didn't
+> anticipate, run the diagnose loop rather than guessing at a fix. They don't
+> change *what* you build — only how. If those skills aren't present, proceed
+> with the plan as written.
 > Commit your work in the worktree following the plan's git workflow section.
 > One override: SKIP the plan's instruction to update `plans/README.md` —
 > your reviewer maintains the index. Before reporting, audit every claim in
