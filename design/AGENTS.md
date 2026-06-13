@@ -21,6 +21,7 @@ default to Paper and the paper MCP at `paper.design` for active design work. kee
 - **responsive-craft** — responsive layout implementation. audit, build, or live multi-breakpoint preview
 - **loading-states** — loading states, skeletons, progress indicators, dot-matrix micro-loaders
 - **preflight** — final design audit before shipping. accessibility, visual consistency, AI pattern detection
+- **wip-senior-audit** — boot the real running site, screenshot pages and core flows (desktop + mobile), and produce a senior-lead UX audit graded on understand / trust / convert. live counterpart to preflight's static pass. writes docs/design-audit/
 
 ## color
 
