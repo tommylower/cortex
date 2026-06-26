@@ -128,8 +128,9 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
 1. create `<category>/<skill-name>/SKILL.md` with valid frontmatter (`name` must equal the directory name).
 2. if the skill is not original, add the `author:` line and source links.
 3. if it names a client or is not licensed for redistribution, it goes in `local/`.
-4. run `scripts/validate-skills.sh` and fix anything it complains about.
-5. run the relevant sync script to mirror it into agent skill directories immediately.
+4. add the skill to its category `AGENTS.md` index and the public menu in the root `README.md`.
+5. run `scripts/validate-skills.sh` and fix anything it complains about.
+6. run the relevant sync script to mirror it into agent skill directories immediately.
 
 **rules for agents (you, reading this):**
 
