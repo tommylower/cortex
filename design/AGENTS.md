@@ -43,6 +43,7 @@ opt-in only. apply when explicitly requested, never by default.
 
 - **swiss-design** — Swiss International Style. grid-first, grotesque typography, restrained color, one accent
 - **nothing-design** — Nothing-inspired. monochrome, typographic, industrial. Space Grotesk/Mono, OLED blacks
+- **muller-brockmann-grid-systems** — opt-in Swiss editorial grid system. modular columns, baseline rhythm, visible overlay, optical display-type alignment
 
 ## tools
 
