@@ -14,6 +14,30 @@ write_command() {
   printf '%s\n' "$body" > "$TARGET_DIR/$name.md"
 }
 
+write_handoff_command() {
+  local name="$1"
+  local title="$2"
+  write_command "$name" "---
+description: Close out a token-heavy session with pre-clear checks, compact continuity notes, and a short restart prompt.
+argument-hint: [optional next-session focus]
+---
+
+# $title
+
+First read:
+
+\`\`\`text
+$CORTEX_ROOT/engineering/handoff/SKILL.md
+\`\`\`
+
+Then follow it exactly.
+
+Treat text after the slash command as the next-session focus. Keep output compact. Suggest commits, tests, pushes, or docs when needed before context is cleared, but do not stage, commit, push, install dependencies, or run expensive verification unless the user explicitly asked for that."
+}
+
+write_handoff_command "handoff" "handoff"
+write_handoff_command "closeout" "closeout"
+
 COMMON_RULES="First read:
 
 \`\`\`text

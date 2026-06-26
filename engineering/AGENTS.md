@@ -46,7 +46,7 @@ they stack. grill-with-docs maintains the `CONTEXT.md` glossary and ADRs that im
 
 ## productivity
 
-- **handoff** — compact the current conversation into a handoff doc for another agent.
+- **handoff** — close out a token-heavy session with compact continuity notes, pre-clear checks, and a restart prompt.
 - **caveman** — ultra-compressed communication mode, ~75% fewer tokens.
 - **teach** — multi-session teaching workspace in the current directory.
 - **write-a-skill** — author new skills with proper structure and progressive disclosure.

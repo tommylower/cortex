@@ -46,6 +46,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `grill-me` / `grill-with-docs` — stress-test a plan before building
 - `tdd`, `diagnose`, `prototype` — building discipline
 - `to-prd`, `to-issues`, `triage` — planning and tickets
+- `handoff` — close out a token-heavy session with pre-clear checks and a short restart prompt
 - `deadcode` — find and remove unused code and dependencies
 
 ### marketing
