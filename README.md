@@ -18,7 +18,7 @@ cortex/
 └── scripts/           agent adapters, validation, journal sweep
 ```
 
-Every category has an `AGENTS.md` index. Start there. The library rule: you should find a skill by walking the folders, not by searching.
+Every category has an `AGENTS.md` index. Start there. The library rule: you should find a skill by walking the folders, not by searching. New public skills should also be added to the README menu below when introduced.
 
 ## key skills
 
@@ -32,6 +32,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `figma-mcp` — Figma MCP setup and workflows
 - `wiretext` — terminal wireframing
 - `shader-lab` — Basement Studio's shader runtime for GPU compositions
+- `muller-brockmann-grid-systems` — opt-in Swiss editorial grid system with inspectable overlays
 
 ### agent workflows
 
