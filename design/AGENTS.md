@@ -34,6 +34,7 @@ default to Paper and the paper MCP at `paper.design` for active design work. kee
 - **view-transitions** — native React/browser View Transitions for shared elements and route changes
 - **css-interaction-tips** — quick reference for hover, transitions, button states, tooltips, tap targets
 - **emil-design-eng** — Emil Kowalski's design-engineering heuristics for motion, interaction feel, and UI polish
+- **animation-vocabulary** — Emil Kowalski's reverse-lookup glossary for naming web motion effects from vague descriptions
 - **interface-craft** — Josh Puckett's toolkit for storyboard animation, dial-driven tuning, and design critique
 - **interface-sound** — tasteful UI sound feedback with Web Audio or @web-kits/audio
 

@@ -28,6 +28,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `ui-principles` — spacing, typography, layout fundamentals
 - `responsive-craft` — responsive implementation and multi-breakpoint preview
 - `emil-design-eng` — design-engineering heuristics for motion and interaction feel
+- `animation-vocabulary` — reverse-lookup glossary for naming web motion effects
 - `interface-craft` — storyboard animation, dial-driven tuning, and design critique
 - `figma-mcp` — Figma MCP setup and workflows
 - `wiretext` — terminal wireframing
@@ -48,6 +49,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `tdd`, `diagnose`, `prototype` — building discipline
 - `to-prd`, `to-issues`, `triage` — planning and tickets
 - `handoff` — close out a token-heavy session with pre-clear checks and a short restart prompt
+- `write-a-skill`, `writing-great-skills` — author and refine skills with proper structure, attribution, and predictable behavior
 - `deadcode` — find and remove unused code and dependencies
 
 ### marketing
@@ -103,7 +105,7 @@ Cortex mixes original skills with adapted and vendored work. Credit is preserved
 
 - [Matt Pocock](https://github.com/mattpocock/skills) — the engineering process set
 - [Corey Haines](https://github.com/coreyhaines31/marketingskills) — the marketing submodule
-- [Emil Kowalski](https://github.com/emilkowalski/skill) — design-engineering philosophy
+- [Emil Kowalski](https://github.com/emilkowalski/skills) — design-engineering philosophy and animation vocabulary
 - [Josh Puckett](https://github.com/joshpuckett) — Interface Craft, DialKit, Interface Kit
 - [shadcn](https://github.com/shadcn) — improve
 - [Jakub Krehel](https://github.com/jakubkrehel/oklch-skill) — OKLCH, gradients

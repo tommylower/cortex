@@ -50,3 +50,4 @@ they stack. grill-with-docs maintains the `CONTEXT.md` glossary and ADRs that im
 - **caveman** — ultra-compressed communication mode, ~75% fewer tokens.
 - **teach** — multi-session teaching workspace in the current directory.
 - **write-a-skill** — author new skills with proper structure and progressive disclosure.
+- **writing-great-skills** — reference vocabulary and principles for editing skills toward predictable agent behavior. user-invoked.
