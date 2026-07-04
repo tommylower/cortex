@@ -111,7 +111,7 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
 **claude code adapter:**
 
 - `scripts/sync-claude-skills.sh` walks every category folder, finds every `<category>/<skill>/SKILL.md`, and symlinks `~/.claude/skills/<skill-name>` back to the cortex folder. idempotent, removes stale links, safe to re-run.
-- `scripts/sync-claude-commands.sh` installs cortex-owned slash commands (`/handoff`, `/closeout`, `/waveframe`, `/design-scaffold`, `/design-system-synthesize`, `/design-system-extract`, `/design-handoff-hardening`, `/design-architecture`, `/design-content-map`, `/design-structure`, `/design-product-ui-system`, `/design-system-update`, `/design-drift-audit`) into `~/.claude/commands/`.
+- `scripts/sync-claude-commands.sh` installs cortex-owned slash commands (`/handoff`, `/closeout`) into `~/.claude/commands/`, and removes the retired waveframe/design-* adapters on each run.
 
 **codex adapter:**
 

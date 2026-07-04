@@ -1,7 +1,0 @@
-interface:
-  display_name: "waveframe"
-  short_description: "workflows for design work in motion"
-  default_prompt: "Use $waveframe to shape messy design material into reusable project direction."
-
-policy:
-  allow_implicit_invocation: true
