@@ -37,7 +37,6 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 
 ### agent workflows
 
-- `waveframe` — scaffold client projects, synthesize or extract design systems, audit drift
 - `claude-workflow` — Claude planning, verification, and hooks
 - `agent-swarm` — multi-agent workflow patterns
 - `agent-interviewer` — generate a personalized agent behavior file
