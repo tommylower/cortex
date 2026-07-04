@@ -6,6 +6,7 @@ workflows, conventions, and setup guides for working with AI coding agents.
 
 - **agent-interviewer** — interview the user and produce a personalized agent behavior file. preset or interview mode
 - **agent-swarm** — multi-agent parallel workflow. wave execution, review loops, adversarial dual-review
+- **asbuilt** — derive a design-system package from a finished project's code, read-only. one verb (derive); init/diff/generate seed-only in groundwork/asbuilt.md
 - **claude-workflow** — claude code working patterns. plan mode, subagents, verification, context, hooks
 - **codex-review** — codex plugin setup for cross-model review and task delegation inside claude code
 - **conventions** — code style, naming, file structure, git conventions for Next.js + TypeScript projects

@@ -37,6 +37,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 
 ### agent workflows
 
+- `asbuilt` — derive a design-system package from a finished codebase
 - `claude-workflow` — Claude planning, verification, and hooks
 - `agent-swarm` — multi-agent workflow patterns
 - `agent-interviewer` — generate a personalized agent behavior file
