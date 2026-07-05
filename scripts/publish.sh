@@ -46,7 +46,7 @@ else
 
   cd "$tmp/repo"
   find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
-  git archive --format=tar "$source_sha:$PREFIX" | tar -x
+  git -C "$CORTEX_ROOT" archive --format=tar "$source_sha:$PREFIX" | tar -x
   git add -A
 
   if git diff --cached --quiet; then
