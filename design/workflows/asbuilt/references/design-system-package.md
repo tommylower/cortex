@@ -19,14 +19,30 @@ Do not emit a package when notes are enough. The package is for handoff, archive
 
 ```text
 design-system/
+├── AGENTS.md
 ├── README.md
 ├── SKILL.md
 └── references/
     ├── tokens.md
+    ├── tokens.dtcg.json        optional
     ├── architecture.md
     ├── components.md
     └── platform-mapping.md
 ```
+
+Start from `assets/templates/package/` when deriving a real package. Templates
+are not examples; they are the required skeleton.
+
+## AGENTS.md
+
+For future agents. Must include:
+
+- Read order.
+- Source of truth.
+- Allowed edit surface.
+- Validation command.
+- Component intake rule.
+- Explicit warning against copying skin from references.
 
 ## README.md
 
@@ -56,6 +72,10 @@ The name contract.
 - Raw values appear here and only here.
 - Motion numbers live here as tokens and come from the target artifact, not from Cortex defaults.
 - Theme and mode behavior is documented when present.
+
+If useful, also emit `references/tokens.dtcg.json` as a machine-readable
+sidecar using the DTCG-style `$value` / `$type` shape. The markdown file stays
+the human source; the JSON is for tooling.
 
 ## references/architecture.md
 
@@ -97,10 +117,21 @@ What makes the package buildable:
 
 ## Client Split
 
-The package is the client-facing artifact. Encode rules, not suppliers, unless the supplier is a real runtime dependency that belongs in `platform-mapping.md`.
+The package is the portable handoff artifact. Encode rules, not suppliers, unless the supplier is a real runtime dependency that belongs in `platform-mapping.md`.
 
 Process notes stay out of the package. Design decisions live in artifacts and enter records only when the package is derived.
 
 ## Derivation Rule
 
 Packages are derived from artifacts, never hand-maintained. When code and package disagree, code wins and the package is re-derived.
+
+## Validation Rule
+
+Before marking a package `ready`, run:
+
+```bash
+node scripts/validate-package.mjs <package-dir>
+```
+
+Fix every failure or lower the status. Passing validation means the package has
+the required shape; it does not replace human review of the evidence.

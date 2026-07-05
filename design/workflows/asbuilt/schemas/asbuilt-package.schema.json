@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tommylower/asbuilt/schemas/asbuilt-package.schema.json",
+  "title": "Asbuilt Package Summary",
+  "type": "object",
+  "required": ["projectName", "status", "source", "unresolved", "tokens", "components"],
+  "additionalProperties": false,
+  "properties": {
+    "projectName": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["none", "draft", "partial", "ready", "archived"]
+    },
+    "source": {
+      "type": "object",
+      "required": ["repo", "branch", "commit"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": {
+          "type": "string"
+        },
+        "branch": {
+          "type": "string"
+        },
+        "commit": {
+          "type": "string"
+        }
+      }
+    },
+    "unresolved": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "$ref": "token-candidate.schema.json"
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "$ref": "component-card.schema.json"
+      }
+    }
+  }
+}
