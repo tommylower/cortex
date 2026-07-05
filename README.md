@@ -31,6 +31,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 
 ### design
 
+- `studio-audit` — final senior-designer audit when a UI feels done
 - `preflight` — final design audit before shipping
 - `ui-principles` — spacing, typography, layout fundamentals
 - `responsive-craft` — responsive implementation and multi-breakpoint preview
