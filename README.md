@@ -41,6 +41,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `claude-workflow` — Claude planning, verification, and hooks
 - `agent-swarm` — multi-agent workflow patterns
 - `agent-interviewer` — generate a personalized agent behavior file
+- `fable-prompting` — how to prompt Fable 5 for next-gen results, with three drop-in files (house-rules block, `/loop` template, verifier sub-agent prompt)
 - `improve` — read-only senior-advisor codebase audit that writes handoff plans (by shadcn)
 
 ### engineering
