@@ -39,8 +39,6 @@ The derived package should be usable on its own by a future agent. A good packag
 - know which rules are hard invariants and which are defaults
 - see unresolved gaps instead of pretending the system is finished
 
-## Source
+## Author
 
-`asbuilt` is developed in [cortex](https://github.com/tommylower/cortex), a public library of agent skills, workflows, and tools. This repository is a standalone mirror of `design/workflows/asbuilt/`.
-
-MIT, by [Tommy Lower](https://github.com/tommylower).
+Created and maintained by [Tommy Lower](https://github.com/tommylower). MIT licensed.

@@ -119,7 +119,7 @@ Recommended: a `SessionStart` hook in `~/.claude/settings.json` that runs the Cl
 
 Personalization (name, voice, journal location) lives in `~/.config/nightcap/config.json`. Entries are local-only and never committed. See the skill's `SKILL.md` for setup, scheduling, and on-demand sweeps.
 
-Standalone tools like nightcap and asbuilt are developed here and mirrored to their own repos with `scripts/publish.sh <folder> <owner/repo>`. A standalone publish should contain only the selected folder's public files and should not depend on local Cortex paths.
+Standalone repos like nightcap and asbuilt can be refreshed with `scripts/publish.sh <folder> <owner/repo>`. They are presented as Tommy Lower projects; Cortex only keeps their source folders in one place.
 
 ## skill format
 
