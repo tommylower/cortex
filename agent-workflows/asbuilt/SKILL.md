@@ -1,6 +1,6 @@
 ---
 name: asbuilt
-description: Derive a design-system package from a finished project's code. An as-built drawing is redrawn from what was actually constructed, not from the plans. Reads a codebase (read-only, never pushes), clusters raw values into proposed tokens, extracts anatomy cards with state graphs and behavior-floor gaps, and emits a doctrine-format package. One verb today (derive); init/diff/generate are unbuilt by design. Triggers: asbuilt, derive a design system, extract design system from code, retrofit studio law onto a project.
+description: Take a finished project to the state it would have had under studio law from the beginning. One process, two phases — derive (read the code, cluster raw values into tokens, extract anatomy cards with state graphs and floor gaps, emit a doctrine-format package) then conform (apply it on a local branch in verified batches, visual parity, floors inherited) then re-derive so the package matches the conformed code. Never pushes to the target. init/diff/generate remain unbuilt by design. Triggers: asbuilt, derive a design system, extract design system from code, conform a codebase, retrofit studio law onto a project.
 ---
 
 # asbuilt — derive
@@ -65,6 +65,36 @@ code, never from any skill's defaults.
 8. **acceptance test before calling it done**: could an agent loading only
    the package create a new conforming component and correctly bucket a
    new idea? if not, it isn't ready — say so in status.
+
+## conform — phase two of the same process
+
+after the package exists, apply it to the code on a LOCAL branch in the
+scratch clone (never push; local commits per batch for a reviewable
+history). the rule of the phase: **visual parity** — conform changes
+structure and floors, never the rendered look; every sanctioned visual
+delta is enumerated for the operator's QA. run in three verified batches,
+`build` + `lint` green after each:
+
+1. **tokens**: land the proposed names in the token file, replace raw
+   values with bindings. skip any replacement that can't resolve
+   identically (hex-alpha concat like `${color}80`, metadata files where
+   css vars don't exist) and record the survivors.
+2. **consolidation**: collapse duplicated component families onto their
+   closed axes (byte-preserve the class recipes), factor copy-pasted
+   structures into data-driven components, unify duplicated machinery
+   (form status hooks, repeated chips).
+3. **floors**: inherit the proven engine (e.g. radix dialog) under every
+   hand-rolled overlay — focus trap, restore, escape, scroll lock come
+   from the floor, never hand-built beside it. add missing aria semantics
+   (role=alert on errors). know the radix mechanic: modal content sets
+   body pointer-events none — outside controls that must stay live need
+   pointer-events-auto.
+
+then **re-derive**: update the package from the conformed branch so spec
+and code are the same truth again, statuses honest, remaining gaps in the
+unresolved list. batches are subagent-friendly; audit their reports
+critically (one batch here arrived "already done" and still contained a
+real regression a critical audit caught).
 
 ## the other verbs (do not improvise them)
 
