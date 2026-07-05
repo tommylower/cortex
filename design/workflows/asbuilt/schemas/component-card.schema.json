@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tommylower/asbuilt/schemas/component-card.schema.json",
+  "title": "Asbuilt Component Card",
+  "type": "object",
+  "required": ["name", "bucket", "floor", "source", "slots", "axes", "states", "motion", "tokens", "status", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "bucket": {
+      "type": "string",
+      "enum": ["composition", "headless-floor", "novel"]
+    },
+    "floor": {
+      "type": "string"
+    },
+    "source": {
+      "type": "string"
+    },
+    "slots": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "axes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "states": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "motion": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "tokens": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "partial", "ready"]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    }
+  }
+}

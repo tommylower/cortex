@@ -20,12 +20,23 @@ read first, every run:
    three-layer model and buckets the cards must speak
 3. [references/rule-grades.md](references/rule-grades.md) — rule strength,
    invariants, defaults, and experiments
+4. [references/headless-floors.md](references/headless-floors.md) when the
+   target has dialogs, menus, popovers, comboboxes, selects, tabs, accordions,
+   tooltips, or other interactive components
+5. [references/tooling-bridges.md](references/tooling-bridges.md) when the
+   target already uses DTCG-style tokens, Tailwind `@theme`, Storybook, shadcn
+   registry files, or structured-output automation
 
 hard rules: the target repo is READ-ONLY — clone shallow to a scratch
 directory, never commit or push to it. derive records what IS; proposals
 (new tokens, consolidations) are labeled proposals and the codebase decides
 when to conform. motion numbers in the package come from the target's own
 code, never from any skill's defaults.
+
+start every package from [assets/templates/package/](assets/templates/package/).
+do not invent the package shape from memory. when the repo is large, use the
+short specialist prompts in [agents/](agents/) for evidence gathering, then
+audit their output yourself.
 
 ## the procedure
 
@@ -39,25 +50,29 @@ code, never from any skill's defaults.
 2. **token layer first**: read the global stylesheet / `@theme` / theme
    config in full. many projects half-declare a system; capture what
    exists before hunting what leaked.
-3. **raw-value sweep** (subagent-friendly, mechanical): cluster every hex /
+3. **evidence sweep**: run the helper scripts when the stack permits:
+   `node scripts/scan-raw-values.mjs <scratch-repo>` and
+   `node scripts/scan-components.mjs <scratch-repo>`. these scripts are
+   evidence, not truth; follow up manually on every important cluster.
+4. **raw-value sweep** (subagent-friendly, mechanical): cluster every hex /
    rgb(a) / oklch, arbitrary tailwind value, duration, easing, and repeated
    magic number OUTSIDE the token file. for each cluster: value, count,
    example file:line, whether a token already exists for it. output: the
    top values that earn token candidacy by frequency (3+ real uses).
-4. **state + floor inventory** (subagent-friendly): for every interactive
+5. **state + floor inventory** (subagent-friendly): for every interactive
    component — nav, overlays, forms, accordions, anything with open/close —
    record states implemented vs missing (default/hover/focus-visible/
    active/disabled/loading/success/error/empty), whether behavior is
    hand-rolled or inherited, and the specific machinery gaps (focus trap,
    scroll lock, keyboard model, aria wiring, focus restore).
-5. **anatomy extraction**: read the primitives yourself. diff duplicated
+6. **anatomy extraction**: read the primitives yourself. diff duplicated
    component families to name the closed axes (four button files = one
    button, two axes). find parallel token stores (JS constants, per-file
    color consts) — those are violations to record.
-6. **drift check**: if the target carries older design docs, compare —
+7. **drift check**: if the target carries older design docs, compare —
    they show intent and drift, and the package supersedes them for grammar
    only where the code disagrees.
-7. **emit the package** per the doctrine format: README (status vocab
+8. **emit the package** per the doctrine format: README (status vocab
    none/draft/partial/ready/archived, source of truth, unresolved list —
    never hidden), SKILL (thesis, hard rules, anti-patterns SEEN IN THE
    CODE, extend-don't-copy pointer), references/tokens (existing vs
@@ -65,8 +80,12 @@ code, never from any skill's defaults.
    real paths, dependency rule, the mechanical grep check, violations),
    references/components (anatomy cards, exact grammar, per-card status),
    references/platform-mapping (stack, real paths, divergences,
-   re-derivation note).
-8. **acceptance test before calling it done**: could an agent loading only
+   re-derivation note), and AGENTS.md (agent operating rules for future use).
+9. **validate before calling it done**: run
+   `node scripts/validate-package.mjs <package-dir>`. fix every failure or
+   lower the package status. validation passing does not make the package
+   true, but failing validation means it is not ready.
+10. **acceptance test before calling it done**: could an agent loading only
    the package create a new conforming component and correctly bucket a
    new idea? if not, it isn't ready — say so in status.
 
