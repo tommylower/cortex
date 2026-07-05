@@ -38,6 +38,10 @@ do not invent the package shape from memory. when the repo is large, use the
 short specialist prompts in [agents/](agents/) for evidence gathering, then
 audit their output yourself.
 
+all relative paths in this skill resolve from this `asbuilt` skill folder, not
+from the target repo. when running helper scripts from another working
+directory, use their full path.
+
 ## the procedure
 
 0. **verify production truth first.** before reading a single file, confirm
@@ -88,6 +92,36 @@ audit their output yourself.
 10. **acceptance test before calling it done**: could an agent loading only
    the package create a new conforming component and correctly bucket a
    new idea? if not, it isn't ready — say so in status.
+
+## verify — audit before trusting the package
+
+verify is a read-only audit of a derived package. it does not modify the
+target repo and it does not run conform.
+
+use verify when a package exists and the user wants to know whether future
+agents can rely on it. read the package, run
+`node scripts/validate-package.mjs <package-dir>`, then use
+[agents/package-critic.md](agents/package-critic.md) as the review bar.
+
+check:
+
+1. **shape**: required files exist, frontmatter is valid, provenance is
+   present, unresolved decisions are explicit, and validation passes.
+2. **evidence**: tokens, components, architecture, and platform mapping cite
+   real code paths or clearly say when evidence is missing.
+3. **component cards**: every card names bucket, floor, source, slots, axes,
+   states, motion, tokens, and status.
+4. **truthfulness**: status is no higher than the evidence allows. lower
+   `ready` to `partial` or `draft` before pretending.
+5. **agent-use test**: could an agent loading only the package create a
+   simple conforming card or classify a new idea as composition,
+   headless-floor, or novel? if not, say exactly what blocks it.
+
+output a short verdict:
+
+- `ready`: package passes validation and the agent-use test
+- `partial`: package is useful but has named gaps
+- `draft`: package needs more derivation before another agent should rely on it
 
 ## conform — phase two of the same process
 
