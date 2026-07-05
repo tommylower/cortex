@@ -1,6 +1,6 @@
 ---
 name: agentation-self-driving
-description: Autonomous design critique mode using the Agentation annotation toolbar. Use when the user asks to "critique this page," "add design annotations," "review the UI," "self-driving mode," "auto-annotate," or wants an AI agent to autonomously add design feedback annotations to a web page via the browser. Requires the Agentation toolbar to be installed on the target page and agent-browser skill to be available.
+description: Agentation self-driving design review. Use when the user asks to critique a page, add design annotations, auto-annotate, or run a visible browser-based UI review through the Agentation toolbar. Requires Agentation and agent-browser.
 allowed-tools: Bash(agent-browser:*)
 ---
 
@@ -158,8 +158,8 @@ Good: "This bullet list reads like docs, not a showcase. Use a 3-column card gri
 Cortex exposes this skill through the repository-level adapter scripts. Do not manually symlink this skill into an agent-specific directory.
 
 ```bash
-~/Developer/code/cortex/scripts/sync-claude-skills.sh
-~/Developer/code/cortex/scripts/sync-codex-skills.sh
+$CORTEX_HOME/scripts/sync-claude-skills.sh
+$CORTEX_HOME/scripts/sync-codex-skills.sh
 ```
 
 Agents that read the mounted `cortex/` folder can also load this file directly. Restart the target agent after running a sync script if it caches available skills at session start.

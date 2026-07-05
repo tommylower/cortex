@@ -9,19 +9,6 @@ CORTEX_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 TARGET_DIR="$HOME/.claude/skills"
 mkdir -p "$TARGET_DIR"
 
-# every category folder that contains skill subdirectories.
-CATEGORIES=(
-  "agent-workflows"
-  "design/foundations"
-  "design/color"
-  "design/motion"
-  "design/systems"
-  "design/tools"
-  "engineering"
-  "marketing/skills"
-  "local"
-)
-
 wanted=""
 
 is_cortex_skill_target() {
@@ -36,7 +23,7 @@ is_cortex_skill_target() {
   esac
 }
 
-for category in "${CATEGORIES[@]}"; do
+while IFS= read -r category; do
   for skill_dir in "$CORTEX_ROOT/$category"/*/; do
     [ -d "$skill_dir" ] || continue
     [ -f "$skill_dir/SKILL.md" ] || continue
@@ -56,7 +43,7 @@ $name"
     fi
     [ -e "$target" ] || ln -s "${skill_dir%/}" "$target"
   done
-done
+done < <(node "$CORTEX_ROOT/scripts/skill-catalog.js" categories --sync)
 
 # clean up dead or stale symlinks that look like cortex-managed skill links
 for link in "$TARGET_DIR"/*; do
