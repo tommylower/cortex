@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tommylower/asbuilt/schemas/token-candidate.schema.json",
+  "title": "Asbuilt Token Candidate",
+  "type": "object",
+  "required": ["name", "rawValue", "type", "evidence", "status"],
+  "additionalProperties": false,
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Semantic token name, such as --color-surface."
+    },
+    "rawValue": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["color", "space", "radius", "typography", "motion", "shadow", "other"]
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "status": {
+      "type": "string",
+      "enum": ["existing", "proposed"]
+    },
+    "reason": {
+      "type": "string"
+    }
+  }
+}
