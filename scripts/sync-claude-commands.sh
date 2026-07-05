@@ -49,3 +49,37 @@ Treat text after the slash command as the next-session focus. Keep output compac
 
 write_handoff_command "handoff" "handoff"
 write_handoff_command "closeout" "closeout"
+
+write_command "asbuilt" "---
+description: Run asbuilt design-system recovery workflow in derive, verify, or conform mode.
+argument-hint: derive|verify|conform [target repo, package path, or notes]
+---
+
+# asbuilt
+
+First read:
+
+\`\`\`text
+$CORTEX_ROOT/design/workflows/asbuilt/SKILL.md
+\`\`\`
+
+Resolve asbuilt helper paths from:
+
+\`\`\`text
+$CORTEX_ROOT/design/workflows/asbuilt
+\`\`\`
+
+Then route by the first word after the slash command:
+
+- **derive** — recover a design-system package from an existing codebase. The target repo is read-only: clone or inspect in scratch, collect evidence, start from \`assets/templates/package/\`, emit the package, run \`scripts/validate-package.mjs\`, and report whether it is draft, partial, or ready.
+- **verify** — audit an existing asbuilt package without changing code. Run package validation, apply the package-critic bar, check evidence/provenance/component cards, and decide whether future agents can rely on it.
+- **conform** — apply an existing package back into code on a local scratch branch. This can modify code. Preserve visual parity, work in tokens/consolidation/floors batches, run build/lint after each batch, and re-derive afterward.
+
+If no mode is provided, do not guess. Briefly explain derive, verify, and conform, then ask which mode to run.
+
+Safety:
+
+- Do not run conform unless the user explicitly chose conform.
+- Do not push target repo changes from asbuilt.
+- Keep derive and verify read-only.
+- Treat text after the mode as the target repo, package path, or user constraints."
