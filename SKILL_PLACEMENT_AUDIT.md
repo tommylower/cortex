@@ -127,11 +127,12 @@ These look overlapping at first glance but should stay separate.
 
 ### Design Review
 
+- `studio-audit`: umbrella final design QA for "I think this is done"; composes the narrower review and craft skills.
 - `preflight`: static code/UI/a11y/AI-slop ship check.
 - `wip-senior-audit`: live product audit with desktop/mobile screenshots and report output.
 - `agentation-self-driving`: visible browser annotation workflow.
 
-Same neighborhood, different execution paths. Do not merge.
+Same neighborhood, different execution paths. `studio-audit` is the router; the others stay as engines. Do not merge.
 
 ### Design Systems
 
@@ -208,7 +209,7 @@ Examples the router should understand:
 | User Phrase | Route |
 | --- | --- |
 | security audit | `improve security`, optionally `blindspot` first for auth/data/deploy/infra |
-| design critique | `preflight`, `wip-senior-audit`, or `agentation-self-driving` depending on static/live/annotation |
+| design critique | `studio-audit` for final done-state review; otherwise `preflight`, `wip-senior-audit`, or `agentation-self-driving` depending on static/live/annotation |
 | polish this UI | `emil-design-eng`, `interface-craft`, `css-interaction-tips` |
 | dead code cleanup | `deadcode` |
 | what tool makes wireframes | `wiretext` |
