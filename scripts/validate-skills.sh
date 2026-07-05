@@ -7,21 +7,14 @@ set -euo pipefail
 
 CORTEX_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
-CATEGORIES=(
-  "agent-workflows"
-  "design/foundations"
-  "design/color"
-  "design/motion"
-  "design/systems"
-  "design/tools"
-  "engineering"
-  "marketing/skills"
-)
-
 errors=0
 seen_names=""
 
-for category in "${CATEGORIES[@]}"; do
+if ! node "$CORTEX_ROOT/scripts/skill-catalog.js" validate; then
+  errors=$((errors+1))
+fi
+
+while IFS= read -r category; do
   for skill_dir in "$CORTEX_ROOT/$category"/*/; do
     [ -d "$skill_dir" ] || continue
     dir_name="$(basename "$skill_dir")"
@@ -74,7 +67,7 @@ $name"
 
     echo "OK    $category/$dir_name"
   done
-done
+done < <(node "$CORTEX_ROOT/scripts/skill-catalog.js" categories --validate)
 
 echo
 if [ $errors -gt 0 ]; then

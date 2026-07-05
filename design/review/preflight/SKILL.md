@@ -1,6 +1,6 @@
 ---
 name: preflight
-description: "design audit and review pass before shipping. checks accessibility, visual consistency, and AI-generated pattern detection. run as a final check on any component or page. covers alt text, aria-labels, form labels, keyboard handlers, contrast ratios, touch targets, heading hierarchy, spacing, z-index, font usage, line height, and flags common AI slop patterns like side-tab borders, gradient text, purple palettes, nested cards, bounce easing, and monotonous layouts. Triggers: preflight, design review, a11y, accessibility audit, wcag, ui polish, design critique, review my component, ai slop check, ship check."
+description: Preflight design review before shipping. Use for static UI/a11y checks, visual consistency, AI-slop detection, or a final component/page ship check. Triggers: preflight, design review, accessibility audit, WCAG, UI polish, design critique, AI slop check.
 ---
 
 # preflight

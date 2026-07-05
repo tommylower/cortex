@@ -44,8 +44,8 @@ Select a frame in Figma, copy the link, then prompt:
 2. Copy frame link
 3. Paste into CC with instructions
 4. CC reads Figma data and generates/updates code
-5. Use agentation to fine-tune in browser
-6. Use rams to review for accessibility and polish
+5. Use `agentation` to fine-tune in browser when annotation feedback is needed.
+6. Use `preflight` for Cortex-native accessibility and polish review, or `rams` when the user explicitly asks for Rams.
 
 ## Notes
 

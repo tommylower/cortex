@@ -4,7 +4,7 @@ shared library of skills, workflows, tools, and references for AI-assisted devel
 
 ## how to use this repo
 
-cortex is mounted into projects as a symlink at the project root: `<project>/cortex -> ~/Developer/code/cortex`. agents working inside a project can read anything in `cortex/` directly. cortex is not a dependency, package, or runtime. it's content.
+cortex is mounted into projects as a symlink at the project root: `<project>/cortex -> /path/to/cortex`. agents working inside a project can read anything in `cortex/` directly. cortex is not a dependency, package, or runtime. it's content.
 
 if you are an agent and the user asks for design help, marketing help, workflow guidance, or tooling, look here first before generating from scratch.
 
@@ -14,18 +14,23 @@ if you are an agent and the user asks for design help, marketing help, workflow 
 cortex/
 ├── agent-workflows/   workflows, conventions, setup guides for working with AI agents
 ├── design/            everything visual, indexed by shelf
-│   ├── foundations/   principles, patterns, responsive, loading states, preflight audit
+│   ├── foundations/   principles, patterns, responsive, loading states
 │   ├── color/         oklch, gradients
 │   ├── motion/        animation, transitions, interaction feel, sound
+│   ├── craft/         interaction craft, taste, animation critique, UI polish
+│   ├── review/        static and live UI/UX review workflows
 │   ├── systems/       opt-in reference design systems, never auto-applied
+│   ├── workflows/     design-system extraction and design operations
+│   ├── kits/          component kits and registry-backed UI systems
 │   └── tools/         installable tools and integrations (figma, wireframes, shaders, overlays)
 ├── engineering/       process-discipline skills (mostly vendored from mattpocock/skills)
 ├── local/             gitignored. client work and material not licensed for redistribution
 ├── marketing/         marketing skills and tooling (git submodule of coreyhaines31/marketingskills)
+├── catalog/           shelf registry used by docs, validation, and sync scripts
 └── scripts/           agent adapters and validation
 ```
 
-each category folder contains an `AGENTS.md` indexing its skills. start there when scoping a category.
+each category folder contains an `AGENTS.md` indexing its skills. start there when scoping a category. shelf paths live in `catalog/shelves.json`; update that before changing sync or validation behavior.
 
 ## skill format
 
@@ -77,16 +82,16 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
 
 **first-time setup on a new machine:**
 
-1. clone cortex somewhere (e.g. `~/Developer/code/cortex`).
+1. clone cortex somewhere and set `CORTEX_HOME` to that path.
 2. run the local setup script once:
    ```bash
-   ~/Developer/code/cortex/scripts/setup-local-agents.sh
+   "$CORTEX_HOME/scripts/setup-local-agents.sh"
    ```
 3. or run the per-agent syncs directly:
    ```bash
-   ~/Developer/code/cortex/scripts/sync-claude-skills.sh
-   ~/Developer/code/cortex/scripts/sync-claude-commands.sh
-   ~/Developer/code/cortex/scripts/sync-codex-skills.sh
+   "$CORTEX_HOME/scripts/sync-claude-skills.sh"
+   "$CORTEX_HOME/scripts/sync-claude-commands.sh"
+   "$CORTEX_HOME/scripts/sync-codex-skills.sh"
    ```
 4. (optional) for manual control, add a `SessionStart` hook to `~/.claude/settings.json` so the Claude sync runs every session:
    ```json
@@ -96,11 +101,11 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
          "hooks": [
            {
              "type": "command",
-             "command": "$HOME/Developer/code/cortex/scripts/sync-claude-skills.sh >/dev/null 2>&1 || true"
+             "command": "/path/to/cortex/scripts/sync-claude-skills.sh >/dev/null 2>&1 || true"
            },
            {
              "type": "command",
-             "command": "$HOME/Developer/code/cortex/scripts/sync-claude-commands.sh >/dev/null 2>&1 || true"
+             "command": "/path/to/cortex/scripts/sync-claude-commands.sh >/dev/null 2>&1 || true"
            }
          ]
        }
@@ -136,13 +141,13 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
 
 - never put agent-specific files inside a skill folder (no `.claude/`, no claude-only commands in `SKILL.md`). skills are agent-agnostic markdown.
 - never bypass the sync scripts by hand-symlinking skills into `~/.claude/skills/` or `~/.codex/skills/`. the adapter scripts own those directories.
-- never add a new category folder without updating the `CATEGORIES` list in every sync and validation script.
+- never add a new category folder without updating `catalog/shelves.json`.
 - never rename a skill directory without also updating its `name:` frontmatter.
 - never move anything out of `local/` into a public category without explicit user approval.
 
 ## adding cortex to a new project
 
 ```bash
-ln -s ~/Developer/code/cortex <project>/cortex
+ln -s "$CORTEX_HOME" <project>/cortex
 echo cortex >> <project>/.gitignore
 ```

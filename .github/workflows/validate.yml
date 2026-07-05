@@ -13,3 +13,4 @@ jobs:
         with:
           submodules: true
       - run: bash scripts/validate-skills.sh
+      - run: node scripts/skill-catalog.js validate
