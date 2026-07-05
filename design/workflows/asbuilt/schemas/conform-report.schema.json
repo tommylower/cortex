@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/tommylower/asbuilt/schemas/conform-report.schema.json",
+  "title": "Asbuilt Conform Report",
+  "type": "object",
+  "required": ["base", "branch", "batches", "verification", "visualDeltas", "regressions"],
+  "additionalProperties": false,
+  "properties": {
+    "base": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "batches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "status", "summary"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "enum": ["tokens", "consolidation", "floors", "other"]
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pass", "fail", "partial"]
+          },
+          "summary": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "verification": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "visualDeltas": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "regressions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
