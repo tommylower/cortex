@@ -1,6 +1,6 @@
 ---
 name: design-tools
-description: "Inventory of Cortex design tools and what each one can do. Use when the user asks what design tools are available, what can we do visually, what design tooling exists in Cortex, which tool to use for UI polish, or how Paper, Figma, Shader Lab, Funky Shadow, DialKit, Interface Kit, Agentation, Wiretext, Pretext, and responsive preview fit together."
+description: "Inventory of Cortex design tools and what each one can do. Use when the user asks what design tools are available, what can we do visually, what design tooling exists in Cortex, which tool to use for UI polish, or how Paper, Figma, Shader Lab, Funky Shadow, DialKit, Interface Kit, Agentation, Rams, Wiretext, Pretext, and responsive preview fit together."
 ---
 
 # Design Tools
@@ -9,7 +9,7 @@ Use this skill to answer tool-discovery questions. It is an index, not a replace
 
 ## Canvas & Design Work
 
-- **Paper** — default active design canvas at `paper.design`; use for visual layout work, artboards, and design iteration.
+- **Paper** (`paper`) — active design canvas at `paper.design` when Paper tooling is available; use for visual layout work, artboards, and design iteration.
 - **Figma MCP** (`figma-mcp`) — read Figma frames, variables, component structure, and generate code from Figma context.
 - **Wiretext** (`wiretext`) — quick ASCII wireframes with editable browser links before committing to code or Figma.
 
@@ -35,6 +35,7 @@ Use this skill to answer tool-discovery questions. It is an index, not a replace
 - **Interface Kit** (`interface-kit`) — dev-only browser overlay for editing visual styles directly.
 - **Agentation** (`agentation`) — dev-only visual annotation toolbar for design feedback.
 - **Agentation Self-Driving** (`agentation-self-driving`) — autonomous browser annotation workflow when Agentation is installed.
+- **Rams** (`rams`) — external design-review command for accessibility, visual consistency, and UI polish when explicitly requested.
 
 ## Layout & Verification
 
@@ -46,8 +47,9 @@ Use this skill to answer tool-discovery questions. It is an index, not a replace
 
 | Need | Start with |
 | --- | --- |
-| Sketch page structure | `wiretext` or Paper |
+| Sketch page structure | `wiretext` or `paper` |
 | Extract from Figma | `figma-mcp` |
+| Work in Paper canvas | `paper` |
 | Build a shader hero | `shader-lab` |
 | Add textured card shadows | `funky-shadow` |
 | Add a crafted loader | `loading-states` |
@@ -57,10 +59,11 @@ Use this skill to answer tool-discovery questions. It is an index, not a replace
 | Tune live visual values | `dialkit` |
 | Edit visual styles in browser | `interface-kit` |
 | Collect design feedback | `agentation` |
+| Run external Rams review | `rams` |
 | Fix mobile/responsive layout | `responsive-craft` |
 | Verify text fit | `pretext` |
 | Ship-check a UI | `preflight` |
 
 ## Rule
 
-Tools are opt-in unless their specific skill says otherwise. For dev-only overlays, install as dev dependencies and mount only behind a development gate.
+Tools are opt-in unless their specific skill says otherwise. For dev-only overlays, follow `../dev-overlays.md`: install as dev dependencies and mount only behind a development gate.

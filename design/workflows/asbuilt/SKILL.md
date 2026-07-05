@@ -1,6 +1,6 @@
 ---
 name: asbuilt
-description: Take a finished project to the state it would have had under studio law from the beginning. One process, two phases — derive (read the code, cluster raw values into tokens, extract anatomy cards with state graphs and floor gaps, emit a doctrine-format package) then conform (apply it on a local branch in verified batches, visual parity, floors inherited) then re-derive so the package matches the conformed code. Never pushes to the target. init/diff/generate remain unbuilt by design. Triggers: asbuilt, derive a design system, extract design system from code, conform a codebase, retrofit studio law onto a project.
+description: Asbuilt design-system extraction and conformance. Use when the user asks to derive a design system from existing code, extract tokens/components/states, conform a finished UI to a derived package, or retrofit studio law onto a project. Never for greenfield design systems.
 ---
 
 # asbuilt — derive
@@ -8,19 +8,18 @@ description: Take a finished project to the state it would have had under studio
 turns a finished project into the design-system package it would have had
 if the studio practice had been there from the beginning. code is the
 source of truth: existing design docs in the target are evidence of
-intent, never truth. built 2026-07-04; proven on cipherowl
-(use #1, `wip-design-systems/cipherowl-design`).
+intent, never truth.
 
 ## law
 
 read first, every run:
 
-1. `~/Developer/code/groundwork/doctrine/design-system-package.md` — the
-   output format and its acceptance test
-2. `~/Developer/code/groundwork/doctrine/component-intake.md` — the
+1. [references/design-system-package.md](references/design-system-package.md) —
+   the output format and its acceptance test
+2. [references/component-intake.md](references/component-intake.md) — the
    three-layer model and buckets the cards must speak
-3. `~/Developer/code/groundwork/rules.md` — grades; nothing derived here
-   becomes prescription without the operator's pen
+3. [references/rule-grades.md](references/rule-grades.md) — rule strength,
+   invariants, defaults, and experiments
 
 hard rules: the target repo is READ-ONLY — clone shallow to a scratch
 directory, never commit or push to it. derive records what IS; proposals
@@ -30,6 +29,11 @@ code, never from any skill's defaults.
 
 ## the procedure
 
+0. **verify production truth first.** before reading a single file, confirm
+   the target is the live source: search for other copies (`gh search
+   repos <name>` — org repos, forks, mirrors), compare pushed dates, and
+   check ancestry between candidates. deriving from a stale snapshot
+   demotes the whole conform output to reference-only.
 1. **provenance**: note repo + short sha. the package must say what it was
    derived from.
 2. **token layer first**: read the global stylesheet / `@theme` / theme
@@ -96,9 +100,18 @@ unresolved list. batches are subagent-friendly; audit their reports
 critically (one batch here arrived "already done" and still contained a
 real regression a critical audit caught).
 
-## the other verbs (do not improvise them)
+two survival rules: scratch clones are disposable — when conform output
+must outlive the session, `git bundle` the branch to durable storage. and
+if the target's base moved under you, RE-RUN the batches on the new head,
+never rebase; the old branch stays valuable as the reference
+implementation that makes the re-run cheap.
 
-init / diff / generate are deliberately unbuilt. the seed and triggers
-live in `~/Developer/code/groundwork/asbuilt.md`. diff, when pulled, is:
-re-run this derive, compare package-to-package — two compiled truths,
-never journal-vs-reality.
+## unbuilt verbs (do not improvise them)
+
+init / diff / generate are deliberately unbuilt in this skill.
+
+- **init** will scaffold the boundary skeleton when a real project pulls for it.
+- **diff** will re-run derive and compare package-to-package: two compiled truths, never journal-vs-reality.
+- **generate** will use a finished package to create a new conforming component.
+
+Do not add these branches until a real use case earns them.

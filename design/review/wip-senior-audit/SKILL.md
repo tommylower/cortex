@@ -1,6 +1,6 @@
 ---
 name: wip-senior-audit
-description: "Boot a project's real running site, screenshot its pages and core flows on desktop and mobile, then produce an actionable senior-level UI/UX audit graded by whether a normal user can understand the product, trust it, and finish the core action without docs. Writes a prioritized report to docs/design-audit/. Use when the user wants a full-site UX audit, a design-lead review of the live app, a conversion or trust audit, a first-impressions critique, or says 'audit the site', 'review the whole product', 'design review of the live app'. Distinct from preflight, which is a static code-level a11y and AI-slop check; this one boots the real site and judges the end-to-end experience."
+description: Senior live-site UX audit. Use when the user asks to audit a whole running product, review the live app, judge first impressions, or diagnose understanding/trust/conversion across desktop and mobile. Distinct from preflight: this boots the site and writes docs/design-audit/.
 ---
 
 # wip-senior-audit

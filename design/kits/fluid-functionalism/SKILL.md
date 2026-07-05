@@ -1,6 +1,6 @@
 ---
 name: fluid-functionalism
-description: "Use Fluid Functionalism's shadcn-compatible registry components and motion principles in React/Next.js design projects. Use when the user asks for Fluid Functionalism, @fluid components, satisfying hover, proximity hover, spring-based controls, animated shadcn components, Micka design components, or polished form/control micro-interactions."
+description: Fluid Functionalism component-kit workflow for React/Next.js. Use when the user asks for @fluid components, animated shadcn components, proximity hover, spring controls, Micka components, or polished form/control micro-interactions.
 author: Micka (https://github.com/mickadesign/fluid-functionalism)
 ---
 
