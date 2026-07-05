@@ -64,8 +64,6 @@ linux: run the same command from cron or a systemd timer.
 
 full docs, configuration reference, and troubleshooting: [SKILL.md](SKILL.md). the skill format follows the [Agent Skills specification](https://agentskills.io/specification.md), so any agent that reads markdown can operate and troubleshoot nightcap for you.
 
-## part of cortex
+## author
 
-nightcap is developed in [cortex](https://github.com/tommylower/cortex), an agent-agnostic library of skills, workflows, and tools. this repo is a published mirror of `agent-workflows/nightcap/`.
-
-MIT, by [Tommy Lower](https://github.com/tommylower).
+created and maintained by [Tommy Lower](https://github.com/tommylower). MIT licensed.
