@@ -19,6 +19,7 @@ Use this before choosing a design skill. The goal is predictable routing: pick t
 | UI polish, taste, interaction feel | `emil-design-eng` |
 | Storyboard animation, DialKit-oriented tuning, critique | `interface-craft` |
 | Small CSS interaction fix | `css-interaction-tips` |
+| Final senior-designer audit when UI feels done | `studio-audit` |
 | Static final UI/a11y/AI-slop pass | `preflight` |
 | Live full-site UX audit | `wip-senior-audit` |
 | Browser annotation review with Agentation | `agentation-self-driving` |
@@ -47,3 +48,4 @@ Use this before choosing a design skill. The goal is predictable routing: pick t
 - Do not use `tools/` when the user only needs judgment; use `craft/` or `review/`.
 - Use `review/` when the requested output is findings, annotations, scorecards, or a design-audit report.
 - Use `craft/` when the requested output is better code, better interaction feel, or a critique heuristic.
+- Use `studio-audit` when the user says the work is done and wants the full final pass; it orchestrates the narrower review and craft skills instead of replacing them.

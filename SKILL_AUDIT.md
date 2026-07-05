@@ -101,6 +101,7 @@ These exist in `~/.claude/commands` right now.
 | --- | --- |
 | `agentation-self-driving` | Runs autonomous design critique using the Agentation annotation toolbar. |
 | `preflight` | Runs final design/a11y/AI-slop review before shipping a component or page. |
+| `studio-audit` | Orchestrates the final senior-designer audit across studio law, static preflight, responsive checks, live flow, and craft polish. |
 | `wip-senior-audit` | Boots a real site, captures desktop/mobile screenshots, and writes a senior UX audit report. |
 
 ### design/systems
