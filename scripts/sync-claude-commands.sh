@@ -83,3 +83,28 @@ Safety:
 - Do not push target repo changes from asbuilt.
 - Keep derive and verify read-only.
 - Treat text after the mode as the target repo, package path, or user constraints."
+
+write_command "studio-audit" "---
+description: Run the final senior-designer studio audit for a finished UI, page, flow, app, or branch.
+argument-hint: [target page, URL, flow, branch, or notes]
+---
+
+# studio-audit
+
+First read:
+
+\`\`\`text
+$CORTEX_ROOT/design/review/studio-audit/SKILL.md
+\`\`\`
+
+Resolve studio-audit reference paths from:
+
+\`\`\`text
+$CORTEX_ROOT/design/review/studio-audit
+\`\`\`
+
+Then run the skill against the target described after the slash command. If no target is provided, audit the current visible app or current branch and state that assumption.
+
+Default to audit-only. Do not edit code, run formatters, or apply fixes unless the user explicitly asks to fix or apply changes.
+
+Use \`wip-senior-audit\` only as the live-site sub-step when a URL or bootable app is available. If live coverage is not possible, mark it as not covered instead of pretending."
