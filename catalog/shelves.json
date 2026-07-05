@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "shelves": [
+    {
+      "path": "agent-workflows",
+      "label": "Agent Workflows",
+      "kind": "workflow",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Agent orchestration, setup, delegation, journaling, and project-operation workflows."
+    },
+    {
+      "path": "design/foundations",
+      "label": "Design Foundations",
+      "kind": "design-foundation",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Core visual principles, layout fundamentals, responsive practice, loading states, and reference patterns."
+    },
+    {
+      "path": "design/color",
+      "label": "Design Color",
+      "kind": "design-color",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Color spaces, palette work, gradients, gamut, contrast, and tokens."
+    },
+    {
+      "path": "design/motion",
+      "label": "Design Motion",
+      "kind": "design-motion",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Animation libraries, browser transitions, motion vocabulary, and interface sound."
+    },
+    {
+      "path": "design/craft",
+      "label": "Design Craft",
+      "kind": "design-craft",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Taste, interaction craft, animation critique, and hands-on UI polish heuristics."
+    },
+    {
+      "path": "design/review",
+      "label": "Design Review",
+      "kind": "design-review",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Static and live UI review, accessibility checks, product UX audits, and annotation workflows."
+    },
+    {
+      "path": "design/systems",
+      "label": "Design Systems",
+      "kind": "design-system",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Opt-in reference design systems that should never be auto-applied."
+    },
+    {
+      "path": "design/workflows",
+      "label": "Design Workflows",
+      "kind": "design-workflow",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "End-to-end design-system and design-operations workflows."
+    },
+    {
+      "path": "design/kits",
+      "label": "Design Kits",
+      "kind": "design-kit",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Component kits, registries, and opinionated installable UI systems."
+    },
+    {
+      "path": "design/tools",
+      "label": "Design Tools",
+      "kind": "design-tool",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Installable tools, MCP servers, overlays, packages, and visual helpers."
+    },
+    {
+      "path": "engineering",
+      "label": "Engineering",
+      "kind": "engineering",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Process-discipline skills for planning, building, debugging, cleanup, and agent productivity."
+    },
+    {
+      "path": "marketing/skills",
+      "label": "Marketing Skills",
+      "kind": "marketing",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "The upstream Marketing Skills submodule exposed through Cortex."
+    },
+    {
+      "path": "local",
+      "label": "Local",
+      "kind": "private",
+      "public": false,
+      "sync": true,
+      "validate": false,
+      "purpose": "Private client, local-only, or license-restricted skills that sync locally but do not ship publicly."
+    }
+  ]
+}

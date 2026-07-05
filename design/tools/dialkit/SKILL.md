@@ -1,72 +1,80 @@
 ---
 name: dialkit
-description: Add DialKit floating control panel for tuning animations and visual properties
+description: Add DialKit floating control panel for tuning animations and visual properties. Use when the user explicitly asks for DialKit, live dials, sliders, spring controls, or runtime visual tuning.
 author: Josh Puckett (https://github.com/joshpuckett/dialkit)
 ---
 
 # DialKit
 
-A floating control panel for React: sliders, toggles, color pickers, spring editors wired directly to UI values. Dev-only tool for tuning animations, spacing, and visual properties in real time.
+DialKit is a development-only floating control panel for React: sliders, toggles, color pickers, and spring editors wired to live UI values.
 
-## Installation
+Before editing, read the shared dev-overlay rules in `../dev-overlays.md`.
+
+## Install
+
+Install as dev dependencies:
+
 ```bash
-npm install dialkit motion
+bun add -d dialkit motion
 ```
+
+Use the repo's existing package manager if it is not Bun.
 
 ## Setup
 
-Add `<DialRoot />` to the root layout as a sibling (not wrapping children). Wrap in env check so it only renders in development:
-```tsx
-import { DialRoot } from 'dialkit'
-import 'dialkit/styles.css'
+Create or update `src/components/DevTools.tsx`:
 
-export default function Layout({ children }) {
-  return (
-    <>
-      {children}
-      {process.env.NODE_ENV === 'development' && <DialRoot />}
-    </>
-  )
+```tsx
+"use client";
+
+import dynamic from "next/dynamic";
+import "dialkit/styles.css";
+
+const DialRoot = dynamic(
+  () => import("dialkit").then((mod) => ({ default: mod.DialRoot })),
+  { ssr: false },
+);
+
+export function DevTools() {
+  if (process.env.NODE_ENV !== "development") return null;
+  return <DialRoot />;
 }
 ```
 
-## Usage
-```tsx
-import { useDialKit } from 'dialkit'
+Mount `<DevTools />` as a sibling of `{children}` in the app shell.
 
-const params = useDialKit('Card', {
+## Usage
+
+```tsx
+import { useDialKit } from "dialkit";
+
+const params = useDialKit("Card", {
   blur: [24, 0, 100],
   opacity: [0.8, 0, 1],
   scale: 1.18,
-  color: '#ff5500',
+  color: "#ff5500",
   visible: true,
   spring: {
-    type: 'spring',
+    type: "spring",
     visualDuration: 0.3,
     bounce: 0.2,
   },
-})
+});
 ```
 
-## Config types
-- `[default, min, max, step?]` → slider
-- `number` → auto-range slider
-- `boolean` → toggle
-- `"#hex"` → color picker
-- `{ type: "spring" }` → spring curve editor
-- `{ type: "action" }` → button trigger
-- `{ nested: ... }` → collapsible folder
+## Config Types
 
-## Production Rules (strict)
-
-- install as devDependency only: `bun add -d dialkit motion`
-- NEVER import outside a `NODE_ENV === "development"` gate
-- NEVER add to layout.tsx directly. mount inside `src/components/DevTools.tsx` using `next/dynamic` with `{ ssr: false }`
-- if build fails on vercel, check dialkit/motion imports first
-- only install when the user explicitly asks (e.g. "add dialkit"). never auto-scaffold
+- `[default, min, max, step?]` -> slider
+- `number` -> auto-range slider
+- `boolean` -> toggle
+- `"#hex"` -> color picker
+- `{ type: "spring" }` -> spring curve editor
+- `{ type: "action" }` -> button trigger
+- `{ nested: ... }` -> collapsible folder
 
 ## Notes
-- dev tool only, never ships to production
-- use during polish/refinement phase for tuning animations, springs, spacing, shadows
-- after tuning, hardcode the final values as defaults. the dial config can stay for future passes
-- works alongside Agentation and Interface Kit as siblings in DevTools.tsx
+
+- Use during polish/refinement for animation, spring, spacing, shadow, and color tuning.
+- After tuning, hardcode the final values as defaults.
+- Dial config can stay for future passes as long as it remains dev-only.
+- Works alongside Agentation and Interface Kit in `DevTools.tsx`.
