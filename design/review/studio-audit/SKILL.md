@@ -1,6 +1,6 @@
 ---
 name: studio-audit
-description: Senior studio design audit for finished UI. Use when the user says a page, flow, app, or branch feels done and wants a final senior-designer flaw pass, studio-law review, ship check, or design QA before handing off or deploying.
+description: Senior studio design audit for finished UI. Use when the user says a page, flow, app, or branch feels done and wants a final senior-designer flaw pass, studio law review (the `studio` skill), ship check, or design QA before handing off or deploying.
 ---
 
 # studio-audit
