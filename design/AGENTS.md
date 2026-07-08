@@ -45,7 +45,7 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 
 ## review
 
-- **studio-audit** — umbrella final design QA when a UI feels done. orchestrates preflight, responsive-craft, wip-senior-audit, interface-craft, and emil-design-eng under the studio-law rubric
+- **studio-audit** — umbrella final design QA when a UI feels done. orchestrates preflight, responsive-craft, wip-senior-audit, interface-craft, and emil-design-eng under the studio rubric (the `studio` skill, formerly studio-law)
 - **preflight** — final design audit before shipping. accessibility, visual consistency, AI pattern detection
 - **wip-senior-audit** — boot the real running site, screenshot pages and core flows (desktop + mobile), and produce a senior-lead UX audit graded on understand / trust / convert. live counterpart to preflight's static pass. writes docs/design-audit/
 - **agentation-self-driving** — autonomous design critique mode on top of agentation

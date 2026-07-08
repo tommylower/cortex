@@ -62,10 +62,11 @@ Think of it as a machine running toward a finish line it can see.
 - Fill `GOAL` loosely (outcome, not recipe), `THE BAR` with something checkable (if you can't,
   the template already tells Fable to build the measuring stick as iteration one), and `FUEL`
   with any prior artifact or traces to build on.
-- Run it under `/loop`.
+- Run it under `/goal` when THE BAR fits in a sentence the evaluator can check (add a turn
+  cap), otherwise under `/loop`. For choosing between loop primitives, see `designing-loops`.
 
-**Done when:** the filled template is running under `/loop` against a checkable bar, posting
-progress somewhere the user can glance at and steer.
+**Done when:** the filled template is running under `/goal` or `/loop` against a checkable
+bar, posting progress somewhere the user can glance at and steer.
 
 ## branch: grade something
 

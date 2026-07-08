@@ -50,6 +50,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 
 - `claude-workflow` — Claude planning, verification, and hooks
 - `agent-swarm` — multi-agent workflow patterns
+- `designing-loops` — pick the loop primitive (`/goal`, `/loop`, `/schedule`, proactive) and its stop condition (adapted from the Claude Code team)
 - `agent-interviewer` — generate a personalized agent behavior file
 - `project-defaults` — default scaffold, stack, conventions, env setup, and deployment flow
 - `fable-prompting` — how to prompt Fable 5 for next-gen results, with three drop-in files (house-rules block, `/loop` template, verifier sub-agent prompt)

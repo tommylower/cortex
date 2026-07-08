@@ -170,3 +170,4 @@ llm keys set openai  # or whatever provider
 - Keep a regression checklist — every bug you hit becomes a checklist item
 - Document each review round's findings — future sessions learn from past mistakes
 - The two patterns complement each other: swarm handles parallelism and throughput, review loop handles quality and correctness
+- To run a swarm or review loop on a trigger or schedule instead of by hand, pick the loop primitive with the `designing-loops` skill
