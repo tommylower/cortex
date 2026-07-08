@@ -135,7 +135,14 @@ delta is enumerated for the operator's QA. run in three verified batches,
 1. **tokens**: land the proposed names in the token file, replace raw
    values with bindings. skip any replacement that can't resolve
    identically (hex-alpha concat like `${color}80`, metadata files where
-   css vars don't exist) and record the survivors.
+   css vars don't exist) and record the survivors. color constants
+   consumed as SVG presentation attributes (`fill={C}` / `stroke={C}`)
+   cannot become `var()` strings — var() never resolves in presentation
+   attributes; fill silently falls back to black, stroke to none. move
+   those sites to inline `style={{ fill: C }}` (var() resolves there) or
+   leave them raw hex. caught 2026-07-07: the cipherowl reference bundle
+   shipped this bug undetected, so a reference implementation is a
+   pattern to re-apply critically, never truth to copy.
 2. **consolidation**: collapse duplicated component families onto their
    closed axes (byte-preserve the class recipes), factor copy-pasted
    structures into data-driven components, unify duplicated machinery
