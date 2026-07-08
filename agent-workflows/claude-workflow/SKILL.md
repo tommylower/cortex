@@ -7,6 +7,8 @@ description: Claude Code working patterns — plan mode, subagents, verification
 
 ## Workflow Orchestration
 
+For recurring or self-iterating work (`/goal`, `/loop`, `/schedule`, proactive routines), pick the primitive with the `designing-loops` skill.
+
 ### 1. Plan Mode Default
 - Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
 - If something goes sideways, STOP and re-plan immediately – don't keep pushing
