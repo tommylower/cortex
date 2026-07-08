@@ -44,6 +44,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `rams` — external Rams design-review command when explicitly requested
 - `shader-lab` — Basement Studio's shader runtime for GPU compositions
 - `asbuilt` — derive and conform a design-system package from a finished codebase
+- `studio` — the front door to the design practice: house law, playbook, tool inventory, and doctrine, loaded before any design work
 - `muller-brockmann-grid-systems` — opt-in Swiss editorial grid system with inspectable overlays
 
 ### agent workflows
@@ -121,7 +122,7 @@ Recommended: a `SessionStart` hook in `~/.claude/settings.json` that runs the Cl
 
 Personalization (name, voice, journal location) lives in `~/.config/nightcap/config.json`. Entries are local-only and never committed. See the skill's `SKILL.md` for setup, scheduling, and on-demand sweeps.
 
-Standalone repos like nightcap and asbuilt can be refreshed with `scripts/publish.sh <folder> <owner/repo>`. They are presented as Tommy Lower projects; Cortex only keeps their source folders in one place.
+Standalone repos like nightcap, asbuilt, and studio can be refreshed with `scripts/publish.sh <folder> <owner/repo>`. They are presented as Tommy Lower projects; Cortex only keeps their source folders in one place.
 
 ## skill format
 
