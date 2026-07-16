@@ -2,6 +2,10 @@
 
 shared library of skills, workflows, tools, and references for AI-assisted development. designed to be agent-agnostic. consumed by claude code, codex, cursor, and any agent that can read markdown.
 
+## this repo is public. no client names, ever
+
+never commit a client's name, domain, or any identifying detail anywhere in this repo: file contents, commit messages, branch names. refer to client projects only by their neutral aliases (project-a, project-b, ...). the alias map lives outside this repo. client material goes in `local/` (gitignored) or the client's own repo. check before every commit that touches provenance notes, deposits, or journal-derived text. this rule was earned: a client name slipped into the initial commit and cost a full history rewrite on 2026-07-16.
+
 ## how to use this repo
 
 cortex is mounted into projects as a symlink at the project root: `<project>/cortex -> /path/to/cortex`. agents working inside a project can read anything in `cortex/` directly. cortex is not a dependency, package, or runtime. it's content.
