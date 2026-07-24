@@ -27,6 +27,7 @@ they stack. grill-with-docs maintains the `CONTEXT.md` glossary and ADRs that im
 - **tdd** — red-green-refactor loop, one vertical slice at a time. references on deep modules, interface design, mocking, refactoring, what makes good tests.
 - **prototype** — throwaway prototype to flesh out a design: terminal app for state/logic questions, or multiple UI variations on one route.
 - **diagnose** — disciplined debugging loop: reproduce → minimise → hypothesise → instrument → fix → regression-test.
+- **seo-aeo-best-practices** — implementation guidance for technical SEO, metadata, structured data, internationalization, EEAT, and AI-answer readiness.
 
 ## planning and tickets
 

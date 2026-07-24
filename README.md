@@ -63,6 +63,7 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `tdd`, `diagnose`, `prototype` — building discipline
 - `to-prd`, `to-issues`, `triage` — planning and tickets
 - `handoff` — close out a token-heavy session with pre-clear checks and a short restart prompt
+- `seo-aeo-best-practices` — technical SEO, structured data, EEAT, and AI-answer implementation guidance
 - `write-a-skill`, `writing-great-skills` — author and refine skills with proper structure, attribution, and predictable behavior
 - `deadcode` — find and remove unused code and dependencies
 
