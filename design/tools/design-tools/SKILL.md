@@ -1,6 +1,6 @@
 ---
 name: design-tools
-description: "Inventory of Cortex design tools and what each one can do. Use when the user asks what design tools are available, what can we do visually, what design tooling exists in Cortex, which tool to use for UI polish, or how Paper, Figma, Shader Lab, Funky Shadow, DialKit, Interface Kit, Agentation, Rams, Wiretext, Pretext, and responsive preview fit together."
+description: "Inventory of Cortex design tools and what each one can do. Use when the user asks what design tools are available, what can we do visually, what design tooling exists in Cortex, which tool to use for UI polish, or how Paper, Figma, Shader Lab, Funky Shadow, DialKit, Leva, Interface Kit, Agentation, Rams, Wiretext, Pretext, and responsive preview fit together."
 ---
 
 # Design Tools
@@ -32,10 +32,15 @@ Use this skill to answer tool-discovery questions. It is an index, not a replace
 ## Live Tuning & Feedback
 
 - **DialKit** (`dialkit`) — dev-only floating controls for tuning animation, spacing, color, blur, and shadow values in React.
+- **Leva** ([repository](https://github.com/pmndrs/leva), MIT) — dev-only
+  React control-panel library with typed inputs and plugin support. Use when a
+  project needs a general-purpose parameter GUI; keep DialKit as Studio's
+  motion and visual-tuning default.
 - **Interface Kit** (`interface-kit`) — dev-only browser overlay for editing visual styles directly.
 - **Agentation** (`agentation`) — dev-only visual annotation toolbar for design feedback.
 - **Agentation Self-Driving** (`agentation-self-driving`) — autonomous browser annotation workflow when Agentation is installed.
-- **Rams** (`rams`) — external design-review command for accessibility, visual consistency, and UI polish when explicitly requested.
+- **Rams** (`rams`) — optional external design reviewer with a local skill,
+  hosted pre-commit MCP, and automatic GitHub App.
 
 ## Layout & Verification
 
@@ -57,9 +62,10 @@ Use this skill to answer tool-discovery questions. It is an index, not a replace
 | Add UI sound feedback | `interface-sound` |
 | Add Fluid Functionalism components | `fluid-functionalism` |
 | Tune live visual values | `dialkit` |
+| Build a generic React parameter panel | Leva |
 | Edit visual styles in browser | `interface-kit` |
 | Collect design feedback | `agentation` |
-| Run external Rams review | `rams` |
+| Run an explicit external Rams review | `rams` |
 | Fix mobile/responsive layout | `responsive-craft` |
 | Verify text fit | `pretext` |
 | Ship-check a UI | `preflight` |

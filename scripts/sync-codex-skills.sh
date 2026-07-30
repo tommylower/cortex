@@ -6,7 +6,8 @@
 set -euo pipefail
 
 CORTEX_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-TARGET_DIR="$HOME/.codex/skills"
+TARGET_HOME="${CORTEX_TARGET_HOME:-$HOME}"
+TARGET_DIR="$TARGET_HOME/.codex/skills"
 mkdir -p "$TARGET_DIR"
 
 wanted=""

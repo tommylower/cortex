@@ -4,6 +4,10 @@ Generate **several radically different UI variations** on a single route, switch
 
 If the question is about logic/state rather than what something looks like — wrong branch. Use [LOGIC.md](LOGIC.md).
 
+This branch combines Matt Pocock's throwaway-prototype discipline with the
+divergence and picker workflow from
+[Emil Kowalski's prototype skill](https://github.com/emilkowalski/skills/tree/main/skills/prototype).
+
 ## When this is the right shape
 
 - "What should this page look like?"
@@ -43,6 +47,10 @@ Write down the plan in one line, in the prototype's location or a top-of-file co
 
 This works whether the user is here to push back or not.
 
+Before writing code, give every variant a descriptive name and a named axis:
+layout, density, hierarchy, personality, motion, or interaction model. No two
+variants may occupy the same position on that axis.
+
 ### 2. Generate radically different variants
 
 Draft each variant. Hold each one to:
@@ -50,8 +58,13 @@ Draft each variant. Hold each one to:
 - The page's purpose and the data it has access to.
 - The project's component library / styling system (TailwindCSS, shadcn, MUI, plain CSS, whatever).
 - A clear exported component name, e.g. `VariantA`, `VariantB`, `VariantC`.
+- Realistic product-shaped content and complete interactions. No lorem ipsum,
+  dead buttons, or imaginary states.
 
 Variants must be **structurally different** — different layout, different information hierarchy, different primary affordance, not just different colours. Three slightly-tweaked card grids isn't a UI prototype, it's wallpaper. If two drafts come out too similar, redo one with explicit "do not use a card grid" guidance.
+
+Render one variant at a time at full size in realistic surrounding context.
+Side-by-side thumbnails distort density and scale.
 
 ### 3. Wire them together
 
@@ -85,7 +98,13 @@ A small fixed-position bar at the bottom-centre of the screen with three pieces:
 Behaviour:
 
 - Clicking an arrow updates the URL search param (use the framework's router — `router.replace` on Next, `navigate` on React Router, etc) so the variant is shareable and reload-stable.
-- Keyboard: `←` and `→` arrow keys also cycle. Don't intercept arrow keys when an `<input>`, `<textarea>`, or `[contenteditable]` is focused.
+- Keyboard: `←` and `→` cycle; number keys `1-N` jump directly. Don't
+  intercept keys when an `<input>`, `<textarea>`, `<select>`, or
+  `[contenteditable]` is focused, or when a modifier is held.
+- Switching the work is instant. This is a high-frequency comparison action,
+  so the variant itself never animates between choices.
+- If motion is part of the comparison, add a replay control and `R` shortcut
+  that remount only the current variant.
 - Visually distinct from the page (e.g. high-contrast pill, subtle shadow) so it's obviously not part of the design being evaluated.
 - Hidden in production builds — gate on `process.env.NODE_ENV !== 'production'` or an equivalent check, so a stray prototype merge can't ship the bar to users.
 
@@ -93,7 +112,16 @@ Put the switcher in a single shared component so both sub-shapes can reuse it. L
 
 ### 5. Hand it over
 
-Surface the URL (and the `?variant=` keys). The user will flip through whenever they get to it. The interesting feedback is usually **"I want the header from B with the sidebar from C"** — that's the actual design they want.
+Run the harness first. Flip through every variant, exercise every interaction,
+and confirm the console is clean. Then surface the URL, keys, and a compact
+comparison:
+
+| Variant | Axis | When it wins | Cost |
+| --- | --- | --- | --- |
+| Quiet | restrained density | daily-use tools | least expressive |
+
+The user chooses. The interesting feedback is often **"I want the header from
+B with the sidebar from C"** — that's the actual design they want.
 
 ### 6. Capture the answer and clean up
 

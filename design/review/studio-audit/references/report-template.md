@@ -10,11 +10,19 @@ Verdict: ship | fix first | review again
 
 ## Coverage
 
-- Target:
-- Surfaces reviewed:
-- Viewports:
-- Live flow:
-- Not covered:
+- Mode:
+- Target and boundary:
+- Stack and conventions:
+
+| Domain | Evidence inspected | Result |
+| --- | --- | --- |
+| Accessibility | files, states, keyboard/assistive checks | clear / findings / not covered |
+| Layout | viewports, reading order, responsive behavior | clear / findings / not covered |
+| Writing | labels, errors, empty states, flow copy | clear / findings / not covered |
+| Typography | rendered hierarchy, wrapping, font behavior | clear / findings / not covered |
+| Color | tokens, appearances, measured pairs | clear / findings / not covered |
+| UI craft | surfaces, icons, motion, interaction feel | clear / findings / not covered |
+| Live flow | routes and interactions | clear / findings / not covered |
 
 ## Top Findings
 
@@ -22,29 +30,21 @@ Verdict: ship | fix first | review again
 | --- | --- | --- | --- | --- |
 | P1 | hierarchy | route/screenshot/file | ... | ... |
 
-## Lens Notes
+One root cause gets one row. Respect the selected mode's finding cap.
 
-### Studio Law
+## Considered but Rejected
 
-Clarity, hierarchy, trust, visual confidence, and generated-design residue.
+| Location | Candidate | Rejected because |
+| --- | --- | --- |
+| ... | ... | project convention, insufficient evidence, or no user benefit |
 
-### Static Preflight
+Include only real candidates inspected during the review. A short table or no
+candidate is better than invented restraint.
 
-Accessibility, visual consistency, code-level UI risks, and AI-pattern tells.
+## Verification
 
-### Responsive
-
-Mobile, tablet, desktop, in-between widths, overflow, sticky/fixed behavior, and
-touch constraints.
-
-### Live Flow
-
-First impressions, navigation, states, trust, and conversion path.
-
-### Craft
-
-Composition, density, typography, spacing rhythm, component cohesion, motion,
-feedback, and interaction feel.
+- Passed:
+- Not verified:
 
 ## Fix Now
 

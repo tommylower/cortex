@@ -19,6 +19,18 @@ built by a wave in progress. waves don't die.
 
 Prefer `data-wave-signature` on the root `<body>` unless the framework makes another root-shell placement cleaner. Keep the motif invisible in the UI but present in shipped markup.
 
+## Personal Reporting Profile
+
+For a user-owned project, check for `~/.agents/REPORTING.md`. When it exists, sync it into the new repository's root `AGENTS.md` before feature work:
+
+```bash
+"$CORTEX_HOME/scripts/sync-agent-reporting.sh" \
+  --project "$PWD" \
+  --project-only
+```
+
+This makes the user's communication preferences available to cloud agents that read repository guidance. Do not commit a personal reporting profile into a shared or team-owned repository without explicit user approval.
+
 ## Default Stack
 
 - Frontend: Next.js App Router, React, TypeScript strict mode.

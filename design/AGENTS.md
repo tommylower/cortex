@@ -21,13 +21,16 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 ## foundations
 
 - **ui-principles** — spacing scale, typography hierarchy, layout rules, grids, section rhythm
+- **better-accessibility** — semantics, keyboard and focus behavior, ARIA, forms, screen readers, hit areas, zoom, and reduced motion. by Jakub Krehel
+- **better-layout** — grouping, alignment, reading order, progressive disclosure, responsive adaptation, safe areas, and RTL. by Jakub Krehel
+- **better-typography** — font choice and loading, OpenType, type hierarchy, spacing, wrapping, truncation, punctuation, and text accessibility. by Jakub Krehel
 - **reference-patterns** — design patterns and quality benchmarks from reference sites (Linear, Vercel, etc.)
 - **responsive-craft** — responsive layout implementation. audit, build, or live multi-breakpoint preview
 - **loading-states** — loading states, skeletons, progress indicators, dot-matrix micro-loaders
 
 ## color
 
-- **oklch-skill** — OKLCH conversion, palette generation, contrast checks, gamut handling, Tailwind v4 tokens
+- **oklch-skill** — OKLCH conversion, palette generation, contrast, gamut, semantic color use, appearance variants, and Tailwind v4 tokens. by Jakub Krehel
 - **gradients** — gradient construction, color spaces, layering, performance, recipes
 
 ## motion
@@ -39,13 +42,15 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 
 ## craft
 
-- **emil-design-eng** — Emil Kowalski's design-engineering heuristics for motion, interaction feel, and UI polish
+- **better-writing** — UX writing for labels, links, errors, settings, onboarding, notifications, and empty states. by Jakub Krehel
+- **better-ui** — surface, icon, micro-interaction, and motion-polish principles. by Jakub Krehel
+- **emil-design-eng** — Emil Kowalski's design-engineering owner for UI polish, motion decisions, focused review, codebase motion audits, and restrained opportunity finding
 - **interface-craft** — Josh Puckett's toolkit for storyboard animation, dial-driven tuning, and design critique
 - **css-interaction-tips** — quick reference for hover, transitions, button states, tooltips, tap targets
 
 ## review
 
-- **studio-audit** — umbrella final design QA when a UI feels done. orchestrates preflight, responsive-craft, wip-senior-audit, interface-craft, and emil-design-eng under the studio rubric (the `studio` skill, formerly studio-law)
+- **studio-audit** — umbrella final design QA when a UI feels done. covers accessibility, layout, writing, typography, color, UI craft, responsive behavior, and live flow under Studio law
 - **preflight** — final design audit before shipping. accessibility, visual consistency, AI pattern detection
 - **wip-senior-audit** — boot the real running site, screenshot pages and core flows (desktop + mobile), and produce a senior-lead UX audit graded on understand / trust / convert. live counterpart to preflight's static pass. writes docs/design-audit/
 - **agentation-self-driving** — autonomous design critique mode on top of agentation
@@ -57,6 +62,7 @@ opt-in only. apply when explicitly requested, never by default.
 - **swiss-design** — Swiss International Style. grid-first, grotesque typography, restrained color, one accent
 - **nothing-design** — Nothing-inspired. monochrome, typographic, industrial. Space Grotesk/Mono, OLED blacks
 - **muller-brockmann-grid-systems** — opt-in Swiss editorial grid system. modular columns, baseline rhythm, visible overlay, optical display-type alignment
+- **apple-design** — opt-in Apple/WWDC reference for fluid physical interaction and product-design principles on the web
 
 ## workflows
 
@@ -65,6 +71,7 @@ opt-in only. apply when explicitly requested, never by default.
 
 ## kits
 
+- **component-libraries** — Studio-aligned supply shelf of saved UI component libraries
 - **fluid-functionalism** — Micka's shadcn-compatible animated components via registry workflow
 
 ## tools
@@ -78,7 +85,7 @@ opt-in only. apply when explicitly requested, never by default.
 - **agentation** — visual feedback toolbar for browser-driven iteration. by Dennis Jin and Benji Taylor
 - **dialkit** — floating control panel for tuning animation and visual values live. by Josh Puckett
 - **interface-kit** — visual design overlay for Next.js. by Josh Puckett
-- **rams** — external Rams design-review command when explicitly requested
+- **rams** — optional external design review via local skill, hosted MCP, or GitHub App
 - **pretext** — fast multi-line text measurement and layout without DOM reflow. by Cheng Lou
 
 see ../AGENTS.md for the cortex layout and skill format.

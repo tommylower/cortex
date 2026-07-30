@@ -96,15 +96,18 @@ for command in start_commands:
 settings_path.write_text(json.dumps(data, indent=2) + "\n")
 PY
 
-  HOME="$TARGET_HOME" "$CORTEX_ROOT/scripts/sync-claude-skills.sh"
-  HOME="$TARGET_HOME" "$CORTEX_ROOT/scripts/sync-claude-commands.sh"
+  CORTEX_TARGET_HOME="$TARGET_HOME" \
+    "$CORTEX_ROOT/scripts/sync-claude-skills.sh"
+  CORTEX_TARGET_HOME="$TARGET_HOME" \
+    "$CORTEX_ROOT/scripts/sync-claude-commands.sh"
 }
 
 setup_codex() {
   local codex_dir="$TARGET_HOME/.codex"
   mkdir -p "$codex_dir"
 
-  HOME="$TARGET_HOME" "$CORTEX_ROOT/scripts/sync-codex-skills.sh"
+  CORTEX_TARGET_HOME="$TARGET_HOME" \
+    "$CORTEX_ROOT/scripts/sync-codex-skills.sh"
 }
 
 if [ "$SETUP_CLAUDE" -eq 1 ]; then
@@ -114,5 +117,9 @@ fi
 if [ "$SETUP_CODEX" -eq 1 ]; then
   setup_codex
 fi
+
+"$CORTEX_ROOT/scripts/sync-agent-reporting.sh" \
+  --home "$TARGET_HOME" \
+  --optional
 
 echo "Configured local agents for cortex in $TARGET_HOME"

@@ -21,7 +21,7 @@ Use Fluid Functionalism when the project already uses, or can reasonably adopt:
 - Tailwind CSS
 - shadcn/ui registry workflow
 - Framer Motion for interactive motion
-- Radix UI by default, or Base UI when the project already uses Base UI
+- Radix UI or Base UI, matching the project's primitive engine
 
 Do not install it wholesale. Pull only the components needed for the current interface, then adapt the generated files to the project's local tokens, component names, and import aliases.
 
@@ -59,7 +59,10 @@ npx shadcn@latest add @fluid/button
 npx shadcn@latest add https://www.fluidfunctionalism.com/r/button.json
 ```
 
-7. Prefer Radix variants unless the project already uses Base UI. Base UI variants use `-base` names, such as `button-base`, `dialog-base`, `tabs-base`, and `tooltip-base`.
+7. Preserve the project's existing primitive engine. For fresh projects, read
+   Studio's current behavior-engine default and choose the matching variant.
+   Base UI variants use `-base` names, such as `button-base`, `dialog-base`,
+   `tabs-base`, and `tooltip-base`.
 8. If keeping font-weight animation, ensure the app loads Inter variable or adjust the generated font-weight helper to the project's variable font.
 9. Run the app, check light and dark themes, and browser-test the exact interaction. Pay attention to hover previews, keyboard focus, reduced-motion behavior, and overwritten local components.
 

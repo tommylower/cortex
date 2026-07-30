@@ -35,9 +35,13 @@ Popovers should scale from the trigger, not from center. Modals are the exceptio
 
 ```css
 .popover {
-  transform-origin: var(--radix-popover-content-transform-origin);
+  transform-origin: var(--transform-origin);
 }
 ```
+
+The variable above is Base UI's current transform-origin contract. When a
+project uses another behavior engine, use that engine's supplied origin value
+instead of inventing one.
 
 ## Tooltip Behavior
 

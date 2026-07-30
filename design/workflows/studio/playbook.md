@@ -9,10 +9,9 @@ wins.
 1. load the `workbench` skill and run its init procedure, fresh path. it
    scaffolds the four strata, the token name set, the canvas, preflight, and
    the wave signature.
-2. engine (base-ui vs radix) and css strategy (single skin class vs
-   cva+utilities) are per-project profile choices, set once in
-   `workbench.config.ts`. current defaults and provenance: rules.md defaults
-   table. do not agonize, they are swappable.
+2. set engine and css strategy once in `workbench.config.ts`, using the
+   current defaults and provenance in rules.md. preserve an existing profile
+   and make deliberate overrides explicit.
 3. no pre-built component set. the first component enters through
    doctrine/component-intake.md when the first screen pulls for it.
 
@@ -34,20 +33,34 @@ wins.
 - the loop: brief, intake (doctrine/component-intake.md), build, review on
   the canvas at 375/768/1024/1440 across the state graph, operator approves,
   elevate into a page.
+- when the brief pulls for an existing component or registry, load the
+  `component-libraries` cortex skill after operator intent. it is a supply
+  shelf for behavior and anatomy, never a source of skin.
 - editing surfaces are interchangeable, code is the source of truth
   (invariant 1). code to figma: the figma mcp or paper code-to-design.
   figma or paper to code: through intake, anatomy only, skin stays ours
   (invariant 8).
 - flair passes: `interface-craft`, `emil-design-eng`, `interface-kit` are
-  suppliers. motion numbers come from rules.md, never a supplier default.
+  suppliers. `emil-design-eng` also owns focused motion review, codebase
+  motion audits, and restrained opportunity finding. motion numbers come from
+  rules.md, never a supplier default.
+- for focused accessibility, layout, writing, typography, color, or UI-polish
+  work, load the matching `better-*` owner (`oklch-skill` owns color).
+  `studio-audit` loads every owner when the whole surface is reviewed.
 - reaching for anything else: check inventory.md for the verdict before
   loading it.
 
 ## shipping
 
 - when a surface feels done, run `studio-audit` (cortex). it orchestrates
-  preflight, responsive checks, the live-experience pass, and the craft
-  critiques into one report with a ship / fix-first / review-again verdict.
+  the six domain owners, preflight, responsive checks, the live-experience
+  pass, and the craft critiques into one evidence-backed report with a ship /
+  fix-first / review-again verdict.
+- if a Rams surface is configured and the session changed UI, offer one Rams
+  review after `studio-audit` and before commit; do not wait for the operator
+  to remember it. if accepted, load `rams`; its surface and privacy rules
+  govern. if declined, continue without it. Studio law adjudicates its
+  findings.
 
 ## when stuck or annoyed
 
