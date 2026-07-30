@@ -1,8 +1,8 @@
 # Palette Generation
 
-## Scale Convention
+## The scale convention
 
-Design system palettes usually use a numeric scale from 50 for the lightest step to 950 for the darkest step.
+Design system palettes use a numeric scale from 50 (lightest) to 950 (darkest). The standard labels by palette size:
 
 | Size | Labels |
 | --- | --- |
@@ -10,34 +10,34 @@ Design system palettes usually use a numeric scale from 50 for the lightest step
 | 9 | 50, 100, 200, 300, 500, 700, 800, 900, 950 |
 | 11 | 50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950 |
 
-Use 9 steps as the default when matching Tailwind-like palettes.
+11 steps matches Tailwind's default scales; use 9 as a leaner default when the `400`/`600` in-betweens aren't needed.
 
 ## Algorithm
 
-Given a base color with lightness `L`, chroma percentage, and hue `H`:
+Given a base color with lightness (L), chroma percentage, and hue (H):
 
-Step 1: set lightness bounds.
+**Step 1. Lightness bounds:**
 
-```text
+```
 delta = 0.4
 minL = max(0.05, baseL - delta)
 maxL = min(0.95, baseL + delta)
 ```
 
-Lightness is clamped to `[0.05, 0.95]` to avoid pure black and white, which have zero chroma.
+Lightness is clamped to [0.05, 0.95] to avoid pure black/white which have zero chroma.
 
-Step 2: distribute lightness evenly from `maxL` for the lightest label to `minL` for the darkest label.
+**Step 2. Distribute lightness** evenly from maxL (lightest, label 50) to minL (darkest, label 950).
 
-Step 3: clamp chroma per step. Each lightness level has a different maximum chroma for a given hue and color space.
+**Step 3. Clamp chroma per step.** Each lightness level has a different maximum chroma for a given hue and color space:
 
-```text
+```
 maxChroma = findMaxChroma(step[i].L, hue, colorSpace)
 step[i].C = (chromaPercentage / 100) * maxChroma
 ```
 
-This keeps every step in gamut. High-chroma base colors should lose chroma at the lightest and darkest ends.
+This ensures every step is within gamut. High-chroma base colors will have lower chroma at the lightest and darkest ends; this is correct and expected.
 
-## CSS Variable Output
+## CSS variable output
 
 ```css
 :root {
@@ -53,24 +53,24 @@ This keeps every step in gamut. High-chroma base colors should lose chroma at th
 }
 ```
 
-## Multi-Hue Palettes
+## Multi-hue palettes
 
-When generating palettes for multiple hues, use the same lightness and chroma percentage for every hue. Same L keeps perceived brightness aligned. Same chroma percentage, not the same absolute chroma, keeps vividness aligned relative to each hue's gamut.
+When generating palettes for multiple hues, use the same **lightness** and **chroma percentage** for all. Same L guarantees equal perceived brightness. Same chroma percentage (not absolute chroma) guarantees equal vividness relative to each hue's maximum.
 
 ```css
 :root {
-  /* Same L, same C percentage; different absolute C per hue. */
-  --blue-500: oklch(0.623 0.141 250);
-  --green-500: oklch(0.623 0.157 145);
-  --red-500: oklch(0.623 0.202 25);
+  /* Same L, same C% (80% of max): different absolute C per hue */
+  --blue-500: oklch(0.623 0.141 250);   /* 80% of max 0.176 */
+  --green-500: oklch(0.623 0.157 145);  /* 80% of max 0.196 */
+  --red-500: oklch(0.623 0.202 25);     /* 80% of max 0.253 */
 }
 ```
 
-Different hues have different max chroma at the same lightness. The same absolute C value can make some hues look more vivid than others.
+Different hues have different max chroma at the same lightness. Using the same absolute C value across hues would make some appear more vivid than others.
 
-## Dark Mode
+## Dark mode
 
-Reverse the palette mapping so the lightest step becomes the darkest and vice versa.
+Start by swapping the light and dark semantic roles, then tune the mapped values for the dark appearance:
 
 ```css
 :root {
@@ -84,10 +84,10 @@ Reverse the palette mapping so the lightest step becomes the darkest and vice ve
 }
 ```
 
-OKLCH's perceptual uniformity makes equal L steps usable in both directions.
+Do not mechanically reverse every palette step. Dark appearances often need different chroma and lightness spacing, and equal OKLCH steps do not guarantee that every foreground/background pair preserves its contrast. Recheck each pair and tune the dark tokens independently where needed.
 
-## Why Not HSL Palettes
+## Why not HSL palettes?
 
-Hue drift: `hsl(240, 80%, 20%)` and `hsl(240, 80%, 90%)` are not the same perceptual hue. The light variant can shift toward purple. OKLCH hue is more stable.
+**Hue drift:** `hsl(240, 80%, 20%)` and `hsl(240, 80%, 90%)` are not the same perceptual hue. The light variant shifts ~16° toward purple. OKLCH hue is stable.
 
-Brightness inconsistency: `hsl(60, 100%, 50%)` and `hsl(240, 100%, 50%)` have the same HSL lightness but very different perceived brightness.
+**Brightness inconsistency:** `hsl(60, 100%, 50%)` (yellow) and `hsl(240, 100%, 50%)` (blue) have the same HSL lightness but wildly different perceived brightness.

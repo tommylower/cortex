@@ -1,40 +1,40 @@
-# Gamut Awareness And Tailwind v4
+# Gamut Awareness & Tailwind v4
 
-## sRGB Vs Display P3
+## sRGB vs Display P3
 
-Every sRGB color exists within Display P3, but not every P3 color exists within sRGB. Display P3 covers more colors and can support stronger chroma on capable displays.
+Every sRGB color exists within Display P3, but not every P3 color exists within sRGB. Display P3 covers ~50% more colors.
 
-## Max Chroma Varies By Lightness And Hue
+## Max chroma varies by lightness and hue
 
-The gamut boundary is irregular. At L=0.5 in sRGB, approximate examples are:
+The gamut boundary is irregular. At L=0.5 in sRGB:
 
-- Highest chroma: purple near H 285 at C around 0.29.
-- Red-orange near H 0-30 at C around 0.20.
-- Lowest chroma: cyan near H 195 at C around 0.09.
+- Highest chroma: purple (H ≈ 285) at C ≈ 0.29
+- Red-orange (H ≈ 0-30): C ≈ 0.20
+- Lowest chroma: cyan (H ≈ 195) at C ≈ 0.09
 
-The peak hue shifts with lightness. Cyan tends to have one of the lowest max-chroma boundaries.
+The peak hue shifts with lightness. At L=0.7 magenta peaks, at L=0.9 green peaks. Cyan consistently has the lowest max chroma.
 
-## Gamut Checking
+## Gamut checking
 
-If a color's chroma exceeds the maximum for its L/H/space, it clips. Reduce chroma while keeping L and H constant.
+If a color's chroma exceeds the maximum for its L/H/space, it clips. The fix: reduce chroma while keeping L and H constant.
 
 ```css
-/* Out of sRGB gamut. */
-color: oklch(0.7 0.35 150);
+/* Out of sRGB gamut */
+oklch(0.7 0.35 150)
 
-/* Clamped to max chroma. */
-color: oklch(0.7 0.22 150);
+/* Clamped to max chroma */
+oklch(0.7 0.22 150)
 ```
 
-## CSS Fallback Patterns
+## CSS fallback patterns
 
 ```css
-/* sRGB-safe fallback for OKLCH-capable browsers. */
+/* sRGB fallback for all browsers */
 .accent {
   color: oklch(0.7 0.2 150);
 }
 
-/* P3 enhancement for wider-gamut displays. */
+/* P3 enhancement for wider gamut displays */
 @media (color-gamut: p3) {
   .accent {
     color: oklch(0.7 0.3 150);
@@ -42,7 +42,7 @@ color: oklch(0.7 0.22 150);
 }
 ```
 
-For browsers without OKLCH support:
+For browsers without oklch support:
 
 ```css
 .accent {
@@ -64,9 +64,9 @@ For browsers without OKLCH support:
 
 ## Tailwind v4
 
-Tailwind CSS v4 defines its default palette in OKLCH. Custom themes should follow the same convention.
+Tailwind CSS v4 defines its default palette in oklch. Custom themes should follow the same convention.
 
-### Custom Color Scale With `@theme`
+### Custom color scale with @theme
 
 ```css
 @theme {
@@ -84,20 +84,20 @@ Tailwind CSS v4 defines its default palette in OKLCH. Custom themes should follo
 }
 ```
 
-This creates utilities such as `bg-brand-500` and `text-brand-200`.
+This gives you `bg-brand-500`, `text-brand-200`, etc. automatically.
 
-### Opacity Modifiers
+### Opacity modifiers
 
-Tailwind opacity modifiers work with OKLCH.
+Tailwind's opacity modifier syntax works with oklch:
 
 ```html
 <div class="bg-brand-500/50"></div>
 <!-- Compiles to: oklch(0.623 0.188 250 / 0.5) -->
 ```
 
-### Migrating Existing Themes
+### Migrating existing themes
 
-1. Convert all hex values in `@theme` to OKLCH.
-2. Replace `theme()` references that assumed hex output.
-3. Test dark mode because OKLCH values may look different from hand-picked legacy values.
-4. Check hardcoded hex in component code and convert those too.
+1. Convert all hex values in `@theme` to oklch
+2. Replace any `theme()` references that used hex
+3. Test dark mode: oklch values may look slightly different due to perceptual accuracy
+4. Check for hardcoded hex in component code and convert those too

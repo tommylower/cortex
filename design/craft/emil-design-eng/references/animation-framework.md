@@ -1,6 +1,8 @@
 # Animation Framework
 
-Use this reference when you need the full motion decision process, not just the short rules in `SKILL.md`.
+Use this reference when you need the full motion decision process. Existing
+project tokens and Studio defaults are authoritative; the values below are
+fallback recipes and audit bounds, not a second token system.
 
 ## 1. Should this animate at all?
 
@@ -38,7 +40,7 @@ Choose easing by behavior:
 
 Avoid `ease-in` for standard UI motion. It delays the first visible response and makes the interface feel slow.
 
-Recommended curves:
+Fallback curves when the project has no motion vocabulary:
 
 ```css
 --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
@@ -86,7 +88,7 @@ const springRotation = useSpring(mouseX * 0.1, {
 });
 ```
 
-Recommended configurations:
+Fallback configurations:
 
 ```js
 { type: "spring", duration: 0.5, bounce: 0.2 }

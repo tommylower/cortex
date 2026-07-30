@@ -6,17 +6,23 @@ Use this before choosing a design skill. The goal is predictable routing: pick t
 
 | User Need | Skill |
 | --- | --- |
-| General layout, spacing, typography, section rhythm | `ui-principles` |
+| General design-system spacing, type, and layout defaults | `ui-principles` |
+| Accessibility implementation or focused review | `better-accessibility` |
+| Layout structure, grouping, alignment, safe areas, or RTL | `better-layout` |
+| Typography, fonts, hierarchy, wrapping, or truncation | `better-typography` |
+| UX writing, labels, errors, settings, or empty states | `better-writing` |
+| Surface, icon, micro-interaction, or motion polish | `better-ui` |
 | Responsive build or mobile fix | `responsive-craft` |
 | Loading, pending, empty, skeleton, progress state | `loading-states` |
 | Reference-site pattern inspiration | `reference-patterns` |
-| Color conversion, palette, contrast, Tailwind OKLCH | `oklch-skill` |
+| Color conversion, palette, contrast, semantic color, Tailwind OKLCH | `oklch-skill` |
 | Gradient construction or glow effect | `gradients` |
 | React animation with Framer Motion | `framer-motion` |
 | Native route/shared-element transitions | `view-transitions` |
 | Name an unknown motion effect | `animation-vocabulary` |
 | Sound feedback | `interface-sound` |
 | UI polish, taste, interaction feel | `emil-design-eng` |
+| Review motion, audit existing animations, or find motion opportunities | `emil-design-eng` (`review`, `audit`, or `opportunities`) |
 | Storyboard animation, DialKit-oriented tuning, critique | `interface-craft` |
 | Small CSS interaction fix | `css-interaction-tips` |
 | Final senior-designer audit when UI feels done | `studio-audit` |
@@ -24,9 +30,10 @@ Use this before choosing a design skill. The goal is predictable routing: pick t
 | Live full-site UX audit | `wip-senior-audit` |
 | Browser annotation review with Agentation | `agentation-self-driving` |
 | Paper / paper.design canvas work | `paper` |
-| External Rams review command | `rams` |
-| Opt-in Swiss, Nothing, or Muller-Brockmann system | `design/systems/*` |
+| Explicit Rams skill, MCP, or GitHub review | `rams` |
+| Opt-in Apple, Swiss, Nothing, or Muller-Brockmann system | `design/systems/*` |
 | Extract/conform a design-system package from code | `asbuilt` |
+| Choose among saved UI component libraries or registries | `component-libraries` |
 | Bring in shadcn-compatible animated components | `fluid-functionalism` |
 | Figma, Wiretext, Shader Lab, overlays, text measurement | `design/tools/*` |
 

@@ -10,7 +10,7 @@ never come from a skill's defaults.
 
 - studio (this skill): the law, the playbook, this inventory. not a supplier, outranks this audit's frame, lives in ~/.claude-wip/skills, outlives groundwork.
 - workbench: the tool. scaffolds and runs the component canvas, fresh or existing project, review pipeline included.
-- studio-audit (cortex): the ship check. umbrella final QA, orchestrates preflight, responsive checks, and the craft critiques into one ship / fix-first / review-again verdict.
+- studio-audit (cortex): the ship check. owns scope, evidence, domain coverage, deduplication, and the final ship / fix-first / review-again verdict.
 - asbuilt (cortex): derive + conform a design system from existing code, built 2026-07-04 on the project-c pull. init/diff/generate still seed-only.
 
 ## design tools
@@ -22,9 +22,11 @@ from the design-tools catalog. tools are opt-in; dev-only overlays install as de
 - shader lab: WebGPU shader compositions for hero visuals, warped text, liquid backgrounds, post-processing.
 - funky shadow: dithered Oklab gradient shadows behind cards, tiles, icons, accents.
 - dialkit: dev-only floating controls for tuning animation, spacing, color, blur, shadow values in React.
+- leva: saved dev-only React parameter GUI. use for general control panels;
+  DialKit remains the Studio default for motion and visual tuning.
 - interface kit: dev-only browser overlay for editing visual styles directly.
 - agentation: dev-only visual annotation toolbar for design feedback. self-driving variant runs it autonomously.
-- rams: external design-review command for accessibility, visual consistency, and UI polish, only when explicitly requested.
+- rams: optional external review supplier. local skill stays on-device; MCP and GitHub App are hosted. explicit opt-in only.
 - wiretext: quick ASCII wireframes with editable browser links before committing to code or Figma.
 - pretext: deterministic text measurement for labels, headings, virtualized rows, masonry, layout-shift prevention.
 - responsive preview: multi-breakpoint preview inside responsive-craft's build/audit workflow.
@@ -44,13 +46,21 @@ verdicts and notes carried from skills-audit.md v2, unedited in substance.
 ### foundations
 
 - ui-principles: supplier. spacing/type/layout anatomy. carries numeric opinions; they're catalog examples, margins win.
-- oklch-skill: supplier. color math, ramps, gamut. no law claims.
+- better-accessibility: supplier. deep platform, keyboard, focus, semantics, form, assistive-technology, zoom, and motion-reduction reference.
+- better-layout: supplier. grouping, alignment, reading order, adaptivity, safe areas, and RTL. numeric values are starting points.
+- better-typography: supplier. font systems, rendered hierarchy, text behavior, and typography review.
+- oklch-skill: supplier. color math, ramps, gamut, contrast, semantic color use, and appearance variants. no law claims.
 - gradients: supplier. color-space choices, recipes.
 - responsive-craft: supplier, WATCH. workflows hardcode breakpoints and durations in imperative voice. fine under rank; the likeliest leak if loaded without the studio skill.
 - loading-states: supplier, WATCH. skeleton/loader patterns with durations. examples only.
 - reference-patterns: supplier, WATCH. carries motion numbers. same caveat.
 - preflight: supplier. ship checklist. process-shaped but invoked deliberately, not a ritual.
 - wip-senior-audit: supplier. critique pass.
+
+### craft and content
+
+- better-writing: supplier. product voice, terminology, labels, errors, and empty-state copy.
+- better-ui: supplier, WATCH. surface and icon craft plus motion recipes. project tokens and rules.md motion defaults always win.
 
 ### motion
 
@@ -59,7 +69,7 @@ springs, easings). all stay suppliers under one standing rule: their
 numbers are catalog examples. tuned numbers come from the margins and land
 in rules.md defaults.
 
-- emil-design-eng: supplier. the taste anchor, restraint school. its numbers are emil's, not mine.
+- emil-design-eng: supplier. the taste anchor and one motion owner with craft, focused review, codebase audit/plan, and opportunity-finding branches. its numbers are emil's, not mine.
 - interface-craft: supplier. storyboard DSL + critique + dialkit patterns. DSL is the value; default timings are examples.
 - css-interaction-tips: supplier. press feel, popover origins, hover bugs.
 - framer-motion: supplier. code-phase patterns (library is now "motion", motion.dev).
@@ -77,6 +87,7 @@ in rules.md defaults.
 
 - nothing-design: supplier, opt-in. full visual system, never auto-applied by its own terms. no conflict while opt-in.
 - swiss-design, muller-brockmann-grid-systems: supplier, opt-in. reference doctrine, explicitly invoked.
+- apple-design: supplier, opt-in. Apple/WWDC interaction and product principles translated to web behavior; project skin and rules.md motion values always win.
 
 ### tool bridges
 
@@ -86,6 +97,7 @@ in rules.md defaults.
 - dialkit: supplier. the tuning instrument, how margin numbers get FOUND, not a source of them.
 - interface-kit: supplier.
 - agentation, agentation-self-driving: supplier. annotation + autonomous critique. critique isn't law.
+- component-libraries: supplier. the saved UI component supply shelf. its entries never override rules.md or component intake.
 - fluid-functionalism: supplier. installable animated registry. its spring values ship as a runtime dep or not at all.
 - pretext: supplier. deterministic text measurement.
 - design-tools: supplier. the index. verified: no references to the deleted commands.
@@ -95,7 +107,7 @@ in rules.md defaults.
 - handoff / closeout: supplier. session continuity only. v1 called this "the natural home for the deposit ritual", WRONG since the ritual was killed; deposits are pain-driven and happen at the moment of pain, not at close.
 - grill-me, grill-with-docs, blindspot, merge-quiz, diagnose, tdd, triage, zoom-out, teach: supplier. thinking/review aids, no design-law claims.
 - improve, improve-codebase-architecture, deadcode, prototype, to-issues, to-prd, conventions, stack, dev-setup, claude-workflow, agent-swarm, agent-interviewer, codex-review, fable-codex, caveman/grug, write-a-skill, writing-great-skills, setup-matt-pocock-skills, find-skills, nightcap, vercel-deploy: supplier. engineering/workflow catalogs, out of design-law scope.
-- rams, interview (commands): supplier. critique voice + interviewer adapter.
+- interview (command): supplier. interviewer adapter.
 
 ### non-design (cortex/marketing, ~40 skills)
 
@@ -111,4 +123,5 @@ skills-audit v2 closed with "none urgent, the library is clean under rank."
 - responsive-craft: WATCH. hardcoded breakpoints and durations in imperative voice.
 - loading-states: WATCH. patterns carry durations.
 - reference-patterns: WATCH. carries motion numbers.
+- better-ui: WATCH. concrete polish recipes remain supplier defaults only.
 - all of motion: standing watch. only matters in a session where the studio skill isn't loaded; the fix if that ever bites is a one-line pain deposit in rules.md, not a mass rewrite.

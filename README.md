@@ -21,11 +21,14 @@ cortex/
 │   └── tools/         installable tools and integrations
 ├── engineering/       process-discipline skills (mostly vendored from mattpocock/skills)
 ├── marketing/         marketing skills and tooling (git submodule)
-├── catalog/           shelf registry used by docs, validation, and sync scripts
+├── catalog/           shelf registry, resource inbox, and third-party notices
 └── scripts/           agent adapters, validation, publishing, journal sweep
 ```
 
 Every category has an `AGENTS.md` index. Start there. The library rule: you should find a skill by walking the folders, not by searching. Shelf paths live in `catalog/shelves.json`; update that before changing sync or validation behavior.
+
+Resources worth preserving before they have a verified permanent home live in
+`catalog/inbox.md`. Saving an entry does not endorse or install it.
 
 ## key skills
 
@@ -34,17 +37,24 @@ Every category has an `AGENTS.md` index. Start there. The library rule: you shou
 - `studio-audit` — final senior-designer audit when a UI feels done
 - `preflight` — final design audit before shipping
 - `ui-principles` — spacing, typography, layout fundamentals
+- `better-accessibility` — semantics, keyboard, focus, ARIA, forms, and assistive technology
+- `better-layout` — grouping, alignment, adaptive structure, safe areas, and RTL
+- `better-typography` — font systems, rendered hierarchy, wrapping, and text behavior
+- `better-writing` — UX writing, interface labels, errors, settings, and empty states
+- `better-ui` — surface, icon, micro-interaction, and motion polish
 - `responsive-craft` — responsive implementation and multi-breakpoint preview
-- `emil-design-eng` — design-engineering heuristics for motion and interaction feel
+- `emil-design-eng` — motion craft, focused review, codebase animation audits and plans, and restrained opportunity finding
 - `animation-vocabulary` — reverse-lookup glossary for naming web motion effects
+- `apple-design` — opt-in Apple/WWDC reference for fluid web interaction and product principles
 - `interface-craft` — storyboard animation, dial-driven tuning, and design critique
 - `paper` — Paper / paper.design canvas workflow when available
 - `figma-mcp` — Figma MCP setup and workflows
 - `wiretext` — terminal wireframing
-- `rams` — external Rams design-review command when explicitly requested
+- `rams` — optional external design review via local skill, hosted MCP, or GitHub App
 - `shader-lab` — Basement Studio's shader runtime for GPU compositions
 - `asbuilt` — derive and conform a design-system package from a finished codebase
 - `studio` — the front door to the design practice: house law, playbook, tool inventory, and doctrine, loaded before any design work
+- `component-libraries` — Studio-aligned supply shelf of saved UI component libraries
 - `muller-brockmann-grid-systems` — opt-in Swiss editorial grid system with inspectable overlays
 
 ### agent workflows
@@ -117,6 +127,12 @@ $CORTEX_HOME/scripts/sync-codex-skills.sh      # symlinks skills into ~/.codex/s
 
 Recommended: a `SessionStart` hook in `~/.claude/settings.json` that runs the Claude syncs, so new skills appear automatically every session. See `AGENTS.md` for the snippet and adapter details. Skills stay agent-agnostic markdown; agent-specific automation lives in adapter scripts, never inside a skill folder.
 
+If `~/.agents/REPORTING.md` exists, one-command setup also syncs that personal
+communication profile into the global Claude and Codex guidance files. Use
+`scripts/sync-agent-reporting.sh --project /path/to/project --project-only`
+only for a user-owned repository, or with explicit approval from the owner of
+a shared repository.
+
 ## journal
 
 [nightcap](https://github.com/tommylower/nightcap) (`agent-workflows/nightcap/`) reads the day's Claude Code and Codex transcripts every night and writes one narrative entry per substantial session, first person, in your own voice, like a handwritten journal. Each entry records the date, agent, project, a resume command linking back to the chat, and a 1-3 paragraph summary of the work and thinking.
@@ -142,10 +158,10 @@ Cortex mixes original skills with adapted and vendored work. Credit is preserved
 
 - [Matt Pocock](https://github.com/mattpocock/skills) — the engineering process set
 - [Corey Haines](https://github.com/coreyhaines31/marketingskills) — the marketing submodule
-- [Emil Kowalski](https://github.com/emilkowalski/skills) — design-engineering philosophy and animation vocabulary
+- [Emil Kowalski](https://github.com/emilkowalski/skills) — design-engineering philosophy, motion review and planning, animation vocabulary, Apple design synthesis, and UI prototyping patterns ([MIT notice](catalog/licenses/emilkowalski-skills-MIT.txt))
 - [Josh Puckett](https://github.com/joshpuckett) — Interface Craft, DialKit, Interface Kit
 - [shadcn](https://github.com/shadcn) — improve
-- [Jakub Krehel](https://github.com/jakubkrehel/oklch-skill) — OKLCH, gradients
+- [Jakub Krehel](https://github.com/jakubkrehel/skills) — whole-interface review, accessibility, layout, typography, UX writing, UI polish, OKLCH, and gradients ([MIT notice](catalog/licenses/jakubkrehel-skills-MIT.txt))
 - [Dominik Martin](https://github.com/dominikmartn/nothing-design-skill) — nothing-design
 - [Zeke](https://github.com/zeke/swiss-design-skill) — swiss-design
 - [Micka](https://github.com/mickadesign/fluid-functionalism) — fluid-functionalism

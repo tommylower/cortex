@@ -12,6 +12,31 @@ cortex is mounted into projects as a symlink at the project root: `<project>/cor
 
 if you are an agent and the user asks for design help, marketing help, workflow guidance, or tooling, look here first before generating from scratch.
 
+<!-- cortex-reporting-profile:start -->
+# personal reporting profile
+
+inspired by [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd), MIT licensed.
+
+apply these rules to user-facing commentary, progress updates, explanations, and final reports:
+
+1. lead with the answer, result, or next action.
+2. use ASD-STE100 principles where practical: active voice, common words, one idea per sentence. do not claim formal compliance.
+3. keep routine progress updates below 40 words. keep final responses below 120 words unless the user asks for detail or accuracy and safety require more.
+4. number multi-step work. use one bounded action per step. cap lists at five items.
+5. finish the current issue before raising another. remove tangents, preambles, repeated recaps, and closing pleasantries.
+6. for multi-turn work, state only the current progress and next step. do not repeat the full plan when a task tracker already shows it.
+7. after a change, state what now works. for an error, state its location, cause, and fix without dramatic language.
+8. end with one concrete next action only when the user must act. otherwise, stop when the answer is complete.
+
+exceptions:
+
+- explain fully when the user asks for an explanation or walkthrough.
+- preserve code, commands, errors, quotations, filenames, and required technical terms.
+- confirm destructive actions and include information required for safety.
+- after three failed fixes, stop changing code, name the doubtful assumption, and ask one diagnostic question.
+- when real ambiguity would cause rework, ask one short clarifying question.
+<!-- cortex-reporting-profile:end -->
+
 ## layout
 
 ```
@@ -35,6 +60,8 @@ cortex/
 ```
 
 each category folder contains an `AGENTS.md` indexing its skills. start there when scoping a category. shelf paths live in `catalog/shelves.json`; update that before changing sync or validation behavior.
+
+external resources without a proven permanent home go in `catalog/inbox.md`. saving an entry does not endorse or install it. promote it only after its license, runtime behavior, maintenance status, and shelf fit are verified.
 
 ## skill format
 

@@ -1,72 +1,97 @@
-# Accessibility And Contrast
+# Accessibility & Contrast
 
-Contrast is measured between a foreground color, such as text, icon, or UI element, and the background it sits on. Always identify the actual rendered background, usually the nearest parent with a background color.
+Contrast is always measured between a **foreground color** (text, icon, or UI element) and the **background color** it sits on. When checking contrast, identify the background the element will be rendered against, typically the nearest parent's background color.
 
-## APCA Thresholds
+**Report, don't repaint.** When a check fails, report it (the failing foreground/background pair, its measured Lc or ratio, and the threshold it misses) and leave the colors unchanged. A project's colors are a design decision; only apply the fix below when the user asks for one.
 
-APCA is more perceptually accurate than WCAG 2 and pairs naturally with OKLCH because both are grounded in perceived lightness. Use APCA by default for design work, while still checking WCAG 2 when legal conformance requires it.
+## APCA design targets
 
-`Lc` measures perceived contrast between foreground and background. These are conservative approximations:
+APCA (Accessible Perceptual Contrast Algorithm) is an emerging,
+polarity-aware readability model. Use it as a design diagnostic alongside
+WCAG 2, not as a substitute for WCAG 2.2 conformance. APCA's own documentation
+describes its readability criterion as work in progress.
 
-| Content Type | Pass | Pass+ |
+Lc (Lightness Contrast) measures the perceived contrast between foreground and background. These conservative design targets simplify APCA's full font-size/weight guidance; do not call them WCAG pass/fail thresholds:
+
+| Content Type | Design floor | Preferred |
 | --- | --- | --- |
-| Normal text | Lc 60 | Lc 75 |
-| Large text | Lc 45 | Lc 60 |
-| UI components | Lc 30 | - |
+| Body text (columns/blocks of text) | Lc 75 | Lc 90 |
+| Non-body text (labels, headlines) | Lc 60 | Lc 75 |
+| Large text (≥36px) | Lc 45 | Lc 60 |
+| UI components | Lc 30 | n/a |
 
-APCA's `Lc` value is signed. Positive means light text on a dark background, negative means dark text on a light background. Use absolute value for threshold comparison.
+Lc 30 is a useful APCA design target for disabled and placeholder text, while
+Lc 15 is only a discernibility floor for non-text detail. These are not WCAG
+2 exemptions or conformance thresholds.
 
-## WCAG 2 Thresholds
+APCA's Lc value is signed: positive means dark text on a light background, negative means light text on a dark background. Use the absolute value for threshold comparison.
 
-WCAG 2 is still required for formal WCAG 2.x conformance claims. It uses a luminance ratio that can be too strict or too lenient depending on the pair.
+## WCAG 2 thresholds (for conformance)
+
+Use WCAG 2 ratios when evaluating or claiming WCAG 2.2 conformance.
 
 | Content Type | AA | AAA |
 | --- | --- | --- |
-| Normal text under 18px, or under 14px bold | 4.5:1 | 7:1 |
-| Large text at least 18px, or at least 14px bold | 3:1 | 4.5:1 |
-| UI components and graphical objects | 3:1 | - |
+| Normal text (<24px / <18.5px bold) | 4.5:1 | 7:1 |
+| Large text (>=24px / >=18.5px bold) | 3:1 | 4.5:1 |
+| UI components & graphical objects | 3:1 | n/a |
 
-## Fixing Contrast With OKLCH
+WCAG defines "large text" in points: 18pt ≈ `24px`, or 14pt bold ≈ `18.5px`.
 
-In OKLCH, contrast is controlled by lightness. Adjust the L distance between the foreground and background, while keeping C and H stable.
+## Fixing contrast with oklch (on request)
+
+In hex/rgb, fixing contrast means trial and error across three channels. In oklch, lightness (L) is the clearest first lever: adjust the L distance between the foreground and its background while preserving C and H when possible:
 
 ```css
-/* Failing: text is too close in lightness to the background. */
-color: oklch(0.65 0.2 250);
-background: oklch(0.75 0.05 250);
+/* Failing: text too close in lightness to its background (Lc ≈ 50) */
+color: oklch(0.65 0.08 250);      /* foreground */
+background: oklch(0.95 0.02 250); /* background */
 
-/* Fixed: text is darker, while C and H remain unchanged. */
-color: oklch(0.35 0.2 250);
-background: oklch(0.75 0.05 250);
+/* Fix: darken the text, keep C and H unchanged (Lc ≈ 90) */
+color: oklch(0.3 0.08 250);       /* foreground: more L distance */
+background: oklch(0.95 0.02 250); /* background: unchanged */
 ```
 
-Chroma has negligible effect on contrast. Adjust L before changing color identity.
+Note that mid-lightness backgrounds cap the achievable contrast: on a background of L 0.75, even pure black text only reaches about Lc 60; body text needs a background near the light or dark extreme.
 
-## Lightness Gap Guide
+Adjust L first, then remeasure the rendered foreground/background pair. Chroma and hue can still affect the converted color, gamut mapping, and measured contrast; reduce C when needed to keep the adjusted color in gamut.
 
-- Light background with L > 0.85: foreground L should be below 0.45.
-- Dark background with L < 0.25: foreground L should be above 0.75.
+## Quick lightness gap guide
 
-These are approximations. Verify with contrast calculation before shipping accessibility-sensitive UI.
+For body text (targeting |Lc| >= 75):
 
-## Light Vs Dark Color Detection
+- **Light background (L > 0.9):** foreground L should be below 0.35
+- **Dark background (L < 0.25):** foreground L should be above 0.9
 
-```text
-if L > 0.6, use dark text on this background
-if L <= 0.6, use light text on this background
+The gap is asymmetric because APCA is polarity-aware: mirrored pairs don't score identically. These are approximations; always verify with an actual contrast calculation.
+
+## Light vs dark color detection
+
+A background counts as light when its oklch lightness exceeds 0.73, the APCA crossover on neutral backgrounds:
+
+```
+if L > 0.73 → use dark text on this background
+if L <= 0.73 → use light text on this background
 ```
 
-## Hue Drift Detection
+The crossover is higher than intuition suggests: in the 0.6–0.73 band the background already looks light, but white text still scores meaningfully higher than black.
+
+## Hue drift detection
 
 To detect hue drift in an existing HSL palette:
 
-1. Convert each step to OKLCH.
-2. Compare the H values across steps.
-3. If the hue spread is greater than 10 degrees, the palette has visible drift.
+1. Convert each step to oklch
+2. Compare the H values across steps
+3. If the hue spread is greater than 10°, the palette has visible drift
 
 ```css
-/* HSL blue ramp: hue shifts toward purple. */
-hsl(240, 80%, 20%)  ->  oklch H ~= 269
-hsl(240, 80%, 50%)  ->  oklch H ~= 267
-hsl(240, 80%, 90%)  ->  oklch H ~= 285
+/* HSL blue ramp: hue shifts toward purple */
+hsl(240, 80%, 20%)  →  oklch H ≈ 269
+hsl(240, 80%, 50%)  →  oklch H ≈ 267
+hsl(240, 80%, 90%)  →  oklch H ≈ 285  /* shifted 18° */
 ```
+
+## Primary sources
+
+- [APCA documentation repository](https://github.com/Myndex/SAPC-APCA)
+- [WCAG 2.2: Understanding Contrast Minimum](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html)
