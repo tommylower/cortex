@@ -71,7 +71,7 @@ six files. no more unless a real package pulls for more.
 - names are role-based (`--color-surface`, never `--color-gray-100`).
 - raw values appear here and only here (stratum 1 of codebase-scaffold.md).
 - motion numbers (durations, easings) live here as tokens, sourced from the
-  margins and rules.md defaults, never from a skill's defaults.
+  margins and house.md defaults, never from a skill's defaults.
 - theme/mode behavior when present.
 
 ### references/architecture.md — strata + dependency rule
@@ -123,7 +123,7 @@ suppliers: "cards use a lifted dithered shadow on editorial surfaces," not
 "use funky-shadow" — unless the supplier is a real runtime dependency, in
 which case it belongs in platform-mapping. provenance and process notes stay
 out of the package entirely (record-keeping rule: process rules go to
-rules.md on pain, design decisions live in artifacts).
+house.md on pain, design decisions live in artifacts).
 
 ## the derivation rule
 

@@ -30,7 +30,7 @@ For a project choice:
 
 1. Name the task before naming a supplier. Treat a requested library as a
    candidate, not the requirement. Read Studio's current behavior-engine default in
-   `../../workflows/studio/rules.md`, then inspect the target project's
+   `../../workflows/studio/house.md` (grading system in `rules.md`), then inspect the target project's
    component configuration. Continue only when the project's engine and
    delivery model are explicit.
 2. Search the project for an existing component that already satisfies the

@@ -7,7 +7,7 @@ house law instead of improvising per session.
 ## what's inside
 
 - [SKILL.md](SKILL.md), the entry point: the reading order and the loop the agent enforces
-- [rules.md](rules.md), the house law: graded rules (invariants, defaults, experiments) and pain-earned deposits with dates and provenance
+- [rules.md](rules.md), the system: rule grades and the deposit mechanism. the graded rows themselves (invariants, defaults, experiments) live in house.md, gitignored and private per install; house.template.md seeds a fresh one
 - [playbook.md](playbook.md), the path through a session: fresh project, existing project, component work, shipping, stuck
 - [inventory.md](inventory.md), every tool, skill, and mcp in the practice with a verdict on each
 - [doctrine/](doctrine/), component intake, codebase scaffold, and the design-system package format

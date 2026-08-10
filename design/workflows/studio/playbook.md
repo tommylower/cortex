@@ -1,6 +1,7 @@
 # playbook: the path through a design session
 
-load order, every session: SKILL.md, then rules.md, then the branch below
+load order, every session: SKILL.md, then rules.md, then house.md, then
+the branch below
 that matches the session. suppliers never decide; on any conflict the law
 wins.
 
@@ -10,7 +11,7 @@ wins.
    scaffolds the four strata, the token name set, the canvas, preflight, and
    the wave signature.
 2. set engine and css strategy once in `workbench.config.ts`, using the
-   current defaults and provenance in rules.md. preserve an existing profile
+   current defaults and provenance in house.md. preserve an existing profile
    and make deliberate overrides explicit.
 3. no pre-built component set. the first component enters through
    doctrine/component-intake.md when the first screen pulls for it.
@@ -43,7 +44,7 @@ wins.
 - flair passes: `interface-craft`, `emil-design-eng`, `interface-kit` are
   suppliers. `emil-design-eng` also owns focused motion review, codebase
   motion audits, and restrained opportunity finding. motion numbers come from
-  rules.md, never a supplier default.
+  house.md, never a supplier default.
 - for focused accessibility, layout, writing, typography, color, or UI-polish
   work, load the matching `better-*` owner (`oklch-skill` owns color).
   `studio-audit` loads every owner when the whole surface is reviewed.
@@ -65,15 +66,15 @@ wins.
 ## when stuck or annoyed
 
 - any friction that costs flow (setup pain, tool confusion, a decision you
-  could not make) gets ONE line in `~/Developer/code/arc/friction.md`, at
+  could not make) gets ONE line in `~/Developer/code/int-work/arc/friction.md`, at
   the moment it happens. then keep working. no essay, no fix required.
 - law-shaped pain (a one-line rule would have prevented a real time loss)
-  deposits in rules.md instead, per the deposit rule. friction.md is for
+  deposits in house.md instead, per the deposit rule (in rules.md). friction.md is for
   everything softer.
 
 ## auditing the practice itself
 
-- the digest procedure in `~/Developer/code/arc/digest.md` turns friction
+- the digest procedure in `~/Developer/code/int-work/arc/digest.md` turns friction
   lines and study notes into playbook fixes, inventory verdicts, and
-  rules.md experiments. run it when friction.md gets loud, not on a
+  house.md experiments. run it when friction.md gets loud, not on a
   schedule.

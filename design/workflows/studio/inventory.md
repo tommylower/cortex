@@ -60,14 +60,14 @@ verdicts and notes carried from skills-audit.md v2, unedited in substance.
 ### craft and content
 
 - better-writing: supplier. product voice, terminology, labels, errors, and empty-state copy.
-- better-ui: supplier, WATCH. surface and icon craft plus motion recipes. project tokens and rules.md motion defaults always win.
+- better-ui: supplier, WATCH. surface and icon craft plus motion recipes. project tokens and house.md motion defaults always win.
 
 ### motion
 
 grep-verified: every skill here carries concrete numbers (durations,
 springs, easings). all stay suppliers under one standing rule: their
 numbers are catalog examples. tuned numbers come from the margins and land
-in rules.md defaults.
+in house.md defaults.
 
 - emil-design-eng: supplier. the taste anchor and one motion owner with craft, focused review, codebase audit/plan, and opportunity-finding branches. its numbers are emil's, not mine.
 - interface-craft: supplier. storyboard DSL + critique + dialkit patterns. DSL is the value; default timings are examples.
@@ -97,7 +97,7 @@ in rules.md defaults.
 - dialkit: supplier. the tuning instrument, how margin numbers get FOUND, not a source of them.
 - interface-kit: supplier.
 - agentation, agentation-self-driving: supplier. annotation + autonomous critique. critique isn't law.
-- component-libraries: supplier. the saved UI component supply shelf. its entries never override rules.md or component intake.
+- component-libraries: supplier. the saved UI component supply shelf. its entries never override house.md or component intake.
 - fluid-functionalism: supplier. installable animated registry. its spring values ship as a runtime dep or not at all.
 - pretext: supplier. deterministic text measurement.
 - design-tools: supplier. the index. verified: no references to the deleted commands.
@@ -124,4 +124,4 @@ skills-audit v2 closed with "none urgent, the library is clean under rank."
 - loading-states: WATCH. patterns carry durations.
 - reference-patterns: WATCH. carries motion numbers.
 - better-ui: WATCH. concrete polish recipes remain supplier defaults only.
-- all of motion: standing watch. only matters in a session where the studio skill isn't loaded; the fix if that ever bites is a one-line pain deposit in rules.md, not a mass rewrite.
+- all of motion: standing watch. only matters in a session where the studio skill isn't loaded; the fix if that ever bites is a one-line pain deposit in house.md, not a mass rewrite.
