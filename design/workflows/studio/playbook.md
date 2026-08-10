@@ -66,15 +66,16 @@ wins.
 ## when stuck or annoyed
 
 - any friction that costs flow (setup pain, tool confusion, a decision you
-  could not make) gets ONE line in `~/Developer/code/int-work/arc/friction.md`, at
-  the moment it happens. then keep working. no essay, no fix required.
+  could not make) gets ONE line in `friction.md`, beside house.md in this
+  folder and private like it, at the moment it happens. then keep working.
+  no essay, no fix required.
 - law-shaped pain (a one-line rule would have prevented a real time loss)
   deposits in house.md instead, per the deposit rule (in rules.md). friction.md is for
   everything softer.
 
 ## auditing the practice itself
 
-- the digest procedure in `~/Developer/code/int-work/arc/digest.md` turns friction
-  lines and study notes into playbook fixes, inventory verdicts, and
-  house.md experiments. run it when friction.md gets loud, not on a
-  schedule.
+- the digest turns friction into fixes. run it when friction.md gets loud,
+  not on a schedule: read every line, sort each into one bucket (playbook
+  fix, inventory verdict, house.md experiment, or drop), apply the bucket,
+  then delete the processed line. friction.md should end near empty.

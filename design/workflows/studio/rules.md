@@ -20,7 +20,10 @@ public, the practice that accumulates in it is not.
 
 read `house.md` immediately after this file, every session. if it is
 missing, this is a fresh install: copy `house.template.md` to `house.md`
-(or symlink one in from a private location) and start earning rows.
+(or symlink one in from a private location) and start earning rows. create
+an empty `friction.md` beside it, same rules: house.md takes law-shaped
+pain, friction.md takes everything softer (see playbook.md, "when stuck
+or annoyed").
 
 ## deposits (revised 2026-07-04: ritual killed, event-driven now)
 
@@ -34,3 +37,11 @@ sessions deposit nothing, and zero is the correct number, not a failure.
 provenance names the pain, not the client: use project codenames in
 deposits. house.md is private by default, but rows get quoted, screenshotted,
 and promoted — write them clean from the start.
+
+## verdicts — closing the loop
+
+a deposit is not done when written; it is done when graded. at the start of
+any session that matches a row's "verdict due" trigger, grade that row
+before new work: promote it (two real uses of evidence), extend it (new due
+date, one line why), or kill it. a due row never rides ungraded — stale
+experiments are sediment, and sediment is how a law book stops being read.

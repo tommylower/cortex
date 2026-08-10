@@ -11,3 +11,4 @@ local/
 
 # studio: earned state is per-install, never ships with the tool
 design/workflows/studio/house.md
+design/workflows/studio/friction.md
