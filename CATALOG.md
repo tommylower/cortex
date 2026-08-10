@@ -10,7 +10,7 @@ Start by choosing the kind of work:
 | --- | --- |
 | Agent orchestration, setup, delegation, session patterns | `agent-workflows/` |
 | UI design fundamentals, responsive layout, reference patterns | `design/foundations/` |
-| Color, gradients, OKLCH, contrast, tokens | `design/color/` |
+| Color, gradients, OKLCH, contrast, tokens, CMYK print proofing | `design/color/` |
 | Animation primitives, transitions, motion names, UI sound | `design/motion/` |
 | Taste, polish, interaction feel, critique heuristics | `design/craft/` |
 | Static/live design review, audits, annotations | `design/review/` |

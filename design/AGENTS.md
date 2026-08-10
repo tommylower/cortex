@@ -9,7 +9,7 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 ## shelves
 
 - `foundations/` — core principles, patterns, and quality gates
-- `color/` — color spaces, palettes, gradients
+- `color/` — color spaces, palettes, gradients, print proofing
 - `motion/` — animation primitives, transitions, motion vocabulary, and sound
 - `craft/` — interaction craft, taste, animation critique, UI polish
 - `review/` — static and live UI/UX review workflows
@@ -32,6 +32,7 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 
 - **oklch-skill** — OKLCH conversion, palette generation, contrast, gamut, semantic color use, appearance variants, and Tailwind v4 tokens. by Jakub Krehel
 - **gradients** — gradient construction, color spaces, layering, performance, recipes
+- **cmyk-proof** — ICC-accurate CMYK proofing for print work designed in screen-native canvas tools. born-CMYK workflow, ink discipline, print geometry, bundled ImageMagick script
 
 ## motion
 
