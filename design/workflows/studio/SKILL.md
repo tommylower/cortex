@@ -30,8 +30,8 @@ paths relative to this skill's base directory:
 
 deposits (one-line experiments earned through pain) land in `house.md`
 here in this folder, the gitignored private state (rules.md holds the
-system, house.md the rows). the learning journal (friction log + study queue)
-lives at `~/Developer/code/int-work/arc/` (see playbook.md, "when stuck or
+system, house.md the rows). the learning journal, `friction.md`, sits
+beside it under the same rules (see playbook.md, "when stuck or
 annoyed").
 
 ## the loop to enforce
