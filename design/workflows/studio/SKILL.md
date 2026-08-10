@@ -1,6 +1,6 @@
 ---
 name: studio
-description: Load before ANY design work (canvas or code, any project). The single front door to the design practice: the house law (rules.md grades, invariants, motion defaults), the playbook (playbook.md, what to do per situation), the inventory (inventory.md, every tool/skill/mcp and its verdict), and doctrine/ (intake, scaffold, package format), one self-contained package that travels to every project. Enforces the earned design practice: operator intent first, references for anatomy never skin, state graphs not happy frames, motion numbers in margins, second-use gate, pain-only deposits. Triggers: design work, component build, figma/paper session, ui polish, scaffold a project, starting a design session, studio law.
+description: Load before ANY design work (canvas or code, any project). The single front door to the design practice: the house law (rules.md the grading system, house.md this install's earned rows: invariants, defaults, motion numbers; gitignored), the playbook (playbook.md, what to do per situation), the inventory (inventory.md, every tool/skill/mcp and its verdict), and doctrine/ (intake, scaffold, package format), one self-contained package that travels to every project. Enforces the earned design practice: operator intent first, references for anatomy never skin, state graphs not happy frames, motion numbers in margins, second-use gate, pain-only deposits. Triggers: design work, component build, figma/paper session, ui polish, scaffold a project, starting a design session, studio law.
 ---
 
 # studio
@@ -14,7 +14,9 @@ per project.
 
 paths relative to this skill's base directory:
 
-1. `rules.md` — grades, invariants, defaults (including motion numbers)
+1. `rules.md` — the grading system and deposit rule, then `house.md` —
+   this install's earned rows: invariants, defaults (including motion
+   numbers), experiments. gitignored, private per install
 2. `playbook.md` — the path through a session: fresh project, existing
    project, component work, shipping, stuck
 3. `doctrine/component-intake.md` — how ideas and references become
@@ -26,9 +28,10 @@ paths relative to this skill's base directory:
 6. `inventory.md` — when reaching for a tool or supplier, check its
    verdict here first
 
-deposits (one-line experiments earned through pain) land in `rules.md`
-here in this folder. the learning journal (friction log + study queue)
-lives at `~/Developer/code/arc/` (see playbook.md, "when stuck or
+deposits (one-line experiments earned through pain) land in `house.md`
+here in this folder, the gitignored private state (rules.md holds the
+system, house.md the rows). the learning journal (friction log + study queue)
+lives at `~/Developer/code/int-work/arc/` (see playbook.md, "when stuck or
 annoyed").
 
 ## the loop to enforce
@@ -42,11 +45,11 @@ annoyed").
 3. **deliverables are state graphs, not happy frames.** every state
    (default / hover / focus / active / disabled / loading / empty / error)
    with transitions, motion numbers written in the margins. defaults from
-   rules.md.
+   house.md.
 4. **second-use gate.** nothing is componentized until it recurs.
 5. **suppliers never decide.** cortex skills are catalogs; the law wins
    every conflict. motion numbers never come from a skill's defaults.
 6. **no parallel records.** design decisions live in the artifact only —
    never transcribe them into docs by hand; specs are derived from
    artifacts. if a mistake costs real time, write a one-line experiment in
-   rules.md at that moment. no close ritual. most sessions deposit nothing.
+   house.md at that moment. no close ritual. most sessions deposit nothing.

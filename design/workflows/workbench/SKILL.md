@@ -17,7 +17,7 @@ this skill is the TOOL's installer and operating manual. `studio` is the LAW.
 load `studio` first, every session. where the two ever conflict, the law wins.
 this skill never duplicates a studio rule, it instantiates one.
 
-the tool itself lives in its own repo, `~/Developer/code/workbench`: the
+the tool itself lives in its own repo, `~/Developer/code/int-work/workbench`: the
 stamp template (`template/`), a runnable showroom canvas stamped from it, and
 the tool's docs. improvements to the tool are made there and reach projects
 through the next stamp; this skill is how a project gets stamped.
@@ -101,7 +101,7 @@ profile's engine, or switch the profile deliberately.
 
 ### 2. lay the boundaries, not the implementations
 
-copy the template (`~/Developer/code/workbench/template/`) into the target and rewrite for the project (name, skin prefix,
+copy the template (`~/Developer/code/int-work/workbench/template/`) into the target and rewrite for the project (name, skin prefix,
 paths). two exceptions: `manifest.json` is the install recipe the skill reads,
 never copied into the project; and on the existing-project path the seed's
 root `README.md` is skipped (the strata rule still lands via
@@ -250,10 +250,10 @@ source (see deposits and the write boundary, below).
 
 this skill instantiates the law; it never absorbs it. when hardening or use
 surfaces a LAW-shaped truth (a supplier default changed, a process mistake
-cost real time), the deposit lands in studio `rules.md` as an experiment,
+cost real time), the deposit lands in studio `house.md` as an experiment,
 per its deposit rule. tool mechanics (canvas behavior, preflight checks,
 adapter procedure) stay here. motion numbers tuned by hands on this canvas
-update studio `rules.md` defaults, not just this seed's `globals.css`;
+update studio `house.md` defaults, not just this seed's `globals.css`;
 the law's numbers are the source, the seed copies them.
 
 ## emitting a design-system package

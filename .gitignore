@@ -8,3 +8,6 @@ notes/journal/
 
 # local-only skills: client work and third-party material not licensed for redistribution
 local/
+
+# studio: earned state is per-install, never ships with the tool
+design/workflows/studio/house.md

@@ -33,7 +33,7 @@ a day-one scaffold generates boundaries, not implementations:
 nothing else. no pre-built component set, no locked css strategy. every
 component after day one enters via the intake loop (doctrine/
 component-intake.md) as the product pulls for it. which engine, css
-strategy, or motion lib are per-project defaults in rules.md, swappable
+strategy, or motion lib are per-project defaults in house.md, swappable
 without touching boundaries.
 
 ## the canvas mirror — DEFAULT
