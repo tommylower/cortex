@@ -44,7 +44,7 @@ cortex/
 ├── agent-workflows/   workflows, conventions, setup guides for working with AI agents
 ├── design/            everything visual, indexed by shelf
 │   ├── foundations/   principles, patterns, responsive, loading states
-│   ├── color/         oklch, gradients
+│   ├── color/         oklch, gradients, cmyk print proofing
 │   ├── motion/        animation, transitions, interaction feel, sound
 │   ├── craft/         interaction craft, taste, animation critique, UI polish
 │   ├── review/        static and live UI/UX review workflows

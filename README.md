@@ -11,7 +11,7 @@ cortex/
 ├── agent-workflows/   workflows, conventions, setup guides for working with AI agents
 ├── design/            everything visual, indexed by shelf
 │   ├── foundations/   principles, patterns, responsive, loading states
-│   ├── color/         oklch, gradients
+│   ├── color/         oklch, gradients, cmyk print proofing
 │   ├── motion/        animation, transitions, interaction feel, sound
 │   ├── craft/         interaction craft, taste, animation critique, UI polish
 │   ├── review/        static and live UI/UX review workflows
@@ -58,6 +58,7 @@ Resources worth preserving before they have a verified permanent home live in
 - `spec-map` — turn a spec into a hand-editable system map on a paper canvas
 - `component-libraries` — Studio-aligned supply shelf of saved UI component libraries
 - `muller-brockmann-grid-systems` — opt-in Swiss editorial grid system with inspectable overlays
+- `cmyk-proof` — ICC-accurate CMYK proofing for print work designed in screen-native canvas tools, with a bundled ImageMagick script
 
 ### agent workflows
 
