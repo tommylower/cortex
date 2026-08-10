@@ -68,6 +68,8 @@ opt-in only. apply when explicitly requested, never by default.
 
 - **asbuilt** — derive and conform a design-system package from a finished codebase
 - **studio** — the front door to the whole design practice. house law (rules.md the grading system, house.md this install's earned rows; gitignored), playbook (what to do per situation), tool inventory, and doctrine (intake, scaffold, package format). load before any design work; every other design skill hangs off it
+- **workbench** — a code-based component library with a review canvas: stamp the studio strata into an app, review every section across the state matrix, elevate approved work into pages
+- **spec-map** — turn a spec into a hand-editable system map on a paper canvas
 
 ## kits
 
