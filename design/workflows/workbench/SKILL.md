@@ -1,6 +1,6 @@
 ---
 name: workbench
-description: Scaffold and run a project-agnostic component canvas (the "workbench"). Load when starting a new project's design surface, porting a project into a review canvas, organizing a code-based component library, or reviewing components across the state matrix before elevating them into pages. Lays down the studio four strata into a Next.js app, wires a /workbench canvas that reviews any registered section at 375/768/1024/1440, and runs the intake -> review -> elevate pipeline. The workbench is the tool; studio is the law.
+description: Opt-in component review canvas (the "workbench"). NEVER auto-load. Load ONLY when the operator explicitly asks for the workbench or a review canvas by name. Starting a project, scaffolding, or design work are NOT triggers; the default scaffold path is studio doctrine. When called, it ports a project into a /workbench canvas that reviews any registered section at 375/768/1024/1440 and runs the intake -> review -> elevate pipeline. The workbench is the tool; studio is the law.
 ---
 
 # workbench

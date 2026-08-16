@@ -53,8 +53,8 @@ Resources worth preserving before they have a verified permanent home live in
 - `rams` — optional external design review via local skill, hosted MCP, or GitHub App
 - `shader-lab` — Basement Studio's shader runtime for GPU compositions
 - `asbuilt` — derive and conform a design-system package from a finished codebase
-- `studio` — the front door to the design practice: house law, playbook, tool inventory, and doctrine, loaded before any design work
-- `workbench` — a code-based component library with a review canvas: stamp the studio strata into an app, review every section across the state matrix, elevate approved work into pages
+- `studio` — the front door to the design practice: house law, playbook, tool inventory, doctrine, and the scaffold + preflight enforcement path, loaded before any design work
+- `workbench` — opt-in review canvas for code-based component libraries, loaded only on operator ask: review every section across the state matrix, elevate approved work into pages
 - `spec-map` — turn a spec into a hand-editable system map on a paper canvas
 - `component-libraries` — Studio-aligned supply shelf of saved UI component libraries
 - `muller-brockmann-grid-systems` — opt-in Swiss editorial grid system with inspectable overlays

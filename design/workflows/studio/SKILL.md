@@ -23,9 +23,11 @@ paths relative to this skill's base directory:
    components
 4. `doctrine/codebase-scaffold.md` — only when touching codebase structure
    or starting a project
-5. `doctrine/design-system-package.md` — only when emitting or inheriting
+5. `doctrine/enforcement.md` — only when wiring preflight or judging a
+   boundary violation (the reference script is `scripts/preflight.ts`)
+6. `doctrine/design-system-package.md` — only when emitting or inheriting
    a design-system package
-6. `inventory.md` — when reaching for a tool or supplier, check its
+7. `inventory.md` — when reaching for a tool or supplier, check its
    verdict here first
 
 deposits (one-line experiments earned through pain) land in `house.md`
