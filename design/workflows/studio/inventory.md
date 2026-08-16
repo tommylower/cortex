@@ -9,7 +9,7 @@ never come from a skill's defaults.
 ## the house (not suppliers)
 
 - studio (this skill): the law, the playbook, this inventory. not a supplier, outranks this audit's frame, lives in ~/.claude-wip/skills, outlives groundwork.
-- workbench: the tool. scaffolds and runs the component canvas, fresh or existing project, review pipeline included.
+- workbench: the tool, opt-in only. a component review canvas loaded ONLY on operator ask, never auto, never part of scaffolding. the default scaffold path is doctrine/codebase-scaffold.md + doctrine/enforcement.md.
 - studio-audit (cortex): the ship check. owns scope, evidence, domain coverage, deduplication, and the final ship / fix-first / review-again verdict.
 - asbuilt (cortex): derive + conform a design system from existing code, built 2026-07-04 on the project-c pull. init/diff/generate still seed-only.
 

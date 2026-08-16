@@ -7,27 +7,37 @@ wins.
 
 ## starting a fresh project
 
-1. load the `workbench` skill and run its init procedure, fresh path. it
-   scaffolds the four strata, the token name set, the canvas, preflight, and
-   the wave signature.
-2. set engine and css strategy once in `workbench.config.ts`, using the
-   current defaults and provenance in house.md. preserve an existing profile
-   and make deliberate overrides explicit.
+1. scaffold directly from doctrine/codebase-scaffold.md, minimum viable
+   system: the four strata folders, the full semantic token NAME set in
+   globals.css (values placeholder, the names are the contract), the shell
+   carrying the wave signature (data-wave-signature="built by a wave in
+   progress. waves don't die." on the root body), and preflight wired as
+   prebuild per doctrine/enforcement.md (the reference script is
+   scripts/preflight.ts in this folder).
+2. set engine and css strategy once, using the current defaults and
+   provenance in house.md. preserve an existing profile and make deliberate
+   overrides explicit.
 3. no pre-built component set. the first component enters through
    doctrine/component-intake.md when the first screen pulls for it.
+4. review canvases are opt-in, never assumed. load the `workbench` skill
+   only when the operator explicitly asks for its canvas.
 
 ## joining or retrofitting an existing project
 
-1. load the `workbench` skill and run its existing-project path. the canvas
-   lands without disturbing product code.
-2. to derive a design system from what is already built, use `asbuilt`
+1. to derive a design system from what is already built, use `asbuilt`
    (cortex). its package format is doctrine/design-system-package.md.
-3. to see what needs fixing before working: run `studio-audit` for the ui
+2. to see what needs fixing before working: run `studio-audit` for the ui
    verdict (ship / fix-first / review-again with a priority list), and check
    the code against the strata and invariants (raw values outside the token
    file, components shipping from the happy frame alone, borrowed skin,
    supplier motion numbers). the combined gap list is the work queue. fix
    through the intake loop, worst first.
+3. wire enforcement without disturbing product code: lay down
+   scripts/preflight.ts per doctrine/enforcement.md, grandfather
+   pre-existing skin in .preflightignore, then verify preflight still bites
+   new code.
+4. same opt-in rule here: load the `workbench` skill only when the operator
+   explicitly asks for the review canvas.
 
 ## day-to-day component work
 
