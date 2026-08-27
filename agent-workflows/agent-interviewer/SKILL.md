@@ -31,7 +31,7 @@ The preset files live in `presets/`:
 
 The preset list and one-line blurbs live in `presets/manifest.json`.
 
-## Core Rules
+## Core rules
 
 - Keep the interview short and high-signal.
 - Ask questions in small rounds, not one giant questionnaire.
@@ -45,7 +45,7 @@ The preset list and one-line blurbs live in `presets/manifest.json`.
 
 ## Modes
 
-### 1. Preset Mode
+### 1. Preset mode
 
 Use preset mode when the user wants a fast starting point, does not want to answer questions, or asks for one of the built-in profiles directly.
 
@@ -64,13 +64,13 @@ When using preset mode:
 - do not paraphrase or soften the preset unless the user asks you to adjust it
 - after delivering the preset, offer refinement through interview mode or V2 if useful
 
-### 2. Interview Mode
+### 2. Interview mode
 
 Use interview mode when the user wants something customized instead of a preset.
 
-## Interview Method
+## Interview method
 
-### 1. Start Narrow
+### 1. Start narrow
 
 Open with 2 to 4 high-signal questions. Prefer topics like:
 
@@ -81,7 +81,7 @@ Open with 2 to 4 high-signal questions. Prefer topics like:
 
 Do not start with lightweight style trivia.
 
-### 2. Adapt Based on Signal
+### 2. Adapt based on signal
 
 After each user reply:
 
@@ -91,7 +91,7 @@ After each user reply:
 
 If the user gives a strong answer, move forward. If the user gives a vague answer, drill down.
 
-### 3. Force Specificity
+### 3. Force specificity
 
 Translate fuzzy statements into rules.
 
@@ -108,7 +108,7 @@ When needed, use contrast questions:
 - "Should the agent ask clarifying questions first, or make a reasonable assumption and proceed?"
 - "When uncertain, should it hedge heavily, give a best judgment, or lay out options with a recommendation?"
 
-### 4. Avoid Survey-Bot Behavior
+### 4. Avoid survey-bot behavior
 
 Do not ask broad battery-style questions just to be comprehensive.
 
@@ -120,35 +120,49 @@ Do not ask about:
 
 Stay focused on operating behavior.
 
-### 5. Draft the Behavior File
+### Fixed writing baseline
+
+Treat `google-developer-style` as the default prose baseline for every generated behavior file. Let the interview change pace, detail, pushback, teaching, and decision behavior. Do not replace the baseline with blanket lowercase, punctuation bans, fixed word caps, or compressed prose unless the user explicitly requests that override.
+
+When the target agent might not have Cortex, include a compact portable baseline in the generated file:
+
+- lead with the outcome or critical fact
+- use active voice, familiar precise words, and one idea per paragraph
+- use headings and lists only when they improve scanning
+- scale detail to the task instead of enforcing a fixed length
+- keep the tone conversational, respectful, and human
+
+### 5. Draft the behavior file
 
 Once enough signal exists, generate a markdown behavior file with concrete sections such as:
 
-- `Core Mandate`
-- `Anti-Sycophancy Rules`
+- `Core mandate`
+- `Anti-sycophancy rules`
 - `Personality`
-- `Response Style`
-- `Decision Style`
-- `Handling Vagueness`
-- `Teaching Style`
-- `Uncertainty Rules`
-- `What To Avoid`
-- `Default Response Pattern`
-- `Filename Guidance`
+- `Writing baseline`
+- `Response calibration`
+- `Decision style`
+- `Handling vagueness`
+- `Teaching style`
+- `Uncertainty rules`
+- `What to avoid`
+- `Default response pattern`
+- `Filename guidance`
 
 You may adjust section names if needed, but the document must remain concrete and practical.
 
-## Output Standard
+## Output standard
 
 The final behavior file should:
 
 - read like operating instructions, not branding copy
+- keep Google developer style as the fixed readability baseline
 - include explicit defaults and failure-avoidance rules
 - reflect the user's real preferences, including negative preferences
 - be directly savable as a markdown file
 - be portable across agent ecosystems
 
-## Delivery Pattern
+## Delivery pattern
 
 Follow this flow:
 
@@ -159,13 +173,13 @@ Follow this flow:
 5. Produce the first strong markdown behavior file.
 6. Offer a V2 refinement pass.
 
-## V2 Refinement Pass
+## V2 refinement pass
 
 After delivering the first solid draft or preset, always offer a V2 pass. If the user asks for "strict mode" or "V2" at any point, activate this mode immediately.
 
 The V2 pass is not a rewrite for style. It is a tightening pass that changes how you operate:
 
-### V2 Principles
+### V2 principles
 
 - Default to sharper interpretation, not softer interpretation.
 - Push back on vague answers immediately.
@@ -174,7 +188,7 @@ The V2 pass is not a rewrite for style. It is a tightening pass that changes how
 - Do not preserve ambiguity when it can be resolved.
 - Produce rules the agent can actually follow under pressure.
 
-### V2 Interview Style
+### V2 interview style
 
 Ask fewer questions, but make them count. Each round should:
 
@@ -185,7 +199,7 @@ Ask fewer questions, but make them count. Each round should:
 
 Do not ask "anything else?" style filler questions. Do not act like a survey form. Do not over-explain why you are asking.
 
-### V2 Sharper Defaults
+### V2 sharper defaults
 
 Unless the user clearly wants otherwise, assume:
 
@@ -195,7 +209,7 @@ Unless the user clearly wants otherwise, assume:
 - they want concise answers unless teaching is clearly useful
 - they want questions only when necessary to avoid a bad assumption
 
-### V2 Forcing Specificity
+### V2 forcing specificity
 
 When the user gives a vague answer, do not accept it at face value. Pressure-test it:
 
@@ -212,7 +226,7 @@ Use forced contrasts:
 - concise default vs explanation default
 - strict uncertainty disclosure vs best-effort judgment
 
-### V2 Quality Bar
+### V2 quality bar
 
 The resulting document should:
 
@@ -224,7 +238,7 @@ The resulting document should:
 
 The draft should feel like an operating profile, not a preference summary.
 
-## First Message
+## First message
 
 If the user clearly wants a preset or asks what the options are, begin by showing the built-in presets and their one-line descriptions.
 

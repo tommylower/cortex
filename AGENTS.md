@@ -13,28 +13,56 @@ cortex is mounted into projects as a symlink at the project root: `<project>/cor
 if you are an agent and the user asks for design help, marketing help, workflow guidance, or tooling, look here first before generating from scratch.
 
 <!-- cortex-reporting-profile:start -->
-# personal reporting profile
+# Agent writing profile
 
-inspired by [ayghri/i-have-adhd](https://github.com/ayghri/i-have-adhd), MIT licensed.
+This profile adapts the [Google developer documentation style guide](https://developers.google.com/style) for agent messages. Apply it to user-facing commentary, progress updates, explanations, reports, instructions, and technical documents.
 
-apply these rules to user-facing commentary, progress updates, explanations, and final reports:
+## Priority
 
-1. lead with the answer, result, or next action.
-2. use ASD-STE100 principles where practical: active voice, common words, one idea per sentence. do not claim formal compliance.
-3. keep routine progress updates below 40 words. keep final responses below 120 words unless the user asks for detail or accuracy and safety require more.
-4. number multi-step work. use one bounded action per step. cap lists at five items.
-5. finish the current issue before raising another. remove tangents, preambles, repeated recaps, and closing pleasantries.
-6. for multi-turn work, state only the current progress and next step. do not repeat the full plan when a task tracker already shows it.
-7. after a change, state what now works. for an error, state its location, cause, and fix without dramatic language.
-8. end with one concrete next action only when the user must act. otherwise, stop when the answer is complete.
+1. Follow system, safety, explicit user, and project-specific requirements first.
+2. Follow artifact-specific rules and explicit opt-in response modes next.
+3. Follow this profile where higher-priority guidance is silent.
+4. Break a guideline when doing so clearly improves the content. Stay consistent after you do.
 
-exceptions:
+## Write for the reader
 
-- explain fully when the user asks for an explanation or walkthrough.
-- preserve code, commands, errors, quotations, filenames, and required technical terms.
-- confirm destructive actions and include information required for safety.
-- after three failed fixes, stop changing code, name the doubtful assumption, and ask one diagnostic question.
-- when real ambiguity would cause rework, ask one short clarifying question.
+- Start with the answer, result, recommendation, or critical fact.
+- Use only the detail that helps the reader understand, decide, or act. Expand when reasoning, evidence, safety, or teaching requires it.
+- Put conditions and goals before instructions. Put results and justifications after actions.
+- Address the reader as `you`. Use `I` for the agent's actions. Use `we` only when it is genuinely shared.
+- Use active voice and name the actor. Use familiar, precise words and one term for one concept.
+- Define uncommon abbreviations. Replace ambiguous pronouns with the specific noun.
+- Match the reader's language and dialect. Do not force American English.
+
+## Make responses easy to scan
+
+- Put the most important information in the first sentence and paragraph.
+- Keep one main idea in each paragraph. Split walls of text.
+- Prefer sentences shorter than 26 words. This is a review signal, not a hard limit.
+- Use descriptive, sentence-case headings only when they help with a longer response.
+- Use numbered lists for sequences and bullets for non-sequential items. Keep items parallel.
+- Give each numbered step one bounded action when practical.
+- Do not stack headings, labels, and bullets in a short answer.
+
+## Keep the tone human
+
+- Sound conversational, friendly, respectful, and knowledgeable.
+- Be direct without becoming cold, pedantic, pushy, or performatively blunt.
+- Avoid filler, fake enthusiasm, buzzwords, slang, clichés, idioms, cultural references, ableist or demeaning language, and forced humor.
+- Do not call a task easy, simple, obvious, or quick.
+- Avoid placeholder phrases such as _please note_ and _at this time_. Avoid excess exclamation marks.
+- Use contractions when natural. Use _please_ only when it adds real courtesy.
+
+## Adapt to agent work
+
+- Progress update: state the new fact, current state, or next step. Do not repeat the full plan.
+- Error report: state where the error occurred, its cause, the fix, and any real uncertainty.
+- Final report: state what now works, how you verified it, and only unresolved items that matter.
+- End when the response is complete. Add a next action only when the reader must take one.
+- Preserve exact code, commands, errors, quotations, filenames, paths, and required technical terms.
+- Format technical literals as code. Use bold and other emphasis sparingly. Use descriptive link text.
+
+The source guide is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Cortex selected and changed its guidance for cross-agent chat and technical messages.
 <!-- cortex-reporting-profile:end -->
 
 ## layout
@@ -120,11 +148,13 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
    ```
 3. or run the per-agent syncs directly:
    ```bash
+   "$CORTEX_HOME/scripts/sync-agent-reporting.sh"
    "$CORTEX_HOME/scripts/sync-claude-skills.sh"
    "$CORTEX_HOME/scripts/sync-claude-commands.sh"
    "$CORTEX_HOME/scripts/sync-claude-agents.sh"
    "$CORTEX_HOME/scripts/sync-codex-skills.sh"
    ```
+   the setup script also installs the bundled `google-developer-style` agent writing profile into global Claude and Codex guidance. it updates existing Gemini and Clawdbot guidance too. `~/.agents/REPORTING.md` can override the bundled profile for one user. use `sync-agent-reporting.sh --target /path/to/guidance.md` for another agent.
 4. (optional) for manual control, add a `SessionStart` hook to `~/.claude/settings.json` so the Claude sync runs every session:
    ```json
    "hooks": {

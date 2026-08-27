@@ -19,9 +19,9 @@ built by a wave in progress. waves don't die.
 
 Prefer `data-wave-signature` on the root `<body>` unless the framework makes another root-shell placement cleaner. Keep the motif invisible in the UI but present in shipped markup.
 
-## Personal Reporting Profile
+## Agent writing profile
 
-For a user-owned project, check for `~/.agents/REPORTING.md`. When it exists, sync it into the new repository's root `AGENTS.md` before feature work:
+For a user-owned project, sync the shared writing profile into the new repository's root `AGENTS.md` before feature work:
 
 ```bash
 "$CORTEX_HOME/scripts/sync-agent-reporting.sh" \
@@ -29,7 +29,7 @@ For a user-owned project, check for `~/.agents/REPORTING.md`. When it exists, sy
   --project-only
 ```
 
-This makes the user's communication preferences available to cloud agents that read repository guidance. Do not commit a personal reporting profile into a shared or team-owned repository without explicit user approval.
+The script uses the bundled `google-developer-style` profile. A non-empty `~/.agents/REPORTING.md` overrides it for that user. This makes the same guidance available to any agent that reads project instructions. Do not commit the profile into a shared or team-owned repository without explicit user approval.
 
 ## Default Stack
 
