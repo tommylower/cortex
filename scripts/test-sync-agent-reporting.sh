@@ -47,7 +47,7 @@ assert_marker_count() {
 
 file_mode() {
   local path="$1"
-  stat -f '%Lp' "$path" 2>/dev/null || stat -c '%a' "$path"
+  python3 -c 'import os, sys; print(oct(os.stat(sys.argv[1]).st_mode & 0o777)[2:])' "$path"
 }
 
 mkdir -p "$TEST_HOME/.codex" "$TEST_HOME/.claude"
