@@ -96,10 +96,16 @@ for command in start_commands:
 settings_path.write_text(json.dumps(data, indent=2) + "\n")
 PY
 
+  python3 "$CORTEX_ROOT/scripts/configure-claude-session-pickup.py" \
+    --settings "$settings_path" \
+    --cortex-root "$CORTEX_ROOT"
+
   CORTEX_TARGET_HOME="$TARGET_HOME" \
     "$CORTEX_ROOT/scripts/sync-claude-skills.sh"
   CORTEX_TARGET_HOME="$TARGET_HOME" \
     "$CORTEX_ROOT/scripts/sync-claude-commands.sh"
+  CORTEX_CLAUDE_CONFIG_DIR="$claude_dir" \
+    "$CORTEX_ROOT/scripts/sync-claude-agents.sh"
 }
 
 setup_codex() {
