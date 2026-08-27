@@ -69,6 +69,7 @@ Resources worth preserving before they have a verified permanent home live in
 - `agent-interviewer` — generate a personalized agent behavior file
 - `project-defaults` — default scaffold, stack, conventions, env setup, and deployment flow
 - `fable-prompting` — how to prompt Fable 5 for next-gen results, with three drop-in files (house-rules block, `/loop` template, verifier sub-agent prompt)
+- `google-developer-style` — clear, scannable technical writing for agent messages, explanations, reports, and documentation
 - `improve` — read-only senior-advisor codebase audit that writes handoff plans (by shadcn)
 
 ### engineering
@@ -128,15 +129,19 @@ $CORTEX_HOME/scripts/sync-claude-skills.sh     # symlinks skills into ~/.claude/
 $CORTEX_HOME/scripts/sync-claude-commands.sh   # installs cortex slash commands
 $CORTEX_HOME/scripts/sync-claude-agents.sh     # installs cortex Claude subagents
 $CORTEX_HOME/scripts/sync-codex-skills.sh      # symlinks skills into ~/.codex/skills/
+$CORTEX_HOME/scripts/sync-agent-reporting.sh   # installs shared writing guidance
 ```
 
 Recommended: a `SessionStart` hook in `~/.claude/settings.json` that runs the Claude syncs, so new skills appear automatically every session. See `AGENTS.md` for the snippet and adapter details. Skills stay agent-agnostic markdown; agent-specific automation lives in adapter scripts, never inside a skill folder.
 
-If `~/.agents/REPORTING.md` exists, one-command setup also syncs that personal
-communication profile into the global Claude and Codex guidance files. Use
+One-command setup also syncs the bundled `google-developer-style` writing
+profile into the global Claude and Codex guidance files. A non-empty
+`~/.agents/REPORTING.md` overrides the bundled profile for that user. Use
 `scripts/sync-agent-reporting.sh --project /path/to/project --project-only`
-only for a user-owned repository, or with explicit approval from the owner of
-a shared repository.
+to give any agent the same project guidance. Do this only for a user-owned
+repository, or with explicit approval from the owner of a shared repository.
+Use the repeatable `--target /path/to/guidance.md` option for another agent's
+global instruction file. Setup detects existing Gemini and Clawdbot guidance.
 
 ## journal
 
@@ -178,12 +183,13 @@ Cortex mixes original skills with adapted and vendored work. Credit is preserved
 - [zzzzshawn](https://github.com/zzzzshawn) — loading-states
 - [iamnoman](https://www.npmjs.com/package/funky-shadow) — funky-shadow
 - OpenAI — codex plugin setup
+- [Google for Developers](https://developers.google.com/style) — agent-message adaptation of the Google developer documentation style guide ([CC BY 4.0 notice](catalog/licenses/google-developer-documentation-style-guide-CC-BY-4.0.txt))
 
 If something here is yours and miscredited or unwelcome, open an issue.
 
 ## license
 
-Cortex is MIT licensed. Third-party and adapted skills keep their source credit in frontmatter and body text; the marketing submodule keeps its upstream license in `marketing/`.
+Cortex's original material is MIT licensed unless a file or directory says otherwise. Third-party and adapted skills keep their own licenses and source credit. The Google-derived skill and writing profile remain [CC BY 4.0](catalog/licenses/google-developer-documentation-style-guide-CC-BY-4.0.txt), and the marketing submodule keeps its upstream license in `marketing/`.
 
 ## where this is going
 
