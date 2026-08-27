@@ -59,6 +59,7 @@ setup_claude() {
   CLAUDE_SETTINGS_PATH="$settings_path" CORTEX_ROOT="$CORTEX_ROOT" python3 <<'PY'
 import json
 import os
+import shlex
 from pathlib import Path
 
 settings_path = Path(os.environ["CLAUDE_SETTINGS_PATH"])
@@ -85,8 +86,8 @@ session_start = hooks.setdefault("SessionStart", [])
 start_group = normalize_group(session_start)
 start_hooks = start_group["hooks"]
 start_commands = [
-    f"{cortex_root}/scripts/sync-claude-skills.sh >/dev/null 2>&1 || true",
-    f"{cortex_root}/scripts/sync-claude-commands.sh >/dev/null 2>&1 || true",
+    f"{shlex.quote(cortex_root + '/scripts/sync-claude-skills.sh')} >/dev/null 2>&1 || true",
+    f"{shlex.quote(cortex_root + '/scripts/sync-claude-commands.sh')} >/dev/null 2>&1 || true",
 ]
 
 for command in start_commands:
@@ -124,8 +125,28 @@ if [ "$SETUP_CODEX" -eq 1 ]; then
   setup_codex
 fi
 
-"$CORTEX_ROOT/scripts/sync-agent-reporting.sh" \
-  --home "$TARGET_HOME" \
-  --optional
+REPORTING_ARGS=(--home "$TARGET_HOME")
+
+if [ "$SETUP_CLAUDE" -eq 1 ] && [ "$SETUP_CODEX" -eq 1 ]; then
+  if [ -f "$TARGET_HOME/.gemini/GEMINI.md" ]; then
+    REPORTING_ARGS+=(--target "$TARGET_HOME/.gemini/GEMINI.md")
+  fi
+
+  if [ -f "$TARGET_HOME/clawd/AGENTS.md" ]; then
+    REPORTING_ARGS+=(--target "$TARGET_HOME/clawd/AGENTS.md")
+  fi
+else
+  REPORTING_ARGS+=(--project-only)
+
+  if [ "$SETUP_CLAUDE" -eq 1 ]; then
+    REPORTING_ARGS+=(--target "$TARGET_HOME/.claude/CLAUDE.md")
+  fi
+
+  if [ "$SETUP_CODEX" -eq 1 ]; then
+    REPORTING_ARGS+=(--target "$TARGET_HOME/.codex/AGENTS.md")
+  fi
+fi
+
+"$CORTEX_ROOT/scripts/sync-agent-reporting.sh" "${REPORTING_ARGS[@]}"
 
 echo "Configured local agents for cortex in $TARGET_HOME"

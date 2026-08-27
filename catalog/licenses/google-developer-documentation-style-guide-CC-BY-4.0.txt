@@ -1,0 +1,10 @@
+Google developer documentation style guide attribution
+
+Title: Google developer documentation style guide
+Creator: Google
+Source: https://developers.google.com/style
+License: Creative Commons Attribution 4.0 International
+License URL: https://creativecommons.org/licenses/by/4.0/
+
+The Cortex google-developer-style skill selects, condenses, reorganizes, and
+adapts guidance from the source for cross-agent chat and technical messages.
