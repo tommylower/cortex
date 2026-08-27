@@ -63,6 +63,7 @@ Resources worth preserving before they have a verified permanent home live in
 ### agent workflows
 
 - `claude-workflow` — Claude planning, verification, and hooks
+- `pickup` — restore a compact handoff from the latest cleared session without loading its full transcript
 - `agent-swarm` — multi-agent workflow patterns
 - `designing-loops` — pick the loop primitive (`/goal`, `/loop`, `/schedule`, proactive) and its stop condition (adapted from the Claude Code team)
 - `agent-interviewer` — generate a personalized agent behavior file
@@ -75,7 +76,7 @@ Resources worth preserving before they have a verified permanent home live in
 - `grill-me` / `grill-with-docs` — stress-test a plan before building
 - `tdd`, `diagnose`, `prototype` — building discipline
 - `to-prd`, `to-issues`, `triage` — planning and tickets
-- `handoff` — close out a token-heavy session with pre-clear checks and a short restart prompt
+- `handoff` — proactively create a compact restart capsule before leaving or clearing a session
 - `seo-aeo-best-practices` — technical SEO, structured data, EEAT, and AI-answer implementation guidance
 - `write-a-skill`, `writing-great-skills` — author and refine skills with proper structure, attribution, and predictable behavior
 - `deadcode` — find and remove unused code and dependencies
@@ -125,6 +126,7 @@ Or run the per-agent syncs directly:
 ```bash
 $CORTEX_HOME/scripts/sync-claude-skills.sh     # symlinks skills into ~/.claude/skills/
 $CORTEX_HOME/scripts/sync-claude-commands.sh   # installs cortex slash commands
+$CORTEX_HOME/scripts/sync-claude-agents.sh     # installs cortex Claude subagents
 $CORTEX_HOME/scripts/sync-codex-skills.sh      # symlinks skills into ~/.codex/skills/
 ```
 

@@ -122,6 +122,7 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
    ```bash
    "$CORTEX_HOME/scripts/sync-claude-skills.sh"
    "$CORTEX_HOME/scripts/sync-claude-commands.sh"
+   "$CORTEX_HOME/scripts/sync-claude-agents.sh"
    "$CORTEX_HOME/scripts/sync-codex-skills.sh"
    ```
 4. (optional) for manual control, add a `SessionStart` hook to `~/.claude/settings.json` so the Claude sync runs every session:
@@ -137,6 +138,10 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
            {
              "type": "command",
              "command": "/path/to/cortex/scripts/sync-claude-commands.sh >/dev/null 2>&1 || true"
+           },
+           {
+             "type": "command",
+             "command": "/path/to/cortex/scripts/sync-claude-agents.sh >/dev/null 2>&1 || true"
            }
          ]
        }
@@ -147,7 +152,9 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
 **claude code adapter:**
 
 - `scripts/sync-claude-skills.sh` walks every category folder, finds every `<category>/<skill>/SKILL.md`, and symlinks `~/.claude/skills/<skill-name>` back to the cortex folder. idempotent, removes stale links, safe to re-run.
-- `scripts/sync-claude-commands.sh` installs cortex-owned slash commands (`/handoff`, `/closeout`, `/asbuilt`, `/studio-audit`) into `~/.claude/commands/`, and removes the retired waveframe/design-* adapters on each run.
+- `scripts/sync-claude-commands.sh` installs cortex-owned slash commands such as `/asbuilt` and `/studio-audit`, and removes retired command adapters on each run. `/handoff` and `/pickup` load directly as skills.
+- `scripts/sync-claude-agents.sh` installs Claude-only subagents such as the read-only pickup summarizer into the active Claude config directory.
+- `scripts/configure-claude-session-pickup.py` adds the zero-token `SessionEnd(clear)` bookmark hook and keeps `/handoff` and `/pickup` user-invoked in Claude Code.
 
 **codex adapter:**
 
