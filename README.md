@@ -67,8 +67,8 @@ Resources worth preserving before they have a verified permanent home live in
 - `agent-swarm` — multi-agent workflow patterns
 - `designing-loops` — pick the loop primitive (`/goal`, `/loop`, `/schedule`, proactive) and its stop condition (adapted from the Claude Code team)
 - `agent-interviewer` — generate a personalized agent behavior file
-- `project-clarity` — establish or repair a project's `workspace/` operator layer
-- `project-defaults` — default scaffold, stack, conventions, env setup, and deployment flow
+- `wip-quickstart` — turn rough project context into a brief, workspace, and operable scaffold
+- `workspace-setup` — establish, review, migrate, or repair a project's `workspace/` operator layer
 - `fable-prompting` — how to prompt Fable 5 for next-gen results, with three drop-in files (house-rules block, `/loop` template, verifier sub-agent prompt)
 - `google-developer-style` — clear, scannable technical writing for agent messages, explanations, reports, and documentation
 - `improve` — read-only senior-advisor codebase audit that writes handoff plans (by shadcn)

@@ -1,14 +1,15 @@
 ---
-name: project-clarity
-description: Workspace operator-layer establishment and repair for code projects. Use when starting a project, organizing an existing repository or multi-repository engagement, migrating a control-room or planning layer, or reducing duplicated project documentation. Use improve for codebase audits and project-defaults for web stack conventions.
+name: workspace-setup
+description: Establish, review, migrate, or repair the workspace operator layer for a standalone or multi-repository code project. Use when organizing existing project information, replacing a control-room or planning layer, choosing a local, tracked, or mixed workspace, routing work to a dedicated project agent, or reducing duplicated documentation. Use wip-quickstart for end-to-end new-project intake and scaffolding.
 ---
 
-# Project Clarity
+# Workspace Setup
 
 Use `workspace/` as the literal folder name and the leading concept. Every
 independently operated code project gets one workspace: the operator layer for
 understanding, coordinating, and maintaining the project without competing
-with its code, product documentation, or external systems of record.
+with its code, product documentation, dedicated project agent, or external
+systems of record.
 
 A workspace should answer:
 
@@ -28,7 +29,8 @@ it has its own work lifecycle.
 
 For nested projects, the parent workspace owns only cross-project coordination.
 Each independently operated child owns its local work. Do not mirror state
-between them.
+between them. Do not create one workspace per repository when several
+repositories are operated as one project.
 
 **Complete when:** you can name every project root in scope and state, in one
 sentence each, what its workspace owns.
@@ -45,20 +47,34 @@ Classify each relevant artifact as:
 
 - stable project or product documentation;
 - workspace coordination;
-- canonical truth owned by code, another repository, or an external system;
+- canonical truth owned by code, another repository, a dedicated project
+  agent, or an external system;
 - historical or disposable material.
 
 **Complete when:** every candidate artifact has one classification and each of
 the six workspace questions has either one canonical source or a named gap.
 
-## 3. Choose the action branch
+## 3. Choose the workspace shape
 
-Read [the workspace contract](references/workspace-contract.md) before
-proposing, establishing, migrating, or maintaining a workspace.
+Read [the workspace contract](references/workspace-contract.md). Select each
+axis independently:
+
+- **Coordination:** minimal or coordinated.
+- **Sharing:** local, tracked, or mixed.
+- **Execution ownership:** general operator or dedicated project agent.
+
+Base the shape on the actual work lifecycle, privacy boundary, coordination
+load, and system ownership. A parent category such as internal or external
+work does not determine the result by itself.
+
+**Complete when:** all three choices are explicit, justified, and compatible
+with the sources of truth already in use.
+
+## 4. Choose the action branch
 
 If files, folders, terminology, or sources of truth must move or consolidate,
-also read [the migration procedure](references/migration.md) before proposing
-the move.
+read [the migration procedure](references/migration.md) before proposing the
+move.
 
 - **Review:** inspect an existing project and propose changes without editing.
 - **Establish:** create the workspace when the user asks to scaffold a new
@@ -70,16 +86,17 @@ the move.
 
 When the request is ambiguous, use Review.
 
-**Complete when:** the required reference is loaded and the permitted action
-boundary—review or edit—is explicit.
+**Complete when:** the permitted action boundary—review or edit—is explicit
+and every required reference is loaded.
 
-## 4. Propose or implement
+## 5. Propose or implement
 
 For Review, return:
 
 ```text
 Scope:
 Workspace role:
+Workspace shape:
 Keep outside:
 Move into workspace:
 Create:
@@ -93,23 +110,26 @@ maintenance cost, and stop. A later user request must authorize implementation.
 
 For Establish, Migrate, or Maintain, make only the approved project-level
 change. Preserve useful conventions and user-authored material. Link to
-canonical truth instead of copying it.
+canonical truth instead of copying it. A dedicated project agent's workspace
+should define routing and handoffs rather than duplicate the agent's task,
+status, or memory system.
 
 **Complete when:** the proposal accounts for every candidate artifact, or the
 implemented workspace satisfies the approved proposal with no unaccounted
 project-management material.
 
-## 5. Verify the workspace
+## 6. Verify the workspace
 
 Check all of the following:
 
 - `workspace/` is the only active name for the operator layer;
-- the root front door and the workspace router have distinct roles;
+- the root front door and workspace router have distinct roles;
+- one independently operated project has one workspace;
 - changing state has one easy-to-update home;
 - links and moved-path references resolve;
 - parent and child workspaces do not mirror each other's state;
 - optional files and folders contain real material;
-- sharing and privacy boundaries are explicit;
+- sharing, privacy, execution ownership, and authority are explicit;
 - credentials and secret values are absent.
 
 **Complete when:** every check passes or the unresolved check is reported as a

@@ -15,8 +15,8 @@ workflows, conventions, and setup guides for working with AI coding agents.
 - **improve** — audit any codebase as a read-only senior advisor, then write prioritized, self-contained plans for cheaper models/agents to execute. never edits source. by shadcn, MIT. this is the async hand-off counterpart to the in-session engineering skills (grill-with-docs, tdd, diagnose); see [../engineering/AGENTS.md](../engineering/AGENTS.md) for the routing rule and how they stack
 - **nightcap** — nightly agent journal. summarizes the day's Claude Code and Codex transcripts into first-person narrative entries in your own voice. mirrored to [tommylower/nightcap](https://github.com/tommylower/nightcap)
 - **pickup** — restore a compact handoff from the latest cleared session without loading its full transcript into the current context
-- **project-clarity** — establish or repair the `workspace/` operator layer for a standalone repository or multi-repository project; reviews existing information before any migration
-- **project-defaults** — default scaffold, stack, conventions, env setup, deployment flow, and dev-overlay boundaries for Cortex web projects
+- **wip-quickstart** — turn a rough brief, voice dump, or idea into a compact project brief, correctly shaped workspace, and operable scaffold; applies the web defaults when relevant
+- **workspace-setup** — establish, review, migrate, or repair the `workspace/` operator layer for a standalone or multi-repository project; supports minimal or coordinated, local or tracked, and general or dedicated-agent variants
 - **vercel-deploy** — deploy or manage Vercel projects, preview deployments, project linking, and token-based CLI flow
 
 Design-system extraction workflows live in [../design/workflows](../design/workflows/), including **asbuilt**.

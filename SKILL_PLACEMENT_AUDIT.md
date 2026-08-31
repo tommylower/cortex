@@ -4,6 +4,10 @@ Scope: every public skill currently listed by `catalog/shelves.json`.
 
 Validation checked: `scripts/validate-skills.sh` passes across 107 public skills.
 
+Historical snapshot: names and counts below describe the library at the time
+of this audit. `project-defaults` was later superseded by `wip-quickstart`, and
+the workspace workflow is now `workspace-setup`.
+
 This audit is about human findability and agent invocation shape, not a line-by-line rewrite of every skill body. Full inventory remains in `SKILL_AUDIT.md`; this file records what was checked and what was cleaned up before building the global `/skills` or `/cortex` discovery layer.
 
 ## Verdict
