@@ -14,6 +14,10 @@ if ! node "$CORTEX_ROOT/scripts/skill-catalog.js" validate; then
   errors=$((errors+1))
 fi
 
+if ! node "$CORTEX_ROOT/scripts/update-readme-menu.js" --check; then
+  errors=$((errors+1))
+fi
+
 while IFS= read -r category; do
   for skill_dir in "$CORTEX_ROOT/$category"/*/; do
     [ -d "$skill_dir" ] || continue
@@ -71,7 +75,7 @@ done < <(node "$CORTEX_ROOT/scripts/skill-catalog.js" categories --validate)
 
 echo
 if [ $errors -gt 0 ]; then
-  echo "$errors skill(s) failed validation"
+  echo "$errors validation check(s) failed"
   exit 1
 fi
 echo "all skills valid"

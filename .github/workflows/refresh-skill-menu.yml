@@ -1,0 +1,41 @@
+name: refresh skill menu
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "agent-workflows/**"
+      - "design/**"
+      - "engineering/**"
+      - "catalog/shelves.json"
+      - "scripts/update-readme-menu.js"
+      - "README.md"
+      - ".github/workflows/refresh-skill-menu.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-skill-menu
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: regenerate menu
+        run: node scripts/update-readme-menu.js
+
+      - name: commit menu update
+        run: |
+          if git diff --quiet README.md; then
+            echo "skill menu is current"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs: refresh skill menu"
+          git push

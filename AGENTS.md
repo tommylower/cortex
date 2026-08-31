@@ -194,15 +194,16 @@ cortex is the source of truth. agents see cortex skills via thin adapters in `sc
 
 - if an agent can read markdown from the project workspace, the `cortex/` symlink is already enough.
 - if an agent needs a dedicated skills directory, add a new adapter script alongside the existing ones rather than embedding agent-specific files in a skill folder.
-- `scripts/validate-skills.sh` checks every skill has frontmatter, a `name` matching its directory, a non-empty description, and no duplicate names across cortex. run it before committing skill changes.
+- `scripts/update-readme-menu.js` regenerates the root README skill menu from public skill frontmatter. never hand-edit content between the generated markers.
+- `scripts/validate-skills.sh` checks every skill has frontmatter, a `name` matching its directory, a non-empty description, no duplicate names across cortex, and a current README skill menu. run it before committing skill changes.
 
 **rules for adding a new skill:**
 
 1. create `<category>/<skill-name>/SKILL.md` with valid frontmatter (`name` must equal the directory name).
 2. if the skill is not original, add the `author:` line and source links.
 3. if it names a client or is not licensed for redistribution, it goes in `local/`.
-4. add the skill to its category `AGENTS.md` index and the public menu in the root `README.md`.
-5. run `scripts/validate-skills.sh` and fix anything it complains about.
+4. add the skill to its category `AGENTS.md` index, then run `node scripts/update-readme-menu.js` to regenerate the public menu.
+5. run `scripts/validate-skills.sh` and fix anything it complains about. the main-branch workflow also repairs a stale generated menu after a push.
 6. run the relevant sync script to mirror it into agent skill directories immediately.
 
 **rules for agents (you, reading this):**
