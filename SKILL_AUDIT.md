@@ -4,6 +4,10 @@ Scope: public Cortex skill roots from `scripts/validate-skills.sh`, plus install
 
 Validation: `scripts/validate-skills.sh` passes for all public skills.
 
+Historical snapshot: names and counts below describe the library at the time
+of this audit. `project-defaults` was later superseded by `wip-quickstart`, and
+the workspace workflow is now `workspace-setup`.
+
 ## Counts
 
 - Total public skills: 107
