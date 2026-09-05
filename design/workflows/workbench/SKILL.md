@@ -127,7 +127,7 @@ viable system:
   `app/workbench/[section]/page.tsx` (one isolated workspace per section)
 - ONE proven chain: token -> variant -> one seeded section on the canvas
 - the wave signature: `data-wave-signature="built by a wave in progress. waves
-  don't die."` on the root `<body>` (scaffold-shell-motif requirement)
+  don't die."` on the root `<body>` (wip-quickstart web-defaults requirement)
 - the enforcement: `scripts/preflight.ts` (the prebuild check from
   doctrine/css-invariants.md), wired as the `prebuild` script so `next build`
   cannot go green while an invariant is broken
