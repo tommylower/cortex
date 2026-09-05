@@ -5,6 +5,13 @@ description: Opt-in component review canvas (the "workbench"). NEVER auto-load. 
 
 # workbench
 
+## Parked reference
+
+The original application and template are archived locally as of 2026-09-05.
+Existing project-owned copies remain usable under their own project rules.
+The installation procedure below is historical reference; a new installation or
+redesign begins with an explicit project brief rather than resuming old tasks.
+
 ## the tool and the law
 
 a repeatable browser/dev canvas for building and organizing code-based
@@ -17,7 +24,7 @@ this skill is the TOOL's installer and operating manual. `studio` is the LAW.
 load `studio` first, every session. where the two ever conflict, the law wins.
 this skill never duplicates a studio rule, it instantiates one.
 
-the tool itself lives in its own repo, `~/Developer/code/int-work/workbench`: the
+the tool itself lives in its own repo, `~/Developer/code/_archive/workbench`: the
 stamp template (`template/`), a runnable showroom canvas stamped from it, and
 the tool's docs. improvements to the tool are made there and reach projects
 through the next stamp; this skill is how a project gets stamped.
@@ -101,7 +108,7 @@ profile's engine, or switch the profile deliberately.
 
 ### 2. lay the boundaries, not the implementations
 
-copy the template (`~/Developer/code/int-work/workbench/template/`) into the target and rewrite for the project (name, skin prefix,
+copy the template (`~/Developer/code/_archive/workbench/template/`) into the target and rewrite for the project (name, skin prefix,
 paths). two exceptions: `manifest.json` is the install recipe the skill reads,
 never copied into the project; and on the existing-project path the seed's
 root `README.md` is skipped (the strata rule still lands via
