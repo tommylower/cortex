@@ -1,10 +1,9 @@
 # enforcement: the prebuild gate
 
 the profile-agnostic rules every studio codebase enforces mechanically,
-and the check that enforces them. entered 2026-08-16, extracted from the
-universal half of the workbench tool's css-invariants so the law is
-self-contained; the tool keeps its own copy for its profile-specific
-rules. `next build` catches none of this; without a guard it rots.
+and the check that enforces them. entered 2026-08-16 so the law is
+self-contained. `next build` catches none of this; without a guard it
+rots.
 
 the reference implementation is `scripts/preflight.ts` beside this
 doctrine. copy it into the project's `scripts/`, wire it as the
@@ -66,9 +65,8 @@ remove it.
 
 the checks above run everywhere, config or not. profile-scoped checks
 (single-skin's no-utility-on-skin, the engine-resolution ban) activate
-when a project declares a profile in a `design.config.ts` (or a
-workbench-stamped project's `workbench.config.ts`) with `skinPrefix`,
-`css`, and `engine` keys. no config means universal checks only, never a
+when a project declares a profile in a `design.config.ts` with
+`skinPrefix`, `css`, and `engine` keys. no config means universal checks only, never a
 failure. profile-specific law (single skin layer, one type api, one
 elevation model, the cascade truth) lives with the profile's owner, not
 here.

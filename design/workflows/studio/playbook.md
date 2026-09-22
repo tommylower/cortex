@@ -19,8 +19,6 @@ wins.
    overrides explicit.
 3. no pre-built component set. the first component enters through
    doctrine/component-intake.md when the first screen pulls for it.
-4. review canvases are opt-in, never assumed. load the `workbench` skill
-   only when the operator explicitly asks for its canvas.
 
 ## joining or retrofitting an existing project
 
@@ -36,8 +34,6 @@ wins.
    scripts/preflight.ts per doctrine/enforcement.md, grandfather
    pre-existing skin in .preflightignore, then verify preflight still bites
    new code.
-4. same opt-in rule here: load the `workbench` skill only when the operator
-   explicitly asks for the review canvas.
 
 ## day-to-day component work
 

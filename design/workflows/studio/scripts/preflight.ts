@@ -1,10 +1,9 @@
 #!/usr/bin/env -S npx tsx
 // preflight: the studio prebuild gate (doctrine/enforcement.md). runs before a
 // build exists, so it never imports project code. profile-agnostic: with no
-// config file it runs the universal checks; a design.config.ts (or a
-// workbench-stamped project's workbench.config.ts) declaring skinPrefix, css,
-// and engine activates the profile-scoped checks too. read textually, never
-// imported. the invariants:
+// config file it runs the universal checks; a design.config.ts declaring
+// skinPrefix, css, and engine activates the profile-scoped checks too. read
+// textually, never imported. the invariants:
 //
 //   1. tokens-only        raw hex / raw color fn / one-off px inside a
 //                         .{prefix}-* block in any css; raw hex / color literal
@@ -70,14 +69,13 @@ const IGNORE_DIRS = new Set([
 ]);
 
 // ---- config: read textually, never import (preflight runs pre-build) ---------
-// discovery order: design.config.ts (studio-native), then workbench.config.ts
-// (a stamped canvas project). no config is not an error: the universal checks
-// run with the default prefix, and the profile-scoped checks (no-utility-on-
-// skin, engine resolution) stay off until a profile declares them.
+// config file: design.config.ts. no config is not an error: the universal
+// checks run with the default prefix, and the profile-scoped checks (no-
+// utility-on-skin, engine resolution) stay off until a profile declares them.
 function readConfig(): { prefix: string; css: string; engine: string; source: string } {
   let text: string | null = null;
   let source = "none";
-  for (const name of ["design.config.ts", "workbench.config.ts"]) {
+  for (const name of ["design.config.ts"]) {
     try {
       text = readFileSync(join(ROOT, name), "utf8");
       source = name;

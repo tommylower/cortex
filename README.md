@@ -96,7 +96,6 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 - [`asbuilt`](design/workflows/asbuilt/SKILL.md) — Asbuilt design-system extraction and conformance.
 - [`spec-map`](design/workflows/spec-map/SKILL.md) — turn a spec into a hand-editable system map in paper
 - [`studio`](design/workflows/studio/SKILL.md) — Load before ANY design work (canvas or code, any project). The single front door to the design practice: the house law (rules.md the grading system, house.md this install's earned…
-- [`workbench`](design/workflows/workbench/SKILL.md) — Opt-in component review canvas (the "workbench"). NEVER auto-load. Load ONLY when the operator explicitly asks for the workbench or a review canvas by name. Starting a project,…
 
 #### kits
 - [`component-libraries`](design/kits/component-libraries/SKILL.md) — UI component-library supply shelf.
