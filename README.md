@@ -45,7 +45,6 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 - [`fable-prompting`](agent-workflows/fable-prompting/SKILL.md) — Router for prompting Fable 5 so it performs like a next-generation model instead of a current one — give it the goal not the steps, hold it to a hard self-checkable bar, loop…
 - [`google-developer-style`](agent-workflows/google-developer-style/SKILL.md) — Applies an agent-focused adaptation of the Google developer documentation style guide to substantial technical prose.
 - [`improve`](agent-workflows/improve/SKILL.md) — Survey any codebase as a senior advisor and produce prioritized, self-contained implementation plans for OTHER models/agents to execute. Strictly read-only on source code — never…
-- [`nightcap`](agent-workflows/nightcap/SKILL.md) — Nightcap, a nightly agent journal. Reads recent Claude Code and Codex transcripts off disk, skips trivial sessions, and writes one first-person narrative journal entry per real…
 - [`pickup`](agent-workflows/pickup/SKILL.md) — Restore compact continuity from the latest cleared session in the current project. Use in a fresh session after clearing context when the user asks to pick up or continue prior…
 - [`vercel-deploy`](agent-workflows/vercel-deploy/SKILL.md) — Deploy or manage projects on Vercel from an agent workflow.
 - [`wip-quickstart`](agent-workflows/wip-quickstart/SKILL.md) — New-project intake and scaffold workflow for turning a rough brief, voice dump, or idea into an operable code project.
@@ -199,13 +198,7 @@ repository, or with explicit approval from the owner of a shared repository.
 Use the repeatable `--target /path/to/guidance.md` option for another agent's
 global instruction file. Setup detects existing Gemini and Clawdbot guidance.
 
-## journal
-
-[nightcap](https://github.com/tommylower/nightcap) (`agent-workflows/nightcap/`) reads the day's Claude Code and Codex transcripts every night and writes one narrative entry per substantial session, first person, in your own voice, like a handwritten journal. Each entry records the date, agent, project, a resume command linking back to the chat, and a 1-3 paragraph summary of the work and thinking.
-
-Personalization (name, voice, journal location) lives in `~/.config/nightcap/config.json`. Entries are local-only and never committed. See the skill's `SKILL.md` for setup, scheduling, and on-demand sweeps.
-
-Standalone repos like nightcap, asbuilt, and studio can be refreshed with `scripts/publish.sh <folder> <owner/repo>`. They are presented as Tommy Lower projects; Cortex only keeps their source folders in one place.
+Standalone repos like asbuilt and studio can be refreshed with `scripts/publish.sh <folder> <owner/repo>`. They are presented as Tommy Lower projects; Cortex only keeps their source folders in one place.
 
 ## skill format
 

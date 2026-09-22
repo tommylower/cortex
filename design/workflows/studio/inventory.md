@@ -105,7 +105,7 @@ in house.md defaults.
 
 - handoff / closeout: supplier. session continuity only. v1 called this "the natural home for the deposit ritual", WRONG since the ritual was killed; deposits are pain-driven and happen at the moment of pain, not at close.
 - grill-me, grill-with-docs, blindspot, merge-quiz, diagnose, tdd, triage, zoom-out, teach: supplier. thinking/review aids, no design-law claims.
-- improve, improve-codebase-architecture, deadcode, prototype, to-issues, to-prd, conventions, stack, dev-setup, claude-workflow, agent-swarm, agent-interviewer, codex-review, fable-codex, caveman/grug, write-a-skill, writing-great-skills, setup-matt-pocock-skills, find-skills, nightcap, vercel-deploy: supplier. engineering/workflow catalogs, out of design-law scope.
+- improve, improve-codebase-architecture, deadcode, prototype, to-issues, to-prd, conventions, stack, dev-setup, claude-workflow, agent-swarm, agent-interviewer, codex-review, fable-codex, caveman/grug, write-a-skill, writing-great-skills, setup-matt-pocock-skills, find-skills, vercel-deploy: supplier. engineering/workflow catalogs, out of design-law scope.
 - interview (command): supplier. interviewer adapter.
 
 ### non-design (cortex/marketing, ~40 skills)

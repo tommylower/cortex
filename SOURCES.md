@@ -19,7 +19,7 @@ Cortex mixes original skills, adapted skills, vendored snapshots, submodules, pr
 - Move adapted skills only when the source credit remains intact.
 - Do not move upstream marketing skills inside `marketing/skills`; make a Cortex-side router instead.
 - Do not promote anything from `local/` into a public shelf without explicit approval.
-- Keep standalone mirrors, such as `nightcap`, exact when using `scripts/publish.sh`.
+- Keep standalone mirrors, such as `studio`, exact when using `scripts/publish.sh`.
 
 ## Attribution Check
 

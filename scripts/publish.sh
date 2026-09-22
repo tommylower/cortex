@@ -5,7 +5,7 @@
 # snapshot mirror commit with the exact folder contents.
 #
 # usage:   scripts/publish.sh <folder> <owner/repo>
-# example: scripts/publish.sh agent-workflows/nightcap tommylower/nightcap
+# example: scripts/publish.sh design/workflows/studio tommylower/studio
 
 set -euo pipefail
 

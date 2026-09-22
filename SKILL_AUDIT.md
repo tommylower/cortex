@@ -62,7 +62,6 @@ These exist in `~/.claude/commands` right now.
 | `fable-codex` | Reference split-stack mode where one model plans/reviews and another executes through CLI handoff. |
 | `fable-prompting` | Prompting rules and templates for Fable 5, including house rules, a loop prompt, and verifier prompt. |
 | `improve` | Performs read-only senior codebase audits and produces prioritized implementation plans for other agents. |
-| `nightcap` | Reads recent Claude/Codex transcripts and writes narrative session journal entries. |
 | `project-defaults` | Records default scaffold, stack, conventions, env setup, deployment flow, and dev-overlay boundaries for Cortex web projects. |
 | `vercel-deploy` | Guides Vercel deployment, preview creation, project linking, and CLI/token setup from agent workflows. |
 
