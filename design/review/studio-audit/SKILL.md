@@ -15,9 +15,9 @@ Its domain-owner coverage and evidence discipline incorporate
 [Jakub Krehel's `better-interface`](https://github.com/jakubkrehel/skills/tree/main/skills/better-interface)
 at commit `a67333399dabbc71d7778962cb9c4fb9b86a00d0`.
 
-## law
+## before judging
 
-Read [references/studio-law.md](references/studio-law.md) before judging. Read
+Read [references/review-lenses.md](references/review-lenses.md) before judging. Read
 [references/report-template.md](references/report-template.md) before writing
 the final report.
 

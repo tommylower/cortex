@@ -18,6 +18,18 @@ PREFIX="${PREFIX%/}"
 
 [ -d "$PREFIX" ] || { echo "no such folder: $PREFIX" >&2; exit 1; }
 
+# studio publishes to a public mirror: run its check first, with the private client list present.
+# compare resolved paths, so ./design//workflows/studio or a parent folder can't skip the gate.
+lower() { printf '%s' "$1" | tr '[:upper:]' '[:lower:]'; }
+prefix_abs="$(lower "$(cd "$PREFIX" && pwd -P)")"
+studio_abs="$(lower "$(cd design/workflows/studio && pwd -P)")"
+case "$studio_abs/" in "$prefix_abs"/*) publishes_studio=1 ;; *) publishes_studio=0 ;; esac
+case "$prefix_abs/" in "$studio_abs"/*) publishes_studio=1 ;; esac
+if [ "$publishes_studio" = 1 ]; then
+  grep -qv '^[[:space:]]*\(#\|$\)' local/client-names.txt 2>/dev/null || { echo "local/client-names.txt is missing or empty; the studio client check can't run, so not publishing" >&2; exit 1; }
+  node scripts/check-studio.mjs || { echo "studio check failed; not publishing" >&2; exit 1; }
+fi
+
 if ! git diff --quiet HEAD -- "$PREFIX" || [ -n "$(git status --porcelain "$PREFIX")" ]; then
   echo "uncommitted changes under $PREFIX — commit them first" >&2
   exit 1

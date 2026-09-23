@@ -1,9 +1,10 @@
-# studio law
+# review lenses
 
-Studio law is the taste bar for the final pass. It does not replace the local
-design system, asbuilt package, accessibility rules, or product constraints. It
-judges whether the finished work has enough clarity, care, and confidence to
-represent the studio.
+These lenses are the taste bar for the final pass. The law itself is the
+`studio` skill's `rules.md`; the lenses judge finished work against it. They do
+not replace the local design system, asbuilt package, accessibility rules, or
+product constraints. They judge whether the finished work has enough clarity,
+care, and confidence to represent the studio.
 
 ## lenses
 

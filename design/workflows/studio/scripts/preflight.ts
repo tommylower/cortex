@@ -33,7 +33,7 @@
 // files are exempt from the per-file checks (tokens-only file scans,
 // no-utility-on-skin, cva-boundary) and the summary line reports
 // "N grandfathered". globals-wide checks (dark-completeness) are unaffected.
-// this instantiates the css-invariants grandfather rule: accepted skins are
+// this instantiates the grandfathering rule in doctrine/enforcement.md: accepted skins are
 // not retokenized by a prebuild gate; the hard bar applies to new code.
 //
 // zero runtime deps beyond node builtins. run: npx tsx scripts/preflight.ts
@@ -353,76 +353,12 @@ function checkDarkCompleteness(prefix: string, v: Violation[]) {
     if (!inlineProps.has(role)) {
       v.push({ check: "dark-completeness", file: rel(file), line: rootLine(role), message: `role "${role}" generates a utility but is not re-exported in @theme inline` });
     }
-    // when a .light pin block exists (the canvas review cells depend on it),
-    // it needs parity too, or the role's light cell collapses under a global
-    // dark toggle: the exact silent degradation this check exists to stop.
+    // when a .light pin block exists, it needs parity too, or the role's
+    // light scheme collapses under a global dark toggle: the exact silent
+    // degradation this check exists to stop.
     if (lightProps !== null && !lightProps.has(role)) {
-      v.push({ check: "dark-completeness", file: rel(file), line: rootLine(role), message: `role "${role}" defined in :root has no .light key; its light review cell collapses under a global dark toggle` });
+      v.push({ check: "dark-completeness", file: rel(file), line: rootLine(role), message: `role "${role}" defined in :root has no .light key; its light scheme collapses under a global dark toggle` });
     }
-  }
-}
-
-// ---- registry sanity: duplicate section ids -----------------------------------
-// two sections with one id make the second silently unreachable on the canvas
-// (find() returns the first) and duplicate static params. the scan is scoped
-// to the sections array literal and counts only ids at section-object depth,
-// so data objects inside a render, nested arrays, and comments cannot false-
-// positive. strings and comments are walked, never regexed blind.
-function checkRegistryIds(v: Violation[]) {
-  const file = join(ROOT, "src", "design", "sections.tsx");
-  let text: string;
-  try {
-    text = readFileSync(file, "utf8");
-  } catch {
-    return; // no canvas registry in this project: nothing to check.
-  }
-  const arr = text.match(/\bsections\s*(?::[^=]*)?=\s*\[/);
-  if (!arr || arr.index === undefined) return;
-  const start = arr.index + arr[0].length;
-
-  const seen = new Map<string, number>();
-  let depthBrace = 0; // {} depth inside the array; a section object is depth 1
-  let depthBracket = 1; // [] depth; starts inside the sections array
-  let i = start;
-  while (i < text.length && depthBracket > 0) {
-    const ch = text[i];
-    const two = text.slice(i, i + 2);
-    if (two === "//") {
-      const nl = text.indexOf("\n", i);
-      i = nl === -1 ? text.length : nl + 1;
-      continue;
-    }
-    if (two === "/*") {
-      const end = text.indexOf("*/", i + 2);
-      i = end === -1 ? text.length : end + 2;
-      continue;
-    }
-    if (ch === '"' || ch === "'" || ch === "`") {
-      // at section-object depth, capture an id: "..." field; otherwise skip the string
-      const before = text.slice(Math.max(start, i - 24), i);
-      const isIdField = depthBrace === 1 && depthBracket === 1 && /\bid\s*:\s*$/.test(before);
-      let j = i + 1;
-      while (j < text.length && text[j] !== ch) {
-        if (text[j] === "\\") j++;
-        j++;
-      }
-      if (isIdField) {
-        const id = text.slice(i + 1, j);
-        const line = lineAt(text, i);
-        if (seen.has(id)) {
-          v.push({ check: "registry-ids", file: rel(file), line, message: `duplicate section id "${id}" (first at line ${seen.get(id)}); the second registration is unreachable on the canvas` });
-        } else {
-          seen.set(id, line);
-        }
-      }
-      i = j + 1;
-      continue;
-    }
-    if (ch === "{") depthBrace++;
-    else if (ch === "}") depthBrace--;
-    else if (ch === "[") depthBracket++;
-    else if (ch === "]") depthBracket--;
-    i++;
   }
 }
 
@@ -617,9 +553,9 @@ function warnSkinEscapes(files: string[], css: string, prefix: string): string[]
 
 // ---- advisory: grandfather scope (WARN, never a failure) ----------------------
 // grandfathering exists for pre-existing product code on the existing-project
-// path. a prefix that covers the seed's canonical paths (app/globals.css,
+// path. a prefix that covers the scaffold's canonical paths (app/globals.css,
 // components/ui, or the whole app/ / components/ / src/ tree) is a smell, not
-// accepted skin (css-invariants grandfathering).
+// accepted skin (the grandfathering rule in doctrine/enforcement.md).
 function warnGrandfatherScope(prefixes: string[]): string[] {
   const warns: string[] = [];
   for (const p of prefixes) {
@@ -628,7 +564,7 @@ function warnGrandfatherScope(prefixes: string[]): string[] {
     const coversUi = "components/ui".startsWith(bare) || bare.startsWith("components/ui");
     const blanket = bare === "" || bare === "." || bare === "app" || bare === "components" || bare === "src";
     if (coversGlobals || coversUi || blanket) {
-      warns.push(`WARN  .preflightignore prefix "${p}" covers seed-canonical paths; grandfathering is for pre-existing product code, never the seed strata`);
+      warns.push(`WARN  .preflightignore prefix "${p}" covers scaffold-canonical paths; grandfathering is for pre-existing product code, never the scaffold strata`);
     }
   }
   return warns;
@@ -653,7 +589,6 @@ function main() {
   ];
   if (engine) checks.push({ id: "engine-resolution", label: `engine resolution (${engine})`, run: () => checkEngineResolution(files, engine, v) });
   checks.push({ id: "engine-boundary", label: "engine import boundary", run: () => checkEngineBoundary(files, v) });
-  checks.push({ id: "registry-ids", label: "registry ids unique", run: () => checkRegistryIds(v) });
   if (css === "single-skin") {
     checks.splice(2, 0, { id: "no-utility-on-skin", label: "no utility on skin", run: () => checkNoUtilityOnSkin(files, prefix, v) });
   }

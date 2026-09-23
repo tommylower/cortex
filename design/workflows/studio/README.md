@@ -1,41 +1,36 @@
 # studio
 
-a working design practice packaged as an agent skill. an agent loads it
-before any design work, in any project, canvas or code, and follows one
-house law instead of improvising per session.
+the house practice for design and front-end product work, packaged as an
+agent skill. an agent loads it before design work in any project, canvas
+or code, and follows one set of rules instead of improvising per session.
 
 ## what's inside
 
-- [SKILL.md](SKILL.md), the entry point: the reading order and the loop the agent enforces
-- [rules.md](rules.md), the system: rule grades and the deposit mechanism. the graded rows themselves (invariants, defaults, experiments) live in house.md, gitignored and private per install; house.template.md seeds a fresh one
-- [playbook.md](playbook.md), the path through a session: fresh project, existing project, component work, shipping, stuck
-- [inventory.md](inventory.md), every tool, skill, and mcp in the practice with a verdict on each
-- [doctrine/](doctrine/), component intake, codebase scaffold, and the design-system package format
+- [SKILL.md](SKILL.md): the entry point, what to read when, and the working loop
+- [rules.md](rules.md): the law. how rules are graded, and every rule in force
+- [playbook.md](playbook.md): the path through a session
+- [practices/](practices/): tool mechanics for paper, figma, print and assets, and front-end builds, read when that tool is in play
+- [inventory.md](inventory.md): the verdict on every design skill, mcp, and tool
+- [doctrine/](doctrine/): component intake, codebase scaffold, and enforcement. the design-system package format belongs to the `asbuilt` skill
+- [scripts/preflight.ts](scripts/preflight.ts): the prebuild gate a studio codebase runs
 
-## how to use
+## how the rules stay current
 
-copy this folder into your agent's skills directory, `.claude/skills/studio`
-for one project or `~/.claude/skills/studio` for all of them. the skill fires
-on design work and tells the agent what to read and when. nothing else to
-install, the package is self-contained.
+a row is added when a mistake costs real time, promoted by evidence, and
+deleted when it proves wrong. git keeps the history. in cortex, the skill
+validator runs a studio check. its header lists exactly what it covers: for
+example, that studio's own paths and references resolve, that git ignores no
+studio file, that every studio file is listed in SKILL.md, and that retired
+files stay gone. it is a
+guard against the known ways this went wrong, not a proof, so review still
+matters.
 
-borrow freely, but note the practice's own law: rules here were earned from
-real incidents, so anything you take enters your version as an experiment,
-not an invariant, until it survives two real uses of your own.
+## using it elsewhere
 
-## the ideas
-
-- operator intent first. references give anatomy, never skin
-- deliverables are state graphs, not happy frames
-- motion numbers live in the margins of the law, tuned by hand, promoted by use
-- second-use gate: nothing enters the law until it survives a second real use
-- pain-only deposits: rules cite the incident that earned them
-
-## provenance
+copy this folder into an agent's skills directory. the rules are this
+practice's own; anything you borrow enters your version as an experiment
+until it survives two real uses of your own.
 
 the canonical copy lives in [cortex](https://github.com/tommylower/cortex)
-at `design/workflows/studio/`, mirrored standalone at
-[tommylower/studio](https://github.com/tommylower/studio). client projects
-appear as neutral aliases (project-a, project-b, ...); dates and incidents
-are real. a few pointers, like the learning-journal path in SKILL.md, are
-specific to the author's machine.
+at `design/workflows/studio/`, mirrored at
+[tommylower/studio](https://github.com/tommylower/studio).

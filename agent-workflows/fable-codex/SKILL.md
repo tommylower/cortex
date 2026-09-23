@@ -1,6 +1,6 @@
 ---
 name: fable-codex
-description: Opt-in split-stack session mode — one strong model plans and reviews from the orchestrating harness while a model from a different vendor executes via CLI handoff. Reference configuration. Claude (Fable 5) plans at high effort, Codex (gpt-5.5 at xhigh reasoning) executes, Claude reviews at maximum scrutiny. Use only when the user invokes /fable-codex; never auto-apply. Requires the openai-codex plugin and an authenticated codex CLI.
+description: Opt-in split-stack session mode — one strong model plans and reviews from the orchestrating harness while a model from a different vendor executes via CLI handoff. Reference configuration. Claude (the session model) plans at high effort, Codex (gpt-5.5 at xhigh reasoning) executes, Claude reviews at maximum scrutiny. Use only when the user invokes /fable-codex; never auto-apply. Requires the openai-codex plugin and an authenticated codex CLI.
 disable-model-invocation: true
 argument-hint: "[optional: the task to run through the pipeline]"
 ---
@@ -21,7 +21,7 @@ This skill's defaults, swap any row for your own stack:
 
 | role | reference | swap for |
 | --- | --- | --- |
-| plan + review | Claude (Fable 5), the session model | any strong reasoning model running the session |
+| plan + review | Claude, the session model | any strong reasoning model running the session |
 | execute | Codex `gpt-5.5` at `xhigh` effort via the openai-codex plugin | any second-vendor coding CLI that accepts a self-contained brief |
 | auth | whatever the codex CLI is already logged in with | subscription or API key, the pattern doesn't care |
 
@@ -46,7 +46,7 @@ If the user passed arguments, treat them as the first task and start Phase 1 imm
 - Hand off via the `codex:codex-rescue` subagent (Agent tool), exactly one task per handoff.
 - The forwarded request must include the executor flags (reference: `--model gpt-5.5 --effort xhigh --write`) followed by the full plan: context, conventions, file paths, acceptance criteria, and test commands the executor should run itself.
 - Write the prompt tight and self-contained (see the plugin's `gpt-5-4-prompting` skill) — the executor gets no conversation history, only what's in the prompt.
-- Pre-resolve repo guard scripts. If the repo mandates preflight checks before edits (branch checks, foundation guards), the planner runs them outside the sandbox during Phase 1 and the prompt must state they passed — with an explicit instruction NOT to re-run network- or credential-dependent guards inside the sandbox. They false-fail there, and the executor will stall on the contradiction between "guard failed, stop" and "proceed". (Learned 2026-06-12: a `branch:check` needing credentialed GitHub access froze a run for 14 minutes with zero edits.)
+- Pre-resolve repo guard scripts. If the repo mandates preflight checks before edits (branch checks, foundation guards), the planner runs them outside the sandbox during Phase 1 and the prompt must state they passed — with an explicit instruction NOT to re-run network- or credential-dependent guards inside the sandbox. They false-fail there, and the executor will stall on the contradiction between "guard failed, stop" and "proceed".
 - Include a sandbox fallback clause: verification failures caused by the sandbox itself (network, registry, credentials, font fetches) are report-and-continue — never grounds to change code or retry endlessly. The reviewer re-runs all verification outside the sandbox in Phase 3 regardless.
 - Do not implement alongside the executor, monitor progress, or duplicate its work. Wait for the result.
 

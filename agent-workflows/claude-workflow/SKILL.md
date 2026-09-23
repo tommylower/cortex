@@ -9,12 +9,9 @@ description: Claude Code working patterns — plan mode, subagents, verification
 
 For recurring or self-iterating work (`/goal`, `/loop`, `/schedule`, proactive routines), pick the primitive with the `designing-loops` skill.
 
-### 1. Plan Mode Default
-- Enter plan mode for ANY non-trivial task (3+ steps or architectural decisions)
-- If something goes sideways, STOP and re-plan immediately – don't keep pushing
-- Use plan mode for verification steps, not just building
-- Write detailed specs upfront to reduce ambiguity
-- **Golden rule**: capture everything during planning so implementation doesn't need to search the codebase. If you'd need to grep during implementation, find it now and put it in the plan.
+### 1. Plan Mode
+- Use plan mode when the approach is open, the change is architectural, or a wrong direction would be costly to redo
+- If the plan stops matching what you find, re-plan instead of patching forward
 
 ### 2. Subagent Strategy
 - Use subagents liberally to keep main context window clean
@@ -23,10 +20,7 @@ For recurring or self-iterating work (`/goal`, `/loop`, `/schedule`, proactive r
 - One task per subagent for focused execution
 
 ### 3. Self-Improvement Loop
-- After ANY correction from the user: update `tasks/lessons.md` with the pattern
-- Write rules for yourself that prevent the same mistake
-- Ruthlessly iterate on these lessons until mistake rate drops
-- Review lessons at session start for relevant project
+- When a user correction would apply to future sessions, save it to auto-memory as a rule with its reason
 
 ### 4. Verification Before Done
 - Never mark a task complete without proving it works
@@ -36,8 +30,7 @@ For recurring or self-iterating work (`/goal`, `/loop`, `/schedule`, proactive r
 - For high-risk changes (auth, data, infra): run `/codex:adversarial-review` for cross-model review before shipping (see `codex-review` skill)
 
 ### 5. Demand Elegance (Balanced)
-- For non-trivial changes: pause and ask "is there a more elegant way?"
-- If a fix feels hacky: "Knowing everything I know now, implement the elegant solution"
+- For non-trivial changes, a fix that feels hacky isn't finished: replace it with the clean solution before presenting
 - Skip this for simple, obvious fixes – don't over-engineer
 - Challenge your own work before presenting it
 
@@ -68,10 +61,9 @@ Don't rely on auto-compaction — it fires at arbitrary points. Use `/compact` d
 
 Every loaded component costs tokens. Be deliberate about what's active.
 
-- Each MCP tool costs ~500 tokens just being registered (tool description in context)
-- A 30-tool MCP server costs more context than all your skills combined
-- Keep under 10 MCP servers enabled, under 80 total tools active
-- Agent descriptions load into every Task tool invocation even if the agent is never spawned
+- With many MCP tools enabled, Claude Code defers them: only tool names load until a schema is fetched through tool search
+- Skill descriptions and agent-type descriptions ride in every request whether or not they are used
+- `/usage` breaks down spend by skills, subagents, and MCPs
 - Quick estimate: prose = `words × 1.3` tokens, code = `chars / 4` tokens
 
 ## Hooks
@@ -86,7 +78,12 @@ Prevent Claude from weakening linter/formatter/type configs instead of fixing th
     "PreToolUse": [
       {
         "matcher": "Edit|Write",
-        "command": "bash -c 'PROTECTED=\".eslintrc .eslintrc.js .eslintrc.json eslint.config.js eslint.config.mjs .prettierrc .prettierrc.js prettier.config.js tsconfig.json biome.json\"; FILE=\"$CLAUDE_FILE_PATH\"; BASE=$(basename \"$FILE\" 2>/dev/null); for p in $PROTECTED; do if [ \"$BASE\" = \"$p\" ]; then echo \"BLOCKED: fix the code, not the config. do not weaken linter/formatter/type settings.\"; exit 2; fi; done'"
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash -c 'PROTECTED=\".eslintrc .eslintrc.js .eslintrc.json eslint.config.js eslint.config.mjs .prettierrc .prettierrc.js prettier.config.js tsconfig.json biome.json\"; FILE=$(jq -r \".tool_input.file_path // empty\"); BASE=$(basename \"$FILE\" 2>/dev/null); for p in $PROTECTED; do if [ \"$BASE\" = \"$p\" ]; then echo \"BLOCKED: fix the code, not the config. do not weaken linter/formatter/type settings.\" >&2; exit 2; fi; done'"
+          }
+        ]
       }
     ]
   }
@@ -103,12 +100,14 @@ Instead of running prettier/tsc after every single edit, accumulate edited files
     "PostToolUse": [
       {
         "matcher": "Edit|Write",
-        "command": "bash -c 'echo \"$CLAUDE_FILE_PATH\" >> /tmp/claude-edited-files.txt'"
+        "hooks": [
+          { "type": "command", "command": "jq -r '.tool_input.file_path // empty' >> /tmp/claude-edited-files.txt" }
+        ]
       }
     ],
     "Stop": [
       {
-        "command": "bash -c 'if [ -f /tmp/claude-edited-files.txt ]; then FILES=$(sort -u /tmp/claude-edited-files.txt | grep -E \"\\.(ts|tsx|js|jsx)$\"); if [ -n \"$FILES\" ]; then echo \"$FILES\" | xargs bunx prettier --write 2>/dev/null; echo \"$FILES\" | xargs bunx tsc --noEmit 2>&1 | head -20; fi; rm /tmp/claude-edited-files.txt; fi'"
+        "hooks": [{ "type": "command", "command": "bash -c 'if [ -f /tmp/claude-edited-files.txt ]; then FILES=$(sort -u /tmp/claude-edited-files.txt | grep -E \"\\.(ts|tsx|js|jsx)$\"); if [ -n \"$FILES\" ]; then echo \"$FILES\" | xargs bunx prettier --write 2>/dev/null; echo \"$FILES\" | xargs bunx tsc --noEmit 2>&1 | head -20; fi; rm /tmp/claude-edited-files.txt; fi'" }]
       }
     ]
   }
@@ -117,15 +116,13 @@ Instead of running prettier/tsc after every single edit, accumulate edited files
 
 ## Task Management
 
-1. **Plan First**: Write plan to `tasks/todo.md` with checkable items
-2. **Verify Plan**: Check in before starting implementation
-3. **Track Progress**: Mark items complete as you go
-4. **Explain Changes**: High-level summary at each step
-5. **Document Results**: Add review section to `tasks/todo.md`
-6. **Capture Lessons**: Update `tasks/lessons.md` after corrections
+- For multi-step work, keep a checkable plan in `tasks/todo.md` and mark items complete as you go
+- Check in before implementing only when the plan changes scope or architecture, or would be costly to undo; bug reports go straight to a fix (see Autonomous Bug Fixing)
+- Finish with what changed and how you verified it
+- Save corrections as described in Self-Improvement Loop
 
 ## Core Principles
 
 - **Simplicity First**: Make every change as simple as possible. Impact minimal code.
-- **No Laziness**: Find root causes. No temporary fixes. Senior developer standards.
-- **Minimal Impact**: Changes should only touch what's necessary. Avoid introducing bugs.
+- **Root Causes**: Fix the underlying cause, not the symptom; don't ship temporary fixes.
+- **Minimal Impact**: Changes should only touch what's necessary.

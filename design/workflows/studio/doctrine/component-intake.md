@@ -1,8 +1,7 @@
 # component intake
 
-how an idea or reference becomes a component. entered 2026-07-04 from the
-project-a design pass (use #1, in progress). grades per rules.md; nothing
-here is law until it survives a second project.
+how an idea or reference becomes a component. every section here is a
+default, graded by `rules.md`.
 
 ## the three-layer model — DEFAULT
 
@@ -51,8 +50,8 @@ two failure modes, both named from real damage:
 2. dissect the real source (ui/*.tsx or the headless docs) for anatomy
    only: slots, axes, states, behavior guarantees.
 3. state graph on canvas: every state as a variant or board, fills bound
-   to tokens, motion numbers written in the margin (defaults in house.md).
-4. port to code as a diff: cva strings + tokens + motion change; the
+   to tokens, motion numbers written in the margin (defaults in `rules.md`).
+4. port to code as a diff: variant axes (cva helpers or skin classes, per the project's css strategy) + tokens + motion change; the
    behavior floor is untouched. two contracts: behavior inherited, skin
    owned.
 
@@ -62,19 +61,14 @@ primitive many times; second use is pre-proven.)
 
 ## the interface rule — DEFAULT
 
-cortex skills are supplier catalogs. this doctrine is house law. conflicts
-resolve to the law. motion numbers come from margins/house.md, never from
-a skill's defaults.
+other skills are supplier catalogs. this doctrine and `rules.md` are the
+law, and conflicts resolve to the law. motion numbers come from the margins
+and `rules.md`, never from a skill's defaults.
 
 ## record-keeping — DEFAULT
 
 design decisions are never hand-transcribed anywhere. they live in the
 artifact (figma file, codebase) and enter records only when a spec is
 derived from the artifact. process rules (how we work, not what we made)
-get one line in house.md at the moment a mistake costs real time. nothing
-writes on a timer or a ritual.
-
-## invariant candidates — RESOLVED 2026-07-04
-
-both entered law in house.md: "never rebuild behavior that already exists"
-merged into invariant 4; "the skin is always ours" is invariant 8.
+get one row in `rules.md`, or in the matching `practices/` file, at the
+moment a mistake costs real time. nothing writes on a timer or a ritual.

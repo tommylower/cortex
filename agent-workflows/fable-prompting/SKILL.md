@@ -1,6 +1,6 @@
 ---
 name: fable-prompting
-description: Router for prompting Fable 5 so it performs like a next-generation model instead of a current one — give it the goal not the steps, hold it to a hard self-checkable bar, loop against that bar, and never let the builder grade itself. On invocation, ask which job the user wants and run that branch: set up house rules in a project, start a /loop on a goal, grade an artifact, or draft a Fable prompt. Fable-specific. Source: the "How I Prompt Fable" writeup.
+description: Router for prompting Fable so it performs like a next-generation model instead of a current one — give it the goal not the steps, hold it to a hard self-checkable bar, loop against that bar, and never let the builder grade itself. On invocation, ask which job the user wants and run that branch: set up house rules in a project, start a /loop on a goal, grade an artifact, or draft a Fable prompt. Fable-specific. Source: the "How I Prompt Fable" writeup.
 ---
 
 # fable-prompting

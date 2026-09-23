@@ -68,7 +68,7 @@ opt-in only. apply when explicitly requested, never by default.
 ## workflows
 
 - **asbuilt** — derive and conform a design-system package from a finished codebase
-- **studio** — the front door to the whole design practice. house law (rules.md the grading system, house.md this install's earned rows; gitignored), playbook (what to do per situation), tool inventory, and doctrine (intake, scaffold, package format). load before any design work; every other design skill hangs off it
+- **studio** — the house practice for design and front-end product work: the rules (invariants, defaults, experiments), the playbook, tool practices (paper, figma, print and assets, front-end), the verdict on every design skill and tool, and doctrine (intake, scaffold, enforcement). load before any design work; every other design skill is a supplier to it
 - **spec-map** — turn a spec into a hand-editable system map on a paper canvas
 
 ## kits

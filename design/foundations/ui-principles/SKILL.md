@@ -110,6 +110,11 @@ Generated UI has recognizable tells. If you spot these patterns, you're probably
 - **Same component repeated 3x** — three feature cards, three pricing tiers, three testimonials, all identical structure with placeholder-quality copy
 - **Over-rounded everything** — `rounded-2xl` or `rounded-3xl` on every surface with no variation
 - **Default shadow stack** — `shadow-lg` on cards, `shadow-xl` on modals, no thought about elevation system
+- **Cream canvas by default** — a warm off-white or cream page background chosen because nothing else was specified
+- **Italic accent word** — one word of a sans headline set in italic serif for emphasis
+- **Numbered section labels** — "01 / 02 / 03" eyebrows or markers on sections that have no real sequence
+- **Decorative monospace labels** — small uppercase monospace tags used for flavor rather than code, data, or metadata
+- **Pills everywhere** — fully rounded pill buttons and chips as the only control shape
 
 The fix is always the same: ask what the design is trying to communicate, then choose the simplest visual treatment that achieves it.
 

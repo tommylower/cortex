@@ -1,16 +1,15 @@
 # codebase scaffold
 
-how a codebase starts and stays clean. entered 2026-07-04. project-a is
-the reference implementation (already shaped this way); the next fresh
-project is the real test.
+how a codebase starts and stays clean. every section here is a default,
+graded by `rules.md`.
 
 ## the four strata — DEFAULT
 
 | stratum | e.g. | holds |
 |---|---|---|
-| tokens | `globals.css` `@theme` | the vocabulary. raw values appear here and ONLY here. color, radius, type, and eventually motion durations/easings and z-layers |
-| primitives | `ui/*` | headless import + cva variant axes + token-bound class strings. domain-blind: Button doesn't know what a report is |
-| product | `components/*` | domain compositions (StatusPill, KpiCard). know the product vocabulary, still speak only tokens |
+| tokens | `app/globals.css` (`@theme`, `:root`, `.dark`) | the vocabulary. raw values appear here and ONLY here: color, radius, type, spacing, elevation, motion durations and easings, and z-layers |
+| primitives | `components/ui/*` | headless import + variant axes + token-bound styles. under `cva-utilities` the axes are cva helpers; under `single-skin` they are `.{prefix}-*` skin classes. domain-blind: Button doesn't know what a report is |
+| product | `components/*` (outside `ui/`) | domain compositions (StatusPill, KpiCard). know the product vocabulary, still speak only tokens |
 | screens | `app/*` | arrangement + data wiring. zero new visual decisions. a screen that states a hex is a bug |
 
 ## the dependency rule — DEFAULT, invariant-shaped
@@ -36,10 +35,11 @@ a day-one scaffold generates boundaries, not implementations:
   broken
 
 nothing else. no pre-built component set, no locked css strategy. every
-component after day one enters via the intake loop (doctrine/
-component-intake.md) as the product pulls for it. which engine, css
-strategy, or motion lib are per-project defaults in house.md, swappable
-without touching boundaries.
+component after day one enters through the intake loop
+(`doctrine/component-intake.md`) as the product pulls for it. the engine
+and css strategy are declared per project in `design.config.ts`
+(`rules.md`, per-project choices), and swapping them never touches a
+boundary.
 
 ## the day-one token NAME set — DEFAULT
 
@@ -61,10 +61,10 @@ color roles, declared in every scheme block (`:root`, `.dark`, and
 `--color-ink`, `--color-surface`, `--color-accent`, `--color-muted`,
 `--color-border`, `--color-ring`.
 
-values are placeholder at day one; the names are the contract. spacing/
-size roles and the exit ease are in the set on purpose (house.md: graders
-could not bind component spacing without them). values swap freely per
-brand; renaming a NAME is a breaking change to the vocabulary.
+values are placeholders at day one, except motion, which takes the midpoints in (`rules.md`, motion numbers); the names are the contract. spacing
+and size roles and the exit ease are in the set on purpose, because
+components can't bind spacing without them. values swap freely per brand;
+renaming a NAME is a breaking change to the vocabulary.
 
 ## the canvas mirror — DEFAULT
 

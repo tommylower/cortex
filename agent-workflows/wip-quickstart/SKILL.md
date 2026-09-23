@@ -121,8 +121,8 @@ Workspace Setup branch is complete.
 ## 6. Scaffold the implementation
 
 For a web project, read [the web project defaults](references/web-defaults.md)
-and apply them unless the brief records a deliberate exception. Use
-`waveframe` project-scaffold mode before feature work.
+and apply them unless the brief records a deliberate exception. Load the
+`studio` skill and follow its codebase-scaffold doctrine before feature work.
 
 For a non-web project, use the ecosystem and commands named in the brief or
 already established by the repository. Do not force the web stack onto it.

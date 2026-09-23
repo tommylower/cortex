@@ -87,3 +87,24 @@ Then run the skill against the target described after the slash command. If no t
 Default to audit-only. Do not edit code, run formatters, or apply fixes unless the user explicitly asks to fix or apply changes.
 
 Use \`wip-senior-audit\` only as the live-site sub-step when a URL or bootable app is available. If live coverage is not possible, mark it as not covered instead of pretending."
+
+write_command "interview" "---
+description: Interview the user, or return a preset, to produce a personalized agent-agnostic behavior file.
+argument-hint: [preset name (fast, balanced, strict, brutal) or notes]
+---
+
+# interview
+
+First read:
+
+\`\`\`text
+$CORTEX_ROOT/agent-workflows/agent-interviewer/SKILL.md
+\`\`\`
+
+Resolve agent-interviewer presets and examples from:
+
+\`\`\`text
+$CORTEX_ROOT/agent-workflows/agent-interviewer
+\`\`\`
+
+Then run the skill. Treat text after the slash command as a preset name or as the user's notes for the interview."
