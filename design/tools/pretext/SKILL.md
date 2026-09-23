@@ -1,6 +1,6 @@
 ---
 name: pretext
-description: "Pretext by Cheng Lou. Pure JavaScript/TypeScript library for fast, accurate multi-line text measurement and layout without DOM reflow. Use whenever working on typography rules, text-heavy components, button or label overflow checks, virtualized lists, masonry layouts, balanced text, shrink-wrap text, dynamic input autosizing, layout-shift prevention on async text loads, or any case where text dimensions affect layout decisions. Triggers on: text measurement, text layout, text overflow, button label, label fits, multi-line text, text height, shrink-wrap, balanced text, virtualization, masonry, typography rules, layout shift, async text, label overflow, input autosize."
+description: "Pretext by Cheng Lou. Pure JavaScript/TypeScript library for fast, accurate multi-line text measurement and layout without DOM reflow. Use when text dimensions drive a layout decision: button or label overflow checks, text height before render, shrink-wrap or balanced text, virtualized lists and masonry, input autosizing, or layout-shift prevention on async text loads."
 author: Cheng Lou (https://github.com/chenglou/pretext)
 ---
 
@@ -10,7 +10,7 @@ Pure JavaScript/TypeScript library for multi-line text measurement and layout. F
 
 The library implements its own text measurement using the browser's font engine as ground truth. Measurements are pure arithmetic over precomputed widths. Highly AI-friendly: agents can verify "does this label fit?" without spinning up a headless browser.
 
-## The text rule (always folds into projects)
+## The text rule
 
 > **Never trigger DOM reflow for text measurement. Precompute heights and widths in pure arithmetic. Keep text layout deterministic and verifiable without a browser.**
 
@@ -22,7 +22,7 @@ This rule applies whenever the project has:
 - async text loads where layout shift would otherwise occur
 - shrink-wrap text containers (tightest container width that fits the actual text content)
 
-If any of those exist, pretext is the implementation backbone. CSS alone cannot give precise text dimensions before render.
+When one of those needs exact text dimensions before render, pretext is the implementation backbone: CSS alone cannot give them. The limits under "Don't reach for it when" still apply.
 
 ## When to reach for it
 
@@ -85,7 +85,7 @@ Don't reach for it when:
 
 ## Project rule fold-in (which references file gets which rule)
 
-When designing or implementing a project that uses pretext, fold these rules into the project's `references/*.md` (rules abstract, no attribution per the SHIPS rule):
+When a project that uses pretext has a design-system package, fold these rules into the matching `references/*.md` files that exist. State each rule abstractly, without citing pretext (the client split in the `asbuilt` skill's package format: encode rules, not suppliers):
 
 ### `references/tokens.md` (typography section)
 

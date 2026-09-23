@@ -1,0 +1,91 @@
+#!/bin/sh
+# cortex pre-push guard. cortex is public, so before anything leaves this machine:
+#   1. everything being pushed is scanned for names from local/client-names.txt: every
+#      added line (merges included, binary content as text), every added or renamed file
+#      path, every commit message, every author and committer name and email, the branch
+#      and tag names, and annotated tag messages
+#   2. the studio check runs on every pushed commit that contains it (up to 200 commits per
+#      ref; beyond that, the tip only, and the hook says so)
+# it recognizes cortex by its working tree, its remote url, or the tree at HEAD, and uses
+# the check script from the working tree, or from main when the branch predates it.
+# outside cortex it does nothing, so it is safe as a global hook.
+# a false positive (a client name that is also a common word) is reworded, or pushed with
+# --no-verify after checking the flagged text by hand.
+# install for every repo:   cp scripts/hooks/pre-push ~/.config/git/hooks/pre-push
+# (git's core.hooksPath on this machine is ~/.config/git/hooks)
+
+root="$(git rev-parse --show-toplevel 2>/dev/null)" || exit 0
+is_cortex=0
+[ -f "$root/scripts/check-studio.mjs" ] && is_cortex=1
+git remote -v 2>/dev/null | grep -qiE '[/:]cortex(\.git)?[[:space:]]' && is_cortex=1
+git cat-file -e HEAD:catalog/shelves.json 2>/dev/null && git cat-file -e HEAD:design 2>/dev/null && is_cortex=1
+[ "$is_cortex" = 1 ] || exit 0
+
+list="$root/local/client-names.txt"
+if ! grep -qv '^[[:space:]]*\(#\|$\)' "$list" 2>/dev/null; then
+  echo "pre-push: $list is missing or empty, so client names can't be checked. push blocked." >&2
+  exit 1
+fi
+
+work="$(mktemp -d)"
+trap 'rm -rf "$work"' EXIT
+check="$root/scripts/check-studio.mjs"
+if [ ! -f "$check" ]; then
+  for ref in refs/remotes/origin/main refs/heads/main; do
+    if git show "$ref:scripts/check-studio.mjs" >"$work/check-studio.mjs" 2>/dev/null; then
+      check="$work/check-studio.mjs"
+      break
+    fi
+  done
+fi
+if [ ! -f "$check" ]; then
+  echo "pre-push: this is cortex, but no check-studio.mjs was found here or on main. push blocked." >&2
+  exit 1
+fi
+
+zero=0000000000000000000000000000000000000000
+status=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  [ "$local_sha" = "$zero" ] && continue # deleting a ref pushes no content
+  if [ "$remote_sha" != "$zero" ] && git cat-file -e "$remote_sha" 2>/dev/null; then
+    range="$remote_sha..$local_sha"
+  else
+    range="$local_sha --not --remotes"
+  fi
+  # shellcheck disable=SC2086
+  if ! {
+    printf '%s\n%s\n' "$local_ref" "$remote_ref"
+    [ "$(git cat-file -t "$local_sha")" = tag ] && git cat-file -p "$local_sha"
+    git log --format='%an %ae%n%cn %ce%n%B' $range
+    git log --format= --name-only --diff-filter=ACMR -M $range
+    git log -p -m --text --no-color --format= $range | grep -aE '^(\+|diff --git |rename to |copy to )' | grep -av '^+++ /dev/null'
+  } | CHECK_STUDIO_ROOT="$root" node "$check" --scan-names; then
+    echo "pre-push: $local_ref carries a client name (see above). push blocked." >&2
+    status=1
+    continue
+  fi
+  # shellcheck disable=SC2086
+  commits="$(git rev-list --reverse $range)"
+  count="$(printf '%s\n' "$commits" | grep -c .)"
+  if [ "$count" -gt 200 ]; then
+    echo "pre-push: $local_ref pushes $count commits; checking studio on the tip only." >&2
+    commits="$(git rev-parse "$local_sha^{commit}")"
+  fi
+  for sha in $commits; do
+    git cat-file -e "$sha:scripts/check-studio.mjs" 2>/dev/null || continue # predates the check
+    rm -rf "$work/tree"
+    if git worktree add --detach -q "$work/tree" "$sha" 2>/dev/null; then
+      if ! CHECK_STUDIO_ROOT="$work/tree" node "$work/tree/scripts/check-studio.mjs" >"$work/out" 2>&1; then
+        grep '^FAIL' "$work/out" >&2
+        echo "pre-push: the studio check fails on $(git log -1 --format='%h %s' "$sha"). push blocked." >&2
+        status=1
+      fi
+      git worktree remove --force "$work/tree" >/dev/null 2>&1
+    else
+      echo "pre-push: couldn't check out $sha to run the studio check. push blocked." >&2
+      status=1
+    fi
+    [ "$status" = 1 ] && break
+  done
+done
+exit $status

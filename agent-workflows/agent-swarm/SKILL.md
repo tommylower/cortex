@@ -15,20 +15,18 @@ Use this for complex projects requiring multiple parallel workstreams and rigoro
 
 ## Pattern
 
-1. Decompose the feature into independent sub-tasks
-2. `TeamCreate` with a descriptive name
-3. `TaskCreate` all tasks with dependencies (`blockedBy`)
-4. Wave execution: spawn 2-4 agents per wave for independent tasks
-5. Review loop after each wave (see below)
-6. Fix findings immediately
-7. Commit after each logical milestone
-8. Shutdown agents after completion, `TeamDelete` to clean up
-9. Update docs: keep project status, memory, and instructions current
+1. Decompose the feature into independent sub-tasks and note which depend on which
+2. Wave execution: spawn 2-4 agents per wave for independent tasks with the Agent tool (`isolation: "worktree"` for agents that write code)
+3. Review loop after each wave (see below)
+4. Fix findings immediately
+5. Commit after each logical milestone
+6. Stop any background agents still running once their wave is done
+7. Update docs: keep project status, memory, and instructions current
 
 ## Agent Rules
 
 - Always read existing code before modifying
-- Use `bypassPermissions` mode for background agents
+- Run unattended swarms in auto mode so background agents don't stall on permission prompts
 - Every agent must verify the project builds before reporting completion
 - Max 4 parallel agents per wave (prevents merge conflicts)
 - Shutdown agents immediately after task completion
@@ -166,7 +164,7 @@ llm keys set openai  # or whatever provider
 
 ## Tips
 
-- Use `MEMORY.md` (in `.claude/`) to persist lessons learned across sessions
+- Save lessons learned to auto-memory so later sessions inherit them
 - Keep a regression checklist — every bug you hit becomes a checklist item
 - Document each review round's findings — future sessions learn from past mistakes
 - The two patterns complement each other: swarm handles parallelism and throughput, review loop handles quality and correctness

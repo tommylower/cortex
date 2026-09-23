@@ -1,87 +1,73 @@
-# playbook: the path through a design session
+# playbook
 
-load order, every session: SKILL.md, then rules.md, then house.md, then
-the branch below
-that matches the session. suppliers never decide; on any conflict the law
-wins.
+the path through a session. read `rules.md` first; on any conflict, the
+rules win.
 
-## starting a fresh project
+## a fresh project
 
-1. scaffold directly from doctrine/codebase-scaffold.md, minimum viable
-   system: the four strata folders, the full semantic token NAME set in
-   globals.css (values placeholder, the names are the contract), the shell
-   carrying the wave signature (data-wave-signature="built by a wave in
-   progress. waves don't die." on the root body), and preflight wired as
-   prebuild per doctrine/enforcement.md (the reference script is
-   scripts/preflight.ts in this folder).
-2. set engine and css strategy once, using the current defaults and
-   provenance in house.md. preserve an existing profile and make deliberate
-   overrides explicit.
+1. scaffold from `doctrine/codebase-scaffold.md`: the four strata, the full
+   token NAME set, the shell carrying the wave signature
+   (`data-wave-signature="built by a wave in progress. waves don't die."`
+   on the root `<body>`), and the prebuild gate wired per
+   `doctrine/enforcement.md` (the script is `scripts/preflight.ts`).
+2. declare the engine and css strategy in the project's `design.config.ts`
+   (`rules.md`, per-project choices). the engine starts from the
+   behavior-engine default. the css strategy has no house default, so pick
+   one on purpose and say why.
 3. no pre-built component set. the first component enters through
-   doctrine/component-intake.md when the first screen pulls for it.
+   `doctrine/component-intake.md` when a screen pulls for it.
 
-## joining or retrofitting an existing project
+## an existing project
 
-1. to derive a design system from what is already built, use `asbuilt`
-   (cortex). its package format is doctrine/design-system-package.md.
-2. to see what needs fixing before working: run `studio-audit` for the ui
-   verdict (ship / fix-first / review-again with a priority list), and check
-   the code against the strata and invariants (raw values outside the token
-   file, components shipping from the happy frame alone, borrowed skin,
-   supplier motion numbers). the combined gap list is the work queue. fix
-   through the intake loop, worst first.
-3. wire enforcement without disturbing product code: lay down
-   scripts/preflight.ts per doctrine/enforcement.md, grandfather
-   pre-existing skin in .preflightignore, then verify preflight still bites
-   new code.
+1. to derive its design system from what is built, use the `asbuilt`
+   skill. it owns the design-system package format.
+2. before changing anything, run `studio-audit` for the ui verdict, and
+   check the code against the strata and invariants: raw values outside
+   the token file, components shipped from the happy frame alone, borrowed
+   skin, and motion values copied from a supplier instead of the
+   project's own motion tokens. the combined gap list is
+   the work queue. fix it through intake, worst first.
+3. wire enforcement without disturbing product code: add
+   `scripts/preflight.ts` per `doctrine/enforcement.md`, grandfather the
+   existing skin in `.preflightignore`, then plant a raw hex in a new file
+   and confirm preflight fails on it.
 
-## day-to-day component work
+## component work
 
-- the loop: brief, intake (doctrine/component-intake.md), build, review on
-  the canvas at 375/768/1024/1440 across the state graph, operator approves,
-  elevate into a page.
+- the loop: brief, intake (`doctrine/component-intake.md`), build, review
+  across the state graph at 375, 768, 1024, and 1440, operator approval,
+  then placement in a page.
 - when the brief pulls for an existing component or registry, load the
-  `component-libraries` cortex skill after operator intent. it is a supply
-  shelf for behavior and anatomy, never a source of skin.
-- editing surfaces are interchangeable, code is the source of truth
-  (invariant 1). code to figma: the figma mcp or paper code-to-design.
-  figma or paper to code: through intake, anatomy only, skin stays ours
-  (invariant 8).
-- flair passes: `interface-craft`, `emil-design-eng`, `interface-kit` are
-  suppliers. `emil-design-eng` also owns focused motion review, codebase
-  motion audits, and restrained opportunity finding. motion numbers come from
-  house.md, never a supplier default.
-- for focused accessibility, layout, writing, typography, color, or UI-polish
-  work, load the matching `better-*` owner (`oklch-skill` owns color).
-  `studio-audit` loads every owner when the whole surface is reviewed.
-- reaching for anything else: check inventory.md for the verdict before
-  loading it.
+  `component-libraries` skill after the operator has stated intent. it
+  supplies behavior and anatomy, never skin.
+- canvas tools are interchangeable spec surfaces, and code is the source
+  of truth (invariant 1). code to canvas goes through the figma mcp or paper's
+  code-to-design. canvas to code goes through intake: anatomy only, and the
+  skin stays ours (invariant 8).
+- for motion and polish, use `emil-design-eng` (motion review and codebase
+  motion audits), `interface-craft`, and `interface-kit` as suppliers.
+  motion numbers still come from `rules.md`.
+- for focused accessibility, layout, writing, typography, or ui polish,
+  load the matching `better-*` skill; `oklch-skill` owns color.
+- before reaching for anything else, check its verdict in `inventory.md`.
+
+## canvas sessions
+
+- read the matching `practices/` file before the first paper or figma
+  call.
+- with no stated task, scout and report only.
+  (`rules.md`, ambiguous session opener)
+- in brand or print work with no codebase, the canvas file is the
+  artifact: tokens, state graphs, and "the skin is always ours" still
+  apply there.
 
 ## shipping
 
-- when a surface feels done, run `studio-audit` (cortex). it orchestrates
-  the six domain owners, preflight, responsive checks, the live-experience
-  pass, and the craft critiques into one evidence-backed report with a ship /
-  fix-first / review-again verdict.
-- if a Rams surface is configured and the session changed UI, offer one Rams
-  review after `studio-audit` and before commit; do not wait for the operator
-  to remember it. if accepted, load `rams`; its surface and privacy rules
-  govern. if declined, continue without it. Studio law adjudicates its
-  findings.
-
-## when stuck or annoyed
-
-- any friction that costs flow (setup pain, tool confusion, a decision you
-  could not make) gets ONE line in `friction.md`, beside house.md in this
-  folder and private like it, at the moment it happens. then keep working.
-  no essay, no fix required.
-- law-shaped pain (a one-line rule would have prevented a real time loss)
-  deposits in house.md instead, per the deposit rule (in rules.md). friction.md is for
-  everything softer.
-
-## auditing the practice itself
-
-- the digest turns friction into fixes. run it when friction.md gets loud,
-  not on a schedule: read every line, sort each into one bucket (playbook
-  fix, inventory verdict, house.md experiment, or drop), apply the bucket,
-  then delete the processed line. friction.md should end near empty.
+- when a surface feels done, run `studio-audit`. it combines the domain
+  reviews, preflight, responsive checks, the live pass, and the craft
+  critiques into one evidence-backed report with a ship, fix-first, or
+  review-again verdict.
+- if a Rams surface is configured and the session changed ui, offer one
+  Rams review after `studio-audit` and before commit. if the operator
+  accepts, load the `rams` skill; its surface and privacy rules govern.
+  `rules.md` still decides which findings hold.

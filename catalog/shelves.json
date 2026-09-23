@@ -105,9 +105,9 @@
       "label": "Marketing Skills",
       "kind": "marketing",
       "public": true,
-      "sync": true,
+      "sync": false,
       "validate": true,
-      "purpose": "The upstream Marketing Skills submodule exposed through Cortex."
+      "purpose": "The upstream Marketing Skills submodule, reached through the agent-workflows/marketing router. Not synced one by one, because its long trigger-list descriptions crowd other skills out of agent skill listings."
     },
     {
       "path": "local",

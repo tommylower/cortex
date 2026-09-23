@@ -74,6 +74,11 @@ $name"
 done < <(node "$CORTEX_ROOT/scripts/skill-catalog.js" categories --validate)
 
 echo
+if ! node "$CORTEX_ROOT/scripts/check-studio.mjs"; then
+  errors=$((errors+1))
+fi
+
+echo
 if [ $errors -gt 0 ]; then
   echo "$errors validation check(s) failed"
   exit 1

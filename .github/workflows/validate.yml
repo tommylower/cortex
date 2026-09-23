@@ -13,5 +13,6 @@ jobs:
         with:
           submodules: true
       - run: bash scripts/validate-skills.sh
+      - run: bash scripts/test-check-studio.sh
       - run: node scripts/skill-catalog.js validate
       - run: bash scripts/test-sync-agent-reporting.sh

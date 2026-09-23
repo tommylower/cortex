@@ -29,8 +29,8 @@ matching the stated interest, and stop.
 For a project choice:
 
 1. Name the task before naming a supplier. Treat a requested library as a
-   candidate, not the requirement. Read Studio's current behavior-engine default in
-   `../../workflows/studio/house.md` (grading system in `rules.md`), then inspect the target project's
+   candidate, not the requirement. Read the behavior-engine default in the `studio` skill's
+   `rules.md`, then inspect the target project's
    component configuration. Continue only when the project's engine and
    delivery model are explicit.
 2. Search the project for an existing component that already satisfies the
@@ -42,7 +42,7 @@ For a project choice:
 4. Before installing or copying, verify the current upstream source, license,
    dependencies, delivery method, and supported states. A missing reuse grant
    makes the entry reference-only.
-5. Read and apply
-   `../../workflows/studio/doctrine/component-intake.md`. Completion requires
+5. Read and apply the `studio` skill's
+   `doctrine/component-intake.md`. Completion requires
    behavior, grammar, and skin to be separated; every relevant state verified;
    and the project's build checks passing.

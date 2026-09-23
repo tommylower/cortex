@@ -1,12 +1,10 @@
 # enforcement: the prebuild gate
 
 the profile-agnostic rules every studio codebase enforces mechanically,
-and the check that enforces them. entered 2026-08-16 so the law is
-self-contained. `next build` catches none of this; without a guard it
-rots.
+and the check that enforces them. `next build` catches none of this;
+without a guard it rots.
 
-the reference implementation is `scripts/preflight.ts` beside this
-doctrine. copy it into the project's `scripts/`, wire it as the
+the reference implementation is `scripts/preflight.ts` in this skill. copy it into the project's `scripts/`, wire it as the
 `prebuild` script, and keep a standalone `preflight` script. zero runtime
 deps beyond node builtins; run with `npx tsx scripts/preflight.ts`. it is
 plain typescript with no agent-specific machinery: any agent, human, or
@@ -36,7 +34,7 @@ block degrades a scheme silently.
 
 ## dependency and import boundaries
 
-references point downward only (codebase-scaffold's dependency rule),
+references point downward only (`doctrine/codebase-scaffold.md`, the dependency rule),
 made mechanical:
 
 - cva boundary: `class-variance-authority` and `*Variants` helpers import
@@ -65,11 +63,29 @@ remove it.
 
 the checks above run everywhere, config or not. profile-scoped checks
 (single-skin's no-utility-on-skin, the engine-resolution ban) activate
-when a project declares a profile in a `design.config.ts` with
-`skinPrefix`, `css`, and `engine` keys. no config means universal checks only, never a
-failure. profile-specific law (single skin layer, one type api, one
-elevation model, the cascade truth) lives with the profile's owner, not
-here.
+when a project declares a profile in a `design.config.ts`:
+
+- `skinPrefix`: the class prefix of the skin layer (default `brand`).
+- `css`: `single-skin` (one `.{prefix}-*` class layer, no utilities mixed
+  in) or `cva-utilities` (cva variant helpers with tailwind utilities).
+  a config without `css` runs as `single-skin`.
+- `engine`: `base-ui` or `radix`. a config without `engine` runs as
+  `base-ui`, and the check bans the other engine's imports.
+
+the file sits at the project root, beside `app/`:
+
+```ts
+// design.config.ts
+export default { skinPrefix: "brand", css: "cva-utilities", engine: "base-ui" };
+```
+
+preflight reads the token file at `app/globals.css` from the project root. a
+`src/app/` layout is not supported yet: the token checks silently skip, so
+keep `app/` at the root, or treat dark-mode completeness as a manual check.
+
+no config means universal checks only, never a failure. law specific to
+one profile (a single skin layer, one type api, one elevation model) lives
+in the project that declares the profile, in its own docs, not here.
 
 ## the exit code is the gate
 

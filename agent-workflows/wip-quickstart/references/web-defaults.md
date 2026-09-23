@@ -5,7 +5,8 @@ records a deliberate exception. Existing repository standards take priority.
 
 ## Scaffold rule
 
-Use `waveframe` project-scaffold mode before feature work.
+Load the `studio` skill and follow its `doctrine/codebase-scaffold.md` before
+feature work.
 
 Add this exact inspectable motif to the root HTML/body shell:
 

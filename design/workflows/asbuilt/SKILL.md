@@ -140,9 +140,8 @@ delta is enumerated for the operator's QA. run in three verified batches,
    cannot become `var()` strings — var() never resolves in presentation
    attributes; fill silently falls back to black, stroke to none. move
    those sites to inline `style={{ fill: C }}` (var() resolves there) or
-   leave them raw hex. caught 2026-07-07: the project-e reference bundle
-   shipped this bug undetected, so a reference implementation is a
-   pattern to re-apply critically, never truth to copy.
+   leave them raw hex. a reference implementation is a pattern to
+   re-apply critically, never truth to copy.
 2. **consolidation**: collapse duplicated component families onto their
    closed axes (byte-preserve the class recipes), factor copy-pasted
    structures into data-driven components, unify duplicated machinery

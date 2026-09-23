@@ -15,8 +15,8 @@ at commit `a67333399dabbc71d7778962cb9c4fb9b86a00d0`.
 When reviewing, slow the interface down: replay motion at 10% speed in the browser's Animations panel and walk every state: hover, focus, active, loading, empty. What feels off at 10% speed is what's subtly wrong at full speed.
 
 Preserve the project's component library, tokens, density, and motion
-language. Exact values in this skill are fallback recipes only when the
-project and Studio have no tuned value; they never override either source.
+language. Exact values in this skill are fallback recipes only when neither
+the project nor Studio sets a value; they never override either source.
 
 Typography (text wrapping, font rendering, tabular numbers, spacing) is covered by the `better-typography` skill; use that for anything text-related. Accessibility (hit areas, focus states, keyboard support, ARIA, reduced motion) is covered by the `better-accessibility` skill. Layout structure (grouping, spacing between sections, breakpoints, spatial RTL) is covered by the `better-layout` skill.
 

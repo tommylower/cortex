@@ -10,7 +10,7 @@ Autonomously critique a web page by adding design annotations via the Agentation
 
 ## Launch — Always Headed
 
-The browser MUST be visible. Never run headless. The user watches you scan, hover, click, and annotate.
+Run the browser headed, never headless: the user watches you scan, hover, click, and annotate.
 
 **Preflight**: Verify `agent-browser` is available before anything else:
 
@@ -148,10 +148,11 @@ Aim for 5-8 annotations per page unless told otherwise.
 - **Specific and actionable**: "Stack the install command below the subheading at 16px" not "fix the layout"
 - **1-2 concrete alternatives**: Reference CSS values, layout patterns, or design systems
 - **Name the principle**: Visual hierarchy, Gestalt grouping, whitespace, emphasis, conversion design
-- **Reference comparable products**: "Like how Stripe/Linear/Vercel handles this"
+- **Borrow anatomy, not skin**: when citing a comparable product, cite the structure it uses to solve the problem, never its look. The project's tokens own the skin.
+- **Don't prescribe the defaults studio-audit flags as AI residue**: icon-tile grids, nested cards, everything-centered sections, gradient text, purple/cyan glows.
 
 Bad: "This section needs work"
-Good: "This bullet list reads like docs, not a showcase. Use a 3-column card grid with icons — similar to Stripe's guidelines pattern. Creates visual rhythm and scannability."
+Good: "This bullet list reads like docs, not a showcase. Lead each item with its one-line claim and move the detail under it, so a skim reads the claims alone. Creates rhythm and scannability without adding decoration."
 
 ## Availability
 
