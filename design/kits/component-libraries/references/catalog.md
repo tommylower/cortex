@@ -199,6 +199,9 @@ Checked 2026-07-29. Recheck upstream details before every pull.
   every toast to a real product state, preserve live-region semantics,
   actions, pause, dismissal, and focus behavior, and retune placement, skin,
   duration, and motion through project tokens rather than supplier defaults.
+- **Working guide:** [sonner.md](sonner.md) covers setup, the right `toast()`
+  call, the styling ladder, troubleshooting, and the full API, from Emil
+  Kowalski's `ask-sonner`.
 - **Sources:** [docs](https://sonner.emilkowal.ski/),
   [repository](https://github.com/emilkowalski/sonner),
   [MIT license](https://github.com/emilkowalski/sonner/blob/main/LICENSE.md)

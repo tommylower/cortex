@@ -71,7 +71,7 @@ claim coverage for an uninspected surface.
    mark it `not verified`.
 5. **apply Studio taste.** Use `interface-craft critique` for composition,
    hierarchy, density, user context, and cohesion. Use
-   `emil-design-eng review` for motion, feedback, timing, interruption, and
+   `review-animations` for motion, feedback, timing, interruption, and
    interaction feel. Its standalone verdict yields to this audit's one final
    verdict. Studio law and the project profile adjudicate every supplier
    opinion.

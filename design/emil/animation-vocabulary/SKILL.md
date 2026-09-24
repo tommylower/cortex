@@ -6,9 +6,9 @@ author: Emil Kowalski (https://github.com/emilkowalski/skills)
 
 # Animation Vocabulary
 
-Turn a vague description of a motion or effect into the precise term, so the user knows what to ask for.
+> Vendored from [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/main/skills/animation-vocabulary) at `d16ebe6` (MIT). In Cortex, the active project's tokens and Studio's rules win; values here are examples for when the project has no answer.
 
-This cortex skill is vendored from [emilkowalski/skills](https://github.com/emilkowalski/skills/tree/main/skills/animation-vocabulary).
+Turn a vague description of a motion or effect into the precise term, so the user knows what to ask for.
 
 ## Quick Start
 

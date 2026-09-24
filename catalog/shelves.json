@@ -29,13 +29,22 @@
       "purpose": "Color spaces, palette work, gradients, gamut, contrast, and tokens."
     },
     {
+      "path": "design/emil",
+      "label": "Design Emil",
+      "kind": "design-emil",
+      "public": true,
+      "sync": true,
+      "validate": true,
+      "purpose": "Every Emil Kowalski skill in one folder: motion audits, reviews, builds, opportunity finding, mobile feel, vocabulary, and the opt-in Apple reference."
+    },
+    {
       "path": "design/motion",
       "label": "Design Motion",
       "kind": "design-motion",
       "public": true,
       "sync": true,
       "validate": true,
-      "purpose": "Animation libraries, browser transitions, motion vocabulary, and interface sound."
+      "purpose": "Animation libraries, browser transitions, and interface sound."
     },
     {
       "path": "design/craft",
