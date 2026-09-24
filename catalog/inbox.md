@@ -61,6 +61,17 @@ an inbox entry is not an endorsement or installation instruction. before promoti
 - caution: upstream motion recipes remain supplier values and cannot override Studio defaults. Cortex descriptions were pruned, references moved behind contextual pointers, and each standalone review format yields to `studio-audit` when orchestrated.
 - promote when: promoted on 2026-07-29. validate the adapted domain coverage on the next real `studio-audit` and revise only from observed gaps.
 
+### blader/humanizer
+
+- status: `promoted`
+- source: [blader/humanizer](https://github.com/blader/humanizer), reviewed at `9862685` (2026-09-24).
+- purpose: rewrite AI-sounding prose so it reads like the writer, based on Wikipedia's "Signs of AI writing".
+- likely home: `agent-workflows/humanizer`, next to `google-developer-style`. The five most persistent tells also went into the private always-on writing profile.
+- license: MIT, copyright 2025 Siqi Chen.
+- runtime: documentation-only Agent Skill. the upstream plugin manifests, `agents/openai.yaml`, and package validator were not vendored.
+- caution: the multi-line description was flattened to one line and given routing pointers to `google-developer-style` and `better-writing`.
+- promote when: promoted on 2026-09-24.
+
 ### emilkowalski/skills
 
 - status: `promoted`

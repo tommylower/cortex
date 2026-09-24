@@ -1,6 +1,6 @@
 ---
 name: preflight
-description: Preflight design review before shipping. Use for static UI/a11y checks, visual consistency, AI-slop detection, or a final component/page ship check. Triggers: preflight, design review, accessibility audit, WCAG, UI polish, design critique, AI slop check.
+description: Preflight design review before shipping. Use for static UI/a11y checks, visual consistency, AI-slop detection, or a final component/page ship check. Triggers include preflight, design review, accessibility audit, WCAG, UI polish, design critique, AI slop check.
 ---
 
 # preflight

@@ -1,6 +1,6 @@
 ---
 name: interface-craft
-description: Interface Craft for polished React interfaces. Use for three branches: storyboard animation, DialKit-style live tuning, or design critique. Trigger on storyboard, dialkit, sliders, controls, tune, critique, polish, animated interface, or Josh Puckett.
+description: Interface Craft for polished React interfaces. Use for three branches, storyboard animation, DialKit-style live tuning, or design critique. Trigger on storyboard, dialkit, sliders, controls, tune, critique, polish, animated interface, or Josh Puckett.
 argument-hint: "[description, file path, or sub-skill name]"
 author: Josh Puckett
 ---
