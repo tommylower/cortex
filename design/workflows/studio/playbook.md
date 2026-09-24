@@ -44,8 +44,9 @@ rules win.
   of truth (invariant 1). code to canvas goes through the figma mcp or paper's
   code-to-design. canvas to code goes through intake: anatomy only, and the
   skin stays ours (invariant 8).
-- for motion and polish, use `emil-design-eng` (motion review and codebase
-  motion audits), `interface-craft`, and `interface-kit` as suppliers.
+- for motion and polish, use the `design/emil/` skills (`improve-animations`
+  for codebase audits, `review-animations` for one surface, `animate` to
+  build), `interface-craft`, and `interface-kit` as suppliers.
   motion numbers still come from `rules.md`.
 - for focused accessibility, layout, writing, typography, or ui polish,
   load the matching `better-*` skill; `oklch-skill` owns color.

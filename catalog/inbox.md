@@ -64,10 +64,10 @@ an inbox entry is not an endorsement or installation instruction. before promoti
 ### emilkowalski/skills
 
 - status: `promoted`
-- source: [emilkowalski/skills](https://github.com/emilkowalski/skills), reviewed at `70744e3816f1d93eafb697161a8b880a7384c5ff`.
-- purpose: eight design-engineering skills covering motion craft, focused review, codebase animation audits and plans, restrained opportunity finding, animation vocabulary, Apple design principles, library selection, and UI variant prototyping.
-- likely home: `emil-design-eng` owns craft, review, audit, and opportunity branches; `animation-vocabulary` remains in `design/motion/`; `apple-design` is opt-in under `design/systems/`; UI-supplier selection improved `component-libraries`; the variant picker improved the existing engineering `prototype` UI branch.
+- source: [emilkowalski/skills](https://github.com/emilkowalski/skills), reviewed at `d16ebe60d09a5ba2afcb7054ede9d0a10c9f6128` (2026-09-24; first reviewed at `70744e3`).
+- purpose: thirteen skills covering motion craft, building animations, focused review, codebase animation audits and plans, opportunity finding, animation vocabulary, Apple design principles, mobile web feel, library selection, Sonner, UI variant prototyping, React Native animation, and Swift.
+- likely home: `design/emil/` holds the upstream skills as-is: `emil-design-eng`, `animate`, `review-animations`, `improve-animations`, `find-animation-opportunities`, `animation-vocabulary`, `apple-design`, and `mobile-native`. `pick-ui-library` improved `component-libraries`; `ask-sonner` became `component-libraries/references/sonner.md`; the variant picker improved the engineering `prototype` UI branch. `animate-expo` and `write-swift` are not vendored.
 - license: MIT, copyright 2026 Emil Kowalski.
 - runtime: documentation-only Agent Skills. no scripts, packages, services, or code execution.
-- caution: concrete motion values remain supplier examples beneath project tokens and Studio law. The three overlapping animation-audit skills were consolidated into one owner, and the upstream `prototype` and `pick-ui-library` names were not duplicated.
-- promote when: promoted on 2026-07-29. validate the consolidated motion branches and picker behavior on their first real uses.
+- caution: concrete motion values remain supplier examples beneath project tokens and Studio law. On 2026-09-24 the earlier consolidation of the three audit skills into `emil-design-eng` was reversed: they were hard to find by name, so each is its own skill again. `design/emil/README.md` records the update procedure.
+- promote when: promoted on 2026-07-29; regrouped under `design/emil/` on 2026-09-24.

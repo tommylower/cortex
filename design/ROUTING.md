@@ -20,9 +20,14 @@ Use this before choosing a design skill. The goal is predictable routing: pick t
 | React animation with Framer Motion | `framer-motion` |
 | Native route/shared-element transitions | `view-transitions` |
 | Name an unknown motion effect | `animation-vocabulary` |
+| Build a new animation or transition | `animate` |
 | Sound feedback | `interface-sound` |
 | UI polish, taste, interaction feel | `emil-design-eng` |
-| Review motion, audit existing animations, or find motion opportunities | `emil-design-eng` (`review`, `audit`, or `opportunities`) |
+| Audit every animation in a codebase and plan fixes | `improve-animations` |
+| Review motion in one diff or surface | `review-animations` |
+| Find places that should animate | `find-animation-opportunities` |
+| Web app feels wrong on a phone (100vh, tap flash, input zoom) | `mobile-native` |
+| Sonner toast setup, styling, or bugs | `component-libraries` (`references/sonner.md`) |
 | Storyboard animation, DialKit-oriented tuning, critique | `interface-craft` |
 | Small CSS interaction fix | `css-interaction-tips` |
 | Final senior-designer audit when UI feels done | `studio-audit` |
@@ -31,7 +36,8 @@ Use this before choosing a design skill. The goal is predictable routing: pick t
 | Browser annotation review with Agentation | `agentation-self-driving` |
 | Paper / paper.design canvas work | `paper` |
 | Explicit Rams skill, MCP, or GitHub review | `rams` |
-| Opt-in Apple, Swiss, Nothing, or Muller-Brockmann system | `design/systems/*` |
+| Opt-in Swiss, Nothing, or Muller-Brockmann system | `design/systems/*` |
+| Opt-in Apple fluid-interaction reference | `apple-design` |
 | Extract/conform a design-system package from code | `asbuilt` |
 | Choose among saved UI component libraries or registries | `component-libraries` |
 | Bring in shadcn-compatible animated components | `fluid-functionalism` |
@@ -41,7 +47,8 @@ Use this before choosing a design skill. The goal is predictable routing: pick t
 
 - `foundations/`: baseline principles and layout workflows used by many designs.
 - `color/`: color math, palettes, gradients, and token color decisions.
-- `motion/`: animation primitives, transition APIs, vocabulary, and sound.
+- `emil/`: every Emil Kowalski skill in one place; `emil/README.md` picks the right one.
+- `motion/`: animation primitives, transition APIs, and sound.
 - `craft/`: taste, polish, critique heuristics, and interaction quality.
 - `review/`: explicit audit and annotation workflows.
 - `systems/`: opt-in visual systems; never auto-apply.

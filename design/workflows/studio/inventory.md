@@ -46,13 +46,18 @@ verdicts:
 every motion supplier carries concrete durations, springs, and easings.
 they are examples; tuned numbers land in `rules.md`.
 
-- `emil-design-eng`: supplier. the taste anchor, focused motion review, and codebase motion audits.
+- `emil-design-eng`: supplier. the taste anchor.
+- `improve-animations`: supplier. codebase motion audit and fix plans. read-only.
+- `review-animations`: supplier. strict motion review of one diff or surface.
+- `find-animation-opportunities`: supplier. where motion belongs, and where it doesn't. read-only.
+- `animate`: supplier. builds a new animation decision by decision.
 - `interface-craft`: supplier. storyboard notation, critique, and tuning patterns.
 - `css-interaction-tips`: supplier. press feel, popover origins, and hover bugs.
 - `framer-motion`: supplier. code-phase animation patterns (the library is now published as `motion`).
 - `view-transitions`: supplier. native shared-element transitions.
 - `animation-vocabulary`: supplier. names for motion, for writing briefs.
 - `interface-sound`: supplier. audio feedback.
+- `mobile-native`: supplier. platform-layer fixes that make web apps feel native on phones.
 
 ### graphics
 
@@ -64,7 +69,7 @@ they are examples; tuned numbers land in `rules.md`.
 - `nothing-design`: opt-in. a full visual system, never auto-applied.
 - `swiss-design`: opt-in. reference doctrine.
 - `muller-brockmann-grid-systems`: opt-in. reference doctrine.
-- `apple-design`: opt-in. apple interaction principles translated to the web.
+- `apple-design`: opt-in. apple interaction principles translated to the web. lives in `design/emil/`.
 
 ### tools and kits
 

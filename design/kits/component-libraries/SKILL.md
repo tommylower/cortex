@@ -1,6 +1,6 @@
 ---
 name: component-libraries
-description: UI component-library supply shelf. Use when saving a UI library, asking what Cortex has, choosing a component supplier, or when Studio needs existing component anatomy before building.
+description: UI component-library supply shelf. Use when saving a UI library, asking what Cortex has, choosing a component supplier, or when Studio needs existing component anatomy before building. Also covers Sonner toast setup, styling, and troubleshooting.
 author: Cortex, with selection guidance adapted from Emil Kowalski (https://github.com/emilkowalski/skills)
 ---
 
@@ -11,6 +11,10 @@ suppliers.
 
 The task-first, one-recommendation selection posture is adapted from
 [Emil Kowalski's `pick-ui-library`](https://github.com/emilkowalski/skills/tree/main/skills/pick-ui-library).
+
+For Sonner work (wiring the `Toaster`, picking a `toast()` call, styling, or
+fixing toasts that don't appear, duplicate, or lose styles), read
+`references/sonner.md`.
 
 ## Save
 

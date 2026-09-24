@@ -10,7 +10,8 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 
 - `foundations/` — core principles, patterns, and quality gates
 - `color/` — color spaces, palettes, gradients, print proofing
-- `motion/` — animation primitives, transitions, motion vocabulary, and sound
+- `emil/` — all of Emil Kowalski's skills: motion audits, reviews, builds, mobile feel, vocabulary. see `emil/README.md`
+- `motion/` — animation primitives, transitions, and sound
 - `craft/` — interaction craft, taste, animation critique, UI polish
 - `review/` — static and live UI/UX review workflows
 - `systems/` — opt-in reference design systems. never auto-apply
@@ -34,18 +35,29 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 - **gradients** — gradient construction, color spaces, layering, performance, recipes
 - **cmyk-proof** — ICC-accurate CMYK proofing for print work designed in screen-native canvas tools. born-CMYK workflow, ink discipline, print geometry, bundled ImageMagick script
 
+## emil
+
+by Emil Kowalski. `emil/README.md` has the which-one-to-use table.
+
+- **improve-animations** — audit a codebase's motion and write prioritized fix plans. read-only
+- **review-animations** — review the motion in one diff or surface against a strict craft bar. runs only when named
+- **find-animation-opportunities** — find places that should animate and reject the ones that shouldn't. read-only
+- **animate** — build a new animation, deciding in order: whether, why, tool, properties, curve, interruption, exit
+- **mobile-native** — CSS and meta fixes that make a web app feel native on a phone
+- **animation-vocabulary** — reverse-lookup glossary for naming motion effects from vague descriptions
+- **emil-design-eng** — design-engineering philosophy for UI polish, taste, and animation decisions
+- **apple-design** — opt-in Apple/WWDC reference for fluid physical interaction on the web. never a default
+
 ## motion
 
 - **framer-motion** — animation patterns for React/Next.js (reveals, hover, micro-interactions)
 - **view-transitions** — native React/browser View Transitions for shared elements and route changes
-- **animation-vocabulary** — Emil Kowalski's reverse-lookup glossary for naming web motion effects from vague descriptions
 - **interface-sound** — tasteful UI sound feedback with Web Audio or @web-kits/audio
 
 ## craft
 
 - **better-writing** — UX writing for labels, links, errors, settings, onboarding, notifications, and empty states. by Jakub Krehel
 - **better-ui** — surface, icon, micro-interaction, and motion-polish principles. by Jakub Krehel
-- **emil-design-eng** — Emil Kowalski's design-engineering owner for UI polish, motion decisions, focused review, codebase motion audits, and restrained opportunity finding
 - **interface-craft** — Josh Puckett's toolkit for storyboard animation, dial-driven tuning, and design critique
 - **css-interaction-tips** — quick reference for hover, transitions, button states, tooltips, tap targets
 
@@ -63,7 +75,6 @@ opt-in only. apply when explicitly requested, never by default.
 - **swiss-design** — Swiss International Style. grid-first, grotesque typography, restrained color, one accent
 - **nothing-design** — Nothing-inspired. monochrome, typographic, industrial. Space Grotesk/Mono, OLED blacks
 - **muller-brockmann-grid-systems** — opt-in Swiss editorial grid system. modular columns, baseline rhythm, visible overlay, optical display-type alignment
-- **apple-design** — opt-in Apple/WWDC reference for fluid physical interaction and product-design principles on the web
 
 ## workflows
 
