@@ -62,7 +62,8 @@ while IFS= read -r category; do
     fi
 
     # an unquoted value containing ": " is invalid YAML for strict parsers
-    case "$desc" in
+    desc_raw="$(printf '%s\n' "$fm" | sed -n 's/^description: *//p' | head -1)"
+    case "$desc_raw" in
       \"*|\'*|\|*|\>*) ;;
       *": "*)
         echo "FAIL  $category/$dir_name — description has an unquoted ': ' (invalid YAML); reword or quote it"
