@@ -1,6 +1,6 @@
 ---
 name: wip-senior-audit
-description: Senior live-site UX audit. Use when the user asks to audit a whole running product, review the live app, judge first impressions, or diagnose understanding/trust/conversion across desktop and mobile. Distinct from preflight: this boots the site and writes docs/design-audit/.
+description: Senior live-site UX audit. Use when the user asks to audit a whole running product, review the live app, judge first impressions, or diagnose understanding/trust/conversion across desktop and mobile. Distinct from preflight because it boots the site and writes docs/design-audit/.
 ---
 
 # wip-senior-audit
