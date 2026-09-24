@@ -1,6 +1,6 @@
 ---
 name: apple-design
-description: Opt-in reference for Apple's approach to interface design and fluid, physical motion, translated for the web: gesture-driven UI, springs, drag/swipe/sheet interactions, momentum, interruptible transitions, materials, typography, and reduced motion. Use only when the user explicitly asks for Apple-style, iOS-like, or fluid physical interaction behavior; never apply it as a default.
+description: Opt-in reference for Apple's approach to interface design and fluid, physical motion, translated for the web, covering gesture-driven UI, springs, drag/swipe/sheet interactions, momentum, interruptible transitions, materials, typography, and reduced motion. Use only when the user explicitly asks for Apple-style, iOS-like, or fluid physical interaction behavior; never apply it as a default.
 author: Emil Kowalski (https://github.com/emilkowalski/skills)
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: emil-design-eng
-description: Emil Kowalski's design-engineering philosophy: UI polish, component design, animation decisions, and the invisible details that make software feel great. Use for taste and craft questions, or when polishing an interaction. For task-specific work use its siblings in design/emil: animate (build), review-animations (review a diff), improve-animations (audit a codebase), find-animation-opportunities (find where motion belongs).
+description: Emil Kowalski's design-engineering philosophy for UI polish, component design, animation decisions, and the invisible details that make software feel great. Use for taste and craft questions, or when polishing an interaction. For task-specific work use its siblings in design/emil, namely animate (build), review-animations (review a diff), improve-animations (audit a codebase), find-animation-opportunities (find where motion belongs).
 author: Emil Kowalski (https://github.com/emilkowalski/skills)
 ---
 
