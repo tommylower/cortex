@@ -61,6 +61,16 @@ while IFS= read -r category; do
       continue
     fi
 
+    # an unquoted value containing ": " is invalid YAML for strict parsers
+    case "$desc" in
+      \"*|\'*|\|*|\>*) ;;
+      *": "*)
+        echo "FAIL  $category/$dir_name — description has an unquoted ': ' (invalid YAML); reword or quote it"
+        errors=$((errors+1))
+        continue
+        ;;
+    esac
+
     if printf '%s\n' "$seen_names" | grep -qx "$name"; then
       echo "FAIL  $category/$dir_name — duplicate name '$name'"
       errors=$((errors+1))

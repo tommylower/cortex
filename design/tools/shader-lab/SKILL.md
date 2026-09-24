@@ -1,6 +1,6 @@
 ---
 name: shader-lab
-description: Install and use Basement Studio's Shader Lab runtime to drop GPU shader compositions into a Next.js or React app. Use when the user wants shader-driven visual effects — warped text, liquid backgrounds, distortion, noise flows, post-processing passes, animated hero treatments — sourced from the Shader Lab editor. Triggers: shader, shaders, shader-lab, basement shader, shader effects, gpu effects, shader composition, warped text, liquid background, displacement text, hero shader, shader post-processing.
+description: Install and use Basement Studio's Shader Lab runtime to drop GPU shader compositions into a Next.js or React app. Use when the user wants shader-driven visual effects — warped text, liquid backgrounds, distortion, noise flows, post-processing passes, animated hero treatments — sourced from the Shader Lab editor. Triggers include shader, shaders, shader-lab, basement shader, shader effects, gpu effects, shader composition, warped text, liquid background, displacement text, hero shader, shader post-processing.
 author: Basement Studio (https://github.com/basementstudio/shader-lab)
 ---
 
