@@ -404,7 +404,7 @@ run("outside", () => {
     return;
   }
   const skip = (f) =>
-    f.startsWith("marketing/") || f.startsWith("design/workflows/studio/") || f === "SKILL_AUDIT.md" ||
+    f.startsWith("marketing/") || f.startsWith("design/workflows/studio/") ||
     f === "scripts/check-studio.mjs" || f === "scripts/test-check-studio.sh";
   const inSkill = (f) => {
     let dir = path.dirname(path.join(root, f));
