@@ -132,6 +132,7 @@ Add these only when real material no longer fits the two core files:
 | `SYSTEM.md` | Several repositories or systems need one human-readable authority and flow map. |
 | `ACCESS.md` | Access scopes, account names, or recovery pointers need a home. Never store secret values. |
 | `AGENTS.md` | Maintaining the workspace requires constraints not already supplied by project or global guidance. |
+| `WRAP-UP.md` | A finished work block produced a decision or lesson for the operator's own notes. It holds only what hasn't been sent there yet; delete it once it's sent. |
 | `inbox/` | Unprocessed material actually arrives and needs an explicit landing place. |
 | `plans/` | An approved active effort needs more detail than the changing-state file can hold. |
 | `references/` | Outside source material must be retained, understood, and connected to active work. |
