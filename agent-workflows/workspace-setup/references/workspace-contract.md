@@ -1,15 +1,22 @@
 # Workspace contract
 
-## One workspace per operated project
+## One workspace per folder
 
-`workspace/` is the operator layer for one independently operated project. A
-single-repository project normally places it in that repository. An umbrella
-operated across several repositories may place one workspace at the umbrella
-root and route to the child repositories from there.
+`workspace/` is the operator layer for one folder: a repository, a standalone
+engagement, or an umbrella over several repositories. Each folder you work in
+keeps its own, so a session working in a folder reads and writes that folder's
+workspace.
 
-Repository count does not determine workspace count. Create another workspace
-only when a child has its own work lifecycle, changing state, decisions, and
-operator boundary. A category folder alone does not earn a workspace.
+An umbrella's workspace holds only material that spans its children and
+routes to them. Each child repository keeps its own workspace inside the
+repository, created when it first has real material. Don't keep a child's
+material in a subfolder of the umbrella workspace: a `projects/<child>/`
+folder duplicates the child's own folder, splits its truth, and lets sessions
+working on different children collide.
+
+A package, generated directory, dependency checkout, category folder, or
+archive gets no workspace. A collection of packages keeps one workspace for
+the collection.
 
 ## Core shape
 
@@ -43,8 +50,8 @@ Make this the stable operator router. It should identify:
 - the workspace's sharing, privacy, and durability boundary;
 - who or what owns execution and how handoffs occur.
 
-For a multi-repository project, map the child repositories here and explain
-their handoffs. Keep mutable status out of this router.
+For an umbrella, map the child repositories and their workspaces here and
+explain their handoffs. Keep mutable status out of this router.
 
 ### `workspace/PROJECT.md`
 
@@ -88,7 +95,12 @@ tracked, coordinated and local, or mixed with a dedicated project agent.
 - **Local:** private operator material remains inside the project boundary but
   outside the authored repository, or is explicitly ignored. A nested local
   Git repository with no remote may version it when independent local history
-  is useful; do not introduce nested Git by default.
+  is useful; do not introduce nested Git by default. A child repository's
+  workspace is local by default: ignore it with `/workspace/` in that
+  repository's `.git/info/exclude`, which stays on this machine and changes
+  no tracked file. Tools that don't read git's ignore rules still see an ignored folder
+  (a local deploy CLI uploads it unless its own ignore file excludes it), and
+  `git clean -x` deletes it; check both before creating one.
 - **Tracked:** the workspace is safe for the repository's audience and is
   reviewed with the code.
 - **Mixed:** a tracked safe router or shared state is separated explicitly from
@@ -123,9 +135,14 @@ Add these only when real material no longer fits the two core files:
 | `inbox/` | Unprocessed material actually arrives and needs an explicit landing place. |
 | `plans/` | An approved active effort needs more detail than the changing-state file can hold. |
 | `references/` | Outside source material must be retained, understood, and connected to active work. |
+| `handoffs/` | Paused work needs restart notes that outlive one session. |
 
 Do not create empty optional files or directories. Do not add a second status
 ledger, decision system, archive, or task tracker under another name.
+
+Code isn't operator material. Keep worktrees and build snapshots out of
+workspaces, and move frozen ones to the archive with the project's other
+historical material.
 
 ## Authority model
 
@@ -144,9 +161,9 @@ input -> workspace deliberation -> build -> verify -> canonical project truth
 - Workspace notes may receive, propose, connect, route, and verify. They do not
   change another source merely by existing.
 
-For nested projects, the parent workspace owns cross-project decisions,
-handoffs, and shared open loops. A child workspace owns only its independent
-local work and links upward for shared context.
+For an umbrella, its workspace owns cross-repository decisions, handoffs, and
+shared open loops. A child workspace owns only that child's work and links
+upward for shared context.
 
 ## Naming and collisions
 
@@ -156,3 +173,8 @@ as `control/`, `control-room/`, or `project-hq/`.
 If `workspace/` already has an unrelated build, package-manager, or runtime
 meaning, stop and surface the collision. Do not overwrite it or silently give
 two concepts the same path.
+
+If a repository's tracked files already use `workspace/` to mean the
+umbrella's lane (for example, policy saying capture lives in
+`workspace/INBOX.md`), don't create a workspace inside that repository. Its
+operator material belongs to the umbrella.

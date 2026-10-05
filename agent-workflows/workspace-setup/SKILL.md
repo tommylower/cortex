@@ -6,10 +6,11 @@ description: Establish, review, migrate, or repair the workspace operator layer 
 # Workspace Setup
 
 Use `workspace/` as the literal folder name and the leading concept. Every
-independently operated code project gets one workspace: the operator layer for
-understanding, coordinating, and maintaining the project without competing
-with its code, product documentation, dedicated project agent, or external
-systems of record.
+folder you work in gets its own workspace: a repository, a standalone
+engagement, or an umbrella over several repositories. A workspace is the
+operator layer for understanding, coordinating, and maintaining that folder's
+work without competing with its code, product documentation, dedicated project
+agent, or external systems of record.
 
 A workspace should answer:
 
@@ -20,19 +21,21 @@ A workspace should answer:
 - Where does each kind of truth live?
 - Which durable decisions or rules constrain the work?
 
-## 1. Set the project boundary
+## 1. Set the folder boundary
 
-Find the independently operated project root. A repository, standalone
-engagement, or multi-repository umbrella can be a project; a package, generated
-directory, dependency checkout, category folder, or archive is not one unless
-it has its own work lifecycle.
+Find the folders in scope: the repository or working folder itself and, for an
+umbrella, each child repository. A package, generated directory, dependency
+checkout, category folder, or archive gets no workspace.
 
-For nested projects, the parent workspace owns only cross-project coordination.
-Each independently operated child owns its local work. Do not mirror state
-between them. Do not create one workspace per repository when several
-repositories are operated as one project.
+Each folder keeps its own workspace, created when it first has real material.
+An umbrella's workspace owns only work that spans its children: shared plans,
+ideas, inbox, references, and cross-repository handoffs. A child repository's
+workspace owns that repository's plans, notes, and handoffs. Never hold a
+child's material in a subfolder of the parent's workspace (such as
+`projects/<child>/`), and never mirror state between levels; a child links
+upward for shared context.
 
-**Complete when:** you can name every project root in scope and state, in one
+**Complete when:** you can name every folder in scope and state, in one
 sentence each, what its workspace owns.
 
 ## 2. Map the existing truth
@@ -124,7 +127,8 @@ Check all of the following:
 
 - `workspace/` is the only active name for the operator layer;
 - the root front door and workspace router have distinct roles;
-- one independently operated project has one workspace;
+- each folder has at most one workspace, and no workspace holds another
+  folder's material;
 - changing state has one easy-to-update home;
 - links and moved-path references resolve;
 - parent and child workspaces do not mirror each other's state;

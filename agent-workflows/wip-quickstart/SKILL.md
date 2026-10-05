@@ -106,10 +106,9 @@ authority for the project's `workspace/` operator layer. Select the workspace
 shape from the project boundary, sharing needs, coordination load, and
 execution ownership—not merely from the parent category folder.
 
-Create one workspace for one independently operated project. A multi-repository
-project may have one top-level workspace when the umbrella is the actual unit
-of operation. Do not create one workspace per child repository unless each
-child genuinely has an independent work lifecycle.
+Create one workspace per folder: the project's own and, for a
+multi-repository project, one in each child repository once it has real
+material. The umbrella's workspace holds only cross-repository work.
 
 When a dedicated project agent owns execution, make the workspace define
 routes, authority, availability, and handoffs. Do not duplicate the agent's

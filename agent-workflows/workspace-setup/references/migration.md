@@ -39,6 +39,16 @@ user can give pointed feedback unless the user explicitly requests a batch.
    maintains durable decisions. Preserve historical wording; mark an older
    decision superseded instead of rewriting what it originally said.
 
+## Split an umbrella workspace
+
+When an umbrella workspace holds one child's material (a `projects/<child>/`
+folder, that child's plans or handoffs), move it into the child's own
+workspace and keep only cross-repository material at the umbrella. Move git
+worktrees with `git worktree move`, or move them and then run
+`git worktree repair <new-path>...` from each owning repository, one path per
+argument. Leave the umbrella README a table of old and new paths so older
+files stay readable.
+
 ## Verify the migration
 
 Search the project for the retired path and terminology. Every remaining match
