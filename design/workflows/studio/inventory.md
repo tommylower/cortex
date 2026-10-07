@@ -29,12 +29,16 @@ verdicts:
 - `better-layout`: supplier. grouping, alignment, reading order, adaptivity, safe areas, and rtl.
 - `better-typography`: supplier. font systems, hierarchy, and text behavior.
 - `oklch-skill`: supplier. color math, ramps, gamut, contrast, and semantic color.
+- `better-colors`: supplier. color-system building and audit: ramps, role tokens, borrow ban, measured contrast.
 - `gradients`: supplier. color-space choices and recipes.
 - `responsive-craft`: watch. its workflows hardcode breakpoints and durations.
 - `loading-states`: watch. its patterns carry durations.
 - `reference-patterns`: watch. it carries motion numbers.
 - `preflight`: supplier. a static design and accessibility review of a component or page, separate from the `scripts/preflight.ts` build gate.
 - `wip-senior-audit`: supplier. the live-site pass inside `studio-audit`.
+- `better-interface`: supplier. one cross-discipline review over the `better-*` skills; `studio-audit` remains the ship check.
+- `interface-review`: supplier. change-scoped interface review of a branch, PR, or uncommitted diff. user-invoked.
+- `explain-interface`: supplier. reverse-engineers how a site or effect was built, for reference intake. user-invoked.
 
 ### craft and writing
 
@@ -76,6 +80,10 @@ they are examples; tuned numbers land in `rules.md`.
 - `figma-mcp`: supplier. reading and generating from figma files.
 - `paper`: supplier. the paper canvas workflow; mechanics are in `practices/paper.md`.
 - `wiretext`: supplier. ascii wireframes before canvas or code.
+- `build-design`: supplier. design-to-code that maps every value to an existing token and compares the build to the design frame by frame. written for figma; with paper, read values through the paper mcp.
+- `state-machine`: supplier. a throwaway route that renders every reachable state of one component behind a switcher. user-invoked.
+- `break`: supplier. a throwaway stress page of one component under every reachable scenario. user-invoked.
+- `variant`: supplier. three on-purpose variants of one piece behind a picker on the real page. user-invoked.
 - `dialkit`: supplier. the tuning instrument: how better motion numbers get found, never a source of them.
 - `interface-kit`: supplier. a dev-only style-editing overlay.
 - `agentation`: supplier. a dev-only annotation toolbar.

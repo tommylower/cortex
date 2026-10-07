@@ -38,6 +38,7 @@ they stack. grill-with-docs maintains the `CONTEXT.md` glossary and ADRs that im
 
 ## architecture
 
+- **codebase-design** — shared vocabulary for deep modules, interface design, test seams, and localizing complexity. Use as a reference during design and audits.
 - **improve-codebase-architecture** — find module-deepening opportunities, informed by `CONTEXT.md` and `docs/adr/`.
 - **zoom-out** — explain unfamiliar code in the context of the whole system.
 

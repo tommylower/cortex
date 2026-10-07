@@ -65,6 +65,7 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 - [`ui-principles`](design/foundations/ui-principles/SKILL.md) — Core principles for building high-quality UI: spacing scale, typography hierarchy, layout rules, max content widths, grid systems, card consistency, proximity grouping, and…
 
 #### color
+- [`better-colors`](design/color/better-colors/SKILL.md) — Helps you build and check a color system for your project. It generates palettes, names semantic tokens, converts between formats and measures contrast.
 - [`cmyk-proof`](design/color/cmyk-proof/SKILL.md) — ICC-accurate CMYK proofing for print work designed in screen-native canvas tools (Paper, Figma, or any hex-only design surface). Converts brand hexes to press recipes plus…
 - [`gradients`](design/color/gradients/SKILL.md) — Patterns and principles for building high-quality CSS gradients: choosing the right color space (sRGB vs oklab vs oklch), linear / radial / conic gradient syntax, layering,…
 - [`oklch-skill`](design/color/oklch-skill/SKILL.md) — OKLCH color systems and semantic color usage.
@@ -85,6 +86,7 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 - [`view-transitions`](design/motion/view-transitions/SKILL.md) — Implement native React and browser View Transitions for page transitions, route changes, shared element transitions, list reorder animations, Suspense reveals, and directional…
 
 #### craft
+- [`better-interface`](design/craft/better-interface/SKILL.md) — Combines all of the `better-*` skills into a single review across accessibility, layout, writing, typography, color and UI polish.
 - [`better-ui`](design/craft/better-ui/SKILL.md) — UI-polish principles for product interfaces.
 - [`better-writing`](design/craft/better-writing/SKILL.md) — UX writing for product interfaces.
 - [`css-interaction-tips`](design/craft/css-interaction-tips/SKILL.md) — Quick-reference recipes for common CSS interaction and animation problems: button press feedback, smooth element entrances, hover flicker fixes, popover transform-origin,…
@@ -92,6 +94,8 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 
 #### review
 - [`agentation-self-driving`](design/review/agentation-self-driving/SKILL.md) — Agentation self-driving design review.
+- [`explain-interface`](design/review/explain-interface/SKILL.md) — Explains how a website, a visual effect or an animation was built, from a live URL or a screenshot.
+- [`interface-review`](design/review/interface-review/SKILL.md) — Reviews a branch, pull request or uncommitted change for the interface problems it introduced or regressed, across accessibility, layout, writing, typography, color and UI.
 - [`preflight`](design/review/preflight/SKILL.md) — Preflight design review before shipping. Use for static UI/a11y checks, visual consistency, AI-slop detection, or a final component/page ship check. Triggers include preflight,…
 - [`studio-audit`](design/review/studio-audit/SKILL.md) — Senior Studio audit for finished UI. Use for a quick or full ship check of a component, page, flow, app, or branch before handoff, commit, or deployment, including requests for…
 - [`wip-senior-audit`](design/review/wip-senior-audit/SKILL.md) — Senior live-site UX audit.
@@ -103,8 +107,12 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 
 #### workflows
 - [`asbuilt`](design/workflows/asbuilt/SKILL.md) — Asbuilt design-system extraction and conformance.
+- [`break`](design/workflows/break/SKILL.md) — Renders a component you choose under every scenario that can reach it on a temporary page and stress tests it.
+- [`build-design`](design/workflows/build-design/SKILL.md) — Builds UI from a Figma file or a design image so it matches the design, using your project's existing tokens and components.
 - [`spec-map`](design/workflows/spec-map/SKILL.md) — turn a spec into a hand-editable system map in paper
+- [`state-machine`](design/workflows/state-machine/SKILL.md) — Renders every state of a component you choose on a throwaway page, with mock data and a switcher, so you can work on each state.
 - [`studio`](design/workflows/studio/SKILL.md) — The house practice for design and front-end product work. Load before any design, UI, component, canvas (Paper, Figma), or project-scaffolding work, in any project. Holds the…
+- [`variant`](design/workflows/variant/SKILL.md) — Builds multiple variants of a component you're working on and helps you iterate and pick one.
 
 #### kits
 - [`component-libraries`](design/kits/component-libraries/SKILL.md) — UI component-library supply shelf.
@@ -126,6 +134,7 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 ### engineering
 - [`blindspot`](engineering/blindspot/SKILL.md) — Pre-mortem pass before infra, deploy, data-model, or unfamiliar-territory work. Surfaces unknown unknowns by cross-referencing the task against past gotchas in memory and the…
 - [`caveman`](engineering/caveman/SKILL.md) — Ultra-compressed technical communication mode. Cuts token usage by dropping filler, articles, and pleasantries while keeping exact technical terms. Use only when user explicitly…
+- [`codebase-design`](engineering/codebase-design/SKILL.md) — Shared vocabulary for designing deep modules.
 - [`deadcode`](engineering/deadcode/SKILL.md) — find and remove dead code. scans for unused files, exports, dependencies, and types using knip. lists every finding with reasoning before deleting anything.
 - [`diagnose`](engineering/diagnose/SKILL.md) — Disciplined diagnosis loop for hard bugs and performance regressions. Reproduce → minimise → hypothesise → instrument → fix → regression-test.
 - [`grill-me`](engineering/grill-me/SKILL.md) — Interview the user relentlessly about a plan or design until reaching shared understanding, resolving each branch of the decision tree.

@@ -32,6 +32,7 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 ## color
 
 - **oklch-skill** — OKLCH conversion, palette generation, contrast, gamut, semantic color use, appearance variants, and Tailwind v4 tokens. by Jakub Krehel
+- **better-colors** — build and check a color system: palettes, semantic token names, format conversion, contrast. by Jakub Krehel
 - **gradients** — gradient construction, color spaces, layering, performance, recipes
 - **cmyk-proof** — ICC-accurate CMYK proofing for print work designed in screen-native canvas tools. born-CMYK workflow, ink discipline, print geometry, bundled ImageMagick script
 
@@ -58,12 +59,15 @@ by Emil Kowalski. `emil/README.md` has the which-one-to-use table.
 
 - **better-writing** — UX writing for labels, links, errors, settings, onboarding, notifications, and empty states. by Jakub Krehel
 - **better-ui** — surface, icon, micro-interaction, and motion-polish principles. by Jakub Krehel
+- **better-interface** — one cross-discipline review combining every better-* skill. by Jakub Krehel
 - **interface-craft** — Josh Puckett's toolkit for storyboard animation, dial-driven tuning, and design critique
 - **css-interaction-tips** — quick reference for hover, transitions, button states, tooltips, tap targets
 
 ## review
 
 - **studio-audit** — umbrella final design QA when a UI feels done. covers accessibility, layout, writing, typography, color, UI craft, responsive behavior, and live flow under Studio law
+- **interface-review** — review a branch, PR, or uncommitted change for interface regressions across a11y, layout, writing, type, color, UI. runs only when named. by Jakub Krehel
+- **explain-interface** — explain how a site, effect, or animation was built from a URL or screenshot. runs only when named. by Jakub Krehel
 - **preflight** — final design audit before shipping. accessibility, visual consistency, AI pattern detection
 - **wip-senior-audit** — boot the real running site, screenshot pages and core flows (desktop + mobile), and produce a senior-lead UX audit graded on understand / trust / convert. live counterpart to preflight's static pass. writes docs/design-audit/
 - **agentation-self-driving** — autonomous design critique mode on top of agentation
@@ -81,6 +85,10 @@ opt-in only. apply when explicitly requested, never by default.
 - **asbuilt** — derive and conform a design-system package from a finished codebase
 - **studio** — the house practice for design and front-end product work: the rules (invariants, defaults, experiments), the playbook, tool practices (paper, figma, print and assets, front-end), the verdict on every design skill and tool, and doctrine (intake, scaffold, enforcement). load before any design work; every other design skill is a supplier to it
 - **spec-map** — turn a spec into a hand-editable system map on a paper canvas
+- **build-design** — build UI from a Figma file or design image to match, using the project's tokens and components. by Jakub Krehel
+- **state-machine** — render every state of a component on a throwaway page with mock data and a switcher. runs only when named. by Jakub Krehel
+- **break** — stress a component under every reachable scenario on a temporary page. runs only when named. by Jakub Krehel
+- **variant** — build several variants of a component and iterate to pick one. runs only when named. by Jakub Krehel
 
 ## kits
 
