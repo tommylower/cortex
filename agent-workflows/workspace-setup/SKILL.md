@@ -6,8 +6,8 @@ description: Establish, review, migrate, or repair the workspace operator layer 
 # Workspace Setup
 
 Use `workspace/` as the literal folder name and the leading concept. Every
-folder you work in gets its own workspace: a repository, a standalone
-engagement, or an umbrella over several repositories. A workspace is the
+project folder you work in gets its own workspace: a repository or a standalone
+working folder. An umbrella over several projects gets none. A workspace is the
 operator layer for understanding, coordinating, and maintaining that folder's
 work without competing with its code, product documentation, dedicated project
 agent, or external systems of record.
@@ -27,13 +27,13 @@ Find the folders in scope: the repository or working folder itself and, for an
 umbrella, each child repository. A package, generated directory, dependency
 checkout, category folder, or archive gets no workspace.
 
-Each folder keeps its own workspace, created when it first has real material.
-An umbrella's workspace owns only work that spans its children: shared plans,
-ideas, inbox, references, and cross-repository handoffs. A child repository's
-workspace owns that repository's plans, notes, and handoffs. Never hold a
-child's material in a subfolder of the parent's workspace (such as
-`projects/<child>/`), and never mirror state between levels; a child links
-upward for shared context.
+Each project folder keeps its own workspace, created when it first has real
+material, in the one template from
+[the workspace contract](references/workspace-contract.md). An umbrella keeps
+only `AGENTS.md` and `README.md`; anything that seems to span its projects goes
+to the project it mostly belongs to, the organization's own repository, or the
+operator's personal notes. Never hold a child's material in a parent folder,
+and never mirror state between levels.
 
 **Complete when:** you can name every folder in scope and state, in one
 sentence each, what its workspace owns.
@@ -135,7 +135,7 @@ Check all of the following:
 - optional files and folders contain real material;
 - sharing, privacy, execution ownership, and authority are explicit;
 - credentials and secret values are absent;
-- the folder has `AGENTS.md` and `README.md`, and the workspace has no nested Git;
+- the folder has `AGENTS.md` and `README.md`, the workspace follows the template and has no nested Git, and no umbrella has a workspace;
 - no stale worktrees, merged branches, stashes, or old uncommitted work remain (run the drift check).
 
 **Complete when:** every check passes or the unresolved check is reported as a

@@ -1,18 +1,19 @@
 # Workspace contract
 
-## One workspace per folder
+## One workspace per project folder
 
-`workspace/` is the operator layer for one folder: a repository, a standalone
-engagement, or an umbrella over several repositories. Each folder you work in
-keeps its own, so a session working in a folder reads and writes that folder's
-workspace.
+`workspace/` is the operator layer for one project folder: a repository or a
+standalone working folder. Each project you work in keeps its own, so a session
+working there reads and writes that workspace.
 
-An umbrella's workspace holds only material that spans its children and
-routes to them. Each child repository keeps its own workspace inside the
-repository, created when it first has real material. Don't keep a child's
-material in a subfolder of the umbrella workspace: a `projects/<child>/`
-folder duplicates the child's own folder, splits its truth, and lets sessions
-working on different children collide.
+An umbrella (a client or company folder holding several projects) has no
+workspace. It keeps only `AGENTS.md` and `README.md`, which route to its
+projects. Material that seems to span projects still has one real home: the
+project it mostly belongs to, the organization's own policy or knowledge
+repository, or the operator's personal notes system. Work that has no
+repository gets its own project folder (no git) with the same front doors and
+its own workspace. An umbrella workspace collects everything nobody routed and
+lets sessions on different children collide, so don't create one.
 
 A package, generated directory, dependency checkout, category folder, or
 archive gets no workspace. A collection of packages keeps one workspace for
@@ -20,20 +21,23 @@ the collection.
 
 ## Core shape
 
-The minimum workspace is:
+Every workspace uses the same template. Create a file or folder only when it
+has something in it; nothing else goes in a workspace.
 
 ```text
 <project>/
 └── workspace/
-    ├── README.md
-    └── PROJECT.md
+    ├── README.md     what's here
+    ├── PROJECT.md    purpose, current, next, open loops, decisions
+    ├── plans/        one file per active plan
+    ├── notes/        dated notes: YYYY-MM-DD-<kind>-<slug>.md (call, note, thread, research)
+    ├── references/   outside material kept as-is
+    └── WRAP-UP.md    decisions and lessons waiting for the operator's own notes
 ```
 
 Keep the stable product or repository front door in the root `README.md`. Keep
 project-wide editing constraints and verification commands in the nearest
 applicable `AGENTS.md`; moving them into `workspace/` would narrow their scope.
-For a non-repository umbrella, the root README may be a thin pointer to
-`workspace/README.md`.
 
 Preserve useful root conventions in an existing project. Add or strengthen a
 root `README.md` or `AGENTS.md` only when its product-facing, build-facing, or
@@ -50,8 +54,7 @@ Make this the stable operator router. It should identify:
 - the workspace's sharing, privacy, and durability boundary;
 - who or what owns execution and how handoffs occur.
 
-For an umbrella, map the child repositories and their workspaces here and
-explain their handoffs. Keep mutable status out of this router.
+Keep mutable status out of this router.
 
 ### `workspace/PROJECT.md`
 
@@ -119,26 +122,14 @@ secret-bearing URLs out of every mode.
   elevated. The agent's own task, status, memory, or record system remains
   canonical; do not build a competing copy in the workspace.
 
-## Earned additions
+## Nothing beyond the template
 
-Add these only when real material no longer fits the two core files:
-
-| Path | Add when |
-| --- | --- |
-| `WORKING.md` | One active effort needs a detailed, frequently updated view. `PROJECT.md` links to it instead of mirroring it. |
-| `BACKLOG.md` | Future work has outgrown a short Open loops section. |
-| `DECISIONS.md` | Durable choices would cost meaningful time to reconstruct. |
-| `SYSTEM.md` | Several repositories or systems need one human-readable authority and flow map. |
-| `ACCESS.md` | Access scopes, account names, or recovery pointers need a home. Never store secret values. |
-| `AGENTS.md` | Maintaining the workspace requires constraints not already supplied by project or global guidance. |
-| `WRAP-UP.md` | A finished work block produced a decision or lesson for the operator's own notes. It holds only what hasn't been sent there yet; delete it once it's sent. |
-| `inbox/` | Unprocessed material actually arrives and needs an explicit landing place. |
-| `plans/` | An approved active effort needs more detail than the changing-state file can hold. |
-| `references/` | Outside source material must be retained, understood, and connected to active work. |
-| `handoffs/` | Paused work needs restart notes that outlive one session. |
-
-Do not create empty optional files or directories. Do not add a second status
-ledger, decision system, archive, or task tracker under another name.
+Don't add a second status ledger, backlog, decision log, inbox, handoff folder,
+or task tracker under another name. Status and open loops live in `PROJECT.md`;
+an effort too big for it gets a file in `plans/`; durable decisions go in
+`PROJECT.md` or the repository's own decision record; restart notes for paused
+work go in `PROJECT.md`'s Next or the plan they belong to. Access pointers,
+never secret values, go in `references/`.
 
 Code isn't operator material. Keep worktrees and build snapshots out of
 workspaces, and move frozen ones to the archive with the project's other
@@ -161,9 +152,8 @@ input -> workspace deliberation -> build -> verify -> canonical project truth
 - Workspace notes may receive, propose, connect, route, and verify. They do not
   change another source merely by existing.
 
-For an umbrella, its workspace owns cross-repository decisions, handoffs, and
-shared open loops. A child workspace owns only that child's work and links
-upward for shared context.
+A project's workspace owns only that project's work. Cross-project decisions
+live in the organization's own repository, not in a parent workspace.
 
 ## Front doors that stay fresh
 
@@ -189,8 +179,8 @@ checkout only while someone works on it.
 ## Elevation
 
 A workspace note becomes truth by a copy into its owner, one level at a time:
-the repository (an issue, a PR, its decision record), then the umbrella (its
-workspace or policy repository), then the operator's own notes through a
+the repository (an issue, a PR, its decision record), then the organization's
+own policy or knowledge repository, then the operator's own notes through a
 `WRAP-UP.md`. Each level links to the one below; none mirrors another's state.
 
 ## Drift check

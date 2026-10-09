@@ -39,15 +39,18 @@ user can give pointed feedback unless the user explicitly requests a batch.
    maintains durable decisions. Preserve historical wording; mark an older
    decision superseded instead of rewriting what it originally said.
 
-## Split an umbrella workspace
+## Retire an umbrella workspace
 
-When an umbrella workspace holds one child's material (a `projects/<child>/`
-folder, that child's plans or handoffs), move it into the child's own
-workspace and keep only cross-repository material at the umbrella. Move git
-worktrees with `git worktree move`, or move them and then run
-`git worktree repair <new-path>...` from each owning repository, one path per
-argument. Leave the umbrella README a table of old and new paths so older
-files stay readable.
+An umbrella workspace is retired, not split. Route each item to its real home,
+one at a time with the owner's approval: a project's plans and notes into that
+project's `workspace/`; organization knowledge into the organization's own
+repository; personal notes into the operator's notes system; work with no
+repository into a new project folder of its own; and anything stale to
+deletion. If its folder was a git repository, keep a `git bundle` of it in the
+archive first. Move git worktrees out of the tree with `git worktree move`, or
+move them and run `git worktree repair <new-path>...` from each owning
+repository. Fix every link that pointed at the old paths, then remove the
+umbrella's `workspace/`.
 
 ## Verify the migration
 
