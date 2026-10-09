@@ -93,9 +93,8 @@ tracked, coordinated and local, or mixed with a dedicated project agent.
 ### Sharing
 
 - **Local:** private operator material remains inside the project boundary but
-  outside the authored repository, or is explicitly ignored. A nested local
-  Git repository with no remote may version it when independent local history
-  is useful; do not introduce nested Git by default. A child repository's
+  outside the authored repository, or is explicitly ignored. A workspace is a
+  plain folder: no nested Git repository inside it. A child repository's
   workspace is local by default: ignore it with `/workspace/` in that
   repository's `.git/info/exclude`, which stays on this machine and changes
   no tracked file. Tools that don't read git's ignore rules still see an ignored folder
@@ -165,6 +164,42 @@ input -> workspace deliberation -> build -> verify -> canonical project truth
 For an umbrella, its workspace owns cross-repository decisions, handoffs, and
 shared open loops. A child workspace owns only that child's work and links
 upward for shared context.
+
+## Front doors that stay fresh
+
+Every folder in scope has an `AGENTS.md` (rules and routing; `CLAUDE.md` links
+to it or imports it with `@AGENTS.md`) and a root `README.md` (what the folder
+is and a map of what's inside). An umbrella's README also lists child
+repositories that aren't checked out on this machine, each with what it is and
+its clone command, so a missing folder reads as a choice, not a loss. Keep a
+checkout only while someone works on it.
+
+## Sessions and parallel agents
+
+- **Start:** read the folder's `AGENTS.md`, then `workspace/PROJECT.md`, then
+  `git status` and `git worktree list`. Uncommitted work you didn't make
+  belongs to someone else: leave it and say so.
+- **Parallel work:** one agent per checkout. A second agent works in a
+  worktree outside the project tree (for example `~/.worktrees/<repo>/<branch>`),
+  never inside a workspace or an archive.
+- **End:** commit or state why not; remove your worktree once its branch is
+  merged and delete merged branches; update `PROJECT.md`'s Current and Next;
+  leave no stash, scratch file or build snapshot behind.
+
+## Elevation
+
+A workspace note becomes truth by a copy into its owner, one level at a time:
+the repository (an issue, a PR, its decision record), then the umbrella (its
+workspace or policy repository), then the operator's own notes through a
+`WRAP-UP.md`. Each level links to the one below; none mirrors another's state.
+
+## Drift check
+
+Run a hygiene check over the code root on a schedule and before calling a
+cleanup done. It should report linked worktrees, branches already merged,
+local-only commits and uncommitted changes older than a week, stashes, nested
+Git inside workspaces, and folders missing `AGENTS.md`. Fix findings in the
+folder's own next session; don't let them pile up.
 
 ## Naming and collisions
 

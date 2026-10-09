@@ -134,7 +134,9 @@ Check all of the following:
 - parent and child workspaces do not mirror each other's state;
 - optional files and folders contain real material;
 - sharing, privacy, execution ownership, and authority are explicit;
-- credentials and secret values are absent.
+- credentials and secret values are absent;
+- the folder has `AGENTS.md` and `README.md`, and the workspace has no nested Git;
+- no stale worktrees, merged branches, stashes, or old uncommitted work remain (run the drift check).
 
 **Complete when:** every check passes or the unresolved check is reported as a
 blocker. Do not continue to another project without separate approval.
