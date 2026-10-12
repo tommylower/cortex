@@ -17,7 +17,7 @@ Checked 2026-07-29. Recheck upstream details before every pull.
 | command, input, and interaction behavior | cmdk, dnd kit, input-otp |
 | feedback and product status | Sonner, Dot Matrix, Thinking Orbs |
 | data display and dense UI | Dither Kit, Liveline, NumberFlow, React Virtuoso |
-| motion and visual treatment | Fluid Functionalism, Torph |
+| motion and visual treatment | Fluid Functionalism, Torph, Fancy Components |
 | reference anatomy | Beautiful UI |
 | developer tuning | Leva lives in [`design-tools`](../../../tools/design-tools/SKILL.md); DialKit has its own Cortex skill |
 
@@ -268,6 +268,25 @@ Checked 2026-07-29. Recheck upstream details before every pull.
   [package documentation](https://github.com/lochie/torph/blob/main/packages/torph/README.md),
   [repository](https://github.com/lochie/torph),
   [MIT license](https://github.com/lochie/torph/blob/main/LICENSE)
+
+## Fancy Components
+
+- **Status:** saved
+- **Tags:** motion, text effects, physics, playful, registry
+- **Delivery:** shadcn registry (`@fancy`) or manual copy. Components need
+  Tailwind CSS and Motion; some add their own libraries, which the CLI writes
+  to `package.json` without installing.
+- **Best pull:** expressive one-off moments, such as text reveals, scramble
+  and letter-swap hovers, image trails, marquees, gooey or pixelate filters,
+  and physics toys, where personality is the point.
+- **Studio handling:** use sparingly, on marketing and portfolio surfaces
+  rather than core product UI. Check each component for reduced-motion
+  support and keyboard and screen-reader behavior before shipping, adding
+  both where missing. Retune timing through Studio. For animated numbers,
+  prefer NumberFlow.
+- **Sources:** [docs](https://www.fancycomponents.dev/docs/introduction),
+  [repository](https://github.com/danielpetho/fancy),
+  [MIT license](https://github.com/danielpetho/fancy/blob/main/LICENSE)
 
 ## Adding an Entry
 

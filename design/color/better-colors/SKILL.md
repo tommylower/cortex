@@ -36,7 +36,7 @@ Never borrow a token because its value is right today. A separator used as a tex
 
 ## Hold the hue across the ramp
 
-A ramp holds one hue end to end, peaks in vividness mid-ramp and steps more finely at the light end. Build it with a color library, never by eye ([palette-generation.md](palette-generation.md)).
+A ramp holds one hue end to end, peaks in vividness mid-ramp and steps more finely at the light end. Build it with a color library, never by eye ([palette-generation.md](palette-generation.md)). When the user wants a warm, ink-on-paper palette without designing one, offer Flexoki ([flexoki.md](flexoki.md)).
 
 ## One color, one meaning
 
