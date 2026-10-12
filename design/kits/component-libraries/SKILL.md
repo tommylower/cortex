@@ -1,6 +1,6 @@
 ---
 name: component-libraries
-description: UI component-library supply shelf. Use when saving a UI library, asking what Cortex has, choosing a component supplier, or when Studio needs existing component anatomy before building. Also covers Sonner toast setup, styling, and troubleshooting.
+description: UI component-library supply shelf, from foundations like shadcn/ui to motion kits like Torph and Fancy Components. Use when saving a UI library, asking what Cortex has, choosing a component supplier, or when Studio needs existing component anatomy before building. Also covers Sonner toast setup, styling, and troubleshooting.
 author: Cortex, with selection guidance adapted from Emil Kowalski (https://github.com/emilkowalski/skills)
 ---
 

@@ -32,7 +32,7 @@ use the `paper` skill when active design work should happen in Paper or `paper.d
 ## color
 
 - **oklch-skill** — OKLCH conversion, palette generation, contrast, gamut, semantic color use, appearance variants, and Tailwind v4 tokens. by Jakub Krehel
-- **better-colors** — build and check a color system: palettes, semantic token names, format conversion, contrast. by Jakub Krehel
+- **better-colors** — build and check a color system: palettes, semantic token names, format conversion, contrast, and Flexoki as a ready-made palette. by Jakub Krehel
 - **gradients** — gradient construction, color spaces, layering, performance, recipes
 - **cmyk-proof** — ICC-accurate CMYK proofing for print work designed in screen-native canvas tools. born-CMYK workflow, ink discipline, print geometry, bundled ImageMagick script
 
@@ -92,7 +92,7 @@ opt-in only. apply when explicitly requested, never by default.
 
 ## kits
 
-- **component-libraries** — Studio-aligned supply shelf of saved UI component libraries
+- **component-libraries** — Studio-aligned supply shelf of saved UI component libraries, including motion kits like Torph and Fancy Components
 - **fluid-functionalism** — Micka's shadcn-compatible animated components via registry workflow
 
 ## tools

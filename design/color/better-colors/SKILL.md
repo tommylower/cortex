@@ -1,6 +1,6 @@
 ---
 name: better-colors
-description: Helps you build and check a color system for your project. It generates palettes, names semantic tokens, converts between formats and measures contrast.
+description: Helps you build and check a color system for your project, covering palettes, semantic tokens, format conversion, contrast, and Flexoki as a ready-made palette.
 author: Jakub Krehel (https://github.com/jakubkrehel/skills)
 ---
 

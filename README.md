@@ -65,7 +65,7 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 - [`ui-principles`](design/foundations/ui-principles/SKILL.md) — Core principles for building high-quality UI: spacing scale, typography hierarchy, layout rules, max content widths, grid systems, card consistency, proximity grouping, and…
 
 #### color
-- [`better-colors`](design/color/better-colors/SKILL.md) — Helps you build and check a color system for your project. It generates palettes, names semantic tokens, converts between formats and measures contrast.
+- [`better-colors`](design/color/better-colors/SKILL.md) — Helps you build and check a color system for your project, covering palettes, semantic tokens, format conversion, contrast, and Flexoki as a ready-made palette.
 - [`cmyk-proof`](design/color/cmyk-proof/SKILL.md) — ICC-accurate CMYK proofing for print work designed in screen-native canvas tools (Paper, Figma, or any hex-only design surface). Converts brand hexes to press recipes plus…
 - [`gradients`](design/color/gradients/SKILL.md) — Patterns and principles for building high-quality CSS gradients: choosing the right color space (sRGB vs oklab vs oklch), linear / radial / conic gradient syntax, layering,…
 - [`oklch-skill`](design/color/oklch-skill/SKILL.md) — OKLCH color systems and semantic color usage.
@@ -115,7 +115,7 @@ _Generated from public skill frontmatter. Run `node scripts/update-readme-menu.j
 - [`variant`](design/workflows/variant/SKILL.md) — Builds multiple variants of a component you're working on and helps you iterate and pick one.
 
 #### kits
-- [`component-libraries`](design/kits/component-libraries/SKILL.md) — UI component-library supply shelf.
+- [`component-libraries`](design/kits/component-libraries/SKILL.md) — UI component-library supply shelf, from foundations like shadcn/ui to motion kits like Torph and Fancy Components.
 - [`fluid-functionalism`](design/kits/fluid-functionalism/SKILL.md) — Fluid Functionalism component-kit workflow for React/Next.js.
 
 #### tools
