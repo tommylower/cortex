@@ -28,8 +28,9 @@ cortex/
 
 Every category has an `AGENTS.md` index. Start there. The library rule: you should find a skill by walking the folders, not by searching. Shelf paths live in `catalog/shelves.json`; update that before changing sync or validation behavior.
 
-Resources worth preserving before they have a verified permanent home live in
-`catalog/inbox.md`. Saving an entry does not endorse or install it.
+Resources under active evaluation for a permanent shelf live in
+`catalog/inbox.md`. Plain bookmarks are kept outside Cortex. An entry there is
+not an endorsement or install instruction.
 
 ## skill menu
 

@@ -90,7 +90,7 @@ cortex/
 
 each category folder contains an `AGENTS.md` indexing its skills. start there when scoping a category. shelf paths live in `catalog/shelves.json`; update that before changing sync or validation behavior.
 
-external resources without a proven permanent home go in `catalog/inbox.md`. saving an entry does not endorse or install it. promote it only after its license, runtime behavior, maintenance status, and shelf fit are verified.
+external resources under active evaluation for a permanent shelf go in `catalog/inbox.md`; plain bookmarks stay outside cortex. an entry does not endorse or install anything. promote it only after its license, runtime behavior, maintenance status, and shelf fit are verified.
 
 ## skill format
 

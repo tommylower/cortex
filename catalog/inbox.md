@@ -1,6 +1,6 @@
 # resource inbox
 
-use this inbox for external resources that are worth preserving but are not yet tested, adopted, or ready for a permanent cortex shelf.
+use this inbox for external resources cortex is actively evaluating for a permanent shelf. plain bookmarks and someday ideas are kept outside cortex; an entry comes here when evaluation starts.
 
 an inbox entry is not an endorsement or installation instruction. before promotion, verify the source, license, runtime behavior, maintenance status, and fit with an existing shelf.
 
@@ -27,28 +27,6 @@ an inbox entry is not an endorsement or installation instruction. before promoti
 ```
 
 ## entries
-
-### GitHub Tools for eve
-
-- status: `saved`
-- source: [Vercel announcement](https://vercel.com/changelog/github-tools-eve) and [GitHub Tools integration guide](https://github-tools.com/frameworks/eve)
-- purpose: build durable GitHub agents for code review, issue triage, repository exploration, CI operations, and maintainer work, with preset tool scopes and human approval gates for writes.
-- likely home: agent infrastructure or a future `agent-workflows` GitHub automation experiment; not a default Cortex skill.
-- license: MIT
-- runtime: TypeScript on eve with `@github-tools/sdk`, AI SDK v7, Zod, and either a GitHub token or Vercel Connect. Intended for deployed or long-running agents rather than ordinary interactive Codex or Claude Code sessions.
-- caution: the preferred `@github-tools/eve-extension` direction was not yet published to npm when reviewed. Some write operations are not idempotent, so durable approval and replay behavior must be tested before granting repository write access.
-- promote when: a real persistent GitHub workflow needs scheduled or unattended PR review, issue triage, or CI maintenance that current interactive GitHub tools do not cover.
-
-### emulsion
-
-- status: `saved`
-- source: [dennisonbertram/emulsion](https://github.com/dennisonbertram/emulsion)
-- purpose: collaborative storyboard blocking for AI filmmaking. combines a Claude Code skill with a three.js browser app, live agent edits, keyframed objects and cameras, and MP4 motion-reference exports for video-generation workflows.
-- likely home: `design/tools/emulsion`
-- license: MIT
-- runtime: Python 3 local server on port 8741, browser UI, three.js from a CDN, and Node-based QA/export helpers.
-- caution: early-stage project. audit the skill before installation because its upstream instructions encourage agents to contribute improvements back automatically.
-- promote when: it has been tested in a disposable project, its agent instructions and network behavior have been reviewed, and a real filmmaking workflow justifies maintaining a Cortex integration.
 
 ### jakubkrehel/skills
 
