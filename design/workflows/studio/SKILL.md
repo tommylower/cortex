@@ -1,6 +1,6 @@
 ---
 name: studio
-description: The house practice for design and front-end product work. Load before any design, UI, component, canvas (Paper, Figma), or project-scaffolding work, in any project. Holds the rules (invariants and defaults, including motion numbers), the per-situation playbook, tool practices for Paper, Figma, print, and front-end builds, the verdict on every design skill and tool, and the doctrine for component intake, scaffolding, and enforcement.
+description: The house practice for design and front-end product work. Load before any design, UI, component, canvas (Paper, Figma), or project-scaffolding work, in any project. Holds the rules (invariants and defaults, including motion numbers), the per-situation playbook, tool practices for Paper, Figma, print, and front-end builds, the one index of design skills, tools, and saved resources, and the doctrine for component intake, tool intake (evaluating a new tool, system, or guide), scaffolding, and enforcement.
 ---
 
 # studio
@@ -25,7 +25,11 @@ paths are relative to this skill's folder.
   - `doctrine/component-intake.md`: turning an idea or reference into a component
   - `doctrine/codebase-scaffold.md`: starting a codebase or changing its structure
   - `doctrine/enforcement.md`: wiring the prebuild gate (`scripts/preflight.ts`), declaring a project's `design.config.ts`, or judging a boundary violation
-  - `inventory.md`: before reaching for any other skill, mcp, or tool
+  - `doctrine/tool-intake.md`: when the operator brings in a new tool,
+    system, library, or guide to evaluate
+  - `inventory.md`: before reaching for any other skill, mcp, tool,
+    library, font, or reference. it is the one index, including the route
+    to the operator's saved resources
 - **emitting or inheriting a design-system package:** use the `asbuilt`
   skill. it owns the package format.
 

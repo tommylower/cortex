@@ -87,6 +87,47 @@ no config means universal checks only, never a failure. law specific to
 one profile (a single skin layer, one type api, one elevation model) lives
 in the project that declares the profile, in its own docs, not here.
 
+## lint gate — EXPERIMENT
+
+projects on the `cva-utilities` profile add `@shadcn/lint` (an eslint or
+oxlint plugin for tailwind v4) beside preflight. the two gates split the
+work:
+
+- preflight owns the token file, role completeness, import boundaries,
+  and raw hex anywhere.
+- the lint gate owns what a lexical scan cannot see: classes a screen
+  puts on a primitive (`no-restyle` is "screens make zero new visual
+  decisions" made mechanical), arbitrary values and palette colors in
+  class strings, classes tailwind cannot generate, and class strings
+  built at runtime.
+
+the starting config:
+
+```js
+"shadcn/no-restyle": ["error", { allow: ["layout"] }],
+"shadcn/no-raw-colors": "error",
+"shadcn/no-arbitrary-values": "error",
+"shadcn/no-unknown-classes": "error",
+"shadcn/require-static-classes": "error",
+```
+
+turn `require-static-classes` off inside `components/ui/`, where
+primitives call their own variant helpers. widen `no-restyle` per
+primitive with contracts only when a screen proves the need.
+
+the `--brand-*` primitives sit in `@theme`, so tailwind generates
+utilities for them and `no-raw-colors` passes them as theme colors.
+screens bind color roles (`--color-*`), never primitives; on the trial,
+deny `*-brand-*` outside `components/ui/` and confirm the rule reports it.
+
+wire it as a `lint` script and run it in `prebuild` next to preflight. a
+raw hex inside an arbitrary class (`bg-[#fff]`) is reported by both gates,
+which is harmless. `single-skin` projects skip this gate: their screens
+style through skin classes, so the rules have little to check.
+
+until two real projects run it, preflight stays the gate of record and
+this section is an experiment.
+
 ## the exit code is the gate
 
 preflight's EXIT CODE is the gate, not its stdout. piping output through

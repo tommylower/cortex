@@ -11,7 +11,7 @@ or code, and follows one set of rules instead of improvising per session.
 - [playbook.md](playbook.md): the path through a session
 - [practices/](practices/): tool mechanics for paper, figma, print and assets, and front-end builds, read when that tool is in play
 - [inventory.md](inventory.md): the verdict on every design skill, mcp, and tool
-- [doctrine/](doctrine/): component intake, codebase scaffold, and enforcement. the design-system package format belongs to the `asbuilt` skill
+- [doctrine/](doctrine/): component intake, tool intake, codebase scaffold, and enforcement. the design-system package format belongs to the `asbuilt` skill
 - [scripts/preflight.ts](scripts/preflight.ts): the prebuild gate a studio codebase runs
 
 ## how the rules stay current

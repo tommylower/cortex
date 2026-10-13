@@ -5,6 +5,9 @@ are catalogs: their numbers and styles are examples, and `rules.md` wins
 every conflict. a skill not listed here is outside the design practice and
 carries no design law.
 
+this is the one index of the practice. any other design router defers to
+it, and a newcomer gets its verdict here through `doctrine/tool-intake.md`.
+
 verdicts:
 
 - **house**: part of the practice itself.
@@ -108,3 +111,19 @@ they are examples; tuned numbers land in `rules.md`.
 - leva: a dev-only react parameter panel for general controls. dialkit stays the default for motion and visual tuning.
 - paper-desktop plugin: ships its own `code-to-design` and `design-to-code` skills, outside cortex.
 - three.js: no skill yet. learn it on the first real pull.
+- `@shadcn/lint`: house, as an experiment. the lint gate for `cva-utilities` projects, beside preflight (`doctrine/enforcement.md`, lint gate).
+
+## saved resources
+
+the operator keeps a wider shelf of saved resources outside cortex, in
+their notes vault: component libraries, fonts, tools, references, and
+inspiration, one note per resource with its link and why it was saved. the
+machine's own agent instructions give its location, and a `memory-search`
+tool, where one is installed, finds notes by meaning.
+
+- check the shelf when choosing a library, font, tool, or reference, and
+  say a suggestion came from it.
+- a saved resource is a candidate, never a standard. adopting one goes
+  through `doctrine/tool-intake.md`.
+- the shelf is read-only from project work. saving or changing a resource
+  goes through the operator's own notes route.

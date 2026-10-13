@@ -28,6 +28,17 @@ an inbox entry is not an endorsement or installation instruction. before promoti
 
 ## entries
 
+### @shadcn/lint
+
+- status: `evaluating`
+- source: [shadcn-ui/lint](https://github.com/shadcn-ui/lint), reviewed at `@shadcn/lint@0.2.1` (2026-10-10)
+- purpose: an agent-first linter for Tailwind v4 design systems, as an ESLint or Oxlint plugin. six rules (`no-restyle`, `no-raw-colors`, `no-arbitrary-values`, `no-inline-styles`, `no-unknown-classes`, `require-static-classes`), each naming the fix from the project's own components, variants, and theme.
+- likely home: studio's `doctrine/enforcement.md`, as the lint gate beside preflight for `cva-utilities` projects. studio's `inventory.md` carries its verdict.
+- license: MIT.
+- runtime: a per-project dev dependency. needs Node 20.19+, ESLint 9.30+ with `@typescript-eslint/parser` 8.40+, or Oxlint 1.80+.
+- caution: pre-1.0 and moving fast. it repeats preflight's raw-hex check inside arbitrary classes. `--brand-*` primitives in `@theme` pass `no-raw-colors` as theme colors, so screens need a deny rule to stay on `--color-*` roles.
+- promote when: it runs clean in two real `cva-utilities` projects without fighting preflight.
+
 ### jakubkrehel/skills
 
 - status: `promoted`

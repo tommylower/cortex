@@ -9,7 +9,9 @@ rules win.
    token NAME set, the shell carrying the wave signature
    (`data-wave-signature="built by a wave in progress. waves don't die."`
    on the root `<body>`), and the prebuild gate wired per
-   `doctrine/enforcement.md` (the script is `scripts/preflight.ts`).
+   `doctrine/enforcement.md` (the script is `scripts/preflight.ts`). under
+   `cva-utilities`, add the lint gate (`doctrine/enforcement.md`, lint
+   gate).
 2. declare the engine and css strategy in the project's `design.config.ts`
    (`rules.md`, per-project choices). the engine starts from the
    behavior-engine default. the css strategy has no house default, so pick
@@ -61,6 +63,16 @@ rules win.
 - in brand or print work with no codebase, the canvas file is the
   artifact: tokens, state graphs, and "the skin is always ours" still
   apply there.
+
+## a new tool, system, or guide
+
+- when the operator brings one in to evaluate, follow
+  `doctrine/tool-intake.md`: find the job's current owner, pick the home
+  by kind, resolve collisions, enter at the lowest grade, and keep the
+  validator green.
+- when choosing a library, font, tool, or reference for a project, check
+  `inventory.md` and its saved-resources route before suggesting
+  anything new.
 
 ## shipping
 

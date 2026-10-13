@@ -32,7 +32,8 @@ a day-one scaffold generates boundaries, not implementations:
 - ONE proven chain: token -> variant -> screen
 - enforcement wired as prebuild: `scripts/preflight.ts` per
   doctrine/enforcement.md, so a build cannot go green while a boundary is
-  broken
+  broken. under `cva-utilities`, add the lint gate beside it
+  (`doctrine/enforcement.md`, lint gate)
 
 nothing else. no pre-built component set, no locked css strategy. every
 component after day one enters through the intake loop

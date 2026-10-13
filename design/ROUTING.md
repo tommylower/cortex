@@ -2,6 +2,8 @@
 
 Use this before choosing a design skill. The goal is predictable routing: pick the shelf by the user's job, then load the named skill.
 
+Studio's `inventory.md` is the index of record. This table is a quick router and defers to it on any conflict. New tools enter through studio's `doctrine/tool-intake.md`, which updates the inventory first.
+
 ## First Choice
 
 | User Need | Skill |
