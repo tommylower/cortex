@@ -175,6 +175,11 @@ checkout only while someone works on it.
 - **End:** commit or state why not; remove your worktree once its branch is
   merged and delete merged branches; update `PROJECT.md`'s Current and Next;
   leave no stash, scratch file or build snapshot behind.
+- **Handoff:** when work moves to another session, agent or project, write it
+  as a plan in that project's `workspace/plans/YYYY-MM-DD-<slug>.md` (the goal,
+  where it stands, the first step, boundaries, and when it's done), link it
+  from `PROJECT.md`'s Next and Map, and hand over a one-line prompt that points
+  at it. A handoff that lives only in chat ends with the session.
 
 ## Elevation
 
@@ -188,7 +193,8 @@ own policy or knowledge repository, then the operator's own notes through a
 Run a hygiene check over the code root on a schedule and before calling a
 cleanup done. It should report linked worktrees, branches already merged,
 local-only commits and uncommitted changes older than a week, stashes, nested
-Git inside workspaces, and folders missing `AGENTS.md`. Fix findings in the
+Git inside workspaces, folders missing `AGENTS.md`, and plans in
+`workspace/plans/` that `PROJECT.md` doesn't link. Fix findings in the
 folder's own next session; don't let them pile up.
 
 ## Naming and collisions

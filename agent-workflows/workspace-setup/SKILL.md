@@ -136,6 +136,7 @@ Check all of the following:
 - sharing, privacy, execution ownership, and authority are explicit;
 - credentials and secret values are absent;
 - the folder has `AGENTS.md` and `README.md`, the workspace follows the template and has no nested Git, and no umbrella has a workspace;
+- every plan in `workspace/plans/` is linked from `PROJECT.md`, and a handoff to another session is one of those plans, not chat only;
 - no stale worktrees, merged branches, stashes, or old uncommitted work remain (run the drift check).
 
 **Complete when:** every check passes or the unresolved check is reported as a
