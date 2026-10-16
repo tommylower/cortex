@@ -166,8 +166,11 @@ checkout only while someone works on it.
 
 ## Sessions and parallel agents
 
-- **Start:** read the folder's `AGENTS.md`, then `workspace/PROJECT.md`, then
-  `git status` and `git worktree list`. Uncommitted work you didn't make
+- **Start:** open the session in the project folder itself, where its
+  `AGENTS.md` is, never inside `workspace/`: the agent can then work in the
+  code, and tool-created files (`.claude/` settings, preview configs) stay out
+  of the workspace. Then read the folder's `AGENTS.md`, then
+  `workspace/PROJECT.md`, then `git status` and `git worktree list`. Uncommitted work you didn't make
   belongs to someone else: leave it and say so.
 - **Parallel work:** one agent per checkout. A second agent works in a
   worktree outside the project tree (for example `~/.worktrees/<repo>/<branch>`),
