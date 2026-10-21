@@ -28,6 +28,17 @@ an inbox entry is not an endorsement or installation instruction. before promoti
 
 ## entries
 
+### inkboard/system-atlas
+
+- status: `evaluating`
+- source: [inkboard/system-atlas](https://github.com/inkboard/system-atlas), reviewed 2026-10-21 (last push 2026-09-01, 7 commits)
+- purpose: an agent skill that turns an architecture discussion into an explorable isometric map (chapters, hover and pin, go inside for steps, inspectable data packets) plus a generated `SYSTEM.md`, both built from one `data.mjs`. open questions carry stable ids and states across feedback rounds.
+- likely home: studio's `inventory.md` as a supplier beside `spec-map`, for systems still being designed. `spec-map` keeps the static spec map.
+- license: MIT.
+- runtime: documentation and build script only. `bun build.mjs` writes one self-contained html file (a google fonts stylesheet is its only external asset). installs with `npx skills add inkboard/system-atlas`.
+- caution: young and quiet since september. it carries its own visual language and its own process rules; read them as examples, not studio law. it asks before committing docs, and its docs-policy advice may not match a project's.
+- promote when: it maps two real systems still in design, each through at least one feedback round, without fighting studio's rules.
+
 ### @shadcn/lint
 
 - status: `evaluating`

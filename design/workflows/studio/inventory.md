@@ -112,6 +112,7 @@ they are examples; tuned numbers land in `rules.md`.
 - paper-desktop plugin: ships its own `code-to-design` and `design-to-code` skills, outside cortex.
 - three.js: no skill yet. learn it on the first real pull.
 - `@shadcn/lint`: house, as an experiment. the lint gate for `cva-utilities` projects, beside preflight (`doctrine/enforcement.md`, lint gate).
+- `system-atlas`: supplier, evaluating, not installed. an interactive map of a system that is still being designed, with a generated text twin and questions tracked by id. narrowed to that gap: `spec-map` keeps the static, hand-edited spec map. its isometric look is its own, never a house style.
 
 ## saved resources
 
