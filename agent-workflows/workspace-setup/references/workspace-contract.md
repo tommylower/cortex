@@ -28,7 +28,7 @@ has something in it; nothing else goes in a workspace.
 <project>/
 └── workspace/
     ├── README.md     what's here
-    ├── PROJECT.md    purpose, current, next, open loops, decisions
+    ├── PROJECT.md    purpose, threads, next, open loops, decisions
     ├── plans/        one file per active plan
     ├── notes/        dated notes: YYYY-MM-DD-<kind>-<slug>.md (call, note, thread, research)
     ├── references/   outside material kept as-is
@@ -65,7 +65,7 @@ Make this the shortest useful management view:
 
 ## Purpose
 
-## Current
+## Threads
 
 ## Next
 
@@ -79,6 +79,16 @@ Make this the shortest useful management view:
 Keep each section compact. Link to detail instead of copying it. Omit a section
 only when genuinely inapplicable; write `None` when an empty state is
 meaningful.
+
+Threads holds one line per thread of work, in this shape:
+
+```text
+name · live | parked | done · where it stopped · date
+```
+
+For example: `checkout redesign · parked · cart page done, payment step next ·
+2026-10-30`. When the operator parks or finishes a thread, the session that
+owns it rewrites its line.
 
 ## Choose the shape on three axes
 
@@ -128,7 +138,7 @@ Don't add a second status ledger, backlog, decision log, inbox, handoff folder,
 or task tracker under another name. Status and open loops live in `PROJECT.md`;
 an effort too big for it gets a file in `plans/`; durable decisions go in
 `PROJECT.md` or the repository's own decision record; restart notes for paused
-work go in `PROJECT.md`'s Next or the plan they belong to. Access pointers,
+work go in its Threads line or the plan it belongs to. Access pointers,
 never secret values, go in `references/`.
 
 Code isn't operator material. Keep worktrees and build snapshots out of
@@ -176,8 +186,9 @@ checkout only while someone works on it.
   worktree outside the project tree (for example `~/.worktrees/<repo>/<branch>`),
   never inside a workspace or an archive.
 - **End:** commit or state why not; remove your worktree once its branch is
-  merged and delete merged branches; update `PROJECT.md`'s Current and Next;
-  leave no stash, scratch file or build snapshot behind.
+  merged and delete merged branches; update your thread's line in
+  `PROJECT.md`, and Next if it changed; leave no stash, scratch file or build
+  snapshot behind.
 - **Handoff:** when work moves to another session, agent or project, write it
   as a plan in that project's `workspace/plans/YYYY-MM-DD-<slug>.md` (the goal,
   where it stands, the first step, boundaries, and when it's done), link it
