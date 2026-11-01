@@ -28,7 +28,7 @@ has something in it; nothing else goes in a workspace.
 <project>/
 └── workspace/
     ├── README.md     what's here
-    ├── PROJECT.md    purpose, threads, next, open loops, decisions
+    ├── PROJECT.md    purpose, threads, labs, next, open loops, decisions
     ├── plans/        one file per active plan
     ├── notes/        dated notes: YYYY-MM-DD-<kind>-<slug>.md (call, note, thread, research)
     ├── references/   outside material kept as-is
@@ -67,6 +67,8 @@ Make this the shortest useful management view:
 
 ## Threads
 
+## Labs
+
 ## Next
 
 ## Open loops
@@ -89,6 +91,19 @@ name · live | parked | done · where it stopped · date
 For example: `checkout redesign · parked · cart page done, payment step next ·
 2026-10-30`. When the operator parks or finishes a thread, the session that
 owns it rewrites its line.
+
+Labs holds one line per code exploration, in this shape:
+
+```text
+name · what it explores · branch · port · status · date
+```
+
+Status moves from open to picked (what the operator chose), then to promoted
+(with the commit) or killed. Each exploration lives on a `lab/<name>` branch in
+its own worktree, never in the production checkout, under a `lab/` path that
+production never ships, with its details in a `README.md` inside the lab
+folder. Only what the operator picks moves to production, as a normal commit;
+then the lab's branch and worktree go, and its line records what moved.
 
 ## Choose the shape on three axes
 
@@ -167,12 +182,32 @@ live in the organization's own repository, not in a parent workspace.
 
 ## Front doors that stay fresh
 
-Every folder in scope has an `AGENTS.md` (rules and routing; `CLAUDE.md` links
-to it or imports it with `@AGENTS.md`) and a root `README.md` (what the folder
-is and a map of what's inside). An umbrella's README also lists child
+Every folder in scope has an `AGENTS.md` (rules and routing; `CLAUDE.md` is a
+symlink to it or imports it with the line `@AGENTS.md`) and a root `README.md`
+(what the folder is and a map of what's inside). An umbrella's README also lists child
 repositories that aren't checked out on this machine, each with what it is and
 its clone command, so a missing folder reads as a choice, not a loss. Keep a
 checkout only while someone works on it.
+
+`AGENTS.md` uses the same headings in every project, so an agent finds the
+same things in the same place. What goes under them is the project's own:
+
+```markdown
+# <project>
+
+## What this is
+
+## Org
+
+## Where things live
+
+## Project rules
+
+## Skills used
+```
+
+Org names the organization or client the project belongs to. Skills used lists
+the skills the project relies on; a new project copies it from a similar one.
 
 ## Sessions and parallel agents
 
